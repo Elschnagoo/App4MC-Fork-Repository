@@ -3450,6 +3450,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	private EDataType positiveDoubleEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType nonNegativeDoubleEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -15319,6 +15326,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EDataType getNonNegativeDouble() {
+		return nonNegativeDoubleEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public AmaltheaFactory getAmaltheaFactory() {
 		return (AmaltheaFactory)getEFactoryInstance();
 	}
@@ -16889,6 +16906,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		positiveIntEDataType = createEDataType(POSITIVE_INT);
 		positiveLongEDataType = createEDataType(POSITIVE_LONG);
 		positiveDoubleEDataType = createEDataType(POSITIVE_DOUBLE);
+		nonNegativeDoubleEDataType = createEDataType(NON_NEGATIVE_DOUBLE);
 	}
 
 	/**
@@ -17431,7 +17449,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEParameter(op, this.getTime(), "t", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(frequencyEClass, Frequency.class, "Frequency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFrequency_Value(), theEcorePackage.getEDouble(), "value", "0.0", 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFrequency_Value(), this.getNonNegativeDouble(), "value", "0.0", 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFrequency_Unit(), this.getFrequencyUnit(), "unit", null, 0, 1, Frequency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getFrequency__ToString(), theEcorePackage.getEString(), "toString", 0, 1, !IS_UNIQUE, IS_ORDERED);
@@ -18651,7 +18669,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getInterProcessTrigger_Counter(), this.getCounter(), null, "counter", null, 0, 1, InterProcessTrigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enforcedMigrationEClass, EnforcedMigration.class, "EnforcedMigration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEnforcedMigration_ResourceOwner(), this.getScheduler(), null, "resourceOwner", null, 0, 1, EnforcedMigration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEnforcedMigration_ResourceOwner(), this.getTaskScheduler(), null, "resourceOwner", null, 1, 1, EnforcedMigration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(schedulePointEClass, SchedulePoint.class, "SchedulePoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -19391,6 +19409,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEDataType(positiveIntEDataType, int.class, "PositiveInt", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(positiveLongEDataType, long.class, "PositiveLong", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(positiveDoubleEDataType, double.class, "PositiveDouble", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(nonNegativeDoubleEDataType, double.class, "NonNegativeDouble", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -19431,6 +19450,12 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		   source,
 		   new String[] {
 			   "minExclusive", "0"
+		   });
+		addAnnotation
+		  (nonNegativeDoubleEDataType,
+		   source,
+		   new String[] {
+			   "minInclusive", "0"
 		   });
 	}
 

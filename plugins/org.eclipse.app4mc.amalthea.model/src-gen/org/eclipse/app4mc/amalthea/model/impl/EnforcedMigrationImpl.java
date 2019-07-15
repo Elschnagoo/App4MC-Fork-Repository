@@ -16,7 +16,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
-import org.eclipse.app4mc.amalthea.model.Scheduler;
+import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -47,7 +47,7 @@ public class EnforcedMigrationImpl extends CallGraphItemImpl implements Enforced
 	 * @generated
 	 * @ordered
 	 */
-	protected Scheduler resourceOwner;
+	protected TaskScheduler resourceOwner;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,10 +74,10 @@ public class EnforcedMigrationImpl extends CallGraphItemImpl implements Enforced
 	 * @generated
 	 */
 	@Override
-	public Scheduler getResourceOwner() {
+	public TaskScheduler getResourceOwner() {
 		if (resourceOwner != null && resourceOwner.eIsProxy()) {
 			InternalEObject oldResourceOwner = (InternalEObject)resourceOwner;
-			resourceOwner = (Scheduler)eResolveProxy(oldResourceOwner);
+			resourceOwner = (TaskScheduler)eResolveProxy(oldResourceOwner);
 			if (resourceOwner != oldResourceOwner) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AmaltheaPackage.ENFORCED_MIGRATION__RESOURCE_OWNER, oldResourceOwner, resourceOwner));
@@ -91,7 +91,7 @@ public class EnforcedMigrationImpl extends CallGraphItemImpl implements Enforced
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Scheduler basicGetResourceOwner() {
+	public TaskScheduler basicGetResourceOwner() {
 		return resourceOwner;
 	}
 
@@ -101,8 +101,8 @@ public class EnforcedMigrationImpl extends CallGraphItemImpl implements Enforced
 	 * @generated
 	 */
 	@Override
-	public void setResourceOwner(Scheduler newResourceOwner) {
-		Scheduler oldResourceOwner = resourceOwner;
+	public void setResourceOwner(TaskScheduler newResourceOwner) {
+		TaskScheduler oldResourceOwner = resourceOwner;
 		resourceOwner = newResourceOwner;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.ENFORCED_MIGRATION__RESOURCE_OWNER, oldResourceOwner, resourceOwner));
@@ -132,7 +132,7 @@ public class EnforcedMigrationImpl extends CallGraphItemImpl implements Enforced
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AmaltheaPackage.ENFORCED_MIGRATION__RESOURCE_OWNER:
-				setResourceOwner((Scheduler)newValue);
+				setResourceOwner((TaskScheduler)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -147,7 +147,7 @@ public class EnforcedMigrationImpl extends CallGraphItemImpl implements Enforced
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AmaltheaPackage.ENFORCED_MIGRATION__RESOURCE_OWNER:
-				setResourceOwner((Scheduler)null);
+				setResourceOwner((TaskScheduler)null);
 				return;
 		}
 		super.eUnset(featureID);

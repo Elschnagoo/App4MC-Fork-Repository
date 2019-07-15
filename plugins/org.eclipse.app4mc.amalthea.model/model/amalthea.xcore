@@ -275,7 +275,7 @@ enum FrequencyUnit
  */
 class Frequency extends Quantity
 {
-	double value = "0.0"
+	NonNegativeDouble value = "0.0"
 	FrequencyUnit unit
 	
 	op String toString() {
@@ -934,6 +934,11 @@ type PositiveLong wraps long
 @ExtendedMetaData(minExclusive="0")
 type PositiveDouble wraps double
 
+/*
+ * Non Negative Double (double)
+ */
+@ExtendedMetaData(minInclusive="0")
+type NonNegativeDouble wraps double
 
 // ===============================================================================
 // ===============================================================================
@@ -3315,7 +3320,7 @@ class InterProcessTrigger extends CallGraphItem
  */
 class EnforcedMigration extends CallGraphItem
 {
-	refers Scheduler resourceOwner
+	refers TaskScheduler[1] resourceOwner
 }
 
 /*

@@ -817,6 +817,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createPositiveLongFromString(eDataType, initialValue);
 			case AmaltheaPackage.POSITIVE_DOUBLE:
 				return createPositiveDoubleFromString(eDataType, initialValue);
+			case AmaltheaPackage.NON_NEGATIVE_DOUBLE:
+				return createNonNegativeDoubleFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -956,6 +958,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertPositiveLongToString(eDataType, instanceValue);
 			case AmaltheaPackage.POSITIVE_DOUBLE:
 				return convertPositiveDoubleToString(eDataType, instanceValue);
+			case AmaltheaPackage.NON_NEGATIVE_DOUBLE:
+				return convertNonNegativeDoubleToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -5271,6 +5275,24 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertPositiveDoubleToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Double createNonNegativeDoubleFromString(EDataType eDataType, String initialValue) {
+		return (Double)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertNonNegativeDoubleToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

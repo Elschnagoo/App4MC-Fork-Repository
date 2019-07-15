@@ -41,12 +41,12 @@ public interface EnforcedMigration extends CallGraphItem {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resource Owner</em>' reference.
-	 * @see #setResourceOwner(Scheduler)
+	 * @see #setResourceOwner(TaskScheduler)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getEnforcedMigration_ResourceOwner()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
-	Scheduler getResourceOwner();
+	TaskScheduler getResourceOwner();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.EnforcedMigration#getResourceOwner <em>Resource Owner</em>}' reference.
@@ -56,6 +56,6 @@ public interface EnforcedMigration extends CallGraphItem {
 	 * @see #getResourceOwner()
 	 * @generated
 	 */
-	void setResourceOwner(Scheduler value);
+	void setResourceOwner(TaskScheduler value);
 
 } // EnforcedMigration

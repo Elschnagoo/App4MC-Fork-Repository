@@ -21,9 +21,7 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AsynchronousServerCall;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.EnforcedMigration;
 import org.eclipse.app4mc.amalthea.model.EnumMode;
-import org.eclipse.app4mc.amalthea.model.InterruptController;
 import org.eclipse.app4mc.amalthea.model.ModeCondition;
 import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction;
 import org.eclipse.app4mc.amalthea.model.ModeConditionDisjunction;
@@ -34,15 +32,12 @@ import org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum;
 import org.eclipse.app4mc.amalthea.model.ModeLiteral;
 import org.eclipse.app4mc.amalthea.model.ModeSwitch;
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry;
-import org.eclipse.app4mc.amalthea.model.OSModel;
-import org.eclipse.app4mc.amalthea.model.OperatingSystem;
 import org.eclipse.app4mc.amalthea.model.OsEvent;
 import org.eclipse.app4mc.amalthea.model.RelationalOperator;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.OperatingSystemBuilder;
@@ -664,85 +659,6 @@ public class TASoftwareModelValidatorTests {
   
   @Test
   public void test_TASoftwareEnforcedMigration() {
-    final Procedure1<Amalthea> _function = (Amalthea it) -> {
-      final Procedure1<OSModel> _function_1 = (OSModel it_1) -> {
-        final Procedure1<OperatingSystem> _function_2 = (OperatingSystem it_2) -> {
-          it_2.setName("os");
-          final Procedure1<TaskScheduler> _function_3 = (TaskScheduler it_3) -> {
-            it_3.setName("ts");
-          };
-          this.b3.taskScheduler(it_2, _function_3);
-          final Procedure1<InterruptController> _function_4 = (InterruptController it_3) -> {
-            it_3.setName("ic");
-          };
-          this.b3.interruptController(it_2, _function_4);
-        };
-        this.b3.operatingSystem(it_1, _function_2);
-      };
-      this.b1.osModel(it, _function_1);
-      final Procedure1<SWModel> _function_2 = (SWModel it_1) -> {
-        final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_3 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
-          it_2.setName("r_ok");
-          final Procedure1<CallGraph> _function_4 = (CallGraph it_3) -> {
-            final Procedure1<EnforcedMigration> _function_5 = (EnforcedMigration it_4) -> {
-              it_4.setResourceOwner(this.b1.<TaskScheduler>_find(it_4, TaskScheduler.class, "ts"));
-            };
-            this.b2.enforcedMigration(it_3, _function_5);
-          };
-          this.b2.callGraph(it_2, _function_4);
-        };
-        this.b2.runnable(it_1, _function_3);
-        final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_4 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
-          it_2.setName("r_unset");
-          final Procedure1<CallGraph> _function_5 = (CallGraph it_3) -> {
-            final Procedure1<EnforcedMigration> _function_6 = (EnforcedMigration it_4) -> {
-            };
-            this.b2.enforcedMigration(it_3, _function_6);
-          };
-          this.b2.callGraph(it_2, _function_5);
-        };
-        this.b2.runnable(it_1, _function_4);
-        final Procedure1<Task> _function_5 = (Task it_2) -> {
-          it_2.setName("t_ok");
-          final Procedure1<CallGraph> _function_6 = (CallGraph it_3) -> {
-            final Procedure1<EnforcedMigration> _function_7 = (EnforcedMigration it_4) -> {
-              it_4.setResourceOwner(this.b1.<TaskScheduler>_find(it_4, TaskScheduler.class, "ts"));
-            };
-            this.b2.enforcedMigration(it_3, _function_7);
-          };
-          this.b2.callGraph(it_2, _function_6);
-        };
-        this.b2.task(it_1, _function_5);
-        final Procedure1<Task> _function_6 = (Task it_2) -> {
-          it_2.setName("t_bad");
-          final Procedure1<CallGraph> _function_7 = (CallGraph it_3) -> {
-            final Procedure1<EnforcedMigration> _function_8 = (EnforcedMigration it_4) -> {
-              it_4.setResourceOwner(this.b1.<InterruptController>_find(it_4, InterruptController.class, "ic"));
-            };
-            this.b2.enforcedMigration(it_3, _function_8);
-          };
-          this.b2.callGraph(it_2, _function_7);
-        };
-        this.b2.task(it_1, _function_6);
-      };
-      this.b1.softwareModel(it, _function_2);
-    };
-    final Amalthea model = this.b1.amalthea(_function);
-    final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
-      Severity _severityLevel = it.getSeverityLevel();
-      return Objects.equal(_severityLevel, Severity.ERROR);
-    };
-    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
-      return it.getMessage();
-    };
-    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The resource owner of the Enforced Migration in Runnable \"r_unset\" must be set."));
-    Assert.assertTrue(result.contains("The resource owner of the Enforced Migration in Task \"t_bad\" must refer to a task scheduler (instead of Interrupt Controller \"ic\")."));
-    Assert.assertFalse(result.contains("The resource owner of the Enforced Migration in Runnable \"r_ok\" must be set."));
-    Assert.assertFalse(result.contains("The resource owner of the Enforced Migration in Runnable \"r_ok\" must refer to a task scheduler (instead of Task Scheduler \"ts\")."));
-    Assert.assertFalse(result.contains("The resource owner of the Enforced Migration in Task \"t_ok\" must be set."));
-    Assert.assertFalse(result.contains("The resource owner of the Enforced Migration in Task \"t_ok\" must refer to a task scheduler (instead of Task Scheduler \"ts\")."));
   }
   
   @Test

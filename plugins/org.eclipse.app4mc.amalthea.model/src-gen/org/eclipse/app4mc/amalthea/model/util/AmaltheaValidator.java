@@ -1409,6 +1409,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validatePositiveLong((Long)value, diagnostics, context);
 			case AmaltheaPackage.POSITIVE_DOUBLE:
 				return validatePositiveDouble((Double)value, diagnostics, context);
+			case AmaltheaPackage.NON_NEGATIVE_DOUBLE:
+				return validateNonNegativeDouble((Double)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -6641,6 +6643,37 @@ public class AmaltheaValidator extends EObjectValidator {
 		boolean result = positiveDouble > POSITIVE_DOUBLE__MIN__VALUE;
 		if (!result && diagnostics != null)
 			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveDouble(), positiveDouble, POSITIVE_DOUBLE__MIN__VALUE, false, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNonNegativeDouble(double nonNegativeDouble, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateNonNegativeDouble_Min(nonNegativeDouble, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateNonNegativeDouble_Min
+	 */
+	public static final double NON_NEGATIVE_DOUBLE__MIN__VALUE = 0.0;
+
+	/**
+	 * Validates the Min constraint of '<em>Non Negative Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNonNegativeDouble_Min(double nonNegativeDouble, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = nonNegativeDouble >= NON_NEGATIVE_DOUBLE__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getNonNegativeDouble(), nonNegativeDouble, NON_NEGATIVE_DOUBLE__MIN__VALUE, true, diagnostics, context);
 		return result;
 	}
 

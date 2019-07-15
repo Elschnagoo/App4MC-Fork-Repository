@@ -272,7 +272,7 @@
         <details key="body" value="double _value = this.getValue();&#xA;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Double%>.valueOf(_value) + &quot; &quot;);&#xA;&lt;%java.lang.String%> _xifexpression = null;&#xA;&lt;%org.eclipse.app4mc.amalthea.model.FrequencyUnit%> _unit = this.getUnit();&#xA;boolean _equals = &lt;%com.google.common.base.Objects%>.equal(_unit, &lt;%org.eclipse.app4mc.amalthea.model.FrequencyUnit%>._UNDEFINED_);&#xA;if (_equals)&#xA;{&#xA;&#x9;_xifexpression = &quot;&lt;unit>&quot;;&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = this.getUnit().getLiteral();&#xA;}&#xA;return (_plus + _xifexpression);"/>
       </eAnnotations>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="#//NonNegativeDouble"
         defaultValueLiteral="0.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" unique="false" eType="#//FrequencyUnit"/>
   </eClassifiers>
@@ -950,6 +950,14 @@
     </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="minExclusive" value="0"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NonNegativeDouble" instanceClassName="double">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Non Negative Double (double)"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="minInclusive" value="0"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ComponentsModel" eSuperTypes="#//BaseObject">
@@ -3181,7 +3189,8 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Migrates task to core of resource owner"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceOwner" eType="#//Scheduler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceOwner" lowerBound="1"
+        eType="#//TaskScheduler"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SchedulePoint" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

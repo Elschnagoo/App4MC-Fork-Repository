@@ -29524,6 +29524,15 @@ public interface AmaltheaPackage extends EPackage {
 	 */
 	int POSITIVE_DOUBLE = 427;
 
+	/**
+	 * The meta object id for the '<em>Non Negative Double</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNonNegativeDouble()
+	 * @generated
+	 */
+	int NON_NEGATIVE_DOUBLE = 428;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.Amalthea <em>Amalthea</em>}'.
@@ -42007,6 +42016,20 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getPositiveDouble();
+
+	/**
+	 * Returns the meta object for data type '<em>Non Negative Double</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Non Negative Double (double)
+     * <!-- end-model-doc -->
+	 * @return the meta object for data type '<em>Non Negative Double</em>'.
+	 * @model instanceClass="double"
+	 *        extendedMetaData="minInclusive='0'"
+	 * @generated
+	 */
+	EDataType getNonNegativeDouble();
 
 	/**
 	 * Returns the factory that creates the instances of the model.

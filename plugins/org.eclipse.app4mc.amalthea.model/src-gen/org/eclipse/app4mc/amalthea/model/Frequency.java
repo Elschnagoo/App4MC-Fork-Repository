@@ -45,7 +45,7 @@ public interface Frequency extends Quantity {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getFrequency_Value()
-	 * @model default="0.0" unique="false"
+	 * @model default="0.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.NonNegativeDouble"
 	 * @generated
 	 */
 	double getValue();
