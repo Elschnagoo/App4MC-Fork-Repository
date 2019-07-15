@@ -51,10 +51,10 @@ public class TAConstraintsEDFTaskMustHaveDeadline extends AmaltheaValidation {
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof Task) {
 			Task task = (Task) eObject;
-			if (AmaltheaIndex.getReferringObjects(task, ePackage.getTaskAllocation_Task(), TaskAllocation.class).stream()
+			if (AmaltheaIndex.getReferringObjects(task, TaskAllocation.class, ePackage.getTaskAllocation_Task()).stream()
 					// check if at least one task scheduler that schedules this task has an EDF scheduling algorithm
 					.anyMatch(ta -> ta.getScheduler() != null && ta.getScheduler().getSchedulingAlgorithm() instanceof EarliestDeadlineFirst)) {
-				if (AmaltheaIndex.getReferringObjects(task, ePackage.getProcessRequirement_Process(), ProcessRequirement.class).stream()
+				if (AmaltheaIndex.getReferringObjects(task, ProcessRequirement.class, ePackage.getProcessRequirement_Process()).stream()
 						// if there is no process requirement with and upper limit
 						.noneMatch(pr -> pr.getLimit() != null && pr.getLimit().getLimitType() == LimitType.UPPER_LIMIT &&
 							// and the limit is not a TimeRequirementLimit with metric RESPONSE_TIME

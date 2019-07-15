@@ -51,7 +51,7 @@ public class TASoftwareOsEvent extends AmaltheaValidation {
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
 		if (eObject instanceof OsEvent) {
 			OsEvent oe = (OsEvent) eObject;
-			Set<EventMask> ems = AmaltheaIndex.getReferringObjects(oe, ePackage.getEventMask_Events(), EventMask.class);
+			Set<EventMask> ems = AmaltheaIndex.getReferringObjects(oe, EventMask.class, ePackage.getEventMask_Events());
 			Optional<WaitEvent> we = ems.stream().map(em -> AmaltheaServices.getContainerOfType(em, WaitEvent.class)).filter(Objects::nonNull).findAny();
 			Optional<SetEvent> sw = ems.stream().map(em -> AmaltheaServices.getContainerOfType(em, SetEvent.class)).filter(Objects::nonNull).findAny();
 			if (we.isPresent() && !sw.isPresent()) {

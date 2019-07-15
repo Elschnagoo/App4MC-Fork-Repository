@@ -108,7 +108,12 @@ public final class AmaltheaIndex {
 		return new EcoreEList.UnmodifiableEList<T>((InternalEObject) eObject, resultEReference, size, values);
 	}
 
-
+	/**
+	 * Returns a set of objects that refer to the given <code>eObject</code>.
+	 * 
+	 * @param eObject
+	 * @return Set of objects (EObject)
+	 */
 	public static Set<EObject> getReferringObjects(final @NonNull EObject eObject) {
 		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
 		
@@ -118,6 +123,13 @@ public final class AmaltheaIndex {
 				.collect(Collectors.toSet());
 	}
 
+	/**
+	 * Returns a type filtered set of objects that refer to the given <code>eObject</code>.
+	 * 
+	 * @param eObject
+	 * @param targetClass
+	 * @return Set of objects of given type <T extends EObject>
+	 */
 	public static <T extends EObject> Set<T> getReferringObjects(final @NonNull EObject eObject, final @NonNull Class<T> targetClass) {
 		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
@@ -131,14 +143,20 @@ public final class AmaltheaIndex {
 	}
 	
 	/**
-	 * Returns a type filtered (<code>targetClass</code>) set of objects that refer to the given <code>eObject</code> via their given <code>targetEReference</code>.
-	 * @param <T>
+	 * Returns a filtered set of objects that refer to the given <code>eObject</code>
+	 * <p>
+	 * Filters:
+	 * <ul>
+	 * <li>type (<code>targetClass</code>)</li>
+	 * <li>reference (<code>targetEReference</code>)</li>
+	 * </ul>
+	 * 
 	 * @param eObject
-	 * @param targetEReference
 	 * @param targetClass
-	 * @return
+	 * @param targetEReference
+	 * @return Set of objects of given type <T extends EObject>
 	 */
-	public static <T extends EObject> Set<T> getReferringObjects(final @NonNull EObject eObject, final @NonNull EReference targetEReference, final @NonNull Class<T> targetClass) {
+	public static <T extends EObject> Set<T> getReferringObjects(final @NonNull EObject eObject, final @NonNull Class<T> targetClass, final @NonNull EReference targetEReference) {
 		checkArgument(eObject != null, ARG_OBJECT_MESSAGE);
 		checkArgument(targetEReference != null, ARG_TARGET_REFERENCE_MESSAGE);
 		checkArgument(targetClass != null, ARG_CLASS_MESSAGE);
