@@ -2230,13 +2230,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_INTERVAL___GET_AVERAGE = 0;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
 	 * The number of operations of the '<em>Time Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_INTERVAL_OPERATION_COUNT = 1;
+	int TIME_INTERVAL_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeConstantImpl <em>Time Constant</em>}' class.
@@ -2422,6 +2431,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_HISTOGRAM_ENTRY___GET_AVERAGE = TIME_INTERVAL___GET_AVERAGE;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_HISTOGRAM_ENTRY___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TIME_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Time Histogram Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2466,6 +2484,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT = TIME_INTERVAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TIME_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -2568,13 +2595,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TRUNCATED_TIME_DISTRIBUTION___GET_AVERAGE = ITIME_DEVIATION___GET_AVERAGE;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ITIME_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Truncated Time Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_TIME_DISTRIBUTION_OPERATION_COUNT = ITIME_DEVIATION_OPERATION_COUNT + 0;
+	int TRUNCATED_TIME_DISTRIBUTION_OPERATION_COUNT = ITIME_DEVIATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.TimeBoundariesImpl <em>Time Boundaries</em>}' class.
@@ -2621,6 +2657,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_BOUNDARIES_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BOUNDARIES___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -2705,6 +2750,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_STATISTICS_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_STATISTICS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2776,6 +2830,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_UNIFORM_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -2887,6 +2950,15 @@ public interface AmaltheaPackage extends EPackage {
 	int TIME_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_TIME_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_GAUSS_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TRUNCATED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2958,6 +3030,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_WEIBULL_ESTIMATORS_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3049,6 +3130,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_TIME_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_BETA_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3188,13 +3278,22 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_INTERVAL___GET_AVERAGE = 0;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
 	 * The number of operations of the '<em>Discrete Value Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISCRETE_VALUE_INTERVAL_OPERATION_COUNT = 1;
+	int DISCRETE_VALUE_INTERVAL_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueConstantImpl <em>Discrete Value Constant</em>}' class.
@@ -3380,6 +3479,15 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_HISTOGRAM_ENTRY___GET_AVERAGE = DISCRETE_VALUE_INTERVAL___GET_AVERAGE;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_HISTOGRAM_ENTRY___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = DISCRETE_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Discrete Value Histogram Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3424,6 +3532,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT = DISCRETE_VALUE_INTERVAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = DISCRETE_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3526,13 +3643,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_AVERAGE = IDISCRETE_VALUE_DEVIATION___GET_AVERAGE;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Truncated Discrete Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 0;
+	int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION_OPERATION_COUNT = IDISCRETE_VALUE_DEVIATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.DiscreteValueBoundariesImpl <em>Discrete Value Boundaries</em>}' class.
@@ -3579,6 +3705,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_BOUNDARIES_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_BOUNDARIES___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3663,6 +3798,15 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_STATISTICS_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_STATISTICS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3734,6 +3878,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_UNIFORM_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -3845,6 +3998,15 @@ public interface AmaltheaPackage extends EPackage {
 	int DISCRETE_VALUE_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_GAUSS_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3916,6 +4078,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4007,6 +4178,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISCRETE_VALUE_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_DISCRETE_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISCRETE_VALUE_BETA_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4146,13 +4326,22 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_INTERVAL___GET_AVERAGE = 0;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
 	 * The number of operations of the '<em>Continuous Value Interval</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT = 1;
+	int CONTINUOUS_VALUE_INTERVAL_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueConstantImpl <em>Continuous Value Constant</em>}' class.
@@ -4338,6 +4527,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY___GET_AVERAGE = CONTINUOUS_VALUE_INTERVAL___GET_AVERAGE;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_HISTOGRAM_ENTRY___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = CONTINUOUS_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The number of operations of the '<em>Continuous Value Histogram Entry</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4382,6 +4580,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT = CONTINUOUS_VALUE_INTERVAL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = CONTINUOUS_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4484,13 +4691,22 @@ public interface AmaltheaPackage extends EPackage {
 	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_AVERAGE = ICONTINUOUS_VALUE_DEVIATION___GET_AVERAGE;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Truncated Continuous Value Distribution</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 0;
+	int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION_OPERATION_COUNT = ICONTINUOUS_VALUE_DEVIATION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.app4mc.amalthea.model.impl.ContinuousValueBoundariesImpl <em>Continuous Value Boundaries</em>}' class.
@@ -4537,6 +4753,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_BOUNDARIES_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_BOUNDARIES___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4621,6 +4846,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_STATISTICS_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_STATISTICS___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4692,6 +4926,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_UNIFORM_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4803,6 +5046,15 @@ public interface AmaltheaPackage extends EPackage {
 	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION___GET_UPPER_BOUND = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___GET_UPPER_BOUND;
 
 	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_GAUSS_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
+
+	/**
 	 * The operation id for the '<em>Get Average</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4874,6 +5126,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_WEIBULL_ESTIMATORS_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -4965,6 +5226,15 @@ public interface AmaltheaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTINUOUS_VALUE_BETA_DISTRIBUTION_FEATURE_COUNT = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Validate Invariants</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTINUOUS_VALUE_BETA_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP = BOUNDED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP;
 
 	/**
 	 * The operation id for the '<em>Get Lower Bound</em>' operation.
@@ -30753,6 +31023,16 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getTimeInterval__GetAverage();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TimeInterval#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TimeInterval#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getTimeInterval__ValidateInvariants__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeConstant <em>Time Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30916,6 +31196,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTruncatedTimeDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedTimeDistribution#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getTruncatedTimeDistribution__ValidateInvariants__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.TimeBoundaries <em>Time Boundaries</em>}'.
@@ -31168,6 +31458,16 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getDiscreteValueInterval__GetAverage();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.DiscreteValueInterval#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getDiscreteValueInterval__ValidateInvariants__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueConstant <em>Discrete Value Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31331,6 +31631,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTruncatedDiscreteValueDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedDiscreteValueDistribution#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getTruncatedDiscreteValueDistribution__ValidateInvariants__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.DiscreteValueBoundaries <em>Discrete Value Boundaries</em>}'.
@@ -31583,6 +31893,16 @@ public interface AmaltheaPackage extends EPackage {
 	EOperation getContinuousValueInterval__GetAverage();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.ContinuousValueInterval#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getContinuousValueInterval__ValidateInvariants__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueConstant <em>Continuous Value Constant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31746,6 +32066,16 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTruncatedContinuousValueDistribution_UpperBound();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate Invariants</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Validate Invariants</em>' operation.
+	 * @see org.eclipse.app4mc.amalthea.model.TruncatedContinuousValueDistribution#validateInvariants(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getTruncatedContinuousValueDistribution__ValidateInvariants__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueBoundaries <em>Continuous Value Boundaries</em>}'.

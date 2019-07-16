@@ -14,6 +14,10 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -85,5 +89,13 @@ public interface TimeInterval extends EObject {
 	 * @generated
 	 */
 	Time getAverage();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" diagnosticsUnique="false" contextUnique="false"
+	 * @generated
+	 */
+	boolean validateInvariants(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // TimeInterval

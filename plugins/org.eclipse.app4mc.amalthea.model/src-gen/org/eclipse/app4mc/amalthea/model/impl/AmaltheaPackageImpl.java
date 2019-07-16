@@ -4696,6 +4696,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getTimeInterval__ValidateInvariants__DiagnosticChain_Map() {
+		return timeIntervalEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getTimeConstant() {
 		return timeConstantEClass;
 	}
@@ -4848,6 +4858,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EReference getTruncatedTimeDistribution_UpperBound() {
 		return (EReference)truncatedTimeDistributionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTruncatedTimeDistribution__ValidateInvariants__DiagnosticChain_Map() {
+		return truncatedTimeDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5096,6 +5116,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getDiscreteValueInterval__ValidateInvariants__DiagnosticChain_Map() {
+		return discreteValueIntervalEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDiscreteValueConstant() {
 		return discreteValueConstantEClass;
 	}
@@ -5248,6 +5278,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EAttribute getTruncatedDiscreteValueDistribution_UpperBound() {
 		return (EAttribute)truncatedDiscreteValueDistributionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTruncatedDiscreteValueDistribution__ValidateInvariants__DiagnosticChain_Map() {
+		return truncatedDiscreteValueDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -5496,6 +5536,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getContinuousValueInterval__ValidateInvariants__DiagnosticChain_Map() {
+		return continuousValueIntervalEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getContinuousValueConstant() {
 		return continuousValueConstantEClass;
 	}
@@ -5648,6 +5698,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	@Override
 	public EAttribute getTruncatedContinuousValueDistribution_UpperBound() {
 		return (EAttribute)truncatedContinuousValueDistributionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTruncatedContinuousValueDistribution__ValidateInvariants__DiagnosticChain_Map() {
+		return truncatedContinuousValueDistributionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -15513,6 +15573,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(timeIntervalEClass, TIME_INTERVAL__LOWER_BOUND);
 		createEReference(timeIntervalEClass, TIME_INTERVAL__UPPER_BOUND);
 		createEOperation(timeIntervalEClass, TIME_INTERVAL___GET_AVERAGE);
+		createEOperation(timeIntervalEClass, TIME_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		timeConstantEClass = createEClass(TIME_CONSTANT);
 		createEReference(timeConstantEClass, TIME_CONSTANT__VALUE);
@@ -15534,6 +15595,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		truncatedTimeDistributionEClass = createEClass(TRUNCATED_TIME_DISTRIBUTION);
 		createEReference(truncatedTimeDistributionEClass, TRUNCATED_TIME_DISTRIBUTION__LOWER_BOUND);
 		createEReference(truncatedTimeDistributionEClass, TRUNCATED_TIME_DISTRIBUTION__UPPER_BOUND);
+		createEOperation(truncatedTimeDistributionEClass, TRUNCATED_TIME_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		timeBoundariesEClass = createEClass(TIME_BOUNDARIES);
 		createEAttribute(timeBoundariesEClass, TIME_BOUNDARIES__SAMPLING_TYPE);
@@ -15566,6 +15628,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(discreteValueIntervalEClass, DISCRETE_VALUE_INTERVAL__LOWER_BOUND);
 		createEAttribute(discreteValueIntervalEClass, DISCRETE_VALUE_INTERVAL__UPPER_BOUND);
 		createEOperation(discreteValueIntervalEClass, DISCRETE_VALUE_INTERVAL___GET_AVERAGE);
+		createEOperation(discreteValueIntervalEClass, DISCRETE_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		discreteValueConstantEClass = createEClass(DISCRETE_VALUE_CONSTANT);
 		createEAttribute(discreteValueConstantEClass, DISCRETE_VALUE_CONSTANT__VALUE);
@@ -15587,6 +15650,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		truncatedDiscreteValueDistributionEClass = createEClass(TRUNCATED_DISCRETE_VALUE_DISTRIBUTION);
 		createEAttribute(truncatedDiscreteValueDistributionEClass, TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__LOWER_BOUND);
 		createEAttribute(truncatedDiscreteValueDistributionEClass, TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__UPPER_BOUND);
+		createEOperation(truncatedDiscreteValueDistributionEClass, TRUNCATED_DISCRETE_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		discreteValueBoundariesEClass = createEClass(DISCRETE_VALUE_BOUNDARIES);
 		createEAttribute(discreteValueBoundariesEClass, DISCRETE_VALUE_BOUNDARIES__SAMPLING_TYPE);
@@ -15619,6 +15683,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEAttribute(continuousValueIntervalEClass, CONTINUOUS_VALUE_INTERVAL__LOWER_BOUND);
 		createEAttribute(continuousValueIntervalEClass, CONTINUOUS_VALUE_INTERVAL__UPPER_BOUND);
 		createEOperation(continuousValueIntervalEClass, CONTINUOUS_VALUE_INTERVAL___GET_AVERAGE);
+		createEOperation(continuousValueIntervalEClass, CONTINUOUS_VALUE_INTERVAL___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		continuousValueConstantEClass = createEClass(CONTINUOUS_VALUE_CONSTANT);
 		createEAttribute(continuousValueConstantEClass, CONTINUOUS_VALUE_CONSTANT__VALUE);
@@ -15640,6 +15705,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		truncatedContinuousValueDistributionEClass = createEClass(TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION);
 		createEAttribute(truncatedContinuousValueDistributionEClass, TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__LOWER_BOUND);
 		createEAttribute(truncatedContinuousValueDistributionEClass, TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__UPPER_BOUND);
+		createEOperation(truncatedContinuousValueDistributionEClass, TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION___VALIDATE_INVARIANTS__DIAGNOSTICCHAIN_MAP);
 
 		continuousValueBoundariesEClass = createEClass(CONTINUOUS_VALUE_BOUNDARIES);
 		createEAttribute(continuousValueBoundariesEClass, CONTINUOUS_VALUE_BOUNDARIES__SAMPLING_TYPE);
@@ -17547,6 +17613,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getTimeInterval__GetAverage(), this.getTime(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getTimeInterval__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theEcorePackage.getEMap());
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(timeConstantEClass, TimeConstant.class, "TimeConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTimeConstant_Value(), this.getTime(), null, "value", null, 1, 1, TimeConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -17573,6 +17648,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(truncatedTimeDistributionEClass, TruncatedTimeDistribution.class, "TruncatedTimeDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTruncatedTimeDistribution_LowerBound(), this.getTime(), null, "lowerBound", null, 0, 1, TruncatedTimeDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTruncatedTimeDistribution_UpperBound(), this.getTime(), null, "upperBound", null, 0, 1, TruncatedTimeDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getTruncatedTimeDistribution__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theEcorePackage.getEMap());
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(timeBoundariesEClass, TimeBoundaries.class, "TimeBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTimeBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, TimeBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17612,6 +17696,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getDiscreteValueInterval__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getDiscreteValueInterval__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theEcorePackage.getEMap());
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(discreteValueConstantEClass, DiscreteValueConstant.class, "DiscreteValueConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteValueConstant_Value(), theEcorePackage.getELong(), "value", "0", 1, 1, DiscreteValueConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -17638,6 +17731,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(truncatedDiscreteValueDistributionEClass, TruncatedDiscreteValueDistribution.class, "TruncatedDiscreteValueDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTruncatedDiscreteValueDistribution_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", null, 0, 1, TruncatedDiscreteValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTruncatedDiscreteValueDistribution_UpperBound(), theEcorePackage.getELongObject(), "upperBound", null, 0, 1, TruncatedDiscreteValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getTruncatedDiscreteValueDistribution__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theEcorePackage.getEMap());
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(discreteValueBoundariesEClass, DiscreteValueBoundaries.class, "DiscreteValueBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteValueBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, DiscreteValueBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17677,6 +17779,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getContinuousValueInterval__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		op = initEOperation(getContinuousValueInterval__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theEcorePackage.getEMap());
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(continuousValueConstantEClass, ContinuousValueConstant.class, "ContinuousValueConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousValueConstant_Value(), theEcorePackage.getEDouble(), "value", "0.0", 1, 1, ContinuousValueConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -17703,6 +17814,15 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEClass(truncatedContinuousValueDistributionEClass, TruncatedContinuousValueDistribution.class, "TruncatedContinuousValueDistribution", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTruncatedContinuousValueDistribution_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", null, 0, 1, TruncatedContinuousValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTruncatedContinuousValueDistribution_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", null, 0, 1, TruncatedContinuousValueDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getTruncatedContinuousValueDistribution__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(theEcorePackage.getEMap());
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theEcorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(continuousValueBoundariesEClass, ContinuousValueBoundaries.class, "ContinuousValueBoundaries", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousValueBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, ContinuousValueBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

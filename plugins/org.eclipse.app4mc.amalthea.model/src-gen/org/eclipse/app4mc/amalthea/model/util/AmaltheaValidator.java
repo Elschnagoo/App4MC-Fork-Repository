@@ -483,12 +483,60 @@ public class AmaltheaValidator extends EObjectValidator {
 	public static final int MIN_AVG_MAX_STATISTIC__VALIDATE_INVARIANTS = 2;
 
 	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Time Interval'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TIME_INTERVAL__VALIDATE_INVARIANTS = 3;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Truncated Time Distribution'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TRUNCATED_TIME_DISTRIBUTION__VALIDATE_INVARIANTS = 4;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Discrete Value Interval'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int DISCRETE_VALUE_INTERVAL__VALIDATE_INVARIANTS = 5;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Truncated Discrete Value Distribution'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TRUNCATED_DISCRETE_VALUE_DISTRIBUTION__VALIDATE_INVARIANTS = 6;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Continuous Value Interval'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int CONTINUOUS_VALUE_INTERVAL__VALIDATE_INVARIANTS = 7;
+
+	/**
+	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Truncated Continuous Value Distribution'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int TRUNCATED_CONTINUOUS_VALUE_DISTRIBUTION__VALIDATE_INVARIANTS = 8;
+
+	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Mode Value'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MODE_VALUE__VALIDATE_INVARIANTS = 3;
+	public static final int MODE_VALUE__VALIDATE_INVARIANTS = 9;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Mode Label'.
@@ -496,7 +544,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MODE_LABEL__VALIDATE_INVARIANTS = 4;
+	public static final int MODE_LABEL__VALIDATE_INVARIANTS = 10;
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate Invariants' of 'Mode Label Access'.
@@ -504,7 +552,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final int MODE_LABEL_ACCESS__VALIDATE_INVARIANTS = 5;
+	public static final int MODE_LABEL_ACCESS__VALIDATE_INVARIANTS = 11;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.
@@ -512,7 +560,7 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 5;
+	private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 11;
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
@@ -1864,7 +1912,27 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeInterval(TimeInterval timeInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeInterval, diagnostics, context);
+		if (!validate_NoCircularContainment(timeInterval, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(timeInterval, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Time Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTimeInterval_validateInvariants(TimeInterval timeInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return timeInterval.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -1891,7 +1959,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeHistogramEntry(TimeHistogramEntry timeHistogramEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeHistogramEntry, diagnostics, context);
+		if (!validate_NoCircularContainment(timeHistogramEntry, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(timeHistogramEntry, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1900,7 +1978,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBoundedTimeDistribution(BoundedTimeDistribution boundedTimeDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(boundedTimeDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(boundedTimeDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(boundedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(boundedTimeDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1909,7 +1997,27 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTruncatedTimeDistribution(TruncatedTimeDistribution truncatedTimeDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(truncatedTimeDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(truncatedTimeDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(truncatedTimeDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTruncatedTimeDistribution_validateInvariants(truncatedTimeDistribution, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Truncated Time Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTruncatedTimeDistribution_validateInvariants(TruncatedTimeDistribution truncatedTimeDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return truncatedTimeDistribution.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -1918,7 +2026,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeBoundaries(TimeBoundaries timeBoundaries, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeBoundaries, diagnostics, context);
+		if (!validate_NoCircularContainment(timeBoundaries, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(timeBoundaries, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1927,7 +2045,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeStatistics(TimeStatistics timeStatistics, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeStatistics, diagnostics, context);
+		if (!validate_NoCircularContainment(timeStatistics, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(timeStatistics, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1936,7 +2064,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeUniformDistribution(TimeUniformDistribution timeUniformDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeUniformDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(timeUniformDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(timeUniformDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1945,7 +2083,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeGaussDistribution(TimeGaussDistribution timeGaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeGaussDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(timeGaussDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTruncatedTimeDistribution_validateInvariants(timeGaussDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1954,7 +2102,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeWeibullEstimatorsDistribution(TimeWeibullEstimatorsDistribution timeWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(timeWeibullEstimatorsDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(timeWeibullEstimatorsDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1963,7 +2121,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTimeBetaDistribution(TimeBetaDistribution timeBetaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(timeBetaDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(timeBetaDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(timeBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTimeInterval_validateInvariants(timeBetaDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -1981,7 +2149,27 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueInterval(DiscreteValueInterval discreteValueInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueInterval, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueInterval, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(discreteValueInterval, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Discrete Value Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDiscreteValueInterval_validateInvariants(DiscreteValueInterval discreteValueInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return discreteValueInterval.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -2008,7 +2196,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueHistogramEntry(DiscreteValueHistogramEntry discreteValueHistogramEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueHistogramEntry, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueHistogramEntry, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(discreteValueHistogramEntry, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2017,7 +2215,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBoundedDiscreteValueDistribution(BoundedDiscreteValueDistribution boundedDiscreteValueDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(boundedDiscreteValueDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(boundedDiscreteValueDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(boundedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(boundedDiscreteValueDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2026,7 +2234,27 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTruncatedDiscreteValueDistribution(TruncatedDiscreteValueDistribution truncatedDiscreteValueDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(truncatedDiscreteValueDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(truncatedDiscreteValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTruncatedDiscreteValueDistribution_validateInvariants(truncatedDiscreteValueDistribution, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Truncated Discrete Value Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTruncatedDiscreteValueDistribution_validateInvariants(TruncatedDiscreteValueDistribution truncatedDiscreteValueDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return truncatedDiscreteValueDistribution.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -2035,7 +2263,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueBoundaries(DiscreteValueBoundaries discreteValueBoundaries, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueBoundaries, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueBoundaries, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(discreteValueBoundaries, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2044,7 +2282,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueStatistics(DiscreteValueStatistics discreteValueStatistics, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueStatistics, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueStatistics, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(discreteValueStatistics, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2053,7 +2301,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueUniformDistribution(DiscreteValueUniformDistribution discreteValueUniformDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueUniformDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueUniformDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(discreteValueUniformDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2062,7 +2320,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueGaussDistribution(DiscreteValueGaussDistribution discreteValueGaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueGaussDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueGaussDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTruncatedDiscreteValueDistribution_validateInvariants(discreteValueGaussDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2071,7 +2339,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueWeibullEstimatorsDistribution(DiscreteValueWeibullEstimatorsDistribution discreteValueWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueWeibullEstimatorsDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(discreteValueWeibullEstimatorsDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2080,7 +2358,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiscreteValueBetaDistribution(DiscreteValueBetaDistribution discreteValueBetaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(discreteValueBetaDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(discreteValueBetaDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(discreteValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateDiscreteValueInterval_validateInvariants(discreteValueBetaDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2098,7 +2386,27 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueInterval(ContinuousValueInterval continuousValueInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueInterval, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueInterval, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueInterval, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(continuousValueInterval, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Continuous Value Interval</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateContinuousValueInterval_validateInvariants(ContinuousValueInterval continuousValueInterval, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return continuousValueInterval.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -2125,7 +2433,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueHistogramEntry(ContinuousValueHistogramEntry continuousValueHistogramEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueHistogramEntry, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueHistogramEntry, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueHistogramEntry, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(continuousValueHistogramEntry, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2134,7 +2452,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBoundedContinuousValueDistribution(BoundedContinuousValueDistribution boundedContinuousValueDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(boundedContinuousValueDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(boundedContinuousValueDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(boundedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(boundedContinuousValueDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2143,7 +2471,27 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateTruncatedContinuousValueDistribution(TruncatedContinuousValueDistribution truncatedContinuousValueDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(truncatedContinuousValueDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(truncatedContinuousValueDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(truncatedContinuousValueDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTruncatedContinuousValueDistribution_validateInvariants(truncatedContinuousValueDistribution, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the validateInvariants constraint of '<em>Truncated Continuous Value Distribution</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateTruncatedContinuousValueDistribution_validateInvariants(TruncatedContinuousValueDistribution truncatedContinuousValueDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return truncatedContinuousValueDistribution.validateInvariants(diagnostics, context);
 	}
 
 	/**
@@ -2152,7 +2500,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueBoundaries(ContinuousValueBoundaries continuousValueBoundaries, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueBoundaries, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueBoundaries, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueBoundaries, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(continuousValueBoundaries, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2161,7 +2519,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueStatistics(ContinuousValueStatistics continuousValueStatistics, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueStatistics, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueStatistics, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueStatistics, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(continuousValueStatistics, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2170,7 +2538,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueUniformDistribution(ContinuousValueUniformDistribution continuousValueUniformDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueUniformDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueUniformDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueUniformDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(continuousValueUniformDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2179,7 +2557,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueGaussDistribution(ContinuousValueGaussDistribution continuousValueGaussDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueGaussDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueGaussDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueGaussDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTruncatedContinuousValueDistribution_validateInvariants(continuousValueGaussDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2188,7 +2576,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueWeibullEstimatorsDistribution(ContinuousValueWeibullEstimatorsDistribution continuousValueWeibullEstimatorsDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueWeibullEstimatorsDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(continuousValueWeibullEstimatorsDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -2197,7 +2595,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContinuousValueBetaDistribution(ContinuousValueBetaDistribution continuousValueBetaDistribution, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(continuousValueBetaDistribution, diagnostics, context);
+		if (!validate_NoCircularContainment(continuousValueBetaDistribution, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(continuousValueBetaDistribution, diagnostics, context);
+		if (result || diagnostics != null) result &= validateContinuousValueInterval_validateInvariants(continuousValueBetaDistribution, diagnostics, context);
+		return result;
 	}
 
 	/**

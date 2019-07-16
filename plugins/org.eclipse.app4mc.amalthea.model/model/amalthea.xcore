@@ -560,6 +560,10 @@ abstract class TimeInterval {
 	op Time getAverage() {
 		lowerBound.add( upperBound.subtract(lowerBound).multiply(0.5) )
 	}
+
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 class TimeConstant extends ITimeDeviation {
@@ -591,6 +595,10 @@ abstract class BoundedTimeDistribution extends TimeInterval, ITimeDeviation {}
 abstract class TruncatedTimeDistribution extends ITimeDeviation {
 	contains Time lowerBound
 	contains Time upperBound
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 /*
@@ -666,6 +674,10 @@ abstract class DiscreteValueInterval {
 	op double getAverage() {
 		lowerBound + (upperBound - lowerBound) / 2.0
 	}
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 class DiscreteValueConstant extends IDiscreteValueDeviation {
@@ -697,6 +709,10 @@ abstract class BoundedDiscreteValueDistribution extends DiscreteValueInterval, I
 abstract class TruncatedDiscreteValueDistribution extends IDiscreteValueDeviation {
 	Long lowerBound		// initial value is null
 	Long upperBound		// initial value is null
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 /*
@@ -772,6 +788,10 @@ abstract class ContinuousValueInterval {
 	op double getAverage() {
 		lowerBound + (upperBound - lowerBound) / 2.0
 	}
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 class ContinuousValueConstant extends IContinuousValueDeviation {
@@ -803,6 +823,10 @@ abstract class BoundedContinuousValueDistribution extends ContinuousValueInterva
 abstract class TruncatedContinuousValueDistribution extends IContinuousValueDeviation {
 	Double lowerBound		// initial value is null
 	Double upperBound		// initial value is null
+	
+	op boolean validateInvariants(EDiagnosticChain diagnostics, EMap<Object,Object> context) {
+		AmaltheaValidations.validateInvariants(this, diagnostics, context)
+	}
 }
 
 /*

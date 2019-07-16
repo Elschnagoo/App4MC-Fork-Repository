@@ -14,6 +14,9 @@
  */
 package org.eclipse.app4mc.amalthea.model;
 
+import java.util.Map;
+
+import org.eclipse.emf.common.util.DiagnosticChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,5 +79,13 @@ public interface TruncatedDiscreteValueDistribution extends IDiscreteValueDeviat
 	 * @generated
 	 */
 	void setUpperBound(Long value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" diagnosticsUnique="false" contextUnique="false"
+	 * @generated
+	 */
+	boolean validateInvariants(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // TruncatedDiscreteValueDistribution

@@ -33,9 +33,9 @@ public class AmaltheaValidations {
 
 	private static final String DIAGNOSTIC_SOURCE = "org.eclipse.app4mc.amalthea.model";
 	private static final int NO_INDEX = -1;
-	
+
 	private static final AmaltheaPackage PACKAGE = AmaltheaPackage.eINSTANCE;
-	
+
 	public static boolean validateInvariants(MinAvgMaxStatistic obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean isValid = obj.getMin() <= obj.getAvg() && obj.getAvg() <= obj.getMax();
 		if (!isValid) {
@@ -43,6 +43,118 @@ public class AmaltheaValidations {
 		}
 		return isValid;
 	}
+
+	// ******** Interval bounds + Average (if available) ********
+
+	public static boolean validateInvariants(TimeInterval obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), getAverage(obj), obj.getUpperBound());
+	}
+
+	public static boolean validateInvariants(DiscreteValueInterval obj, DiagnosticChain diagnostics, Map<Object, Object> context) {		
+		return checkMinAvgMax(obj, diagnostics, toDouble(obj.getLowerBound()), getAverage(obj), toDouble(obj.getUpperBound()));
+	}
+
+	public static boolean validateInvariants(ContinuousValueInterval obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), getAverage(obj), obj.getUpperBound());
+	}
+
+	// ******** Truncated distribution bounds + Mean (if available) ********
+	
+	public static boolean validateInvariants(TruncatedTimeDistribution obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), getAverage(obj), obj.getUpperBound());
+	}
+	
+	public static boolean validateInvariants(TruncatedDiscreteValueDistribution obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return checkMinAvgMax(obj, diagnostics, toDouble(obj.getLowerBound()), getAverage(obj), toDouble(obj.getUpperBound()));
+	}
+	
+	public static boolean validateInvariants(TruncatedContinuousValueDistribution obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), getAverage(obj), obj.getUpperBound());
+	}
+
+	// private methods to get the given average / mean value
+	
+	private static Time getAverage(TimeInterval obj) {
+		Time avg = null;
+		if (obj instanceof TimeStatistics) {
+			avg = ((TimeStatistics) obj).getAverage();
+		}
+		if (obj instanceof TimeWeibullEstimatorsDistribution) {
+			avg = ((TimeWeibullEstimatorsDistribution) obj).getAverage();
+		}
+		return avg;
+	}
+
+	private static Time getAverage(TruncatedTimeDistribution obj) {
+		Time avg = null;
+		if (obj instanceof TimeGaussDistribution) {
+			avg = ((TimeGaussDistribution) obj).getMean();
+		}
+		return avg;
+	}
+
+	private static Double getAverage(DiscreteValueInterval obj) {
+		Double avg = null;
+		if (obj instanceof DiscreteValueStatistics) {
+			avg = ((DiscreteValueStatistics) obj).getAverage();
+		}
+		if (obj instanceof DiscreteValueWeibullEstimatorsDistribution) {
+			avg = ((DiscreteValueWeibullEstimatorsDistribution) obj).getAverage();
+		}
+		return avg;
+	}
+
+	private static Double getAverage(TruncatedDiscreteValueDistribution obj) {
+		Double avg = null;
+		if (obj instanceof DiscreteValueGaussDistribution) {
+			avg = ((DiscreteValueGaussDistribution) obj).getMean();
+		}
+		return avg;
+	}
+
+	private static Double getAverage(ContinuousValueInterval obj) {
+		Double avg = null;
+		if (obj instanceof ContinuousValueStatistics) {
+			avg = ((ContinuousValueStatistics) obj).getAverage();
+		}
+		if (obj instanceof ContinuousValueWeibullEstimatorsDistribution) {
+			avg = ((ContinuousValueWeibullEstimatorsDistribution) obj).getAverage();
+		}
+		return avg;
+	}
+	
+	private static Double getAverage(TruncatedContinuousValueDistribution obj) {
+		Double avg = null;
+		if (obj instanceof ContinuousValueGaussDistribution) {
+			avg = ((ContinuousValueGaussDistribution) obj).getMean();
+		}
+		return avg;
+	}
+
+	private static Double toDouble(Long value) {
+		if (value == null) return null;
+		
+		return value.doubleValue();
+	}
+	
+	private static <T extends Comparable<T>> boolean checkMinAvgMax(EObject obj, DiagnosticChain diagnostics, T min, T avg, T max) {
+		boolean isValid = true;
+		if (min != null && max != null && min.compareTo(max) > 0) {
+			addError(obj, null, obj.eClass().getName() + ": lower bound > upper bound", diagnostics);
+			isValid = false;
+		}
+		if (min != null && avg != null && min.compareTo(avg) > 0) {
+			addError(obj, null, obj.eClass().getName() + ": lower bound > average", diagnostics);
+			isValid = false;
+		}
+		if (avg != null && max != null && avg.compareTo(max) > 0) {
+			addError(obj, null, obj.eClass().getName() + ": average > upper bound", diagnostics);
+			isValid = false;
+		}
+		return isValid;
+	}
+	
+	// ******** IReferable name ********
 
 	public static boolean validateInvariants(IReferable obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		boolean isValid = !Strings.isNullOrEmpty(obj.getName());
@@ -52,6 +164,8 @@ public class AmaltheaValidations {
 		return isValid;
 	}
 
+	// ******** Modes ********
+	
 	public static boolean validateInvariants(ModeLabel obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return checkModeAndValue(obj, PACKAGE.getModeLabel_InitialValue(), obj.getMode(), obj.getInitialValue(), diagnostics);
 	}
