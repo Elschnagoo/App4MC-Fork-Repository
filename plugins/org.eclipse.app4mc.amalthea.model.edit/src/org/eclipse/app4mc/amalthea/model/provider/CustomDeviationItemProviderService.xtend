@@ -585,7 +585,7 @@ class CustomDeviationItemProviderService {
 		switch notification.getFeatureID(typeof(BoundedTimeDistribution)) {
 			case AmaltheaPackage::BOUNDED_TIME_DISTRIBUTION__LOWER_BOUND,
 			case AmaltheaPackage::BOUNDED_TIME_DISTRIBUTION__UPPER_BOUND: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 				addParentLabelNotification(list, notification)
 				}
 		}
@@ -600,7 +600,7 @@ class CustomDeviationItemProviderService {
 		switch notification.getFeatureID(typeof(TruncatedTimeDistribution)) {
 			case AmaltheaPackage::TRUNCATED_TIME_DISTRIBUTION__LOWER_BOUND,
 			case AmaltheaPackage::TRUNCATED_TIME_DISTRIBUTION__UPPER_BOUND: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 				addParentLabelNotification(list, notification)
 				}
 		}
@@ -668,7 +668,7 @@ class CustomDeviationItemProviderService {
 		switch notification.getFeatureID(typeof(TimeGaussDistribution)) {
 			case AmaltheaPackage::TIME_GAUSS_DISTRIBUTION__MEAN,
 			case AmaltheaPackage::TIME_GAUSS_DISTRIBUTION__SD: {
-				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
+				list.add(new ViewerNotification(notification, notification.getNotifier(), true, true))
 				addParentLabelNotification(list, notification)
 				}
 		}

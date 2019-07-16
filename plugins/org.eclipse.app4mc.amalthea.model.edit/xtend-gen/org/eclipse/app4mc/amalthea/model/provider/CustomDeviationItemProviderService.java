@@ -915,7 +915,7 @@ public class CustomDeviationItemProviderService {
     }
     if (_matched) {
       Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
       list.add(_viewerNotification);
       CustomDeviationItemProviderService.addParentLabelNotification(list, notification);
     }
@@ -939,7 +939,7 @@ public class CustomDeviationItemProviderService {
     }
     if (_matched) {
       Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
       list.add(_viewerNotification);
       CustomDeviationItemProviderService.addParentLabelNotification(list, notification);
     }
@@ -1034,7 +1034,7 @@ public class CustomDeviationItemProviderService {
     }
     if (_matched) {
       Object _notifier = notification.getNotifier();
-      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
+      ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, true, true);
       list.add(_viewerNotification);
       CustomDeviationItemProviderService.addParentLabelNotification(list, notification);
     }
