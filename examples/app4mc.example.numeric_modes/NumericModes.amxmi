@@ -1,106 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
     <tasks name="doA" stimuli="A_Stimuli_EventBased?type=EventStimulus" preemption="cooperative" multipleTaskActivationLimit="0">
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence" name="">
-          <calls xsi:type="am:TaskRunnableCall" runnable="runnA?type=Runnable"/>
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="runnA?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <tasks name="doB" stimuli="B_Stimuli_25ms?type=PeriodicStimulus" preemption="cooperative" multipleTaskActivationLimit="0">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch">
+        <items xsi:type="am:ModeSwitch">
           <entries name="conditionTrue">
             <condition>
               <entries xsi:type="am:ModeConditionConjunction">
-                <entries label="executionMode?type=ModeLabel" value="ModeB" relation="EQUAL"/>
-                <entries label="countX?type=ModeLabel" value="3" relation="GREATER_THAN"/>
-                <entries label="countY?type=ModeLabel" value="3" relation="GREATER_THAN"/>
+                <entries label="executionMode?type=ModeLabel" value="ModeB" relation="EQUAL" />
+                <entries label="countX?type=ModeLabel" value="3" relation="GREATER_THAN" />
+                <entries label="countY?type=ModeLabel" value="3" relation="GREATER_THAN" />
               </entries>
             </condition>
-            <items xsi:type="am:CallSequence" name="">
-              <calls xsi:type="am:TaskRunnableCall" runnable="runnB?type=Runnable"/>
+            <items xsi:type="am:Group" name="CallSequence" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="runnB?type=Runnable" />
             </items>
           </entries>
-        </graphEntries>
+        </items>
       </callGraph>
     </tasks>
     <tasks name="genY" stimuli="genTrigger?type=RelativePeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="0">
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence" name="">
-          <calls xsi:type="am:TaskRunnableCall" runnable="counterForY?type=Runnable"/>
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="counterForY?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <tasks name="genX" stimuli="genTrigger?type=RelativePeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="0">
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence" name="">
-          <calls xsi:type="am:TaskRunnableCall" runnable="counterForX?type=Runnable"/>
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="counterForX?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <runnables name="runnA" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="10000"/>
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="10000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="runnB" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="countX?type=ModeLabel" access="decrement" step="3"/>
-      <runnableItems xsi:type="am:ModeLabelAccess" data="countY?type=ModeLabel" access="decrement" step="3"/>
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="10000"/>
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="countX?type=ModeLabel" access="decrement" step="3" />
+        <items xsi:type="am:ModeLabelAccess" data="countY?type=ModeLabel" access="decrement" step="3" />
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="10000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="counterForY" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="10000"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:ModeLabelAccess" data="countY?type=ModeLabel" access="increment" step="1"/>
-      <runnableItems xsi:type="am:CustomEventTrigger" event="check?type=CustomEvent"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="10000" />
+        </items>
+        <items xsi:type="am:ModeLabelAccess" data="countY?type=ModeLabel" access="increment" step="1" />
+        <items xsi:type="am:CustomEventTrigger" event="check?type=CustomEvent" />
+      </callGraph>
     </runnables>
     <runnables name="counterForX" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="10000"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:ModeLabelAccess" data="countX?type=ModeLabel" access="increment" step="1"/>
-      <runnableItems xsi:type="am:CustomEventTrigger" event="check?type=CustomEvent"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="10000" />
+        </items>
+        <items xsi:type="am:ModeLabelAccess" data="countX?type=ModeLabel" access="increment" step="1" />
+        <items xsi:type="am:CustomEventTrigger" event="check?type=CustomEvent" />
+      </callGraph>
     </runnables>
     <modes xsi:type="am:EnumMode" name="ExecutionMode">
-      <literals name="ModeA"/>
-      <literals name="ModeB"/>
+      <literals name="ModeA" />
+      <literals name="ModeB" />
     </modes>
-    <modes xsi:type="am:NumericMode" name="CountingX"/>
-    <modes xsi:type="am:NumericMode" name="CountingY"/>
-    <modeLabels name="executionMode" displayName="" mode="ExecutionMode?type=EnumMode" initialValue="ModeA"/>
-    <modeLabels name="countY" displayName="" mode="CountingY?type=NumericMode" initialValue="-1"/>
-    <modeLabels name="countX" mode="CountingX?type=NumericMode" initialValue="-1"/>
+    <modes xsi:type="am:NumericMode" name="CountingX" />
+    <modes xsi:type="am:NumericMode" name="CountingY" />
+    <modeLabels name="executionMode" displayName="" mode="ExecutionMode?type=EnumMode" initialValue="ModeA" />
+    <modeLabels name="countY" displayName="" mode="CountingY?type=NumericMode" initialValue="-1" />
+    <modeLabels name="countX" mode="CountingX?type=NumericMode" initialValue="-1" />
   </swModel>
   <stimuliModel>
     <stimuli xsi:type="am:EventStimulus" name="A_Stimuli_EventBased" triggeringEvents="check?type=CustomEvent">
       <setModeValueList>
-        <entries label="countX?type=ModeLabel" value="0"/>
-        <entries label="countY?type=ModeLabel" value="0"/>
+        <entries label="countX?type=ModeLabel" value="0" />
+        <entries label="countY?type=ModeLabel" value="0" />
       </setModeValueList>
       <executionCondition>
         <entries xsi:type="am:ModeConditionConjunction">
-          <entries label="executionMode?type=ModeLabel" value="ModeA" relation="EQUAL"/>
-          <entries label="countX?type=ModeLabel" value="2" relation="GREATER_THAN"/>
-          <entries label="countY?type=ModeLabel" value="4" relation="GREATER_THAN"/>
+          <entries label="executionMode?type=ModeLabel" value="ModeA" relation="EQUAL" />
+          <entries label="countX?type=ModeLabel" value="2" relation="GREATER_THAN" />
+          <entries label="countY?type=ModeLabel" value="4" relation="GREATER_THAN" />
         </entries>
       </executionCondition>
     </stimuli>
     <stimuli xsi:type="am:RelativePeriodicStimulus" name="genTrigger">
       <nextOccurrence xsi:type="am:TimeBoundaries">
-        <lowerBound value="10" unit="ms"/>
-        <upperBound value="50" unit="ms"/>
+        <lowerBound value="10" unit="ms" />
+        <upperBound value="50" unit="ms" />
       </nextOccurrence>
     </stimuli>
     <stimuli xsi:type="am:PeriodicStimulus" name="B_Stimuli_25ms">
-      <recurrence value="25" unit="ms"/>
+      <recurrence value="25" unit="ms" />
     </stimuli>
   </stimuliModel>
   <eventModel>
-    <events xsi:type="am:CustomEvent" name="check" description="" eventType=""/>
+    <events xsi:type="am:CustomEvent" name="check" description="" eventType="" />
   </eventModel>
 </am:Amalthea>

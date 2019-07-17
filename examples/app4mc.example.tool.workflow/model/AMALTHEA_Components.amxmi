@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <componentsModel>
     <components name="Component1">
-      <ports xsi:type="am:InterfacePort" name="Port1" kind="provides"/>
+      <ports xsi:type="am:InterfacePort" name="Port1" kind="provides" />
     </components>
     <components xsi:type="am:Composite" name="Composite1">
-      <componentInstances name="instance1" type="Component1?type=Component"/>
+      <componentInstances name="instance1" type="Component1?type=Component" />
     </components>
   </componentsModel>
 </am:Amalthea>

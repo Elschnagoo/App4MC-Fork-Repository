@@ -3,10 +3,10 @@
   <swModel>
     <tasks name="Task_1" stimuli="Stimulus_Task_1?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence" name="CallSequence_1_2">
-          <calls xsi:type="am:InterProcessTrigger" stimulus="Stimulus_Task_2?type=InterProcessStimulus" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1?type=Runnable" />
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence_1_2" ordered="true">
+          <items xsi:type="am:InterProcessTrigger" stimulus="Stimulus_Task_2?type=InterProcessStimulus" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_1?type=Runnable" />
+        </items>
       </callGraph>
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="1" />
@@ -14,47 +14,55 @@
     </tasks>
     <tasks name="Task_2" stimuli="Stimulus_Task_2?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabilitySwitch">
+        <items xsi:type="am:ProbabilitySwitch">
           <entries probability="60.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_State_1">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_1?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_State_1" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_State_1?type=Runnable" />
             </items>
           </entries>
           <entries probability="30.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_State_0">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_0?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_State_0" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_State_0?type=Runnable" />
             </items>
           </entries>
           <entries probability="10.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_State_2">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_2?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_State_2" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_State_2?type=Runnable" />
             </items>
           </entries>
-        </graphEntries>
+        </items>
       </callGraph>
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="2" />
       </customProperties>
     </tasks>
     <runnables name="Runnable_State_0" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_State_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_State_2" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
   </swModel>
   <hwModel>

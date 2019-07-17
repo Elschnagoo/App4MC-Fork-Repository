@@ -3,20 +3,20 @@
   <swModel>
     <tasks name="Task_1" stimuli="Stimulus_Task_1?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch">
+        <items xsi:type="am:ModeSwitch">
           <entries>
             <items xsi:type="am:ModeSwitch">
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_State0">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_State1?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_State0" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_1_State1?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_State1">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_State0?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_State1" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_1_State0?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_1" relation="EQUAL" />
@@ -28,31 +28,31 @@
             </condition>
           </entries>
           <defaultEntry>
-            <items xsi:type="am:CallSequence" name="CallSequence_Nothing" />
+            <items xsi:type="am:Group" name="CallSequence_Nothing" ordered="true" />
           </defaultEntry>
-        </graphEntries>
-        <graphEntries xsi:type="am:ModeSwitch">
+        </items>
+        <items xsi:type="am:ModeSwitch">
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_1_0">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_0?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_1_0" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_1_0?type=Runnable" />
             </items>
             <condition>
               <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_0" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_1_1">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_1_1" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_1_1?type=Runnable" />
             </items>
             <condition>
               <entries xsi:type="am:ModeCondition" label="stateT1?type=ModeLabel" value="StateT1_1" relation="EQUAL" />
             </condition>
           </entries>
-        </graphEntries>
-        <graphEntries xsi:type="am:CallSequence" name="CallSequence_1">
-          <calls xsi:type="am:InterProcessTrigger" stimulus="IPA_Task_2?type=InterProcessStimulus" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1?type=Runnable" />
-        </graphEntries>
+        </items>
+        <items xsi:type="am:Group" name="CallSequence_1" ordered="true">
+          <items xsi:type="am:InterProcessTrigger" stimulus="IPA_Task_2?type=InterProcessStimulus" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_1?type=Runnable" />
+        </items>
       </callGraph>
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="2" />
@@ -63,23 +63,23 @@
     </tasks>
     <tasks name="Task_2" stimuli="IPA_Task_2?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch">
+        <items xsi:type="am:ModeSwitch">
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_State_1">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_1?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_State_1" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_State_1?type=Runnable" />
             </items>
             <items xsi:type="am:ModeSwitch">
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_2_1_0">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_0?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_2_1_0" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_Transition_0?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_2_1_2">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_1?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_2_1_2" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_Transition_1?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_1" relation="EQUAL" />
@@ -91,21 +91,21 @@
             </condition>
           </entries>
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_State_0">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_0?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_State_0" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_State_0?type=Runnable" />
             </items>
             <items xsi:type="am:ModeSwitch">
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_2_0_0">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_Overflow?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_2_0_0" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_2_Overflow?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_2_0_1">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_2?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_2_0_1" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_Transition_2?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_1" relation="EQUAL" />
@@ -117,21 +117,21 @@
             </condition>
           </entries>
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_State_2">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_State_2?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_State_2" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_State_2?type=Runnable" />
             </items>
             <items xsi:type="am:ModeSwitch">
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_2_2_1">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_Transition_1?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_2_2_1" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_Transition_1?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_0" relation="EQUAL" />
                 </condition>
               </entries>
               <entries>
-                <items xsi:type="am:CallSequence" name="CallSequence_2_2_2">
-                  <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_Overflow?type=Runnable" />
+                <items xsi:type="am:Group" name="CallSequence_2_2_2" ordered="true">
+                  <items xsi:type="am:RunnableCall" runnable="Runnable_2_Overflow?type=Runnable" />
                 </items>
                 <condition>
                   <entries xsi:type="am:ModeCondition" label="messageToT2?type=ModeLabel" value="MessageToT2_1" relation="EQUAL" />
@@ -142,7 +142,7 @@
               <entries xsi:type="am:ModeCondition" label="stateT2?type=ModeLabel" value="StateT2_2" relation="EQUAL" />
             </condition>
           </entries>
-        </graphEntries>
+        </items>
       </callGraph>
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="1" />
@@ -153,37 +153,37 @@
     </tasks>
     <tasks name="Task_3" stimuli="Stimulus_Task_3?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ProbabilitySwitch">
+        <items xsi:type="am:ProbabilitySwitch">
           <entries probability="20.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_3_3">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_3?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_3_3" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_3_3?type=Runnable" />
             </items>
           </entries>
           <entries probability="30.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_3_2">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_2?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_3_2" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_3_2?type=Runnable" />
             </items>
           </entries>
           <entries probability="15.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_3_4">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_4?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_3_4" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_3_4?type=Runnable" />
             </items>
           </entries>
           <entries probability="20.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_3_1">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_1?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_3_1" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_3_1?type=Runnable" />
             </items>
           </entries>
           <entries probability="15.0">
-            <items xsi:type="am:CallSequence" name="CallSequence_3_0">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_0?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_3_0" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_3_0?type=Runnable" />
             </items>
           </entries>
-        </graphEntries>
-        <graphEntries xsi:type="am:CallSequence" name="CallSequence_3">
-          <calls xsi:type="am:InterProcessTrigger" stimulus="IPA_Task_4?type=InterProcessStimulus" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3?type=Runnable" />
-        </graphEntries>
+        </items>
+        <items xsi:type="am:Group" name="CallSequence_3" ordered="true">
+          <items xsi:type="am:InterProcessTrigger" stimulus="IPA_Task_4?type=InterProcessStimulus" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_3?type=Runnable" />
+        </items>
       </callGraph>
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="4" />
@@ -194,45 +194,45 @@
     </tasks>
     <tasks name="Task_4" stimuli="IPA_Task_4?type=InterProcessStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:ModeSwitch">
+        <items xsi:type="am:ModeSwitch">
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_4_2">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_2?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_4_2" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_4_2?type=Runnable" />
             </items>
             <condition>
               <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_2" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_4_3">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_3?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_4_3" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_4_3?type=Runnable" />
             </items>
             <condition>
               <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_3" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_4_1">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_1?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_4_1" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_4_1?type=Runnable" />
             </items>
             <condition>
               <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_1" relation="EQUAL" />
             </condition>
           </entries>
           <entries>
-            <items xsi:type="am:CallSequence" name="CallSequence_4_4">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_4?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_4_4" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_4_4?type=Runnable" />
             </items>
             <condition>
               <entries xsi:type="am:ModeCondition" label="message?type=ModeLabel" value="Message_4" relation="EQUAL" />
             </condition>
           </entries>
           <defaultEntry>
-            <items xsi:type="am:CallSequence" name="CallSequence_4_x">
-              <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_x?type=Runnable" />
+            <items xsi:type="am:Group" name="CallSequence_4_x" ordered="true">
+              <items xsi:type="am:RunnableCall" runnable="Runnable_4_x?type=Runnable" />
             </items>
           </defaultEntry>
-        </graphEntries>
+        </items>
       </callGraph>
       <customProperties key="priority">
         <value xsi:type="am:StringObject" value="3" />
@@ -243,112 +243,162 @@
     </tasks>
     <tasks name="Task_5" stimuli="Stimulus_Task_5?type=PeriodicStimulus" preemption="preemptive" multipleTaskActivationLimit="2">
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence" name="CS_Task_5">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_5_1?type=Runnable" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_5_2?type=Runnable" />
-        </graphEntries>
+        <items xsi:type="am:Group" name="CS_Task_5" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="Runnable_5_1?type=Runnable" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_5_2?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="set" value="MessageToT2_1" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="set" value="MessageToT2_1" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_State_0" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_State_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="59400" upperBound="60600" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_State_2" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="29700000" upperBound="30300000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_1_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="set" value="MessageToT2_0" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="messageToT2?type=ModeLabel" access="set" value="MessageToT2_0" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_Transition_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_0" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_0" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_Transition_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_1" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_1" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_Transition_2" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_2" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="stateT2?type=ModeLabel" access="set" value="StateT2_2" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_1_State0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="set" value="StateT1_0" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_0" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="set" value="StateT1_0" />
+        <items xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_0" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_1_State1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="set" value="StateT1_1" />
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_0" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="stateT1?type=ModeLabel" access="set" value="StateT1_1" />
+        <items xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_0" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_2_Overflow" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_1" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="messageToT1?type=ModeLabel" access="set" value="MessageToT1_1" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_1" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_1" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_1" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="594" upperBound="606" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="594" upperBound="606" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_2" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="29700" upperBound="30300" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="29700" upperBound="30300" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_3" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="594000" upperBound="606000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="594000" upperBound="606000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_4" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="23760000" upperBound="24240000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="23760000" upperBound="24240000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_x" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="58" upperBound="60" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_2" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_2" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_2" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_3" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_3" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_3" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_4" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_4" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_4" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_0" callback="false" service="false">
-      <runnableItems xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_0" />
+      <callGraph>
+        <items xsi:type="am:ModeLabelAccess" data="message?type=ModeLabel" access="set" value="Message_0" />
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="5940000" upperBound="6060000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_5_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="35640000" upperBound="36360000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="35640000" upperBound="36360000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_5_2" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default lowerBound="11880000" upperBound="12120000" xsi:type="am:DiscreteValueUniformDistribution" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default lowerBound="11880000" upperBound="12120000" xsi:type="am:DiscreteValueUniformDistribution" />
+        </items>
+      </callGraph>
     </runnables>
     <modes xsi:type="am:EnumMode" name="Message">
       <literals name="Message_0">

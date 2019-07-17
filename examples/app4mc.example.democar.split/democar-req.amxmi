@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <constraintsModel>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical">
       <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="5" unit="ms"/>
+        <limitValue value="5" unit="ms" />
       </limit>
-      <process xsi:type="am:Task" href="amlt:/#Task_5MS?type=Task"/>
+      <process xsi:type="am:Task" href="amlt:/#Task_5MS?type=Task" />
     </requirements>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_10" severity="Critical">
       <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="10" unit="ms"/>
+        <limitValue value="10" unit="ms" />
       </limit>
-      <process xsi:type="am:Task" href="amlt:/#Task_10MS?type=Task"/>
+      <process xsi:type="am:Task" href="amlt:/#Task_10MS?type=Task" />
     </requirements>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_20" severity="Critical">
       <limit xsi:type="am:TimeRequirementLimit" limitType="UpperLimit" metric="ResponseTime">
-        <limitValue value="20" unit="ms"/>
+        <limitValue value="20" unit="ms" />
       </limit>
-      <process xsi:type="am:Task" href="amlt:/#Task_20MS?type=Task"/>
+      <process xsi:type="am:Task" href="amlt:/#Task_20MS?type=Task" />
     </requirements>
   </constraintsModel>
 </am:Amalthea>

@@ -6,9 +6,9 @@
         <value xsi:type="am:StringObject" value="4" />
       </customProperties>
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_1_1?type=Runnable" />
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="Runnable_1_1?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <tasks name="Task_2" preemption="preemptive" multipleTaskActivationLimit="1">
@@ -16,10 +16,10 @@
         <value xsi:type="am:StringObject" value="3" />
       </customProperties>
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_1?type=Runnable" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_2_2?type=Runnable" />
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="Runnable_2_1?type=Runnable" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_2_2?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <tasks name="Task_3" preemption="preemptive" multipleTaskActivationLimit="1">
@@ -27,11 +27,11 @@
         <value xsi:type="am:StringObject" value="2" />
       </customProperties>
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_1?type=Runnable" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_2?type=Runnable" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_3_3?type=Runnable" />
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="Runnable_3_1?type=Runnable" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_3_2?type=Runnable" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_3_3?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <tasks name="Task_4" preemption="preemptive" multipleTaskActivationLimit="1">
@@ -39,63 +39,83 @@
         <value xsi:type="am:StringObject" value="1" />
       </customProperties>
       <callGraph>
-        <graphEntries xsi:type="am:CallSequence">
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_1?type=Runnable" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_2?type=Runnable" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_3?type=Runnable" />
-          <calls xsi:type="am:TaskRunnableCall" runnable="Runnable_4_4?type=Runnable" />
-        </graphEntries>
+        <items xsi:type="am:Group" name="CallSequence" ordered="true">
+          <items xsi:type="am:RunnableCall" runnable="Runnable_4_1?type=Runnable" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_4_2?type=Runnable" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_4_3?type=Runnable" />
+          <items xsi:type="am:RunnableCall" runnable="Runnable_4_4?type=Runnable" />
+        </items>
       </callGraph>
     </tasks>
     <runnables name="Runnable_1_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1500000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1500000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_2_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1500000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1500000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_2_2" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1500000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1500000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1000000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1000000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_2" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="2000000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="2000000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_3_3" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1000000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1000000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_1" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1000000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1000000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_2" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="2000000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="2000000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_3" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="3000000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="3000000" />
+        </items>
+      </callGraph>
     </runnables>
     <runnables name="Runnable_4_4" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="2000000" />
-      </runnableItems>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="2000000" />
+        </items>
+      </callGraph>
     </runnables>
   </swModel>
   <hwModel>

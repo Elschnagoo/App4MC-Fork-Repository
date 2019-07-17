@@ -1,197 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
   <swModel>
     <runnables name="hVAC_YSCT__drvTempAdapter__runCycle" activations="20+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1531"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__drvTempTicks?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="write" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1531" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__drvTempTicks?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="write" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__coordinator__runCycle" activations="20+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="4119"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__switches?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__airFlaps?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__blwCtrl?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__states?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="4119" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__switches?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__airFlaps?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__blwCtrl?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__states?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__hvacFlaps__setFlaps" activations="20+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="939313"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__airFlaps?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempFlapCtrl__flap?type=Label" access="read" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="939313" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__airFlaps?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempFlapCtrl__flap?type=Label" access="read" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__hmi__receiveFromUI" activations="20+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="419925"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__switches?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__drvTempTicks?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__passTempTicks?type=Label" access="write" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="419925" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__switches?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__drvTempTicks?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__passTempTicks?type=Label" access="write" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__passTempAdapter__runCycle" activations="20+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1488"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__passTempTicks?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="write" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1488" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hmi__passTempTicks?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__tmpMode?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="write" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__hmi__sendToUI" activations="20+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1450"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__states?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1450" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__states?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__drvTempFlapCtrl__runCycle" activations="100+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1256"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1256" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempFlapCtrl__flap?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__blowerCtrl__runCycle" activations="100+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1275"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__blwCtrl?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1275" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__coordinator__blwCtrl?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__drvTempAdapter__temp?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__hvacBlower__setPower" activations="100+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="825"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="825" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__blowerCtrl__blwPower?type=Label" access="read" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__hvacItos__readTemp" activations="100+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="13575"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="write" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="13575" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="write" dataStability="inherited" />
+      </callGraph>
     </runnables>
     <runnables name="hVAC_YSCT__passTempFlapCtrl__runCycle" activations="100+ms?type=PeriodicActivation" callback="false" service="false">
-      <runnableItems xsi:type="am:Ticks">
-        <default xsi:type="am:DiscreteValueConstant" value="1231"/>
-      </runnableItems>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="read" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempFlapCtrl__flap?type=Label" access="write" dataStability="inherited"/>
-      <runnableItems xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited"/>
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="1231" />
+        </items>
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempAdapter__temp?type=Label" access="read" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__passTempFlapCtrl__flap?type=Label" access="write" dataStability="inherited" />
+        <items xsi:type="am:LabelAccess" data="hVAC_YSCT__hvacItos__interiorTemp?type=Label" access="read" dataStability="inherited" />
+      </callGraph>
     </runnables>
-    <labels name="hVAC_YSCT__hmi__switches" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__hmi__drvTempTicks" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__hmi__passTempTicks" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__coordinator__blwCtrl" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__coordinator__tmpMode" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__coordinator__states" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__coordinator__airFlaps" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__drvTempAdapter__temp" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__drvTempFlapCtrl__flap" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__passTempAdapter__temp" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__passTempFlapCtrl__flap" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__blowerCtrl__blwPower" constant="false" bVolatile="false" dataStability="noProtection"/>
-    <labels name="hVAC_YSCT__hvacItos__interiorTemp" constant="false" bVolatile="false" dataStability="noProtection"/>
+    <labels name="hVAC_YSCT__hmi__switches" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__hmi__drvTempTicks" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__hmi__passTempTicks" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__coordinator__blwCtrl" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__coordinator__tmpMode" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__coordinator__states" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__coordinator__airFlaps" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__drvTempAdapter__temp" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__drvTempFlapCtrl__flap" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__passTempAdapter__temp" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__passTempFlapCtrl__flap" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__blowerCtrl__blwPower" constant="false" bVolatile="false" dataStability="noProtection" />
+    <labels name="hVAC_YSCT__hvacItos__interiorTemp" constant="false" bVolatile="false" dataStability="noProtection" />
     <activations xsi:type="am:PeriodicActivation" name="20 ms">
-      <offset value="20" unit="us"/>
+      <offset value="20" unit="us" />
     </activations>
     <activations xsi:type="am:PeriodicActivation" name="100 ms">
-      <offset value="100" unit="ms"/>
+      <offset value="100" unit="ms" />
     </activations>
   </swModel>
   <constraintsModel>
     <runnableSequencingConstraints name="3" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="7" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="8" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="11" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="12" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="13" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="14" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="16" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="18" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="0" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="1" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="4" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__hmi__receiveFromUI?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="5" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__hmi__receiveFromUI?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__drvTempAdapter__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="19" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__drvTempFlapCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="21" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="2" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hmi__sendToUI?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="9" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__hmi__receiveFromUI?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__hmi__receiveFromUI?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__passTempAdapter__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="17" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hvacBlower__setPower?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__blowerCtrl__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hvacBlower__setPower?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="20" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__hvacItos__readTemp?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__passTempFlapCtrl__runCycle?type=Runnable" />
     </runnableSequencingConstraints>
     <runnableSequencingConstraints name="22" orderType="successor">
-      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable"/>
-      <runnableGroups runnables="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable"/>
+      <runnableGroups runnables="hVAC_YSCT__coordinator__runCycle?type=Runnable" />
+      <runnableGroups runnables="hVAC_YSCT__hvacFlaps__setFlaps?type=Runnable" />
     </runnableSequencingConstraints>
   </constraintsModel>
 </am:Amalthea>
