@@ -16,7 +16,7 @@ package org.eclipse.app4mc.amalthea.validations.ta.stimuli;
 
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.Clock;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -38,25 +38,26 @@ public class TAStimuliClockTriangleFunction extends AmaltheaValidation {
 
 	@Override
 	public EClassifier getEClassifier() {
-		return ePackage.getClockTriangleFunction();
+		return ePackage.getClock();
+		//return ePackage.getClockTriangleFunction();
 	}
 
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
-		if (eObject instanceof ClockTriangleFunction) {
-			ClockTriangleFunction ctf = (ClockTriangleFunction) eObject;
-			double min = ctf.getMin();
-			if (Double.isFinite(min) && Double.compare(min, 0) < 0) {
-				addIssue(results, ctf, ePackage.getClockTriangleFunction_Min(), "The min must not be negative (" + min + " < 0.0d, in "+ objectInfo(ctf) + ")");
-			}
-			double max = ctf.getMax();
-			if (Double.isFinite(max) && Double.compare(max, 0) <= 0) {
-				addIssue(results, ctf, ePackage.getClockTriangleFunction_Max(), "The max must be positive (" + max + " <= 0.0d, in "+ objectInfo(ctf) + ")");
-			}
-			if (Double.isFinite(min) && Double.isFinite(max) && Double.compare(min, max) > 0) {
-				addIssue(results, ctf, ePackage.getClockTriangleFunction_Min(), "The min is greater than the max (" + min + " > " + max + ", in "+ objectInfo(ctf) + ")");
-			}
-		}
+//		if (eObject instanceof ClockTriangleFunction) {
+//			ClockTriangleFunction ctf = (ClockTriangleFunction) eObject;
+//			double min = ctf.getMin();
+//			if (Double.isFinite(min) && Double.compare(min, 0) < 0) {
+//				addIssue(results, ctf, ePackage.getClockTriangleFunction_Min(), "The min must not be negative (" + min + " < 0.0d, in "+ objectInfo(ctf) + ")");
+//			}
+//			double max = ctf.getMax();
+//			if (Double.isFinite(max) && Double.compare(max, 0) <= 0) {
+//				addIssue(results, ctf, ePackage.getClockTriangleFunction_Max(), "The max must be positive (" + max + " <= 0.0d, in "+ objectInfo(ctf) + ")");
+//			}
+//			if (Double.isFinite(min) && Double.isFinite(max) && Double.compare(min, max) > 0) {
+//				addIssue(results, ctf, ePackage.getClockTriangleFunction_Min(), "The min is greater than the max (" + min + " > " + max + ", in "+ objectInfo(ctf) + ")");
+//			}
+//		}
 	}
 
 }

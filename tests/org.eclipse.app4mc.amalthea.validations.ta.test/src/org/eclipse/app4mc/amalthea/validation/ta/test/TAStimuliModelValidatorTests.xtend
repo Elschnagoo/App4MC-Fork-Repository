@@ -14,27 +14,25 @@
  */
 package org.eclipse.app4mc.amalthea.validation.ta.test
 
-import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
-import org.eclipse.app4mc.validation.util.ValidationExecutor
-import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile
 import java.util.List
-import org.eclipse.app4mc.validation.core.ValidationDiagnostic
+import java.util.stream.Collectors
 import org.eclipse.app4mc.amalthea.model.Amalthea
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
+import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus
+import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus
+import org.eclipse.app4mc.amalthea.model.Scenario
+import org.eclipse.app4mc.amalthea.model.Time
+import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
+import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder
+import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile
+import org.eclipse.app4mc.validation.core.Severity
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic
+import org.eclipse.app4mc.validation.util.ValidationExecutor
 import org.junit.Test
+
 import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
 import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
-import org.eclipse.app4mc.validation.core.Severity
-import java.util.stream.Collectors
-import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder
-import org.eclipse.app4mc.amalthea.model.Scenario
-import org.eclipse.app4mc.amalthea.model.Time
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList
-import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus
-import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus
 
 class TAStimuliModelValidatorTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
@@ -52,32 +50,32 @@ class TAStimuliModelValidatorTests {
 		ret
 	}
 	
-	def ClockTriangleFunction createCTF(String name, double min, double max) {
-		val ret = AmaltheaFactory.eINSTANCE.createClockTriangleFunction
-		ret.name = name
-		ret.min = min
-		ret.max = max
-		ret
-	}
-	
-	def ClockSinusFunction createCSF(String name, double amplitude, double yOffset) {
-		val ret = AmaltheaFactory.eINSTANCE.createClockSinusFunction
-		ret.name = name
-		ret.amplitude = amplitude
-		ret.YOffset = yOffset
-		ret
-	}
-	
-	def ClockMultiplierList createCML(String name, double...multipliers) {
-		val ret = AmaltheaFactory.eINSTANCE.createClockMultiplierList
-		ret.name = name
-		for(double multiplier:multipliers) {
-			val entry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry
-			entry.multiplier = multiplier
-			ret.entries += entry
-		}
-		ret
-	}
+//	def ClockTriangleFunction createCTF(String name, double min, double max) {
+//		val ret = AmaltheaFactory.eINSTANCE.createClockTriangleFunction
+//		ret.name = name
+//		ret.min = min
+//		ret.max = max
+//		ret
+//	}
+//	
+//	def ClockSinusFunction createCSF(String name, double amplitude, double yOffset) {
+//		val ret = AmaltheaFactory.eINSTANCE.createClockSinusFunction
+//		ret.name = name
+//		ret.amplitude = amplitude
+//		ret.YOffset = yOffset
+//		ret
+//	}
+//	
+//	def ClockMultiplierList createCML(String name, double...multipliers) {
+//		val ret = AmaltheaFactory.eINSTANCE.createClockMultiplierList
+//		ret.name = name
+//		for(double multiplier:multipliers) {
+//			val entry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry
+//			entry.multiplier = multiplier
+//			ret.entries += entry
+//		}
+//		ret
+//	}
 	
 	def PeriodicSyntheticStimulus createPSS(String name, String unit, long...occurrenceTimes) {
 		val ret = AmaltheaFactory.eINSTANCE.createPeriodicSyntheticStimulus
@@ -130,68 +128,68 @@ class TAStimuliModelValidatorTests {
 	
 	@Test
 	def void test_TAStimuliClockMultiplierList() {
-		val model = amalthea [
-			stimuliModel [
-				clocks += createCML("cml_ok", 0, 1)
-				clocks += createCML("cml_small", -1, 0, 1, -100)
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 0 of Clock Multiplier List \"cml_small\" must not be negative."))
-		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 1 of Clock Multiplier List \"cml_small\" must not be negative."))
-		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 2 of Clock Multiplier List \"cml_small\" must not be negative."))
-		assertTrue(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 3 of Clock Multiplier List \"cml_small\" must not be negative."))
-		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 0 of Clock Multiplier List \"cml_ok\" must not be negative."))
-		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 1 of Clock Multiplier List \"cml_ok\" must not be negative."))
+//		val model = amalthea [
+//			stimuliModel [
+//				clocks += createCML("cml_ok", 0, 1)
+//				clocks += createCML("cml_small", -1, 0, 1, -100)
+//			]
+//		]
+//		val validationResult = validate(model)
+//		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
+//		assertTrue(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 0 of Clock Multiplier List \"cml_small\" must not be negative."))
+//		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 1 of Clock Multiplier List \"cml_small\" must not be negative."))
+//		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 2 of Clock Multiplier List \"cml_small\" must not be negative."))
+//		assertTrue(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 3 of Clock Multiplier List \"cml_small\" must not be negative."))
+//		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 0 of Clock Multiplier List \"cml_ok\" must not be negative."))
+//		assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 1 of Clock Multiplier List \"cml_ok\" must not be negative."))
 	}
 	
 	@Test
 	def void test_TAStimuliClockSinusFunction() {
-		val model = amalthea [
-			stimuliModel [
-				clocks += createCSF("csf_ok", 4, 10)
-				clocks += createCSF("csf_amplitude", -1, 10)
-				clocks += createCSF("csf_yOffset", 0, 0)
-				clocks += createCSF("csf_yOffsetamplitude", -2, 0)
-				clocks += createCSF("csf_yOffsetiamplitude", 1, 0)
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The amplitude must not be negative (-1.0 < 0.0d, in Clock Sinus Function \"csf_amplitude\")"))
-		assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffset\")"))
-		assertTrue(result.contains("The amplitude must not be negative (-2.0 < 0.0d, in Clock Sinus Function \"csf_yOffsetamplitude\")"))
-		assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffsetamplitude\")"))
-		assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffsetiamplitude\")"))
-		assertTrue(result.contains("The amplitude is greater than the yOffset (1.0 > 0.0, in Clock Sinus Function \"csf_yOffsetiamplitude\")"))
-		assertFalse(result.contains("The amplitude must not be negative (4.0 < 0.0d, in Clock Sinus Function \"csf_ok\")"))
-		assertFalse(result.contains("The yOffset must be positive (10.0 <= 0.0, in Clock Sinus Function \"csf_ok\")"))
-		assertFalse(result.contains("The amplitude is greater than the yOffset (4.0 > 10.0, in Clock Sinus Function \"csf_ok\")"))
+//		val model = amalthea [
+//			stimuliModel [
+//				clocks += createCSF("csf_ok", 4, 10)
+//				clocks += createCSF("csf_amplitude", -1, 10)
+//				clocks += createCSF("csf_yOffset", 0, 0)
+//				clocks += createCSF("csf_yOffsetamplitude", -2, 0)
+//				clocks += createCSF("csf_yOffsetiamplitude", 1, 0)
+//			]
+//		]
+//		val validationResult = validate(model)
+//		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
+//		assertTrue(result.contains("The amplitude must not be negative (-1.0 < 0.0d, in Clock Sinus Function \"csf_amplitude\")"))
+//		assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffset\")"))
+//		assertTrue(result.contains("The amplitude must not be negative (-2.0 < 0.0d, in Clock Sinus Function \"csf_yOffsetamplitude\")"))
+//		assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffsetamplitude\")"))
+//		assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffsetiamplitude\")"))
+//		assertTrue(result.contains("The amplitude is greater than the yOffset (1.0 > 0.0, in Clock Sinus Function \"csf_yOffsetiamplitude\")"))
+//		assertFalse(result.contains("The amplitude must not be negative (4.0 < 0.0d, in Clock Sinus Function \"csf_ok\")"))
+//		assertFalse(result.contains("The yOffset must be positive (10.0 <= 0.0, in Clock Sinus Function \"csf_ok\")"))
+//		assertFalse(result.contains("The amplitude is greater than the yOffset (4.0 > 10.0, in Clock Sinus Function \"csf_ok\")"))
 	}
 	
 	@Test
 	def void test_TAStimuliClockTriangleFunction() {
-		val model = amalthea [
-			stimuliModel [
-				clocks += createCTF("ctf_ok", 4, 10)
-				clocks += createCTF("ctf_min", -1, 10)
-				clocks += createCTF("ctf_max", 0, 0)
-				clocks += createCTF("ctf_maxmin", -2, 0)
-				clocks += createCTF("ctf_maximin", 1, 0)
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The min must not be negative (-1.0 < 0.0d, in Clock Triangle Function \"ctf_min\")"))
-		assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_max\")"))
-		assertTrue(result.contains("The min must not be negative (-2.0 < 0.0d, in Clock Triangle Function \"ctf_maxmin\")"))
-		assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_maxmin\")"))
-		assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_maximin\")"))
-		assertTrue(result.contains("The min is greater than the max (1.0 > 0.0, in Clock Triangle Function \"ctf_maximin\")"))
-		assertFalse(result.contains("The min must not be negative (4.0 < 0.0d, in Clock Triangle Function \"ctf_ok\")"))
-		assertFalse(result.contains("The max must be positive (10.0 <= 0.0, in Clock Triangle Function \"ctf_ok\")"))
-		assertFalse(result.contains("The min is greater than the max (4.0 > 10.0, in Clock Triangle Function \"ctf_ok\")"))
+//		val model = amalthea [
+//			stimuliModel [
+//				clocks += createCTF("ctf_ok", 4, 10)
+//				clocks += createCTF("ctf_min", -1, 10)
+//				clocks += createCTF("ctf_max", 0, 0)
+//				clocks += createCTF("ctf_maxmin", -2, 0)
+//				clocks += createCTF("ctf_maximin", 1, 0)
+//			]
+//		]
+//		val validationResult = validate(model)
+//		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
+//		assertTrue(result.contains("The min must not be negative (-1.0 < 0.0d, in Clock Triangle Function \"ctf_min\")"))
+//		assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_max\")"))
+//		assertTrue(result.contains("The min must not be negative (-2.0 < 0.0d, in Clock Triangle Function \"ctf_maxmin\")"))
+//		assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_maxmin\")"))
+//		assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_maximin\")"))
+//		assertTrue(result.contains("The min is greater than the max (1.0 > 0.0, in Clock Triangle Function \"ctf_maximin\")"))
+//		assertFalse(result.contains("The min must not be negative (4.0 < 0.0d, in Clock Triangle Function \"ctf_ok\")"))
+//		assertFalse(result.contains("The max must be positive (10.0 <= 0.0, in Clock Triangle Function \"ctf_ok\")"))
+//		assertFalse(result.contains("The min is greater than the max (4.0 > 10.0, in Clock Triangle Function \"ctf_ok\")"))
 	}
 	
 	@Test

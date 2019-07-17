@@ -16,8 +16,6 @@ package org.eclipse.app4mc.amalthea.validations.ta.stimuli;
 
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -37,23 +35,24 @@ public class TAStimuliClockMultiplierList extends AmaltheaValidation {
 
 	@Override
 	public EClassifier getEClassifier() {
-		return ePackage.getClockMultiplierList();
+		return ePackage.getClock();
+//		return ePackage.getClockMultiplierList();
 	}
 
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
-		if (eObject instanceof ClockMultiplierList) {
-			ClockMultiplierList vrs = (ClockMultiplierList) eObject;
-			int index = 0;
-			for(ClockMultiplierListEntry entry:vrs.getEntries()) {
-				double multiplier = entry.getMultiplier();
-				if (Double.isFinite(multiplier) && Double.compare(multiplier, 0) < 0) {
-					addIssue(results, entry, ePackage.getClockMultiplierListEntry_Multiplier(), "The multiplier specified in the " + objectInfo(entry) +
-							" at index " + index + " of " + objectInfo(vrs) + " must not be negative.");
-				}
-				index++;
-			}
-		}
+//		if (eObject instanceof ClockMultiplierList) {
+//			ClockMultiplierList vrs = (ClockMultiplierList) eObject;
+//			int index = 0;
+//			for(ClockMultiplierListEntry entry:vrs.getEntries()) {
+//				double multiplier = entry.getMultiplier();
+//				if (Double.isFinite(multiplier) && Double.compare(multiplier, 0) < 0) {
+//					addIssue(results, entry, ePackage.getClockMultiplierListEntry_Multiplier(), "The multiplier specified in the " + objectInfo(entry) +
+//							" at index " + index + " of " + objectInfo(vrs) + " must not be negative.");
+//				}
+//				index++;
+//			}
+//		}
 	}
 
 }

@@ -16,7 +16,6 @@ package org.eclipse.app4mc.amalthea.validations.ta.stimuli;
 
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -38,25 +37,26 @@ public class TAStimuliClockSinusFunction extends AmaltheaValidation {
 
 	@Override
 	public EClassifier getEClassifier() {
-		return ePackage.getClockSinusFunction();
+		return ePackage.getClock();
+//		return ePackage.getClockSinusFunction();
 	}
 
 	@Override
 	public void validate(EObject eObject, List<ValidationDiagnostic> results) {
-		if (eObject instanceof ClockSinusFunction) {
-			ClockSinusFunction csf = (ClockSinusFunction) eObject;
-			double amplitude = csf.getAmplitude();
-			if (Double.isFinite(amplitude) && Double.compare(amplitude, 0) < 0) {
-				addIssue(results, csf, ePackage.getClockSinusFunction_Amplitude(), "The amplitude must not be negative (" + amplitude + " < 0.0d, in "+ objectInfo(csf) + ")");
-			}
-			double yOffset = csf.getYOffset();
-			if (Double.isFinite(yOffset) && Double.compare(yOffset, 0) <= 0) {
-				addIssue(results, csf, ePackage.getClockSinusFunction_YOffset(), "The yOffset must be positive (" + yOffset + " <= 0.0d, in "+ objectInfo(csf) + ")");
-			}
-			if (Double.isFinite(amplitude) && Double.isFinite(yOffset) && Double.compare(amplitude, yOffset) > 0) {
-				addIssue(results, csf, ePackage.getClockSinusFunction_Amplitude(), "The amplitude is greater than the yOffset (" + amplitude + " > " + yOffset + ", in "+ objectInfo(csf) + ")");
-			}
-		}
+//		if (eObject instanceof ClockSinusFunction) {
+//			ClockSinusFunction csf = (ClockSinusFunction) eObject;
+//			double amplitude = csf.getAmplitude();
+//			if (Double.isFinite(amplitude) && Double.compare(amplitude, 0) < 0) {
+//				addIssue(results, csf, ePackage.getClockSinusFunction_Amplitude(), "The amplitude must not be negative (" + amplitude + " < 0.0d, in "+ objectInfo(csf) + ")");
+//			}
+//			double yOffset = csf.getYOffset();
+//			if (Double.isFinite(yOffset) && Double.compare(yOffset, 0) <= 0) {
+//				addIssue(results, csf, ePackage.getClockSinusFunction_YOffset(), "The yOffset must be positive (" + yOffset + " <= 0.0d, in "+ objectInfo(csf) + ")");
+//			}
+//			if (Double.isFinite(amplitude) && Double.isFinite(yOffset) && Double.compare(amplitude, yOffset) > 0) {
+//				addIssue(results, csf, ePackage.getClockSinusFunction_Amplitude(), "The amplitude is greater than the yOffset (" + amplitude + " > " + yOffset + ", in "+ objectInfo(csf) + ")");
+//			}
+//		}
 	}
 
 }

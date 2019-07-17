@@ -21,11 +21,6 @@ import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
-import org.eclipse.app4mc.amalthea.model.Clock;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
@@ -69,48 +64,6 @@ public class TAStimuliModelValidatorTests {
     {
       final Scenario ret = AmaltheaFactory.eINSTANCE.createScenario();
       ret.setRecurrence(recurrence);
-      _xblockexpression = ret;
-    }
-    return _xblockexpression;
-  }
-  
-  public ClockTriangleFunction createCTF(final String name, final double min, final double max) {
-    ClockTriangleFunction _xblockexpression = null;
-    {
-      final ClockTriangleFunction ret = AmaltheaFactory.eINSTANCE.createClockTriangleFunction();
-      ret.setName(name);
-      ret.setMin(min);
-      ret.setMax(max);
-      _xblockexpression = ret;
-    }
-    return _xblockexpression;
-  }
-  
-  public ClockSinusFunction createCSF(final String name, final double amplitude, final double yOffset) {
-    ClockSinusFunction _xblockexpression = null;
-    {
-      final ClockSinusFunction ret = AmaltheaFactory.eINSTANCE.createClockSinusFunction();
-      ret.setName(name);
-      ret.setAmplitude(amplitude);
-      ret.setYOffset(yOffset);
-      _xblockexpression = ret;
-    }
-    return _xblockexpression;
-  }
-  
-  public ClockMultiplierList createCML(final String name, final double... multipliers) {
-    ClockMultiplierList _xblockexpression = null;
-    {
-      final ClockMultiplierList ret = AmaltheaFactory.eINSTANCE.createClockMultiplierList();
-      ret.setName(name);
-      for (final double multiplier : multipliers) {
-        {
-          final ClockMultiplierListEntry entry = AmaltheaFactory.eINSTANCE.createClockMultiplierListEntry();
-          entry.setMultiplier(multiplier);
-          EList<ClockMultiplierListEntry> _entries = ret.getEntries();
-          _entries.add(entry);
-        }
-      }
       _xblockexpression = ret;
     }
     return _xblockexpression;
@@ -209,119 +162,14 @@ public class TAStimuliModelValidatorTests {
   
   @Test
   public void test_TAStimuliClockMultiplierList() {
-    final Procedure1<Amalthea> _function = (Amalthea it) -> {
-      final Procedure1<StimuliModel> _function_1 = (StimuliModel it_1) -> {
-        EList<Clock> _clocks = it_1.getClocks();
-        ClockMultiplierList _createCML = this.createCML("cml_ok", 0, 1);
-        _clocks.add(_createCML);
-        EList<Clock> _clocks_1 = it_1.getClocks();
-        ClockMultiplierList _createCML_1 = this.createCML("cml_small", (-1), 0, 1, (-100));
-        _clocks_1.add(_createCML_1);
-      };
-      this.b1.stimuliModel(it, _function_1);
-    };
-    final Amalthea model = this.b1.amalthea(_function);
-    final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
-      Severity _severityLevel = it.getSeverityLevel();
-      return Objects.equal(_severityLevel, Severity.ERROR);
-    };
-    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
-      return it.getMessage();
-    };
-    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 0 of Clock Multiplier List \"cml_small\" must not be negative."));
-    Assert.assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 1 of Clock Multiplier List \"cml_small\" must not be negative."));
-    Assert.assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 2 of Clock Multiplier List \"cml_small\" must not be negative."));
-    Assert.assertTrue(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 3 of Clock Multiplier List \"cml_small\" must not be negative."));
-    Assert.assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 0 of Clock Multiplier List \"cml_ok\" must not be negative."));
-    Assert.assertFalse(result.contains("The multiplier specified in the Clock Multiplier List Entry at index 1 of Clock Multiplier List \"cml_ok\" must not be negative."));
   }
   
   @Test
   public void test_TAStimuliClockSinusFunction() {
-    final Procedure1<Amalthea> _function = (Amalthea it) -> {
-      final Procedure1<StimuliModel> _function_1 = (StimuliModel it_1) -> {
-        EList<Clock> _clocks = it_1.getClocks();
-        ClockSinusFunction _createCSF = this.createCSF("csf_ok", 4, 10);
-        _clocks.add(_createCSF);
-        EList<Clock> _clocks_1 = it_1.getClocks();
-        ClockSinusFunction _createCSF_1 = this.createCSF("csf_amplitude", (-1), 10);
-        _clocks_1.add(_createCSF_1);
-        EList<Clock> _clocks_2 = it_1.getClocks();
-        ClockSinusFunction _createCSF_2 = this.createCSF("csf_yOffset", 0, 0);
-        _clocks_2.add(_createCSF_2);
-        EList<Clock> _clocks_3 = it_1.getClocks();
-        ClockSinusFunction _createCSF_3 = this.createCSF("csf_yOffsetamplitude", (-2), 0);
-        _clocks_3.add(_createCSF_3);
-        EList<Clock> _clocks_4 = it_1.getClocks();
-        ClockSinusFunction _createCSF_4 = this.createCSF("csf_yOffsetiamplitude", 1, 0);
-        _clocks_4.add(_createCSF_4);
-      };
-      this.b1.stimuliModel(it, _function_1);
-    };
-    final Amalthea model = this.b1.amalthea(_function);
-    final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
-      Severity _severityLevel = it.getSeverityLevel();
-      return Objects.equal(_severityLevel, Severity.ERROR);
-    };
-    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
-      return it.getMessage();
-    };
-    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The amplitude must not be negative (-1.0 < 0.0d, in Clock Sinus Function \"csf_amplitude\")"));
-    Assert.assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffset\")"));
-    Assert.assertTrue(result.contains("The amplitude must not be negative (-2.0 < 0.0d, in Clock Sinus Function \"csf_yOffsetamplitude\")"));
-    Assert.assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffsetamplitude\")"));
-    Assert.assertTrue(result.contains("The yOffset must be positive (0.0 <= 0.0d, in Clock Sinus Function \"csf_yOffsetiamplitude\")"));
-    Assert.assertTrue(result.contains("The amplitude is greater than the yOffset (1.0 > 0.0, in Clock Sinus Function \"csf_yOffsetiamplitude\")"));
-    Assert.assertFalse(result.contains("The amplitude must not be negative (4.0 < 0.0d, in Clock Sinus Function \"csf_ok\")"));
-    Assert.assertFalse(result.contains("The yOffset must be positive (10.0 <= 0.0, in Clock Sinus Function \"csf_ok\")"));
-    Assert.assertFalse(result.contains("The amplitude is greater than the yOffset (4.0 > 10.0, in Clock Sinus Function \"csf_ok\")"));
   }
   
   @Test
   public void test_TAStimuliClockTriangleFunction() {
-    final Procedure1<Amalthea> _function = (Amalthea it) -> {
-      final Procedure1<StimuliModel> _function_1 = (StimuliModel it_1) -> {
-        EList<Clock> _clocks = it_1.getClocks();
-        ClockTriangleFunction _createCTF = this.createCTF("ctf_ok", 4, 10);
-        _clocks.add(_createCTF);
-        EList<Clock> _clocks_1 = it_1.getClocks();
-        ClockTriangleFunction _createCTF_1 = this.createCTF("ctf_min", (-1), 10);
-        _clocks_1.add(_createCTF_1);
-        EList<Clock> _clocks_2 = it_1.getClocks();
-        ClockTriangleFunction _createCTF_2 = this.createCTF("ctf_max", 0, 0);
-        _clocks_2.add(_createCTF_2);
-        EList<Clock> _clocks_3 = it_1.getClocks();
-        ClockTriangleFunction _createCTF_3 = this.createCTF("ctf_maxmin", (-2), 0);
-        _clocks_3.add(_createCTF_3);
-        EList<Clock> _clocks_4 = it_1.getClocks();
-        ClockTriangleFunction _createCTF_4 = this.createCTF("ctf_maximin", 1, 0);
-        _clocks_4.add(_createCTF_4);
-      };
-      this.b1.stimuliModel(it, _function_1);
-    };
-    final Amalthea model = this.b1.amalthea(_function);
-    final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
-      Severity _severityLevel = it.getSeverityLevel();
-      return Objects.equal(_severityLevel, Severity.ERROR);
-    };
-    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
-      return it.getMessage();
-    };
-    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The min must not be negative (-1.0 < 0.0d, in Clock Triangle Function \"ctf_min\")"));
-    Assert.assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_max\")"));
-    Assert.assertTrue(result.contains("The min must not be negative (-2.0 < 0.0d, in Clock Triangle Function \"ctf_maxmin\")"));
-    Assert.assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_maxmin\")"));
-    Assert.assertTrue(result.contains("The max must be positive (0.0 <= 0.0d, in Clock Triangle Function \"ctf_maximin\")"));
-    Assert.assertTrue(result.contains("The min is greater than the max (1.0 > 0.0, in Clock Triangle Function \"ctf_maximin\")"));
-    Assert.assertFalse(result.contains("The min must not be negative (4.0 < 0.0d, in Clock Triangle Function \"ctf_ok\")"));
-    Assert.assertFalse(result.contains("The max must be positive (10.0 <= 0.0, in Clock Triangle Function \"ctf_ok\")"));
-    Assert.assertFalse(result.contains("The min is greater than the max (4.0 > 10.0, in Clock Triangle Function \"ctf_ok\")"));
   }
   
   @Test
