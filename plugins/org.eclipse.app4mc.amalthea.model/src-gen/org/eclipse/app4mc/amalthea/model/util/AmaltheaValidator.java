@@ -62,10 +62,9 @@ import org.eclipse.app4mc.amalthea.model.Classification;
 import org.eclipse.app4mc.amalthea.model.Classifier;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ClockFunction;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
+import org.eclipse.app4mc.amalthea.model.ClockStepList;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.Component;
@@ -102,6 +101,7 @@ import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
+import org.eclipse.app4mc.amalthea.model.CurveType;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -1153,14 +1153,12 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateArrivalCurveEntry((ArrivalCurveEntry)value, diagnostics, context);
 			case AmaltheaPackage.CLOCK:
 				return validateClock((Clock)value, diagnostics, context);
-			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION:
-				return validateClockTriangleFunction((ClockTriangleFunction)value, diagnostics, context);
-			case AmaltheaPackage.CLOCK_SINUS_FUNCTION:
-				return validateClockSinusFunction((ClockSinusFunction)value, diagnostics, context);
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST:
-				return validateClockMultiplierList((ClockMultiplierList)value, diagnostics, context);
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY:
-				return validateClockMultiplierListEntry((ClockMultiplierListEntry)value, diagnostics, context);
+			case AmaltheaPackage.CLOCK_FUNCTION:
+				return validateClockFunction((ClockFunction)value, diagnostics, context);
+			case AmaltheaPackage.CLOCK_STEP_LIST:
+				return validateClockStepList((ClockStepList)value, diagnostics, context);
+			case AmaltheaPackage.CLOCK_STEP:
+				return validateClockStep((ClockStep)value, diagnostics, context);
 			case AmaltheaPackage.SW_MODEL:
 				return validateSWModel((SWModel)value, diagnostics, context);
 			case AmaltheaPackage.ABSTRACT_MEMORY_ELEMENT:
@@ -1415,6 +1413,8 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validateCondition((Condition)value, diagnostics, context);
 			case AmaltheaPackage.GROUPING_TYPE:
 				return validateGroupingType((GroupingType)value, diagnostics, context);
+			case AmaltheaPackage.CURVE_TYPE:
+				return validateCurveType((CurveType)value, diagnostics, context);
 			case AmaltheaPackage.WAIT_EVENT_TYPE:
 				return validateWaitEventType((WaitEventType)value, diagnostics, context);
 			case AmaltheaPackage.WAITING_BEHAVIOUR:
@@ -5283,17 +5283,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateClockTriangleFunction(ClockTriangleFunction clockTriangleFunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(clockTriangleFunction, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(clockTriangleFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(clockTriangleFunction, diagnostics, context);
+	public boolean validateClockFunction(ClockFunction clockFunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(clockFunction, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(clockFunction, diagnostics, context);
+		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(clockFunction, diagnostics, context);
 		return result;
 	}
 
@@ -5302,17 +5302,17 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateClockSinusFunction(ClockSinusFunction clockSinusFunction, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(clockSinusFunction, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(clockSinusFunction, diagnostics, context);
-		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(clockSinusFunction, diagnostics, context);
+	public boolean validateClockStepList(ClockStepList clockStepList, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(clockStepList, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(clockStepList, diagnostics, context);
+		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(clockStepList, diagnostics, context);
 		return result;
 	}
 
@@ -5321,27 +5321,8 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateClockMultiplierList(ClockMultiplierList clockMultiplierList, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(clockMultiplierList, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(clockMultiplierList, diagnostics, context);
-		if (result || diagnostics != null) result &= validateIReferable_validateInvariants(clockMultiplierList, diagnostics, context);
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateClockMultiplierListEntry(ClockMultiplierListEntry clockMultiplierListEntry, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(clockMultiplierListEntry, diagnostics, context);
+	public boolean validateClockStep(ClockStep clockStep, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(clockStep, diagnostics, context);
 	}
 
 	/**
@@ -6774,6 +6755,15 @@ public class AmaltheaValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateGroupingType(GroupingType groupingType, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCurveType(CurveType curveType, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

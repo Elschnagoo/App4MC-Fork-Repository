@@ -2979,44 +2979,37 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Clock" abstract="true" eSuperTypes="#//ReferableBaseObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="This is the time base for one or more periodic stimuli&#xA;A clock defines the time of its stimuli.&#xA;The faster the clock, the faster stimuli"/>
+      <details key="documentation" value="Within a Scenario a Clock defines the predefined curve progression in a simulation"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClockTriangleFunction" eSuperTypes="#//Clock">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="shift" eType="#//Time"
+  <eClassifiers xsi:type="ecore:EClass" name="ClockFunction" eSuperTypes="#//Clock">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="curveType" unique="false"
+        eType="#//CurveType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="period" lowerBound="1"
+        eType="#//Time" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="peakToPeak" lowerBound="1"
+        eType="#//Frequency" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="xOffset" eType="#//Time"
         containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="yOffset" eType="#//Frequency"
+        containment="true" resolveProxies="false"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CurveType">
+    <eLiterals name="_undefined_"/>
+    <eLiterals name="sinus"/>
+    <eLiterals name="triangle"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClockStepList" eSuperTypes="#//Clock">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" lowerBound="1"
+        upperBound="-1" eType="#//ClockStep" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="period" eType="#//Time"
         containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="0.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="0.0"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClockSinusFunction" eSuperTypes="#//Clock">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="shift" eType="#//Time"
+  <eClassifiers xsi:type="ecore:EClass" name="ClockStep" eSuperTypes="#//BaseObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="frequency" lowerBound="1"
+        eType="#//Frequency" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" lowerBound="1" eType="#//Time"
         containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="period" eType="#//Time"
-        containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amplitude" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="yOffset" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClockMultiplierList" eSuperTypes="#//Clock">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A list of timestamp-value pairs&#xA;At the specified timestamp, the clock changes to the corresponding value"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
-        eType="#//ClockMultiplierListEntry" containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClockMultiplierListEntry" eSuperTypes="#//BaseObject">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A timestamp-value par for ClockMultiplierList"/>
-    </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplier" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="0.0"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="time" eType="#//Time" containment="true"
-        resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SWModel" eSuperTypes="#//BaseObject">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

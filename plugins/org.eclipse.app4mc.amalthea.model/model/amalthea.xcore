@@ -3049,46 +3049,37 @@ class ArrivalCurveEntry extends BaseObject
 }
 
 /*
- * This is the time base for one or more periodic stimuli
- * A clock defines the time of its stimuli.
- * The faster the clock, the faster stimuli
+ * Within a Scenario a Clock defines the predefined curve progression in a simulation
  */
-abstract class Clock extends ReferableBaseObject
+abstract class Clock extends ReferableBaseObject {}
+
+class ClockFunction extends Clock
 {
+	CurveType curveType
+	contains Time[1] period
+	contains Frequency[1] peakToPeak // amplitude
+	contains Time xOffset
+	contains Frequency yOffset
 }
 
-class ClockTriangleFunction extends Clock
+
+enum CurveType
 {
-	contains Time shift
+	_undefined_ // Display: "<curve type>"
+	sinus
+	triangle
+}
+
+class ClockStepList extends Clock
+{
+	contains ClockStep[+] entries
 	contains Time period
-	double max = "0.0"
-	double min = "0.0"
 }
 
-class ClockSinusFunction extends Clock
+class ClockStep extends BaseObject
 {
-	contains Time shift
-	contains Time period
-	double amplitude = "0.0"
-	double yOffset = "0.0"
-}
-
-/*
- * A list of timestamp-value pairs
- * At the specified timestamp, the clock changes to the corresponding value 
- */
-class ClockMultiplierList extends Clock
-{
-	contains ClockMultiplierListEntry[] entries
-}
-
-/*
- * A timestamp-value par for ClockMultiplierList
- */
-class ClockMultiplierListEntry extends BaseObject
-{
-	double multiplier = "0.0"
-	contains Time time
+	contains Frequency[1] frequency
+	contains Time[1] time
 }
 
 

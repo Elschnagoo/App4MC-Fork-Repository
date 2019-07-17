@@ -1,15 +1,15 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ *  Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  *  This program and the accompanying materials are made
  *  available under the terms of the Eclipse Public License 2.0
  *  which is available at https://www.eclipse.org/legal/epl-2.0/
  * 
  *  SPDX-License-Identifier: EPL-2.0
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -17,32 +17,35 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ClockFunction;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockTriangleFunction} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockFunction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
+public class ClockFunctionItemProvider extends ClockItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClockTriangleFunctionItemProvider(AdapterFactory adapterFactory) {
+	public ClockFunctionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,52 +60,29 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addMaxPropertyDescriptor(object);
-			addMinPropertyDescriptor(object);
+			addCurveTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Max feature.
+	 * This adds a property descriptor for the Curve Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addMaxPropertyDescriptor(Object object) {
+	protected void addCurveTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ClockTriangleFunction_max_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ClockTriangleFunction_max_feature", "_UI_ClockTriangleFunction_type"),
-				 AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Max(),
+				 getString("_UI_ClockFunction_curveType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ClockFunction_curveType_feature", "_UI_ClockFunction_type"),
+				 AmaltheaPackage.eINSTANCE.getClockFunction_CurveType(),
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Min feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMinPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ClockTriangleFunction_min_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ClockTriangleFunction_min_feature", "_UI_ClockTriangleFunction_type"),
-				 AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Min(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -119,8 +99,10 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift());
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockFunction_Period());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockFunction_PeakToPeak());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockFunction_XOffset());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockFunction_YOffset());
 		}
 		return childrenFeatures;
 	}
@@ -139,14 +121,14 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 	}
 
 	/**
-	 * This returns ClockTriangleFunction.gif.
+	 * This returns ClockFunction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClockTriangleFunction"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClockFunction"));
 	}
 
 	/**
@@ -167,12 +149,12 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ClockTriangleFunction)object).getName();
+		String label = ((ClockFunction)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ClockTriangleFunction_type") :
-			getString("_UI_ClockTriangleFunction_type") + " " + label;
+			getString("_UI_ClockFunction_type") :
+			getString("_UI_ClockFunction_type") + " " + label;
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -185,13 +167,14 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ClockTriangleFunction.class)) {
-			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__MAX:
-			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__MIN:
+		switch (notification.getFeatureID(ClockFunction.class)) {
+			case AmaltheaPackage.CLOCK_FUNCTION__CURVE_TYPE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__SHIFT:
-			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION__PERIOD:
+			case AmaltheaPackage.CLOCK_FUNCTION__PERIOD:
+			case AmaltheaPackage.CLOCK_FUNCTION__PEAK_TO_PEAK:
+			case AmaltheaPackage.CLOCK_FUNCTION__XOFFSET:
+			case AmaltheaPackage.CLOCK_FUNCTION__YOFFSET:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -211,13 +194,23 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift(),
+				(AmaltheaPackage.eINSTANCE.getClockFunction_Period(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period(),
+				(AmaltheaPackage.eINSTANCE.getClockFunction_PeakToPeak(),
+				 AmaltheaFactory.eINSTANCE.createFrequency()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getClockFunction_XOffset(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getClockFunction_YOffset(),
+				 AmaltheaFactory.eINSTANCE.createFrequency()));
 	}
 
 	/**
@@ -232,8 +225,10 @@ public class ClockTriangleFunctionItemProvider extends ClockItemProvider {
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Shift() ||
-			childFeature == AmaltheaPackage.eINSTANCE.getClockTriangleFunction_Period();
+			childFeature == AmaltheaPackage.eINSTANCE.getClockFunction_Period() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getClockFunction_XOffset() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getClockFunction_PeakToPeak() ||
+			childFeature == AmaltheaPackage.eINSTANCE.getClockFunction_YOffset();
 
 		if (qualify) {
 			return getString

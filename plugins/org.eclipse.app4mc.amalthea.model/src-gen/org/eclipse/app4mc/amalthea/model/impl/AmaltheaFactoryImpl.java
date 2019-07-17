@@ -48,10 +48,9 @@ import org.eclipse.app4mc.amalthea.model.ChannelEventType;
 import org.eclipse.app4mc.amalthea.model.ChannelReceive;
 import org.eclipse.app4mc.amalthea.model.ChannelSend;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ClockFunction;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
+import org.eclipse.app4mc.amalthea.model.ClockStepList;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.Component;
@@ -84,6 +83,7 @@ import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
+import org.eclipse.app4mc.amalthea.model.CurveType;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -604,10 +604,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 			case AmaltheaPackage.EVENT_STIMULUS: return createEventStimulus();
 			case AmaltheaPackage.ARRIVAL_CURVE_STIMULUS: return createArrivalCurveStimulus();
 			case AmaltheaPackage.ARRIVAL_CURVE_ENTRY: return createArrivalCurveEntry();
-			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION: return createClockTriangleFunction();
-			case AmaltheaPackage.CLOCK_SINUS_FUNCTION: return createClockSinusFunction();
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST: return createClockMultiplierList();
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY: return createClockMultiplierListEntry();
+			case AmaltheaPackage.CLOCK_FUNCTION: return createClockFunction();
+			case AmaltheaPackage.CLOCK_STEP_LIST: return createClockStepList();
+			case AmaltheaPackage.CLOCK_STEP: return createClockStep();
 			case AmaltheaPackage.SW_MODEL: return createSWModel();
 			case AmaltheaPackage.CUSTOM_ENTITY: return createCustomEntity();
 			case AmaltheaPackage.PROCESS_CHAIN: return createProcessChain();
@@ -775,6 +774,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createConditionFromString(eDataType, initialValue);
 			case AmaltheaPackage.GROUPING_TYPE:
 				return createGroupingTypeFromString(eDataType, initialValue);
+			case AmaltheaPackage.CURVE_TYPE:
+				return createCurveTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.WAIT_EVENT_TYPE:
 				return createWaitEventTypeFromString(eDataType, initialValue);
 			case AmaltheaPackage.WAITING_BEHAVIOUR:
@@ -916,6 +917,8 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertConditionToString(eDataType, instanceValue);
 			case AmaltheaPackage.GROUPING_TYPE:
 				return convertGroupingTypeToString(eDataType, instanceValue);
+			case AmaltheaPackage.CURVE_TYPE:
+				return convertCurveTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.WAIT_EVENT_TYPE:
 				return convertWaitEventTypeToString(eDataType, instanceValue);
 			case AmaltheaPackage.WAITING_BEHAVIOUR:
@@ -3190,9 +3193,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public ClockTriangleFunction createClockTriangleFunction() {
-		ClockTriangleFunctionImpl clockTriangleFunction = new ClockTriangleFunctionImpl();
-		return clockTriangleFunction;
+	public ClockFunction createClockFunction() {
+		ClockFunctionImpl clockFunction = new ClockFunctionImpl();
+		return clockFunction;
 	}
 
 	/**
@@ -3201,9 +3204,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public ClockSinusFunction createClockSinusFunction() {
-		ClockSinusFunctionImpl clockSinusFunction = new ClockSinusFunctionImpl();
-		return clockSinusFunction;
+	public ClockStepList createClockStepList() {
+		ClockStepListImpl clockStepList = new ClockStepListImpl();
+		return clockStepList;
 	}
 
 	/**
@@ -3212,20 +3215,9 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	@Override
-	public ClockMultiplierList createClockMultiplierList() {
-		ClockMultiplierListImpl clockMultiplierList = new ClockMultiplierListImpl();
-		return clockMultiplierList;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ClockMultiplierListEntry createClockMultiplierListEntry() {
-		ClockMultiplierListEntryImpl clockMultiplierListEntry = new ClockMultiplierListEntryImpl();
-		return clockMultiplierListEntry;
+	public ClockStep createClockStep() {
+		ClockStepImpl clockStep = new ClockStepImpl();
+		return clockStep;
 	}
 
 	/**
@@ -4833,6 +4825,26 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertGroupingTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CurveType createCurveTypeFromString(EDataType eDataType, String initialValue) {
+		CurveType result = CurveType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCurveTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -1825,40 +1825,31 @@ public interface AmaltheaFactory extends EFactory {
 	ArrivalCurveEntry createArrivalCurveEntry();
 
 	/**
-	 * Returns a new object of class '<em>Clock Triangle Function</em>'.
+	 * Returns a new object of class '<em>Clock Function</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Clock Triangle Function</em>'.
+	 * @return a new object of class '<em>Clock Function</em>'.
 	 * @generated
 	 */
-	ClockTriangleFunction createClockTriangleFunction();
+	ClockFunction createClockFunction();
 
 	/**
-	 * Returns a new object of class '<em>Clock Sinus Function</em>'.
+	 * Returns a new object of class '<em>Clock Step List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Clock Sinus Function</em>'.
+	 * @return a new object of class '<em>Clock Step List</em>'.
 	 * @generated
 	 */
-	ClockSinusFunction createClockSinusFunction();
+	ClockStepList createClockStepList();
 
 	/**
-	 * Returns a new object of class '<em>Clock Multiplier List</em>'.
+	 * Returns a new object of class '<em>Clock Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Clock Multiplier List</em>'.
+	 * @return a new object of class '<em>Clock Step</em>'.
 	 * @generated
 	 */
-	ClockMultiplierList createClockMultiplierList();
-
-	/**
-	 * Returns a new object of class '<em>Clock Multiplier List Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Clock Multiplier List Entry</em>'.
-	 * @generated
-	 */
-	ClockMultiplierListEntry createClockMultiplierListEntry();
+	ClockStep createClockStep();
 
 	/**
 	 * Returns a new object of class '<em>SW Model</em>'.

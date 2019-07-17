@@ -55,10 +55,9 @@ import org.eclipse.app4mc.amalthea.model.Classification;
 import org.eclipse.app4mc.amalthea.model.Classifier;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ClockFunction;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
+import org.eclipse.app4mc.amalthea.model.ClockStepList;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentEvent;
@@ -1541,20 +1540,16 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 				return createClockAdapter();
 			}
 			@Override
-			public Adapter caseClockTriangleFunction(ClockTriangleFunction object) {
-				return createClockTriangleFunctionAdapter();
+			public Adapter caseClockFunction(ClockFunction object) {
+				return createClockFunctionAdapter();
 			}
 			@Override
-			public Adapter caseClockSinusFunction(ClockSinusFunction object) {
-				return createClockSinusFunctionAdapter();
+			public Adapter caseClockStepList(ClockStepList object) {
+				return createClockStepListAdapter();
 			}
 			@Override
-			public Adapter caseClockMultiplierList(ClockMultiplierList object) {
-				return createClockMultiplierListAdapter();
-			}
-			@Override
-			public Adapter caseClockMultiplierListEntry(ClockMultiplierListEntry object) {
-				return createClockMultiplierListEntryAdapter();
+			public Adapter caseClockStep(ClockStep object) {
+				return createClockStepAdapter();
 			}
 			@Override
 			public Adapter caseSWModel(SWModel object) {
@@ -5781,58 +5776,44 @@ public class AmaltheaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ClockTriangleFunction <em>Clock Triangle Function</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ClockFunction <em>Clock Function</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ClockTriangleFunction
+	 * @see org.eclipse.app4mc.amalthea.model.ClockFunction
 	 * @generated
 	 */
-	public Adapter createClockTriangleFunctionAdapter() {
+	public Adapter createClockFunctionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ClockSinusFunction <em>Clock Sinus Function</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ClockStepList <em>Clock Step List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ClockSinusFunction
+	 * @see org.eclipse.app4mc.amalthea.model.ClockStepList
 	 * @generated
 	 */
-	public Adapter createClockSinusFunctionAdapter() {
+	public Adapter createClockStepListAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ClockMultiplierList <em>Clock Multiplier List</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ClockStep <em>Clock Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ClockMultiplierList
+	 * @see org.eclipse.app4mc.amalthea.model.ClockStep
 	 * @generated
 	 */
-	public Adapter createClockMultiplierListAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry <em>Clock Multiplier List Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry
-	 * @generated
-	 */
-	public Adapter createClockMultiplierListEntryAdapter() {
+	public Adapter createClockStepAdapter() {
 		return null;
 	}
 

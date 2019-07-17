@@ -63,10 +63,9 @@ import org.eclipse.app4mc.amalthea.model.Classification;
 import org.eclipse.app4mc.amalthea.model.Classifier;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ClockFunction;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
+import org.eclipse.app4mc.amalthea.model.ClockStepList;
 import org.eclipse.app4mc.amalthea.model.CoherencyDirection;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.Component;
@@ -103,6 +102,7 @@ import org.eclipse.app4mc.amalthea.model.CoreClassifier;
 import org.eclipse.app4mc.amalthea.model.CountMetric;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.Counter;
+import org.eclipse.app4mc.amalthea.model.CurveType;
 import org.eclipse.app4mc.amalthea.model.CustomActivation;
 import org.eclipse.app4mc.amalthea.model.CustomEntity;
 import org.eclipse.app4mc.amalthea.model.CustomEvent;
@@ -2390,28 +2390,21 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass clockTriangleFunctionEClass = null;
+	private EClass clockFunctionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass clockSinusFunctionEClass = null;
+	private EClass clockStepListEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass clockMultiplierListEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass clockMultiplierListEntryEClass = null;
+	private EClass clockStepEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -3301,6 +3294,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	private EEnum groupingTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum curveTypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -11846,8 +11846,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getClockTriangleFunction() {
-		return clockTriangleFunctionEClass;
+	public EClass getClockFunction() {
+		return clockFunctionEClass;
 	}
 
 	/**
@@ -11856,8 +11856,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getClockTriangleFunction_Shift() {
-		return (EReference)clockTriangleFunctionEClass.getEStructuralFeatures().get(0);
+	public EAttribute getClockFunction_CurveType() {
+		return (EAttribute)clockFunctionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11866,8 +11866,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getClockTriangleFunction_Period() {
-		return (EReference)clockTriangleFunctionEClass.getEStructuralFeatures().get(1);
+	public EReference getClockFunction_Period() {
+		return (EReference)clockFunctionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11876,8 +11876,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getClockTriangleFunction_Max() {
-		return (EAttribute)clockTriangleFunctionEClass.getEStructuralFeatures().get(2);
+	public EReference getClockFunction_PeakToPeak() {
+		return (EReference)clockFunctionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -11886,8 +11886,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getClockTriangleFunction_Min() {
-		return (EAttribute)clockTriangleFunctionEClass.getEStructuralFeatures().get(3);
+	public EReference getClockFunction_XOffset() {
+		return (EReference)clockFunctionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -11896,8 +11896,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getClockSinusFunction() {
-		return clockSinusFunctionEClass;
+	public EReference getClockFunction_YOffset() {
+		return (EReference)clockFunctionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -11906,8 +11906,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getClockSinusFunction_Shift() {
-		return (EReference)clockSinusFunctionEClass.getEStructuralFeatures().get(0);
+	public EClass getClockStepList() {
+		return clockStepListEClass;
 	}
 
 	/**
@@ -11916,8 +11916,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getClockSinusFunction_Period() {
-		return (EReference)clockSinusFunctionEClass.getEStructuralFeatures().get(1);
+	public EReference getClockStepList_Entries() {
+		return (EReference)clockStepListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11926,8 +11926,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getClockSinusFunction_Amplitude() {
-		return (EAttribute)clockSinusFunctionEClass.getEStructuralFeatures().get(2);
+	public EReference getClockStepList_Period() {
+		return (EReference)clockStepListEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -11936,8 +11936,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getClockSinusFunction_YOffset() {
-		return (EAttribute)clockSinusFunctionEClass.getEStructuralFeatures().get(3);
+	public EClass getClockStep() {
+		return clockStepEClass;
 	}
 
 	/**
@@ -11946,8 +11946,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getClockMultiplierList() {
-		return clockMultiplierListEClass;
+	public EReference getClockStep_Frequency() {
+		return (EReference)clockStepEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -11956,38 +11956,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getClockMultiplierList_Entries() {
-		return (EReference)clockMultiplierListEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getClockMultiplierListEntry() {
-		return clockMultiplierListEntryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getClockMultiplierListEntry_Multiplier() {
-		return (EAttribute)clockMultiplierListEntryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getClockMultiplierListEntry_Time() {
-		return (EReference)clockMultiplierListEntryEClass.getEStructuralFeatures().get(1);
+	public EReference getClockStep_Time() {
+		return (EReference)clockStepEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -15176,6 +15146,16 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EEnum getCurveType() {
+		return curveTypeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getWaitEventType() {
 		return waitEventTypeEEnum;
 	}
@@ -16526,24 +16506,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		clockEClass = createEClass(CLOCK);
 
-		clockTriangleFunctionEClass = createEClass(CLOCK_TRIANGLE_FUNCTION);
-		createEReference(clockTriangleFunctionEClass, CLOCK_TRIANGLE_FUNCTION__SHIFT);
-		createEReference(clockTriangleFunctionEClass, CLOCK_TRIANGLE_FUNCTION__PERIOD);
-		createEAttribute(clockTriangleFunctionEClass, CLOCK_TRIANGLE_FUNCTION__MAX);
-		createEAttribute(clockTriangleFunctionEClass, CLOCK_TRIANGLE_FUNCTION__MIN);
+		clockFunctionEClass = createEClass(CLOCK_FUNCTION);
+		createEAttribute(clockFunctionEClass, CLOCK_FUNCTION__CURVE_TYPE);
+		createEReference(clockFunctionEClass, CLOCK_FUNCTION__PERIOD);
+		createEReference(clockFunctionEClass, CLOCK_FUNCTION__PEAK_TO_PEAK);
+		createEReference(clockFunctionEClass, CLOCK_FUNCTION__XOFFSET);
+		createEReference(clockFunctionEClass, CLOCK_FUNCTION__YOFFSET);
 
-		clockSinusFunctionEClass = createEClass(CLOCK_SINUS_FUNCTION);
-		createEReference(clockSinusFunctionEClass, CLOCK_SINUS_FUNCTION__SHIFT);
-		createEReference(clockSinusFunctionEClass, CLOCK_SINUS_FUNCTION__PERIOD);
-		createEAttribute(clockSinusFunctionEClass, CLOCK_SINUS_FUNCTION__AMPLITUDE);
-		createEAttribute(clockSinusFunctionEClass, CLOCK_SINUS_FUNCTION__YOFFSET);
+		clockStepListEClass = createEClass(CLOCK_STEP_LIST);
+		createEReference(clockStepListEClass, CLOCK_STEP_LIST__ENTRIES);
+		createEReference(clockStepListEClass, CLOCK_STEP_LIST__PERIOD);
 
-		clockMultiplierListEClass = createEClass(CLOCK_MULTIPLIER_LIST);
-		createEReference(clockMultiplierListEClass, CLOCK_MULTIPLIER_LIST__ENTRIES);
-
-		clockMultiplierListEntryEClass = createEClass(CLOCK_MULTIPLIER_LIST_ENTRY);
-		createEAttribute(clockMultiplierListEntryEClass, CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER);
-		createEReference(clockMultiplierListEntryEClass, CLOCK_MULTIPLIER_LIST_ENTRY__TIME);
+		clockStepEClass = createEClass(CLOCK_STEP);
+		createEReference(clockStepEClass, CLOCK_STEP__FREQUENCY);
+		createEReference(clockStepEClass, CLOCK_STEP__TIME);
 
 		swModelEClass = createEClass(SW_MODEL);
 		createEReference(swModelEClass, SW_MODEL__ISRS);
@@ -16949,6 +16925,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		semaphoreTypeEEnum = createEEnum(SEMAPHORE_TYPE);
 		conditionEEnum = createEEnum(CONDITION);
 		groupingTypeEEnum = createEEnum(GROUPING_TYPE);
+		curveTypeEEnum = createEEnum(CURVE_TYPE);
 		waitEventTypeEEnum = createEEnum(WAIT_EVENT_TYPE);
 		waitingBehaviourEEnum = createEEnum(WAITING_BEHAVIOUR);
 		isrCategoryEEnum = createEEnum(ISR_CATEGORY);
@@ -17308,10 +17285,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		arrivalCurveStimulusEClass.getESuperTypes().add(this.getStimulus());
 		arrivalCurveEntryEClass.getESuperTypes().add(this.getBaseObject());
 		clockEClass.getESuperTypes().add(this.getReferableBaseObject());
-		clockTriangleFunctionEClass.getESuperTypes().add(this.getClock());
-		clockSinusFunctionEClass.getESuperTypes().add(this.getClock());
-		clockMultiplierListEClass.getESuperTypes().add(this.getClock());
-		clockMultiplierListEntryEClass.getESuperTypes().add(this.getBaseObject());
+		clockFunctionEClass.getESuperTypes().add(this.getClock());
+		clockStepListEClass.getESuperTypes().add(this.getClock());
+		clockStepEClass.getESuperTypes().add(this.getBaseObject());
 		swModelEClass.getESuperTypes().add(this.getBaseObject());
 		abstractMemoryElementEClass.getESuperTypes().add(this.getReferableBaseObject());
 		abstractMemoryElementEClass.getESuperTypes().add(this.getITaggable());
@@ -18678,24 +18654,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEClass(clockEClass, Clock.class, "Clock", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(clockTriangleFunctionEClass, ClockTriangleFunction.class, "ClockTriangleFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClockTriangleFunction_Shift(), this.getTime(), null, "shift", null, 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getClockTriangleFunction_Period(), this.getTime(), null, "period", null, 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getClockTriangleFunction_Max(), theEcorePackage.getEDouble(), "max", "0.0", 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getClockTriangleFunction_Min(), theEcorePackage.getEDouble(), "min", "0.0", 0, 1, ClockTriangleFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(clockFunctionEClass, ClockFunction.class, "ClockFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClockFunction_CurveType(), this.getCurveType(), "curveType", null, 0, 1, ClockFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockFunction_Period(), this.getTime(), null, "period", null, 1, 1, ClockFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockFunction_PeakToPeak(), this.getFrequency(), null, "peakToPeak", null, 1, 1, ClockFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockFunction_XOffset(), this.getTime(), null, "xOffset", null, 0, 1, ClockFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockFunction_YOffset(), this.getFrequency(), null, "yOffset", null, 0, 1, ClockFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(clockSinusFunctionEClass, ClockSinusFunction.class, "ClockSinusFunction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClockSinusFunction_Shift(), this.getTime(), null, "shift", null, 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getClockSinusFunction_Period(), this.getTime(), null, "period", null, 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getClockSinusFunction_Amplitude(), theEcorePackage.getEDouble(), "amplitude", "0.0", 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getClockSinusFunction_YOffset(), theEcorePackage.getEDouble(), "yOffset", "0.0", 0, 1, ClockSinusFunction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(clockStepListEClass, ClockStepList.class, "ClockStepList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getClockStepList_Entries(), this.getClockStep(), null, "entries", null, 1, -1, ClockStepList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockStepList_Period(), this.getTime(), null, "period", null, 0, 1, ClockStepList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(clockMultiplierListEClass, ClockMultiplierList.class, "ClockMultiplierList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClockMultiplierList_Entries(), this.getClockMultiplierListEntry(), null, "entries", null, 0, -1, ClockMultiplierList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(clockMultiplierListEntryEClass, ClockMultiplierListEntry.class, "ClockMultiplierListEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getClockMultiplierListEntry_Multiplier(), theEcorePackage.getEDouble(), "multiplier", "0.0", 0, 1, ClockMultiplierListEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getClockMultiplierListEntry_Time(), this.getTime(), null, "time", null, 0, 1, ClockMultiplierListEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(clockStepEClass, ClockStep.class, "ClockStep", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getClockStep_Frequency(), this.getFrequency(), null, "frequency", null, 1, 1, ClockStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getClockStep_Time(), this.getTime(), null, "time", null, 1, 1, ClockStep.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(swModelEClass, SWModel.class, "SWModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSWModel_Isrs(), this.getISR(), null, "isrs", null, 0, -1, SWModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -19417,6 +19389,11 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		addEEnumLiteral(groupingTypeEEnum, GroupingType._UNDEFINED_);
 		addEEnumLiteral(groupingTypeEEnum, GroupingType.ALL_OF_THEM);
 		addEEnumLiteral(groupingTypeEEnum, GroupingType.AT_LEAST_ONE_OF_THEM);
+
+		initEEnum(curveTypeEEnum, CurveType.class, "CurveType");
+		addEEnumLiteral(curveTypeEEnum, CurveType._UNDEFINED_);
+		addEEnumLiteral(curveTypeEEnum, CurveType.SINUS);
+		addEEnumLiteral(curveTypeEEnum, CurveType.TRIANGLE);
 
 		initEEnum(waitEventTypeEEnum, WaitEventType.class, "WaitEventType");
 		addEEnumLiteral(waitEventTypeEEnum, WaitEventType._UNDEFINED_);

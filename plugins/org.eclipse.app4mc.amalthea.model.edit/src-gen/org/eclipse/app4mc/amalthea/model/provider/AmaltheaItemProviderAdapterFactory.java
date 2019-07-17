@@ -4730,95 +4730,72 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ClockTriangleFunction} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ClockFunction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClockTriangleFunctionItemProvider clockTriangleFunctionItemProvider;
+	protected ClockFunctionItemProvider clockFunctionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockTriangleFunction}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockFunction}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createClockTriangleFunctionAdapter() {
-		if (clockTriangleFunctionItemProvider == null) {
-			clockTriangleFunctionItemProvider = new ClockTriangleFunctionItemProvider(this);
+	public Adapter createClockFunctionAdapter() {
+		if (clockFunctionItemProvider == null) {
+			clockFunctionItemProvider = new ClockFunctionItemProvider(this);
 		}
 
-		return clockTriangleFunctionItemProvider;
+		return clockFunctionItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ClockSinusFunction} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ClockStepList} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClockSinusFunctionItemProvider clockSinusFunctionItemProvider;
+	protected ClockStepListItemProvider clockStepListItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockSinusFunction}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockStepList}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createClockSinusFunctionAdapter() {
-		if (clockSinusFunctionItemProvider == null) {
-			clockSinusFunctionItemProvider = new ClockSinusFunctionItemProvider(this);
+	public Adapter createClockStepListAdapter() {
+		if (clockStepListItemProvider == null) {
+			clockStepListItemProvider = new ClockStepListItemProvider(this);
 		}
 
-		return clockSinusFunctionItemProvider;
+		return clockStepListItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ClockMultiplierList} instances.
+	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ClockStep} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClockMultiplierListItemProvider clockMultiplierListItemProvider;
+	protected ClockStepItemProvider clockStepItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockMultiplierList}.
+	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockStep}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createClockMultiplierListAdapter() {
-		if (clockMultiplierListItemProvider == null) {
-			clockMultiplierListItemProvider = new ClockMultiplierListItemProvider(this);
+	public Adapter createClockStepAdapter() {
+		if (clockStepItemProvider == null) {
+			clockStepItemProvider = new ClockStepItemProvider(this);
 		}
 
-		return clockMultiplierListItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ClockMultiplierListEntryItemProvider clockMultiplierListEntryItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createClockMultiplierListEntryAdapter() {
-		if (clockMultiplierListEntryItemProvider == null) {
-			clockMultiplierListEntryItemProvider = new ClockMultiplierListEntryItemProvider(this);
-		}
-
-		return clockMultiplierListEntryItemProvider;
+		return clockStepItemProvider;
 	}
 
 	/**
@@ -6738,10 +6715,9 @@ public class AmaltheaItemProviderAdapterFactory extends AmaltheaAdapterFactory i
 		if (eventStimulusItemProvider != null) eventStimulusItemProvider.dispose();
 		if (arrivalCurveStimulusItemProvider != null) arrivalCurveStimulusItemProvider.dispose();
 		if (arrivalCurveEntryItemProvider != null) arrivalCurveEntryItemProvider.dispose();
-		if (clockTriangleFunctionItemProvider != null) clockTriangleFunctionItemProvider.dispose();
-		if (clockSinusFunctionItemProvider != null) clockSinusFunctionItemProvider.dispose();
-		if (clockMultiplierListItemProvider != null) clockMultiplierListItemProvider.dispose();
-		if (clockMultiplierListEntryItemProvider != null) clockMultiplierListEntryItemProvider.dispose();
+		if (clockFunctionItemProvider != null) clockFunctionItemProvider.dispose();
+		if (clockStepListItemProvider != null) clockStepListItemProvider.dispose();
+		if (clockStepItemProvider != null) clockStepItemProvider.dispose();
 		if (swModelItemProvider != null) swModelItemProvider.dispose();
 		if (customEntityItemProvider != null) customEntityItemProvider.dispose();
 		if (processChainItemProvider != null) processChainItemProvider.dispose();

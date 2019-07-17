@@ -55,10 +55,9 @@ import org.eclipse.app4mc.amalthea.model.Classification;
 import org.eclipse.app4mc.amalthea.model.Classifier;
 import org.eclipse.app4mc.amalthea.model.ClearEvent;
 import org.eclipse.app4mc.amalthea.model.Clock;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierList;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
-import org.eclipse.app4mc.amalthea.model.ClockSinusFunction;
-import org.eclipse.app4mc.amalthea.model.ClockTriangleFunction;
+import org.eclipse.app4mc.amalthea.model.ClockFunction;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
+import org.eclipse.app4mc.amalthea.model.ClockStepList;
 import org.eclipse.app4mc.amalthea.model.CommonElements;
 import org.eclipse.app4mc.amalthea.model.Component;
 import org.eclipse.app4mc.amalthea.model.ComponentEvent;
@@ -2968,44 +2967,33 @@ public class AmaltheaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CLOCK_TRIANGLE_FUNCTION: {
-				ClockTriangleFunction clockTriangleFunction = (ClockTriangleFunction)theEObject;
-				T result = caseClockTriangleFunction(clockTriangleFunction);
-				if (result == null) result = caseClock(clockTriangleFunction);
-				if (result == null) result = caseReferableBaseObject(clockTriangleFunction);
-				if (result == null) result = caseIAnnotatable(clockTriangleFunction);
-				if (result == null) result = caseIReferable(clockTriangleFunction);
-				if (result == null) result = caseINamed(clockTriangleFunction);
+			case AmaltheaPackage.CLOCK_FUNCTION: {
+				ClockFunction clockFunction = (ClockFunction)theEObject;
+				T result = caseClockFunction(clockFunction);
+				if (result == null) result = caseClock(clockFunction);
+				if (result == null) result = caseReferableBaseObject(clockFunction);
+				if (result == null) result = caseIAnnotatable(clockFunction);
+				if (result == null) result = caseIReferable(clockFunction);
+				if (result == null) result = caseINamed(clockFunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CLOCK_SINUS_FUNCTION: {
-				ClockSinusFunction clockSinusFunction = (ClockSinusFunction)theEObject;
-				T result = caseClockSinusFunction(clockSinusFunction);
-				if (result == null) result = caseClock(clockSinusFunction);
-				if (result == null) result = caseReferableBaseObject(clockSinusFunction);
-				if (result == null) result = caseIAnnotatable(clockSinusFunction);
-				if (result == null) result = caseIReferable(clockSinusFunction);
-				if (result == null) result = caseINamed(clockSinusFunction);
+			case AmaltheaPackage.CLOCK_STEP_LIST: {
+				ClockStepList clockStepList = (ClockStepList)theEObject;
+				T result = caseClockStepList(clockStepList);
+				if (result == null) result = caseClock(clockStepList);
+				if (result == null) result = caseReferableBaseObject(clockStepList);
+				if (result == null) result = caseIAnnotatable(clockStepList);
+				if (result == null) result = caseIReferable(clockStepList);
+				if (result == null) result = caseINamed(clockStepList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST: {
-				ClockMultiplierList clockMultiplierList = (ClockMultiplierList)theEObject;
-				T result = caseClockMultiplierList(clockMultiplierList);
-				if (result == null) result = caseClock(clockMultiplierList);
-				if (result == null) result = caseReferableBaseObject(clockMultiplierList);
-				if (result == null) result = caseIAnnotatable(clockMultiplierList);
-				if (result == null) result = caseIReferable(clockMultiplierList);
-				if (result == null) result = caseINamed(clockMultiplierList);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY: {
-				ClockMultiplierListEntry clockMultiplierListEntry = (ClockMultiplierListEntry)theEObject;
-				T result = caseClockMultiplierListEntry(clockMultiplierListEntry);
-				if (result == null) result = caseBaseObject(clockMultiplierListEntry);
-				if (result == null) result = caseIAnnotatable(clockMultiplierListEntry);
+			case AmaltheaPackage.CLOCK_STEP: {
+				ClockStep clockStep = (ClockStep)theEObject;
+				T result = caseClockStep(clockStep);
+				if (result == null) result = caseBaseObject(clockStep);
+				if (result == null) result = caseIAnnotatable(clockStep);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -7983,62 +7971,47 @@ public class AmaltheaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Clock Triangle Function</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Clock Function</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Clock Triangle Function</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Clock Function</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseClockTriangleFunction(ClockTriangleFunction object) {
+	public T caseClockFunction(ClockFunction object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Clock Sinus Function</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Clock Step List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Clock Sinus Function</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Clock Step List</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseClockSinusFunction(ClockSinusFunction object) {
+	public T caseClockStepList(ClockStepList object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Clock Multiplier List</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Clock Step</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Clock Multiplier List</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Clock Step</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseClockMultiplierList(ClockMultiplierList object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Clock Multiplier List Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Clock Multiplier List Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseClockMultiplierListEntry(ClockMultiplierListEntry object) {
+	public T caseClockStep(ClockStep object) {
 		return null;
 	}
 

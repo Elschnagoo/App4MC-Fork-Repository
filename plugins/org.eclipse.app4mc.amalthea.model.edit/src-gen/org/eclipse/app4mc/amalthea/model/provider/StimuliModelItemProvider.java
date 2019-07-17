@@ -210,17 +210,12 @@ public class StimuliModelItemProvider extends BaseObjectItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Clocks(),
-				 AmaltheaFactory.eINSTANCE.createClockTriangleFunction()));
+				 AmaltheaFactory.eINSTANCE.createClockFunction()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AmaltheaPackage.eINSTANCE.getStimuliModel_Clocks(),
-				 AmaltheaFactory.eINSTANCE.createClockSinusFunction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getStimuliModel_Clocks(),
-				 AmaltheaFactory.eINSTANCE.createClockMultiplierList()));
+				 AmaltheaFactory.eINSTANCE.createClockStepList()));
 	}
 
 }

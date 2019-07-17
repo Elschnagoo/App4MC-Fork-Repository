@@ -15,7 +15,8 @@
 package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
+import org.eclipse.app4mc.amalthea.model.Frequency;
 import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -28,38 +29,28 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Clock Multiplier List Entry</b></em>'.
+ * An implementation of the model object '<em><b>Clock Step</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ClockMultiplierListEntryImpl#getMultiplier <em>Multiplier</em>}</li>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ClockMultiplierListEntryImpl#getTime <em>Time</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ClockStepImpl#getFrequency <em>Frequency</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ClockStepImpl#getTime <em>Time</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements ClockMultiplierListEntry {
+public class ClockStepImpl extends BaseObjectImpl implements ClockStep {
 	/**
-	 * The default value of the '{@link #getMultiplier() <em>Multiplier</em>}' attribute.
+	 * The cached value of the '{@link #getFrequency() <em>Frequency</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMultiplier()
+	 * @see #getFrequency()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double MULTIPLIER_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getMultiplier() <em>Multiplier</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMultiplier()
-	 * @generated
-	 * @ordered
-	 */
-	protected double multiplier = MULTIPLIER_EDEFAULT;
+	protected Frequency frequency;
 
 	/**
 	 * The cached value of the '{@link #getTime() <em>Time</em>}' containment reference.
@@ -76,7 +67,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClockMultiplierListEntryImpl() {
+	protected ClockStepImpl() {
 		super();
 	}
 
@@ -87,7 +78,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry();
+		return AmaltheaPackage.eINSTANCE.getClockStep();
 	}
 
 	/**
@@ -96,8 +87,23 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * @generated
 	 */
 	@Override
-	public double getMultiplier() {
-		return multiplier;
+	public Frequency getFrequency() {
+		return frequency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFrequency(Frequency newFrequency, NotificationChain msgs) {
+		Frequency oldFrequency = frequency;
+		frequency = newFrequency;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_STEP__FREQUENCY, oldFrequency, newFrequency);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -106,11 +112,18 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	 * @generated
 	 */
 	@Override
-	public void setMultiplier(double newMultiplier) {
-		double oldMultiplier = multiplier;
-		multiplier = newMultiplier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER, oldMultiplier, multiplier));
+	public void setFrequency(Frequency newFrequency) {
+		if (newFrequency != frequency) {
+			NotificationChain msgs = null;
+			if (frequency != null)
+				msgs = ((InternalEObject)frequency).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_STEP__FREQUENCY, null, msgs);
+			if (newFrequency != null)
+				msgs = ((InternalEObject)newFrequency).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_STEP__FREQUENCY, null, msgs);
+			msgs = basicSetFrequency(newFrequency, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_STEP__FREQUENCY, newFrequency, newFrequency));
 	}
 
 	/**
@@ -132,7 +145,7 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 		Time oldTime = time;
 		time = newTime;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME, oldTime, newTime);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_STEP__TIME, oldTime, newTime);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -148,14 +161,14 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 		if (newTime != time) {
 			NotificationChain msgs = null;
 			if (time != null)
-				msgs = ((InternalEObject)time).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME, null, msgs);
+				msgs = ((InternalEObject)time).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_STEP__TIME, null, msgs);
 			if (newTime != null)
-				msgs = ((InternalEObject)newTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME, null, msgs);
+				msgs = ((InternalEObject)newTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.CLOCK_STEP__TIME, null, msgs);
 			msgs = basicSetTime(newTime, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME, newTime, newTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.CLOCK_STEP__TIME, newTime, newTime));
 	}
 
 	/**
@@ -166,7 +179,9 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME:
+			case AmaltheaPackage.CLOCK_STEP__FREQUENCY:
+				return basicSetFrequency(null, msgs);
+			case AmaltheaPackage.CLOCK_STEP__TIME:
 				return basicSetTime(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -180,9 +195,9 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER:
-				return getMultiplier();
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME:
+			case AmaltheaPackage.CLOCK_STEP__FREQUENCY:
+				return getFrequency();
+			case AmaltheaPackage.CLOCK_STEP__TIME:
 				return getTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -196,10 +211,10 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER:
-				setMultiplier((Double)newValue);
+			case AmaltheaPackage.CLOCK_STEP__FREQUENCY:
+				setFrequency((Frequency)newValue);
 				return;
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME:
+			case AmaltheaPackage.CLOCK_STEP__TIME:
 				setTime((Time)newValue);
 				return;
 		}
@@ -214,10 +229,10 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER:
-				setMultiplier(MULTIPLIER_EDEFAULT);
+			case AmaltheaPackage.CLOCK_STEP__FREQUENCY:
+				setFrequency((Frequency)null);
 				return;
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME:
+			case AmaltheaPackage.CLOCK_STEP__TIME:
 				setTime((Time)null);
 				return;
 		}
@@ -232,28 +247,12 @@ public class ClockMultiplierListEntryImpl extends BaseObjectImpl implements Cloc
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER:
-				return multiplier != MULTIPLIER_EDEFAULT;
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME:
+			case AmaltheaPackage.CLOCK_STEP__FREQUENCY:
+				return frequency != null;
+			case AmaltheaPackage.CLOCK_STEP__TIME:
 				return time != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (multiplier: ");
-		result.append(multiplier);
-		result.append(')');
-		return result.toString();
-	}
-
-} //ClockMultiplierListEntryImpl
+} //ClockStepImpl

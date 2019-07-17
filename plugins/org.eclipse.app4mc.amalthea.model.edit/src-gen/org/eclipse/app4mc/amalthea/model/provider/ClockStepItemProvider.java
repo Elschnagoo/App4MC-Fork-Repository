@@ -1,15 +1,15 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ *  Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  *  This program and the accompanying materials are made
  *  available under the terms of the Eclipse Public License 2.0
  *  which is available at https://www.eclipse.org/legal/epl-2.0/
  * 
  *  SPDX-License-Identifier: EPL-2.0
- *
+ * 
  *     Generated using Eclipse EMF
- *
+ * 
  * *******************************************************************************
  */
 package org.eclipse.app4mc.amalthea.model.provider;
@@ -17,34 +17,33 @@ package org.eclipse.app4mc.amalthea.model.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockMultiplierListEntry} object.
+ * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.ClockStep} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider {
+public class ClockStepItemProvider extends BaseObjectItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClockMultiplierListEntryItemProvider(AdapterFactory adapterFactory) {
+	public ClockStepItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,31 +58,8 @@ public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addMultiplierPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Multiplier feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMultiplierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ClockMultiplierListEntry_multiplier_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ClockMultiplierListEntry_multiplier_feature", "_UI_ClockMultiplierListEntry_type"),
-				 AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Multiplier(),
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -98,7 +74,8 @@ public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Time());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockStep_Frequency());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getClockStep_Time());
 		}
 		return childrenFeatures;
 	}
@@ -117,14 +94,14 @@ public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider
 	}
 
 	/**
-	 * This returns ClockMultiplierListEntry.gif.
+	 * This returns ClockStep.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClockMultiplierListEntry"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClockStep"));
 	}
 
 	/**
@@ -145,10 +122,9 @@ public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		ClockMultiplierListEntry clockMultiplierListEntry = (ClockMultiplierListEntry)object;
-		return getString("_UI_ClockMultiplierListEntry_type") + " " + clockMultiplierListEntry.getMultiplier();
+		return getString("_UI_ClockStep_type");
 	}
-	
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -161,11 +137,9 @@ public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ClockMultiplierListEntry.class)) {
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__MULTIPLIER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case AmaltheaPackage.CLOCK_MULTIPLIER_LIST_ENTRY__TIME:
+		switch (notification.getFeatureID(ClockStep.class)) {
+			case AmaltheaPackage.CLOCK_STEP__FREQUENCY:
+			case AmaltheaPackage.CLOCK_STEP__TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -185,7 +159,12 @@ public class ClockMultiplierListEntryItemProvider extends BaseObjectItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getClockMultiplierListEntry_Time(),
+				(AmaltheaPackage.eINSTANCE.getClockStep_Frequency(),
+				 AmaltheaFactory.eINSTANCE.createFrequency()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AmaltheaPackage.eINSTANCE.getClockStep_Time(),
 				 AmaltheaFactory.eINSTANCE.createTime()));
 	}
 

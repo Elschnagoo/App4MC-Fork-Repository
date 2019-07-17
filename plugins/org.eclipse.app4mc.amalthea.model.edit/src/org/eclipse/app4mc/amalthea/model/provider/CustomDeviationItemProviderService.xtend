@@ -133,7 +133,7 @@ class CustomDeviationItemProviderService {
 			ContinuousValueHistogram : "ContinuousValue Histogram"
 			ContinuousValueBoundaries : "ContinuousValue Boundaries " + getIntervalText(dev)
 			ContinuousValueStatistics : "ContinuousValue Statistics"
-			ContinuousValueUniformDistribution : "ContinuousValue Uniform Distribution" + getIntervalText(dev)
+			ContinuousValueUniformDistribution : "ContinuousValue Uniform Distribution " + getIntervalText(dev)
 			ContinuousValueWeibullEstimatorsDistribution : "ContinuousValue Weibull Distribution"
 			default : "<undefined deviation>"
 		}
@@ -147,7 +147,7 @@ class CustomDeviationItemProviderService {
 			DiscreteValueHistogram : "DiscreteValue Histogram"
 			DiscreteValueBoundaries : "DiscreteValue Boundaries " + getIntervalText(dev)
 			DiscreteValueStatistics : "DiscreteValue Statistics"
-			DiscreteValueUniformDistribution : "DiscreteValue Uniform Distribution" + getIntervalText(dev)
+			DiscreteValueUniformDistribution : "DiscreteValue Uniform Distribution " + getIntervalText(dev)
 			DiscreteValueWeibullEstimatorsDistribution : "DiscreteValue Weibull Distribution"
 			default : "<undefined deviation>"
 		}
@@ -161,7 +161,7 @@ class CustomDeviationItemProviderService {
 			TimeHistogram : "Time Histogram"
 			TimeBoundaries : "Time Boundaries " + getIntervalText(dev)
 			TimeStatistics : "Time Statistics"
-			TimeUniformDistribution : "Time Uniform Distribution" + getIntervalText(dev)
+			TimeUniformDistribution : "Time Uniform Distribution " + getIntervalText(dev)
 			TimeWeibullEstimatorsDistribution : "Time Weibull Distribution"
 			default : "<undefined deviation>"
 		}

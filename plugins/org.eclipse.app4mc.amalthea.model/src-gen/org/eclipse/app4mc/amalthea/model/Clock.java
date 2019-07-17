@@ -21,9 +21,7 @@ package org.eclipse.app4mc.amalthea.model;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * This is the time base for one or more periodic stimuli
- * A clock defines the time of its stimuli.
- * The faster the clock, the faster stimuli
+ * Within a Scenario a Clock defines the predefined curve progression in a simulation
  * <!-- end-model-doc -->
  *
  *

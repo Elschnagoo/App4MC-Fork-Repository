@@ -221,7 +221,7 @@ public class CustomDeviationItemProviderService {
       if (dev instanceof ContinuousValueUniformDistribution) {
         _matched=true;
         String _intervalText = CustomDeviationItemProviderService.getIntervalText(((ContinuousValueInterval)dev));
-        _switchResult = ("ContinuousValue Uniform Distribution" + _intervalText);
+        _switchResult = ("ContinuousValue Uniform Distribution " + _intervalText);
       }
     }
     if (!_matched) {
@@ -282,7 +282,7 @@ public class CustomDeviationItemProviderService {
       if (dev instanceof DiscreteValueUniformDistribution) {
         _matched=true;
         String _intervalText = CustomDeviationItemProviderService.getIntervalText(((DiscreteValueInterval)dev));
-        _switchResult = ("DiscreteValue Uniform Distribution" + _intervalText);
+        _switchResult = ("DiscreteValue Uniform Distribution " + _intervalText);
       }
     }
     if (!_matched) {
@@ -343,7 +343,7 @@ public class CustomDeviationItemProviderService {
       if (dev instanceof TimeUniformDistribution) {
         _matched=true;
         String _intervalText = CustomDeviationItemProviderService.getIntervalText(((TimeInterval)dev));
-        _switchResult = ("Time Uniform Distribution" + _intervalText);
+        _switchResult = ("Time Uniform Distribution " + _intervalText);
       }
     }
     if (!_matched) {
