@@ -40,7 +40,7 @@ class SoftwareUtilsTest {
 	}
 	
 	@Test
-	def void testCollectRunnableItems() {
+	def void testCollectCallGraphItems() {
 		val list1 = SoftwareUtil.collectCallGraphItems(run1.callGraph);
 		assertEquals(
 			"collectRunnableItems: 6 items expected", 6, list1.size);

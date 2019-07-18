@@ -51,7 +51,7 @@ public class SoftwareUtilsTest {
   }
   
   @Test
-  public void testCollectRunnableItems() {
+  public void testCollectCallGraphItems() {
     final EList<CallGraphItem> list1 = SoftwareUtil.collectCallGraphItems(this.run1.getCallGraph());
     Assert.assertEquals(
       "collectRunnableItems: 6 items expected", 6, list1.size());

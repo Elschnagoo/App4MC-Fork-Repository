@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,6 +14,8 @@
  */
 
 package org.eclipse.app4mc.amalthea.model.test;
+
+import static org.junit.Assert.assertTrue;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,7 +31,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 import org.apache.log4j.WriterAppender;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EReference;
@@ -102,12 +103,11 @@ public final class MetamodelStructureTest {
 							print("Container reference", eClass, eRef, refClass, Level.INFO);
 							continue;
 						}
-						
+
 						if (eRef.isTransient()) {
 							if (eRef.isDerived()) {
 								print("Derived reference", eClass, eRef, refClass, Level.INFO);
-							}
-							else {
+							} else {
 								print("Transient reference", eClass, eRef, refClass, Level.INFO);
 							}
 							continue;
@@ -129,9 +129,9 @@ public final class MetamodelStructureTest {
 			}
 		}
 
-
-		Assert.isTrue(!illegalReferencesFound,
-				"Illegal references exists in the AMALTHEA metamodel. For detailed info of illegal references -> check the console log ");
+		assertTrue(
+				"Illegal references exists in the AMALTHEA metamodel. For detailed info of illegal references -> check the console log ",
+				!illegalReferencesFound);
 
 		this.logger.info("++++ Metamodel check finished at " + dateFormat.format(new Date()));
 
@@ -150,8 +150,7 @@ public final class MetamodelStructureTest {
 
 		if (Level.INFO == level) {
 			this.logger.info(sb.toString());
-		}
-		else if (Level.ERROR == level) {
+		} else if (Level.ERROR == level) {
 			this.logger.error(sb.toString());
 		}
 	}

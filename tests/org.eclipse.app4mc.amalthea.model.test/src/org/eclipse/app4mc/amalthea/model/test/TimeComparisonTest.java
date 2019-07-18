@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,13 +15,14 @@
 
 package org.eclipse.app4mc.amalthea.model.test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.math.BigInteger;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
-import org.eclipse.core.runtime.Assert;
 import org.junit.Test;
 
 public class TimeComparisonTest {
@@ -34,7 +35,7 @@ public class TimeComparisonTest {
 
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Millisecond");
+		assertTrue("Failed to compare Time objects having TimeUnit Second and Millisecond", compareTo == 0);
 	}
 
 	@Test
@@ -45,7 +46,7 @@ public class TimeComparisonTest {
 
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Microsecond");
+		assertTrue("Failed to compare Time objects having TimeUnit Second and Microsecond", compareTo == 0);
 	}
 
 	@Test
@@ -56,7 +57,7 @@ public class TimeComparisonTest {
 
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Nanosecond");
+		assertTrue("Failed to compare Time objects having TimeUnit Second and Nanosecond", compareTo == 0);
 	}
 
 	@Test
@@ -67,17 +68,15 @@ public class TimeComparisonTest {
 
 		int compareTo = t1.compareTo(t2);
 
-		Assert.isTrue(compareTo == 0, "Failed to compare Time objects having TimeUnit Second and Picosecond");
+		assertTrue("Failed to compare Time objects having TimeUnit Second and Picosecond", compareTo == 0);
 	}
-
-
 
 	@Test
 	public void case5() {
 
 		Time t1 = createTime("1", "s");
 
-		Assert.isTrue(t1.compareTo(t1) == 0, "Failed to compare Time objects which are same");
+		assertTrue("Failed to compare Time objects which are same", t1.compareTo(t1) == 0);
 	}
 
 	@Test
@@ -93,8 +92,8 @@ public class TimeComparisonTest {
 			e = e1;
 		}
 
-		Assert.isTrue(e.getMessage().contains("Invalid Time object"),
-				"Failed to compare Time with undefined unit -> Exception is not thrown..");
+		assertTrue("Failed to compare Time with undefined unit -> Exception is not thrown..",
+				e.getMessage().contains("Invalid Time object"));
 	}
 
 	@Test
@@ -111,7 +110,7 @@ public class TimeComparisonTest {
 			isExceptionThrown = true;
 		}
 
-		Assert.isTrue(isExceptionThrown, "Failed to compare Time object and null -> RuntimeException is not thrown..");
+		assertTrue("Failed to compare Time object and null -> RuntimeException is not thrown..", isExceptionThrown);
 	}
 
 	@Test
@@ -128,9 +127,9 @@ public class TimeComparisonTest {
 			isExceptionThrown = true;
 		}
 
-		Assert.isTrue(isExceptionThrown, "Failed to compare null and Time object - > IllegalArgumentException is not thrown..");
+		assertTrue("Failed to compare null and Time object - > IllegalArgumentException is not thrown..",
+				isExceptionThrown);
 	}
-
 
 	private Time createTime(String value1, String unit1) {
 
