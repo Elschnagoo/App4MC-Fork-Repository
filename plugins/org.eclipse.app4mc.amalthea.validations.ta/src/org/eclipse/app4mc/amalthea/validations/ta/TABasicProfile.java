@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.validations.ta;
 
-import org.eclipse.app4mc.amalthea.validations.ta.basic.TABasicContinuousValueBetaDistribution;
 import org.eclipse.app4mc.amalthea.validations.ta.basic.TABasicContinuousValueGaussDistribution;
 import org.eclipse.app4mc.amalthea.validations.ta.basic.TABasicContinuousValueInterval;
 import org.eclipse.app4mc.amalthea.validations.ta.basic.TABasicContinuousValueStatistics;
@@ -39,7 +38,6 @@ import org.eclipse.app4mc.validation.core.Severity;
 @ValidationGroup(
 	severity = Severity.ERROR,
 	validations =  {
-		TABasicContinuousValueBetaDistribution.class,
 		TABasicContinuousValueGaussDistribution.class,
 		TABasicContinuousValueInterval.class,
 		TABasicContinuousValueStatistics.class,

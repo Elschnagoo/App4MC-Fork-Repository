@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EValidator.SubstitutionLabelProvider
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices
 
 /** 
  * Checks EMF constraints and generated AMALTHEA invariants
@@ -64,13 +65,14 @@ class AmEmfIntrinsic implements IValidation {
 
 					val problematicObject = emfDiagnostic.getData().findFirst[e|e instanceof EObject] as EObject
 					val problematicFeature = emfDiagnostic.getData().findFirst[e|e instanceof EStructuralFeature] as EStructuralFeature
-
+					val namedContainer = if (problematicObject !== null) AmaltheaServices.getContainerOfType(problematicObject, INamed) else null
 					val ValidationDiagnostic result = new ValidationDiagnostic(
-						emfDiagnostic.getMessage(),
+						emfDiagnostic.getMessage()
+							+ (if (namedContainer !== null && namedContainer !== problematicObject) ", in " + objectInfo(namedContainer) else "")
+							+ emfDiagnostic.children.map[message].join(" (", ", ", ")", [trim]),
 						if(problematicObject !== null) problematicObject else eObject,
 						problematicFeature
 					)
-
 					result.setSeverityLevel(
 						switch (emfDiagnostic.getSeverity()) {
 							case Diagnostic.INFO :		Severity.INFO

@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution;
@@ -66,19 +65,6 @@ public class TABasicModelValidatorTests {
   private SoftwareBuilder b3 = new SoftwareBuilder();
   
   private final ValidationExecutor executor = new ValidationExecutor(TimingArchitectsProfile.class);
-  
-  public ContinuousValueBetaDistribution createCVBetaD(final double alpha, final double beta, final double lower, final double upper) {
-    ContinuousValueBetaDistribution _xblockexpression = null;
-    {
-      final ContinuousValueBetaDistribution ret = AmaltheaFactory.eINSTANCE.createContinuousValueBetaDistribution();
-      ret.setAlpha(alpha);
-      ret.setBeta(beta);
-      ret.setLowerBound(Double.valueOf(lower));
-      ret.setUpperBound(Double.valueOf(upper));
-      _xblockexpression = ret;
-    }
-    return _xblockexpression;
-  }
   
   public ContinuousValueGaussDistribution createCVGaussD(final double mean, final double sd, final double lower, final double upper) {
     ContinuousValueGaussDistribution _xblockexpression = null;
@@ -260,51 +246,6 @@ public class TABasicModelValidatorTests {
       _xblockexpression = this.executor.getResults();
     }
     return _xblockexpression;
-  }
-  
-  @Test
-  public void test_TABasicContinuousValueBetaDistribution() {
-    final Procedure1<Amalthea> _function = (Amalthea it) -> {
-      final Procedure1<StimuliModel> _function_1 = (StimuliModel it_1) -> {
-        final Procedure1<VariableRateStimulus> _function_2 = (VariableRateStimulus it_2) -> {
-          it_2.setName("vrs_ok");
-          it_2.setOccurrencesPerStep(this.createCVBetaD(0.5d, 0.5d, 20d, 40d));
-        };
-        this.b2.variableRateStimulus(it_1, _function_2);
-        final Procedure1<VariableRateStimulus> _function_3 = (VariableRateStimulus it_2) -> {
-          it_2.setName("vrs_alphaZero");
-          it_2.setOccurrencesPerStep(this.createCVBetaD(0d, 0.5d, 20d, 40d));
-        };
-        this.b2.variableRateStimulus(it_1, _function_3);
-        final Procedure1<VariableRateStimulus> _function_4 = (VariableRateStimulus it_2) -> {
-          it_2.setName("vrs_betaZero");
-          it_2.setOccurrencesPerStep(this.createCVBetaD(0.5d, 0d, 20d, 40d));
-        };
-        this.b2.variableRateStimulus(it_1, _function_4);
-        final Procedure1<VariableRateStimulus> _function_5 = (VariableRateStimulus it_2) -> {
-          it_2.setName("vrs_alphabetaZero");
-          it_2.setOccurrencesPerStep(this.createCVBetaD(0d, 0d, 20d, 40d));
-        };
-        this.b2.variableRateStimulus(it_1, _function_5);
-      };
-      this.b1.stimuliModel(it, _function_1);
-    };
-    final Amalthea model = this.b1.amalthea(_function);
-    final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
-      Severity _severityLevel = it.getSeverityLevel();
-      return Objects.equal(_severityLevel, Severity.ERROR);
-    };
-    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
-      return it.getMessage();
-    };
-    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphaZero\")"));
-    Assert.assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphabetaZero\")"));
-    Assert.assertFalse(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_ok\")"));
-    Assert.assertTrue(result.contains("ContinuousValueBetaDistribution: beta must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_betaZero\")"));
-    Assert.assertTrue(result.contains("ContinuousValueBetaDistribution: beta must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphabetaZero\")"));
-    Assert.assertFalse(result.contains("ContinuousValueBetaDistribution: beta must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_ok\")"));
   }
   
   @Test

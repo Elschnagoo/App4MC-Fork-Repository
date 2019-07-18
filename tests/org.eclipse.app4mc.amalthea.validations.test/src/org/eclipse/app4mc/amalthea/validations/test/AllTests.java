@@ -24,7 +24,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	BasicValidationTests.class,
 	ConstraintsModelTests.class,
 	HardwareModelTests.class,
-	MappingModelTests.class
+	MappingModelTests.class,
+	EMFIntrinsicTests.class
 	})
 
 public class AllTests {

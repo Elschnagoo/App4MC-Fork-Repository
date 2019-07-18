@@ -14,6 +14,9 @@
  */
 package org.eclipse.app4mc.amalthea.validations.ta;
 
+import org.eclipse.app4mc.amalthea.validations.AmaltheaProfile;
+import org.eclipse.app4mc.amalthea.validations.EMFProfile;
+import org.eclipse.app4mc.amalthea.validations.EMFScopeProfile;
 import org.eclipse.app4mc.amalthea.validations.ta.misc.TAMiscSemaphore;
 import org.eclipse.app4mc.validation.annotation.Profile;
 import org.eclipse.app4mc.validation.annotation.ProfileGroup;
@@ -30,6 +33,9 @@ import org.eclipse.app4mc.validation.core.Severity;
 )
 @ProfileGroup(
 	profiles = {
+		AmaltheaProfile.class,
+		EMFProfile.class,
+		EMFScopeProfile.class,
 		TABasicProfile.class,
 		TAConstraintsProfile.class,
 		TAHardwareProfile.class,

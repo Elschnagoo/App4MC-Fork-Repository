@@ -17,7 +17,6 @@ package org.eclipse.app4mc.amalthea.validation.core;
 
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
@@ -62,36 +61,13 @@ public abstract class AmaltheaValidation implements IValidation {
 			return "\"" + prefix + "/" + object.getName() + "\"";			
 		}
 	}
-
-	protected String typeInfo(final EObject object) {
-		if (object == null) return "?";
-
-		final String type = object.eClass().getName();
-		final String typeWithBlanks = StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(type), ' ');
-		return typeWithBlanks;
-	}
 	
-	protected String objectInfo(final EObject object) {
+	public String objectInfo(final EObject object) {
 		if (object == null) return "?";
 		
 		String s1 = typeInfo(object);
 		String s2 = (object instanceof INamed) ? " " + name((INamed) object) : "";
 		return s1 + s2;
-	}
-
-	protected String containerInfo(final EObject object) {
-		if (object == null) return "";
-		
-		return " ( in " + objectInfo(object.eContainer()) + " )";
-	}
-
-	protected Object attributeValue(final EObject object, final String attribName) {
-		if (object == null || attribName == null) return null;
-		
-		EStructuralFeature feature = object.eClass().getEStructuralFeature(attribName);
-		if (feature == null) return null;
-
-		return object.eGet(feature);
 	}
 
 	protected void addIssue(final List<ValidationDiagnostic> results, final EObject object, final EStructuralFeature feature, final String message) {

@@ -11,5 +11,6 @@ Export-Package: org.eclipse.app4mc.validation.annotation,
 Require-Bundle: com.google.guava,
  org.eclipse.equinox.common,
  org.eclipse.core.runtime,
- org.eclipse.emf.ecore
+ org.eclipse.emf.ecore,
+ org.apache.commons.lang
 Automatic-Module-Name: org.eclipse.app4mc.validation.core

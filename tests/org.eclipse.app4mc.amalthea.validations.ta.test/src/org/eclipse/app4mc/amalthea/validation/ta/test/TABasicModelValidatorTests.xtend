@@ -14,53 +14,43 @@
  */
 package org.eclipse.app4mc.amalthea.validation.ta.test
 
-import org.junit.Test
+import java.util.List
+import java.util.stream.Collectors
+import org.eclipse.app4mc.amalthea.model.Amalthea
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
+import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution
+import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics
+import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution
+import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics
+import org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution
+import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution
+import org.eclipse.app4mc.amalthea.model.Time
+import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution
+import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution
+import org.eclipse.app4mc.amalthea.model.TimeStatistics
+import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution
+import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
-import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
-import org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution
-import org.eclipse.app4mc.validation.util.ValidationExecutor
-import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile
-import java.util.List
-import org.eclipse.app4mc.validation.core.ValidationDiagnostic
-import org.eclipse.app4mc.amalthea.model.Amalthea
-import static org.junit.Assert.assertTrue
-import java.util.stream.Collectors
-import static org.junit.Assert.assertFalse
 import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder
-import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution
-import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution
-import org.eclipse.app4mc.amalthea.model.Time
+import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile
+import org.eclipse.app4mc.validation.core.Severity
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic
+import org.eclipse.app4mc.validation.util.ValidationExecutor
+import org.junit.Test
 
 import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
-import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution
-import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution
-import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteValueUniformDistribution
-import org.eclipse.app4mc.amalthea.model.TimeUniformDistribution
-import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics
-import org.eclipse.app4mc.amalthea.model.DiscreteValueStatistics
-import org.eclipse.app4mc.amalthea.model.TimeStatistics
-import org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution
-import org.eclipse.app4mc.amalthea.model.DiscreteValueWeibullEstimatorsDistribution
-import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution
-import org.eclipse.app4mc.validation.core.Severity
+import static org.junit.Assert.assertFalse
+import static org.junit.Assert.assertTrue
 
 class TABasicModelValidatorTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
 	extension StimuliBuilder b2 = new StimuliBuilder
 	extension SoftwareBuilder b3 = new SoftwareBuilder
 	val executor = new ValidationExecutor(TimingArchitectsProfile)
-	
-	def ContinuousValueBetaDistribution createCVBetaD(double alpha, double beta, double lower, double upper) {
-		val ret = AmaltheaFactory.eINSTANCE.createContinuousValueBetaDistribution
-		ret.alpha = alpha
-		ret.beta = beta
-		ret.lowerBound = lower
-		ret.upperBound = upper
-		ret
-	}
 	
 	def ContinuousValueGaussDistribution createCVGaussD(double mean, double sd, double lower, double upper) {
 		val ret = AmaltheaFactory.eINSTANCE.createContinuousValueGaussDistribution
@@ -182,38 +172,6 @@ class TABasicModelValidatorTests {
 	def List<ValidationDiagnostic> validate(Amalthea model) {
 		executor.validate(model)
 		executor.results
-	}
-	
-	@Test
-	def void test_TABasicContinuousValueBetaDistribution() {
-		val model = amalthea [
-			stimuliModel[
-				variableRateStimulus[
-					name = "vrs_ok"
-					occurrencesPerStep = createCVBetaD(0.5d, 0.5d, 20d, 40d)
-				]
-				variableRateStimulus[
-					name = "vrs_alphaZero"
-					occurrencesPerStep = createCVBetaD(0d, 0.5d, 20d, 40d)
-				]
-				variableRateStimulus[
-					name = "vrs_betaZero"
-					occurrencesPerStep = createCVBetaD(0.5d, 0d, 20d, 40d)
-				]
-				variableRateStimulus[
-					name = "vrs_alphabetaZero"
-					occurrencesPerStep = createCVBetaD(0d, 0d, 20d, 40d)
-				]
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphaZero\")"))
-		assertTrue(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphabetaZero\")"))
-		assertFalse(result.contains("ContinuousValueBetaDistribution: alpha must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_ok\")"))
-		assertTrue(result.contains("ContinuousValueBetaDistribution: beta must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_betaZero\")"))
-		assertTrue(result.contains("ContinuousValueBetaDistribution: beta must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_alphabetaZero\")"))
-		assertFalse(result.contains("ContinuousValueBetaDistribution: beta must be greater than 0.0d: (0.0 <= 0.0d, in Variable Rate Stimulus \"vrs_ok\")"))
 	}
 	
 	@Test
