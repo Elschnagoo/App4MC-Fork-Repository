@@ -58,18 +58,18 @@ public class AmaltheaValidations {
 		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), getAverage(obj), obj.getUpperBound());
 	}
 
-	// ******** Truncated distribution bounds + Mean (if available) ********
+	// ******** Truncated distribution bounds (mean is not limited) ********
 	
 	public static boolean validateInvariants(TruncatedTimeDistribution obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), getAverage(obj), obj.getUpperBound());
+		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), null, obj.getUpperBound());
 	}
 	
 	public static boolean validateInvariants(TruncatedDiscreteValueDistribution obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return checkMinAvgMax(obj, diagnostics, toDouble(obj.getLowerBound()), getAverage(obj), toDouble(obj.getUpperBound()));
+		return checkMinAvgMax(obj, diagnostics, toDouble(obj.getLowerBound()), null, toDouble(obj.getUpperBound()));
 	}
 	
 	public static boolean validateInvariants(TruncatedContinuousValueDistribution obj, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), getAverage(obj), obj.getUpperBound());
+		return checkMinAvgMax(obj, diagnostics, obj.getLowerBound(), null, obj.getUpperBound());
 	}
 
 	// private methods to get the given average / mean value
@@ -85,14 +85,6 @@ public class AmaltheaValidations {
 		return avg;
 	}
 
-	private static Time getAverage(TruncatedTimeDistribution obj) {
-		Time avg = null;
-		if (obj instanceof TimeGaussDistribution) {
-			avg = ((TimeGaussDistribution) obj).getMean();
-		}
-		return avg;
-	}
-
 	private static Double getAverage(DiscreteValueInterval obj) {
 		Double avg = null;
 		if (obj instanceof DiscreteValueStatistics) {
@@ -104,14 +96,6 @@ public class AmaltheaValidations {
 		return avg;
 	}
 
-	private static Double getAverage(TruncatedDiscreteValueDistribution obj) {
-		Double avg = null;
-		if (obj instanceof DiscreteValueGaussDistribution) {
-			avg = ((DiscreteValueGaussDistribution) obj).getMean();
-		}
-		return avg;
-	}
-
 	private static Double getAverage(ContinuousValueInterval obj) {
 		Double avg = null;
 		if (obj instanceof ContinuousValueStatistics) {
@@ -119,14 +103,6 @@ public class AmaltheaValidations {
 		}
 		if (obj instanceof ContinuousValueWeibullEstimatorsDistribution) {
 			avg = ((ContinuousValueWeibullEstimatorsDistribution) obj).getAverage();
-		}
-		return avg;
-	}
-	
-	private static Double getAverage(TruncatedContinuousValueDistribution obj) {
-		Double avg = null;
-		if (obj instanceof ContinuousValueGaussDistribution) {
-			avg = ((ContinuousValueGaussDistribution) obj).getMean();
 		}
 		return avg;
 	}

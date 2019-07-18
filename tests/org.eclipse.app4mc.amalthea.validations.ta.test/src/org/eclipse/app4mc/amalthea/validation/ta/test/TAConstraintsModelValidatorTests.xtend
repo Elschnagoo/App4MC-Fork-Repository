@@ -31,6 +31,7 @@ import org.eclipse.app4mc.amalthea.model.builder.MappingBuilder
 import org.eclipse.app4mc.amalthea.model.builder.OperatingSystemBuilder
 import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile
+import org.eclipse.app4mc.validation.core.Severity
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic
 import org.eclipse.app4mc.validation.util.ValidationExecutor
 import org.junit.Test
@@ -38,7 +39,6 @@ import org.junit.Test
 import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
 import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
-import org.eclipse.app4mc.validation.core.Severity
 
 class TAConstraintsModelValidatorTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder

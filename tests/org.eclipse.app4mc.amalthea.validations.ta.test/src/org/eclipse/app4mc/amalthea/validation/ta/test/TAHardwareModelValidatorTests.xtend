@@ -12,15 +12,19 @@
  *     Vector Informatik GmbH - initial API and implementation
  ********************************************************************************
  */
+
 package org.eclipse.app4mc.amalthea.validation.ta.test
 
 import java.util.List
 import java.util.stream.Collectors
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit
+import org.eclipse.app4mc.amalthea.model.HwFeature
+import org.eclipse.app4mc.amalthea.model.PuType
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.HardwareBuilder
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile
+import org.eclipse.app4mc.validation.core.Severity
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic
 import org.eclipse.app4mc.validation.util.ValidationExecutor
 import org.junit.Test
@@ -28,9 +32,6 @@ import org.junit.Test
 import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
 import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
-import org.eclipse.app4mc.amalthea.model.PuType
-import org.eclipse.app4mc.amalthea.model.HwFeature
-import org.eclipse.app4mc.validation.core.Severity
 
 class TAHardwareModelValidatorTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder

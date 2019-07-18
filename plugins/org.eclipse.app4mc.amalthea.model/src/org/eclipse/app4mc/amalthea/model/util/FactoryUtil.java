@@ -35,7 +35,11 @@ import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimeBoundaries;
+import org.eclipse.app4mc.amalthea.model.TimeConstant;
+import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.TimeUnit;
+import org.eclipse.app4mc.amalthea.model.TimeWeibullEstimatorsDistribution;
 import org.eclipse.app4mc.amalthea.model.TypeDefinition;
 import org.eclipse.app4mc.amalthea.model.TypeRef;
 import org.eclipse.app4mc.amalthea.model.Voltage;
@@ -271,6 +275,42 @@ public class FactoryUtil {
 
 	public static DiscreteValueWeibullEstimatorsDistribution createWeibullDistribution(long min, double avg, long max, double promille) {
 		DiscreteValueWeibullEstimatorsDistribution result = AmaltheaFactory.eINSTANCE.createDiscreteValueWeibullEstimatorsDistribution();
+		result.setLowerBound(min);
+		result.setAverage(avg);
+		result.setUpperBound(max);
+		result.setPRemainPromille(promille);
+		return result;
+	}
+	
+	public static TimeConstant createTimeConstant(Time value) {
+		TimeConstant result = AmaltheaFactory.eINSTANCE.createTimeConstant();
+		result.setValue(value);;
+		return result;
+	}
+	
+	public static TimeBoundaries createTimeBoundaries(Time min, Time max) {
+		TimeBoundaries boundaries = AmaltheaFactory.eINSTANCE.createTimeBoundaries();
+		boundaries.setLowerBound(min);
+		boundaries.setUpperBound(max);
+		return boundaries;
+	}
+	
+	public static TimeGaussDistribution createTimeGaussDistribution(Time mean, Time sd) {
+		TimeGaussDistribution result = AmaltheaFactory.eINSTANCE.createTimeGaussDistribution();
+		result.setMean(mean);
+		result.setSd(sd);
+		return result;
+	}
+	
+	public static TimeGaussDistribution createTimeGaussDistribution(Time mean, Time sd, Time min, Time max) {
+		TimeGaussDistribution result = createTimeGaussDistribution(mean, sd);
+		result.setLowerBound(min);
+		result.setUpperBound(max);
+		return result;
+	}
+	
+	public static TimeWeibullEstimatorsDistribution createWeibullDistribution(Time min, Time avg, Time max, double promille) {
+		TimeWeibullEstimatorsDistribution result = AmaltheaFactory.eINSTANCE.createTimeWeibullEstimatorsDistribution();
 		result.setLowerBound(min);
 		result.setAverage(avg);
 		result.setUpperBound(max);

@@ -1,56 +1,83 @@
-/** 
- * Copyright (c) 2019 Robert Bosch GmbH and others.
+/**
+ * *******************************************************************************
+ * Copyright (c) 2018-2019 Robert Bosch GmbH and others.
+ * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * 
  * SPDX-License-Identifier: EPL-2.0
+ * 
  * Contributors:
- * Robert Bosch GmbH - initial API and implementation
+ *     Robert Bosch GmbH - initial API and implementation
+ * *******************************************************************************
  */
- 
+
 package org.eclipse.app4mc.amalthea.validations.test
 
-import org.junit.Before
+import java.util.List
+import org.eclipse.app4mc.amalthea.model.Amalthea
+import org.eclipse.app4mc.amalthea.model.SporadicActivation
+import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
+import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
+import org.eclipse.app4mc.amalthea.validations.EMFProfile
+import org.eclipse.app4mc.validation.core.Severity
+import org.eclipse.app4mc.validation.core.ValidationDiagnostic
+import org.eclipse.app4mc.validation.util.ValidationExecutor
 import org.junit.Test
 
-class EMFIntrinsicTests {
-//	Amalthea model
-//	Runnable run1
-//	Runnable run2
-//	Task task1
+import static org.eclipse.app4mc.amalthea.model.TimeUnit.*
+import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
+import static org.junit.Assert.*
 
-	@Before
-	def void initalizeModel() {
-//		model = null //ConstraintsModels.createModel1()
-//		run1 = AmaltheaIndex.getElements(model, "Run1", Runnable).head
-//		run2 = AmaltheaIndex.getElements(model, "Run2", Runnable).head
-//		task1 = AmaltheaIndex.getElements(model, "Task1", Task).head
+class EMFIntrinsicTests {
+
+	extension AmaltheaBuilder b1 = new AmaltheaBuilder
+	extension SoftwareBuilder b2 = new SoftwareBuilder
+	val executor = new ValidationExecutor(EMFProfile)
+
+	def List<ValidationDiagnostic> validate(Amalthea model) {
+		executor.validate(model)
+		executor.results
 	}
-	
+
 	@Test
-	def void testRunnableDeadline() {
-//		val deadline1 = ConstraintsUtil.getDeadline(run1);
-//		assertEquals(
-//			"testRunnableDeadline: null expected", null, deadline1);
-//		
-//		val deadline2 = ConstraintsUtil.getDeadline(run2, model.constraintsModel);
-//		assertEquals(
-//			"testRunnableDeadline: 80 ns expected", 80, deadline2.value.intValue);
-//		assertEquals(
-//			"testRunnableDeadline: 80 ns expected", TimeUnit::NS, deadline2.unit);
+	def void testTimeInterval_Bounds() {
+		val model = amalthea [
+			softwareModel[
+				activation_Sporadic[
+					name = "a1"
+					occurrence = createTimeBoundaries(createTime(5, NS), createTime(1, NS))
+				]
+				activation_Sporadic[
+					name = "a2"
+					occurrence = createTimeBoundaries(createTime(1, MS), createTime(5, NS))
+				]
+			]
+		]
+		val validationResult = validate(model)
+		val errors = validationResult.filter[severityLevel == Severity.ERROR].toMap([it.targetObject.eContainer],[it.message])
+		
+		assertTrue(errors.get(_find(model, SporadicActivation, "a1")) == "TimeBoundaries: lower bound > upper bound")
+		assertTrue(errors.get(_find(model, SporadicActivation, "a2")) == "TimeBoundaries: lower bound > upper bound")
 	}
-	
+
 	@Test
-	def void testProcessDeadline() {
-//		val deadline3 = ConstraintsUtil.getDeadline(task1);
-//		assertEquals(
-//			"testProcessDeadline: 20 ms expected", 20, deadline3.value.intValue);
-//		assertEquals(
-//			"testProcessDeadline: 20 ms expected", TimeUnit::MS, deadline3.unit);
-//
-//		val deadline4 = ConstraintsUtil.getDeadline(task1, model.constraintsModel);
-//		assertEquals(
-//			"testProcessDeadline: same result expected", deadline3, deadline4);
+	def void testTimeTruncatedDistribution_Bounds() {
+		val model = amalthea [
+			softwareModel[
+				activation_Sporadic[
+					name = "a1"
+					occurrence = createTimeGaussDistribution(createTime(1, US), createTime(5, NS), createTime(9, US), createTime(7, US))
+				]
+				
+			]
+		]
+		val validationResult = validate(model)
+		val errors = validationResult.filter[severityLevel == Severity.ERROR].toMap([it.targetObject.eContainer],[it.message])
+		
+		assertTrue(errors.get(_find(model, SporadicActivation, "a1")) == "TimeGaussDistribution: lower bound > upper bound")
+
 	}
 
 }
