@@ -50,6 +50,7 @@ class BasicModelValidatorTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
 	extension StimuliBuilder b2 = new StimuliBuilder
 	extension SoftwareBuilder b3 = new SoftwareBuilder
+	
 	val executor = new ValidationExecutor(EMFProfile)
 
 	def ContinuousValueGaussDistribution createCVGaussD(double mean, double sd, double lower, double upper) {
