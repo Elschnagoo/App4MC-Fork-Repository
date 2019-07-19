@@ -123,12 +123,7 @@ public class ValidateAction extends Action {
 						
 						if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {
 							// debugging
-							System.out.println("Result:");
-							for (ValidationDiagnostic result : executor.getResults()) {
-								System.out.println("    " + result.getValidationID() + " -- " + result.getSeverityLevel());
-								System.out.println("    " + result.getMessage());
-								System.out.println("    --------------------------------");
-							}
+							executor.dumpResultMap(null);
 							
 							// convert results
 							BasicDiagnostic diagnostics = new BasicDiagnostic();

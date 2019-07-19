@@ -18,7 +18,9 @@ package org.eclipse.app4mc.amalthea.validations.emf
 import java.util.HashMap
 import java.util.List
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices
 import org.eclipse.app4mc.amalthea.model.INamed
+import org.eclipse.app4mc.amalthea.model.IReferable
 import org.eclipse.app4mc.amalthea.model.util.AmaltheaValidator
 import org.eclipse.app4mc.validation.annotation.Validation
 import org.eclipse.app4mc.validation.core.IValidation
@@ -32,7 +34,6 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EValidator.SubstitutionLabelProvider
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.app4mc.amalthea.model.AmaltheaServices
 
 /** 
  * Checks EMF constraints and generated AMALTHEA invariants
@@ -65,14 +66,15 @@ class AmEmfIntrinsic implements IValidation {
 
 					val problematicObject = emfDiagnostic.getData().findFirst[e|e instanceof EObject] as EObject
 					val problematicFeature = emfDiagnostic.getData().findFirst[e|e instanceof EStructuralFeature] as EStructuralFeature
-					val namedContainer = if (problematicObject !== null) AmaltheaServices.getContainerOfType(problematicObject, INamed) else null
+
 					val ValidationDiagnostic result = new ValidationDiagnostic(
 						emfDiagnostic.getMessage()
-							+ (if (namedContainer !== null && namedContainer !== problematicObject) ", in " + objectInfo(namedContainer) else "")
-							+ emfDiagnostic.children.map[message].join(" (", ", ", ")", [trim]),
+							+ containerInfo2(problematicObject)
+							+ emfDiagnostic.children.map[message].join(" => ", ", ", "", [trim]),
 						if(problematicObject !== null) problematicObject else eObject,
 						problematicFeature
 					)
+					
 					result.setSeverityLevel(
 						switch (emfDiagnostic.getSeverity()) {
 							case Diagnostic.INFO :		Severity.INFO
@@ -89,6 +91,15 @@ class AmEmfIntrinsic implements IValidation {
 		}
 	}
 
+
+	def private containerInfo2(EObject object) {
+		if (object === null) return ""
+		
+		val container = AmaltheaServices.getContainerOfType(object, IReferable)
+		if (container === null || container.name.nullOrEmpty) return ""
+		
+		return " ( in " + objectInfo(container) + " )"
+	}
 
 	def private static createContextMap() {
 		val map = new HashMap<Object, Object>

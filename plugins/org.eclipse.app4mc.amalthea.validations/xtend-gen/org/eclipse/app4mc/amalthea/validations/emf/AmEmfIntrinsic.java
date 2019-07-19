@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.INamed;
+import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.amalthea.model.util.AmaltheaValidator;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.IValidation;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * Checks EMF constraints and generated AMALTHEA invariants
@@ -76,37 +78,24 @@ public class AmEmfIntrinsic implements IValidation {
             };
             Object _findFirst_1 = IterableExtensions.findFirst(emfDiagnostic.getData(), _function_1);
             final EStructuralFeature problematicFeature = ((EStructuralFeature) _findFirst_1);
-            INamed _xifexpression = null;
-            if ((problematicObject != null)) {
-              _xifexpression = AmaltheaServices.<INamed>getContainerOfType(problematicObject, INamed.class);
-            } else {
-              _xifexpression = null;
-            }
-            final INamed namedContainer = _xifexpression;
             String _message = emfDiagnostic.getMessage();
-            String _xifexpression_1 = null;
-            if (((namedContainer != null) && (namedContainer != problematicObject))) {
-              String _objectInfo = this.objectInfo(namedContainer);
-              _xifexpression_1 = (", in " + _objectInfo);
-            } else {
-              _xifexpression_1 = "";
-            }
-            String _plus = (_message + _xifexpression_1);
+            String _containerInfo2 = this.containerInfo2(problematicObject);
+            String _plus = (_message + _containerInfo2);
             final Function1<Diagnostic, String> _function_2 = (Diagnostic it) -> {
               return it.getMessage();
             };
             final Function1<String, CharSequence> _function_3 = (String it) -> {
               return it.trim();
             };
-            String _join = IterableExtensions.<String>join(ListExtensions.<Diagnostic, String>map(emfDiagnostic.getChildren(), _function_2), " (", ", ", ")", _function_3);
+            String _join = IterableExtensions.<String>join(ListExtensions.<Diagnostic, String>map(emfDiagnostic.getChildren(), _function_2), " => ", ", ", "", _function_3);
             String _plus_1 = (_plus + _join);
-            EObject _xifexpression_2 = null;
+            EObject _xifexpression = null;
             if ((problematicObject != null)) {
-              _xifexpression_2 = problematicObject;
+              _xifexpression = problematicObject;
             } else {
-              _xifexpression_2 = eObject;
+              _xifexpression = eObject;
             }
-            final ValidationDiagnostic result = new ValidationDiagnostic(_plus_1, _xifexpression_2, problematicFeature);
+            final ValidationDiagnostic result = new ValidationDiagnostic(_plus_1, _xifexpression, problematicFeature);
             Severity _switchResult = null;
             int _severity = emfDiagnostic.getSeverity();
             switch (_severity) {
@@ -129,6 +118,19 @@ public class AmEmfIntrinsic implements IValidation {
         }
       }
     }
+  }
+  
+  private String containerInfo2(final EObject object) {
+    if ((object == null)) {
+      return "";
+    }
+    final IReferable container = AmaltheaServices.<IReferable>getContainerOfType(object, IReferable.class);
+    if (((container == null) || StringExtensions.isNullOrEmpty(container.getName()))) {
+      return "";
+    }
+    String _objectInfo = this.objectInfo(container);
+    String _plus = (" ( in " + _objectInfo);
+    return (_plus + " )");
   }
   
   private static HashMap<Object, Object> createContextMap() {

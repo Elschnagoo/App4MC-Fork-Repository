@@ -18,10 +18,11 @@ package org.eclipse.app4mc.validation.util;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -116,22 +117,21 @@ public class ValidationExecutor {
 	}
 
 	public IStatus validateParallel(final EObject model, final IProgressMonitor monitor) {
-		
+
 		final JobGroup jobGroup = new JobGroup("Validate model", Runtime.getRuntime().availableProcessors(), 1);
-		
+
 		// TODO
-		
+
 		TreeIterator<EObject> iterator = EcoreUtil.getAllContents(model, false);
-		
-		//Streams.stream(iterator).parallel(). ...
-		
-		//StreamSupport.stream(iterable.spliterator(), false) ...
-		
+
+		// Streams.stream(iterator).parallel(). ...
+
+		// StreamSupport.stream(iterable.spliterator(), false) ...
+
 		return null;
-		
+
 	}
-	
-	
+
 	public List<ValidationDiagnostic> getResults() {
 		return this.results;
 	}
@@ -147,10 +147,10 @@ public class ValidationExecutor {
 
 	private void validateObject(final EObject object) {
 		if (object == null) return;
-		
+
 		Set<CachedValidator> validations = validationMap.get(object.eClass());
 		if (validations == null) return;
-		
+
 		for (CachedValidator validator : validations) {
 			List<ValidationDiagnostic> resultList = new ArrayList<>();
 			try {
@@ -180,17 +180,37 @@ public class ValidationExecutor {
 		this.results.add(exception);
 	}
 
-	public void dumpValidationMap(PrintStream stream) {
-		PrintStream out = (stream == null) ? System.out : stream;
-		
+	public void dumpValidationMap(PrintStream streamOrNull) {
+		PrintStream out = (streamOrNull == null) ? System.out : streamOrNull;
+
 		List<EClassifier> classifiers = validationMap.keySet().stream()
-				.sorted(Comparator.comparing(EClassifier::getName))
-				.collect(Collectors.toList());
-		
+				.sorted(Comparator.comparing(EClassifier::getName)).collect(Collectors.toList());
+
 		for (EClassifier cl : classifiers) {
 			out.println("Validations for " + cl.getName() + ":");
 			for (CachedValidator vConf : validationMap.get(cl)) {
 				out.println("    " + vConf.getSeverity() + " - " + vConf.getValidationID());
+			}
+		}
+	}
+
+	public void dumpResultMap(PrintStream streamOrNull) {
+		PrintStream out = (streamOrNull == null) ? System.out : streamOrNull;
+
+		Map<EObject, List<ValidationDiagnostic>> map = results.stream()
+				.collect(Collectors.groupingBy(ValidationDiagnostic::getTargetObject));
+
+		out.println("Results (per object):");
+		out.println("--------------------------------");
+
+		for (Entry<EObject, List<ValidationDiagnostic>> entry : map.entrySet()) {
+			out.println("EObject: " + entry.getKey());
+			out.println("--------------------------------");
+
+			for (ValidationDiagnostic result : entry.getValue()) {
+				out.println("  " + result.getValidationID() + " -- " + result.getSeverityLevel());
+				out.println("  " + result.getMessage());
+				out.println("--------------------------------");
 			}
 		}
 	}
