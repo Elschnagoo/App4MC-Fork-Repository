@@ -41,14 +41,14 @@ public enum CurveType implements Enumerator {
 	_UNDEFINED_(0, "_undefined_", "_undefined_"),
 
 	/**
-	 * The '<em><b>Sinus</b></em>' literal object.
+	 * The '<em><b>Sine</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SINUS_VALUE
+	 * @see #SINE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SINUS(0, "sinus", "sinus"),
+	SINE(0, "sine", "sine"),
 
 	/**
 	 * The '<em><b>Triangle</b></em>' literal object.
@@ -72,15 +72,15 @@ public enum CurveType implements Enumerator {
 	public static final int _UNDEFINED__VALUE = 0;
 
 	/**
-	 * The '<em><b>Sinus</b></em>' literal value.
+	 * The '<em><b>Sine</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SINUS
-	 * @model name="sinus"
+	 * @see #SINE
+	 * @model name="sine"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SINUS_VALUE = 0;
+	public static final int SINE_VALUE = 0;
 
 	/**
 	 * The '<em><b>Triangle</b></em>' literal value.
@@ -102,7 +102,7 @@ public enum CurveType implements Enumerator {
 	private static final CurveType[] VALUES_ARRAY =
 		new CurveType[] {
 			_UNDEFINED_,
-			SINUS,
+			SINE,
 			TRIANGLE,
 		};
 

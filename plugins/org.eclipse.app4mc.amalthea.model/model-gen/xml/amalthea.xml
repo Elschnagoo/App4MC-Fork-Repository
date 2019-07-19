@@ -2996,7 +2996,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CurveType">
     <eLiterals name="_undefined_"/>
-    <eLiterals name="sinus"/>
+    <eLiterals name="sine"/>
     <eLiterals name="triangle"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClockStepList" eSuperTypes="#//Clock">

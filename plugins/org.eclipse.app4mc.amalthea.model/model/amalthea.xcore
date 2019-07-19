@@ -3066,7 +3066,7 @@ class ClockFunction extends Clock
 enum CurveType
 {
 	_undefined_ // Display: "<curve type>"
-	sinus
+	sine
 	triangle
 }
 

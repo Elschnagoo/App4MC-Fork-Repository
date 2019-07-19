@@ -19392,7 +19392,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEEnum(curveTypeEEnum, CurveType.class, "CurveType");
 		addEEnumLiteral(curveTypeEEnum, CurveType._UNDEFINED_);
-		addEEnumLiteral(curveTypeEEnum, CurveType.SINUS);
+		addEEnumLiteral(curveTypeEEnum, CurveType.SINE);
 		addEEnumLiteral(curveTypeEEnum, CurveType.TRIANGLE);
 
 		initEEnum(waitEventTypeEEnum, WaitEventType.class, "WaitEventType");
