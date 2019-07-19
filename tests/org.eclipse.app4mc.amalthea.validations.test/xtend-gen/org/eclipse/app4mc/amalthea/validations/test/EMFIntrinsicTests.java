@@ -108,10 +108,10 @@ public class EMFIntrinsicTests {
     };
     final Map<EObject, String> errors = IterableExtensions.<ValidationDiagnostic, EObject, String>toMap(IterableExtensions.<ValidationDiagnostic>filter(validationResult, _function_1), _function_2, _function_3);
     String _get = errors.get(this.b1.<SporadicActivation>_find(model, SporadicActivation.class, "a1"));
-    boolean _equals = Objects.equal(_get, "TimeBoundaries: lower bound > upper bound, in Sporadic Activation \"a1\"");
+    boolean _equals = Objects.equal(_get, "TimeBoundaries: lower bound > upper bound ( in Sporadic Activation \"a1\" )");
     Assert.assertTrue(_equals);
     String _get_1 = errors.get(this.b1.<SporadicActivation>_find(model, SporadicActivation.class, "a2"));
-    boolean _equals_1 = Objects.equal(_get_1, "TimeBoundaries: lower bound > upper bound, in Sporadic Activation \"a2\"");
+    boolean _equals_1 = Objects.equal(_get_1, "TimeBoundaries: lower bound > upper bound ( in Sporadic Activation \"a2\" )");
     Assert.assertTrue(_equals_1);
   }
   
@@ -141,7 +141,7 @@ public class EMFIntrinsicTests {
     };
     final Map<EObject, String> errors = IterableExtensions.<ValidationDiagnostic, EObject, String>toMap(IterableExtensions.<ValidationDiagnostic>filter(validationResult, _function_1), _function_2, _function_3);
     String _get = errors.get(this.b1.<SporadicActivation>_find(model, SporadicActivation.class, "a1"));
-    boolean _equals = Objects.equal(_get, "TimeGaussDistribution: lower bound > upper bound, in Sporadic Activation \"a1\"");
+    boolean _equals = Objects.equal(_get, "TimeGaussDistribution: lower bound > upper bound ( in Sporadic Activation \"a1\" )");
     Assert.assertTrue(_equals);
   }
   
@@ -182,11 +182,11 @@ public class EMFIntrinsicTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The feature \'alpha\' of \'ContinuousValueBetaDistribution\' contains a bad value, in Variable Rate Stimulus \"vrs_alphaZero\" (The value \'0.0\' must be greater than \'0.0\')"));
-    Assert.assertTrue(result.contains("The feature \'alpha\' of \'ContinuousValueBetaDistribution\' contains a bad value, in Variable Rate Stimulus \"vrs_alphabetaZero\" (The value \'0.0\' must be greater than \'0.0\')"));
-    Assert.assertFalse(result.contains("The feature \'alpha\' of \'ContinuousValueBetaDistribution\' contains a bad value, in Variable Rate Stimulus \"vrs_ok\" (The value \'0.5\' must be greater than \'0.0\')"));
-    Assert.assertTrue(result.contains("The feature \'beta\' of \'ContinuousValueBetaDistribution\' contains a bad value, in Variable Rate Stimulus \"vrs_betaZero\" (The value \'0.0\' must be greater than \'0.0\')"));
-    Assert.assertTrue(result.contains("The feature \'beta\' of \'ContinuousValueBetaDistribution\' contains a bad value, in Variable Rate Stimulus \"vrs_alphabetaZero\" (The value \'0.0\' must be greater than \'0.0\')"));
-    Assert.assertFalse(result.contains("The feature \'beta\' of \'ContinuousValueBetaDistribution\' contains a bad value, in Variable Rate Stimulus \"vrs_ok\" (The value \'0.5\' must be greater than \'0.0\')"));
+    Assert.assertTrue(result.contains("The feature \'alpha\' of \'ContinuousValueBetaDistribution\' contains a bad value ( in Variable Rate Stimulus \"vrs_alphaZero\" ) => The value \'0.0\' must be greater than \'0.0\'"));
+    Assert.assertTrue(result.contains("The feature \'alpha\' of \'ContinuousValueBetaDistribution\' contains a bad value ( in Variable Rate Stimulus \"vrs_alphabetaZero\" ) => The value \'0.0\' must be greater than \'0.0\'"));
+    Assert.assertFalse(result.contains("The feature \'alpha\' of \'ContinuousValueBetaDistribution\' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value \'0.5\' must be greater than \'0.0\'"));
+    Assert.assertTrue(result.contains("The feature \'beta\' of \'ContinuousValueBetaDistribution\' contains a bad value ( in Variable Rate Stimulus \"vrs_betaZero\" ) => The value \'0.0\' must be greater than \'0.0\'"));
+    Assert.assertTrue(result.contains("The feature \'beta\' of \'ContinuousValueBetaDistribution\' contains a bad value ( in Variable Rate Stimulus \"vrs_alphabetaZero\" ) => The value \'0.0\' must be greater than \'0.0\'"));
+    Assert.assertFalse(result.contains("The feature \'beta\' of \'ContinuousValueBetaDistribution\' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value \'0.5\' must be greater than \'0.0\'"));
   }
 }
