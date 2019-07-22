@@ -124,15 +124,9 @@ In contrast to the generic specification via statistical values the scenario def
 
 h3. Clocks
 
-The _clock_ is a time base which describes the progress of time for one or more variable rate stimuli in relation to global time.
-If two equal stimuli have a different time base, the time of task activation can be different. There are different kind of clock functions, the clock sinus function, the clock triangle function and the clock multiplier list. The clock multiplier list is a list of timestamp-multiplier value pairs. Is a specified timestamp arrived, the clock changes to the corresponding multiplier value.
+The _Clock_ ...
 
 !(scale)../pictures/model_stimuli_clocks.png!
-
-
-*(validation-rule) _ClockTriangleFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) _ClockSinusFunction_: The _Time_ object in the role of _period_ must not contain a negative value!
-*(validation-rule) _ClockMultiplierListEntry_: The _Time_ object in the role of _time_ must not contain a negative value!
 
 
 h3. Mode Value List and Execution Condition
