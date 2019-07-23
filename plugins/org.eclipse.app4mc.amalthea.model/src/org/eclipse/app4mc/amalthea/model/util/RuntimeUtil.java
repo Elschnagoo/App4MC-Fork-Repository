@@ -179,10 +179,13 @@ public class RuntimeUtil {
 		switch (executionCase) {
 		case  BCET:
 			ticks = deviation.getLowerBound().doubleValue();
+			break;
 		case  ACET:
 			ticks = deviation.getAverage();
+			break;
 		case  WCET:
 			ticks = deviation.getUpperBound().doubleValue();
+			break;
 		}
 		Time result = getExecutionTimeForCycles(ticks, processingUnit.getFrequencyDomain().getDefaultValue());
 		return result;
@@ -227,10 +230,13 @@ public class RuntimeUtil {
 		switch (executionCase) {
 		case  BCET:
 			ticks = deviation.getLowerBound().doubleValue();
+			break;
 		case  ACET:
 			ticks = deviation.getAverage();
+			break;
 		case  WCET:
 			ticks = deviation.getUpperBound().doubleValue();
+			break;
 		}
 		double scaleFactor = 0;
 		for (HwFeature feature : processingUnit.getDefinition().getFeatures()) {
