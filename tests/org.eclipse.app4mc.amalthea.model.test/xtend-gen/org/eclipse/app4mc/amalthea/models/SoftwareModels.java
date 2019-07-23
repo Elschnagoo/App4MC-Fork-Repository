@@ -42,7 +42,9 @@ public class SoftwareModels {
   
   public static void main(final String[] args) {
     final Amalthea model1 = new SoftwareModels().model1();
-    AmaltheaWriter.writeToFileNamed(model1, "test-data/SoftwareUtilTestModel-gen.amxmi");
+    AmaltheaWriter.writeToFileNamed(model1, "test-data/SoftwareUtilTestModel1-gen.amxmi");
+    final Amalthea model2 = new SoftwareModels().model2();
+    AmaltheaWriter.writeToFileNamed(model2, "test-data/SoftwareUtilTestModel2-gen.amxmi");
   }
   
   public static Amalthea createModel1() {

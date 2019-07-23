@@ -964,6 +964,7 @@ type PositiveDouble wraps double
 @ExtendedMetaData(minInclusive="0")
 type NonNegativeDouble wraps double
 
+
 // ===============================================================================
 // ===============================================================================
 // 
@@ -1303,8 +1304,8 @@ class TagGroup extends RunnableGroup, ProcessGroup, BaseObject
  */
 abstract class AbstractEventChain extends BaseObject, INamed
 {
-	refers Event stimulus
-	refers Event response
+	refers Event[1] stimulus
+	refers Event[1] response
 	contains EventChainItem[] segments
 	contains EventChainItem[] strands
 }

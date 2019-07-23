@@ -53,7 +53,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 @SuppressWarnings("all")
-public class BasicModelValidatorTests {
+public class BasicDistributionTests {
   @Extension
   private AmaltheaBuilder b1 = new AmaltheaBuilder();
   

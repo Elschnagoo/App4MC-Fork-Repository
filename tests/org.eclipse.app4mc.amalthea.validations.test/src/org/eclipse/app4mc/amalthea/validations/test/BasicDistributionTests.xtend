@@ -46,7 +46,7 @@ import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
 import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
 
-class BasicModelValidatorTests {
+class BasicDistributionTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
 	extension StimuliBuilder b2 = new StimuliBuilder
 	extension SoftwareBuilder b3 = new SoftwareBuilder

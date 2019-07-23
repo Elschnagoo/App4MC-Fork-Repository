@@ -15,13 +15,13 @@
 
 package org.eclipse.app4mc.amalthea.validations.misc;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.AbstractEventChain;
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.EventChainItem;
-import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -59,124 +59,50 @@ public class AmConstraintsEventChain extends AmaltheaValidation {
 	private void checkChainConsistency(final AbstractEventChain eventChain, List<ValidationDiagnostic> results) {
 		if (eventChain == null) return;
 
-		checkChainConsistency(eventChain, eventChain.getSegments(), results);
-		checkChainConsistency(eventChain, eventChain.getStrands(), results);
+		checkSegments(eventChain, eventChain.getSegments(), results);
+		// checkStrands(eventChain, eventChain.getStrands(), results);
 	}
 
-	private void checkChainConsistency(final AbstractEventChain pEventChain, final EList<EventChainItem> pSubEventChains, List<ValidationDiagnostic> results) {
-		/**
-		 * All SubEventChains can be described directly (EventChainContainer) or per reference
-		 * (EventChainReference). Because of this we have to distinguish between this cases.
-		 */
+	private void checkSegments(final AbstractEventChain eventChain, final EList<EventChainItem> eventChainItems, List<ValidationDiagnostic> results) {
 
-		// Collect all SubEventChains to a list of EventChains
-		final List<AbstractEventChain> subEventChains = new ArrayList<AbstractEventChain>();
-		for (final EventChainItem subEventChainItem : pSubEventChains) {
-			AbstractEventChain subChain = subEventChainItem.getEventChain();
+		if (eventChainItems == null || eventChainItems.isEmpty()) return;
 
-			if (subChain != null) {
-				subEventChains.add(subChain);
+		if (eventChainItems.contains(null)) {
+			addIssue(results, eventChain,
+					AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments(),
+					"Event Chain " + name(eventChain) + ": segment list contains null reference");
+		}
 
-				// Do the same for INNER SubEventChains recursively
-				if (subChain instanceof SubEventChain) checkChainConsistency(subChain, results);
+		List<AbstractEventChain> subEventChains = eventChainItems.stream()
+				.map(item -> item.getEventChain())
+				.filter(Objects::nonNull)
+				.collect(Collectors.toList());
+
+		AbstractEventChain first = subEventChains.get(0);
+		AbstractEventChain last = subEventChains.get(subEventChains.size() - 1);
+
+		if (eventChain.getStimulus() != first.getStimulus()) {
+			addIssue(results, eventChain,
+					AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments(),
+					"Event Chain " + name(eventChain) + ": stimulus of first segment <> stimulus of event chain");
+		}
+
+		if (eventChain.getResponse() != last.getResponse()) {
+			addIssue(results, eventChain,
+					AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments(),
+					"Event Chain " + name(eventChain) + ": response of last segment <> response of event chain");
+		}
+
+		for (int i = 0; i < subEventChains.size() - 1; i++) {
+			AbstractEventChain current = subEventChains.get(i);
+			AbstractEventChain next = subEventChains.get(i + 1);
+			
+			if (current.getResponse() != next.getStimulus()) {
+				addIssue(results, eventChain,
+						AmaltheaPackage.eINSTANCE.getAbstractEventChain_Segments(),
+						"Event Chain " + name(eventChain) + ": response of segment " + i + " <> stimulus of segment " + (i+1));
 			}
 		}
-
-		if (subEventChains.isEmpty()) {
-			return;
-		}
-
-		// Here we have all SubEventChains related to one specific EventChain (i.e. eventChain)
-		// Is it possible to have more than one matching starting event in sub chain?
-
-		/**
-		 * Assumptions:
-		 *
-		 * - Only one stimulus event of the SubEventChain matches to stimulus of the parent EventChain
-		 *
-		 * - Only one response event of the SubEventChain matches to stimulus of the parent EventChain
-		 */
-
-
-		int chainnedEventsCnt = -1;
-		for (final AbstractEventChain subEventChain : subEventChains) {
-			if (subEventChain.getStimulus() == pEventChain.getStimulus()) {
-				// Found the beginning of subEventChain
-				chainnedEventsCnt = 0;
-				AbstractEventChain chainingEvent = subEventChain;
-				final StringBuilder completeChainBuilder = new StringBuilder();
-				completeChainBuilder.append("EventChain: [ --> {" + getStimulusEvent(pEventChain) + "}"
-						+ pEventChain.getName() + "{" + getResponseEvent(pEventChain) + "} --> ]\n");
-				completeChainBuilder.append("  SubEventChain: (");
-
-
-				while (chainingEvent.getResponse() != pEventChain.getResponse()) {
-					boolean hasChained = false;
-
-					// Try to chain next EventChain
-					for (final AbstractEventChain subEvent : subEventChains) {
-						if (chainingEvent.getResponse() == subEvent.getStimulus()) {
-
-							completeChainBuilder.append(" --> " + "{" + getStimulusEvent(chainingEvent) + "}"
-									+ chainingEvent.getName() + "{" + getResponseEvent(chainingEvent) + "}");
-
-							chainingEvent = subEvent;
-							++chainnedEventsCnt;
-							hasChained = true;
-						}
-					}
-
-					// (chainingEvent.getResponse() != eventChain.getResponse()) => End not reached
-					if (!hasChained && chainingEvent.getResponse() != pEventChain.getResponse()) {
-						addIssue(results, chainingEvent,
-								AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
-								"No successor found for EventChain '" + chainingEvent.getName() + "'");
-						break;
-					}
-				}
-
-				completeChainBuilder.append(" --> " + "{" + getStimulusEvent(chainingEvent) + "}"
-						+ chainingEvent.getName() + "{" + getResponseEvent(chainingEvent) + "}" + " --> )");
-				// System.out.println(completeChainBuilder);
-
-				if (chainingEvent.getResponse() == pEventChain.getResponse()) {
-					if (chainnedEventsCnt < subEventChains.size() - 1) {
-						// Leftover detected(chain is consistent, but there are still unconnected SubEventChains)
-						addIssue(results, pEventChain,
-								AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
-								"SubChain complete BUT unconnected SubEventChains left for EventChain "
-										+ pEventChain.getName());
-					}
-					// Cycles detected
-					if (chainnedEventsCnt > subEventChains.size()) {
-						addIssue(results, pEventChain,
-								AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
-								"Cycle found for EventChain " + pEventChain.getName());
-					}
-				}
-			}
-		}
-		// Beginning SubEventChain not found (stimulus event does not match)
-		if (chainnedEventsCnt == -1) {
-			addIssue(results, pEventChain,
-					AmaltheaPackage.eINSTANCE.getEventChainContainer_EventChain(),
-					"Beginning SubEventChain not found; EventChain's stimulus does not match with SubEventChain's stimulus "
-							+ pEventChain.getName());
-		}
-	}
-
-	private String getResponseEvent(final AbstractEventChain eventChain) {
-		if (eventChain == null || eventChain.getResponse() == null) {
-			return "MISSING";
-		}
-		return eventChain.getResponse().getName();
-	}
-
-	private String getStimulusEvent(final AbstractEventChain eventChain) {
-		if (eventChain == null || eventChain.getStimulus() == null) {
-			return "MISSING";
-		}
-		return eventChain.getStimulus().getName();
 	}
 
 }

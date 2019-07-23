@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <swModel>
+    <runnables name="Run1" callback="false" service="false">
+      <callGraph>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="200"/>
+        </items>
+        <items xsi:type="am:LabelAccess">
+          <statistic/>
+        </items>
+        <items xsi:type="am:LabelAccess" data="Lab1?type=Label">
+          <statistic/>
+        </items>
+        <items xsi:type="am:LabelAccess" access="read">
+          <statistic/>
+        </items>
+        <items xsi:type="am:LabelAccess" data="Lab1?type=Label" access="read">
+          <statistic/>
+        </items>
+        <items xsi:type="am:LabelAccess" data="Lab2?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Lab3?type=Label" access="read"/>
+        <items xsi:type="am:LabelAccess" data="Lab4?type=Label" access="read">
+          <statistic/>
+        </items>
+        <items xsi:type="am:Ticks">
+          <default xsi:type="am:DiscreteValueConstant" value="333"/>
+        </items>
+        <items xsi:type="am:LabelAccess" data="Lab3?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="Lab4?type=Label" access="write"/>
+        <items xsi:type="am:LabelAccess" data="Lab5?type=Label" access="write">
+          <statistic/>
+        </items>
+      </callGraph>
+    </runnables>
+    <labels name="Lab1" constant="false" bVolatile="false"/>
+    <labels name="Lab2" constant="false" bVolatile="false"/>
+    <labels name="Lab3" constant="false" bVolatile="false"/>
+    <labels name="Lab4" constant="false" bVolatile="false"/>
+    <labels name="Lab5" constant="false" bVolatile="false"/>
+  </swModel>
+</am:Amalthea>

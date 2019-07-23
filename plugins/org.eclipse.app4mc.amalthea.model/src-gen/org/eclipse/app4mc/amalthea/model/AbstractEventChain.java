@@ -53,7 +53,7 @@ public interface AbstractEventChain extends BaseObject, INamed {
 	 * @return the value of the '<em>Stimulus</em>' reference.
 	 * @see #setStimulus(Event)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractEventChain_Stimulus()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Event getStimulus();
@@ -75,7 +75,7 @@ public interface AbstractEventChain extends BaseObject, INamed {
 	 * @return the value of the '<em>Response</em>' reference.
 	 * @see #setResponse(Event)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getAbstractEventChain_Response()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Event getResponse();

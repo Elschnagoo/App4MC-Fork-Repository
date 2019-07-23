@@ -22,6 +22,9 @@ import org.eclipse.app4mc.amalthea.model.ArchitectureRequirement;
 import org.eclipse.app4mc.amalthea.model.CPUPercentageRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
 import org.eclipse.app4mc.amalthea.model.CountRequirementLimit;
+import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainContainer;
+import org.eclipse.app4mc.amalthea.model.EventChainReference;
 import org.eclipse.app4mc.amalthea.model.FrequencyRequirementLimit;
 import org.eclipse.app4mc.amalthea.model.LimitType;
 import org.eclipse.app4mc.amalthea.model.PercentageRequirementLimit;
@@ -30,6 +33,7 @@ import org.eclipse.app4mc.amalthea.model.ProcessRequirement;
 import org.eclipse.app4mc.amalthea.model.Requirement;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableRequirement;
+import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeMetric;
 import org.eclipse.app4mc.amalthea.model.TimeRequirementLimit;
@@ -44,7 +48,7 @@ public class ConstraintsBuilder {
 		return obj;
 	}
 
-	// ********** Top level elements **********
+	// ********** Top level - Requirements **********
 
 	public void requirement_Architecture(final ConstraintsModel container, final Procedure1<ArchitectureRequirement> initializer) {
 		final ArchitectureRequirement obj = AmaltheaFactory.eINSTANCE.createArchitectureRequirement();
@@ -126,6 +130,28 @@ public class ConstraintsBuilder {
 		final CPUPercentageRequirementLimit obj = AmaltheaFactory.eINSTANCE.createCPUPercentageRequirementLimit();
 		container.setLimit(obj);
 		initializer.apply(obj);
+	}
+
+	// ********** Top level - EventChains **********
+
+	public void eventChain(final ConstraintsModel container, final Procedure1<EventChain> initializer) {
+		final EventChain obj = AmaltheaFactory.eINSTANCE.createEventChain();
+		container.getEventChains().add(obj);
+		initializer.apply(obj);
+	}
+
+	public void segment_subchain(final EventChain container, final Procedure1<SubEventChain> initializer) {
+		final EventChainContainer container2 = AmaltheaFactory.eINSTANCE.createEventChainContainer();
+		container.getSegments().add(container2);
+		final SubEventChain obj = AmaltheaFactory.eINSTANCE.createSubEventChain();
+		container2.setEventChain(obj);
+		initializer.apply(obj);
+	}
+
+	public void segment_ref(final EventChain container, final EventChain ref) {
+		final EventChainReference container2 = AmaltheaFactory.eINSTANCE.createEventChainReference();
+		container.getSegments().add(container2);
+		container2.setEventChain(ref);
 	}
 
 }
