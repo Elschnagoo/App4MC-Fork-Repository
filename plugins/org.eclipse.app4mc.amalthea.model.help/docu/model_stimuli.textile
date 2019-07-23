@@ -124,10 +124,28 @@ In contrast to the generic specification via statistical values the scenario def
 
 h3. Clocks
 
-The _Clock_ ...
+The _Clock_ is triggered based on logical clocks rather than the simulation time, thus providing a dynamic trigger pattern for a simulation. _Clock_ defines the (variable) rate at which a stimulus will be fired. This rate follows a certain pattern defined by the subclasses: _ClockFunction_ and _ClockStepList_.
 
 !(scale)../pictures/model_stimuli_clocks.png!
 
+
+h4. ClockFunction
+
+A clock function defines the clock period change via a continuous function. There are two functions available: _Sine_ and _Triangle_. They can be chosen by setting the _curveType_ property.
+
+In the sine clock function the clock period increases and decreases smoothly following a sine wave pattern. The figure below depicts the attributes used to define the sine wave. Note that the sine wave always lies above the x-axis. Adding a positive or negative _x-Offset_ will shift the wave horizontally. The clock fires a stimulus whenever the area under the sine curve is a multiple of one (an integral value). If used in a _Scenario_ this factor can be defined via the recurrence attribute. As can be seen, the size of the area can be influenced by the _yOffset_ and _peakToPeak_ attributes. In the example shown in the figure the first stimulus is fired at 1.3s, second at 2.06s and so on.
+
+!(scale)../pictures/model_stimuli_clocks_sine.png!
+
+The triangle clock function increases and decreases at a constant rate. The shape of this clock function is governed by the same attributes as the sine wave, only the underlying mathematical definition is different. In the example figure below, the first activation occurs at 0.828s, the second at 1.464s and so on.
+
+!(scale)../pictures/model_stimuli_clocks_triangle.png!
+
+h4. ClockStepList
+
+The list of clock steps defines the clock period change via a step function. Each _ClockStep_ of that function is defined by a _frequency_ and a _time_ stamp. The optional period attribute of the clock step list can be used to repeat the pattern (exactly like the recurrence in the _PeriodicSynthetic_ stimulus). If the period is not set, the clock rate will remain the same after the last clock step change. Considering the clock steps: <1Hz, 1s>, <3Hz, 3s>, <2Hz, 5s>, <0Hz, 6s>, <2Hz, 7s>, a scenario recurrence of 2s, and a period of 9s, the clock step function will result in the plot depicted in the following figure.
+
+!(scale)../pictures/model_stimuli_clocks_steplist.png!
 
 h3. Mode Value List and Execution Condition
 
