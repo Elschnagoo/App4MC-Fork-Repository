@@ -9,5 +9,5 @@ All elements of the model are included for validation. In the next window the li
 
 !../pictures/validation/profile_selection_dialog.png!
 
-If an error is found, it is shown in the Problems view of Eclipse. A simple double click on the error will lead you to the affected elements in the AMALTHEA model. Sphinx validation distinguishes between three error types: __errors__, __warnings__ and __info__.
+If an error is found, it is shown in the Problems view of Eclipse. A simple double click on the error will lead you to the affected elements in the AMALTHEA model. The validation distinguishes between three error types: __errors__, __warnings__ and __info__.
 

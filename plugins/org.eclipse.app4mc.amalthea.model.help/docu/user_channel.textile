@@ -43,7 +43,7 @@ Each operation further has two parameters and two attributes specifying the exac
 * *elements* (integer): Maximum number n of elements that are received.
 * *elementIndex* (integer): Position (index i) in channel at which the operation is effective. Zero is the default and denotes the oldest (FIFO) or newest element (LIFO) in the channel.
 
-In the following several exmaples are shown, of how to read or take elements out of a channel with the introduced parameters.
+In the following several examples are shown, of how to read or take elements out of a channel with the introduced parameters.
 
 !../pictures/user_channel_operations.png!
 

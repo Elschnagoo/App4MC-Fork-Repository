@@ -297,7 +297,7 @@ If a __Terminate Process__ is reached during the execution of a __Call Graph__, 
 
 h4. Wait/Clear/Set Event
 
-The AMALTHEA Software Model contains a list of __OS-Event__ objects. These can be used for task synchronization. To deal with __OS-Events__ a __Call Sequence__ can execute the elements __Wait Event__, __Clear Event__ and __Set Event__. 
+The AMALTHEA Software Model contains a list of __OS-Event__ objects. These can be used for task synchronization. Elements are  __Wait Event__, __Clear Event__ and __Set Event__. 
 
 !../pictures/model_sw_osevents.png!
 
