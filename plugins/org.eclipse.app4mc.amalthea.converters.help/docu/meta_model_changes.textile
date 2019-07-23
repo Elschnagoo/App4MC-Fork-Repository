@@ -510,5 +510,44 @@ table(classic){margin-left:40px}.
 |platformType|alias|String|String|DataPlatformMapping (in 0.9.3), Alias (in 0.9.4)|sw|platformType attribute is renamed to alias|
 
 
+h3. Version APP4MC 0.9.4 to APP4MC 0.9.5
+
+*Change in the namespace:* 
+
+table(classic){margin-left:40px}. 
+| *_AMALTHEA Namespace (version App4MC 0.9.4)_* | *_AMALTHEA Namespace  (version App4MC 0.9.5)_* |
+|http://app4mc.eclipse.org/amalthea/0.9.4|http://app4mc.eclipse.org/amalthea/0.9.5 |
+
+
+*Below references are removed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name_* | *_Variable Type_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+|runnableItems|RunnableItem|Runnable|sw|runnableItems reference has been removed and replaced with new attribute CallGraph to provide all child elements same as Task.|
+
+*Following Classes are removed:*
+
+table(classic){margin-left:40px}. 
+|*Class name in 0.9.4*|*_Model Migration behavior_*|
+|CallSequence| Equivalent element is Group in 0.9.5|
+|RunnableModeSwitch| Equivalent element is ModeSwitch in 0.9.5|
+|RunnableProbabilitySwitch| Equivalent element is ProbabilitySwitch in 0.9.5|
+|GraphEntryBase| Equivalent element is CallGraph in 0.9.5|
+|RunnableItem| Equivalent element is CallGraph in 0.9.5|
+
+*Following Classes behavior is changed:*
+
+table(classic){margin-left:40px}. 
+|*Class name*|*Amalthea sub-model*|*Changed behavior in 0.9.5*|
+|Runnable|sw| Runnable class has a new attribute callGraph. It is now possible to have all the child elements same as Task or Process|
+
+*Below references are changed:*
+
+table(classic){margin-left:40px}. 
+| *_Variable Name (version APP4MC 0.9.4)_* | *_Variable Name (version APP4MC 0.9.5)_* | *_Variable Type (in 0.9.4)_* | *_Variable Type (in 0.9.5)_* | *_Class containing Variable_*| *_AMALTHEA sub model_* | *_Model Migration behavior_* |
+| runnableItems|callGraph|RunnableItem|CallGraph|Runnable|sw|runnableItems reference has been removed and replaced with new attribute CallGraph to provide all child elements same as Task.|
+|graphEntries|items|GraphEntryBase|CallGraphItem|CallGraph|sw|graphEntries reference has been changed to items of type CallGraphItem.|
+|items|items|RunnableItem|CallGraphItem|Group|sw| items reference has been changed to elements of type CallGraphItem|
+
 
 
