@@ -15,15 +15,36 @@
 
 package org.eclipse.app4mc.amalthea.model.util.test;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaIndex;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueConstant;
+import org.eclipse.app4mc.amalthea.model.DiscreteValueGaussDistribution;
 import org.eclipse.app4mc.amalthea.model.ExecutionNeed;
+import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
+import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
+import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
+import org.eclipse.app4mc.amalthea.model.MappingModel;
+import org.eclipse.app4mc.amalthea.model.OSModel;
+import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.Task;
+import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.util.DeploymentUtil;
+import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
+import org.eclipse.app4mc.amalthea.model.util.RuntimeUtil;
+import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.amalthea.models.RuntimeModels;
+import org.eclipse.emf.common.util.EMap;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,14 +53,17 @@ public class RuntimeUtilsTest {
 	Amalthea amaltheaModel;
 	List<ExecutionNeed> executionNeedsR1;
 	List<ExecutionNeed> executionNeedsR2;
+	List<ExecutionNeed> executionNeedsR3;
 	
-//	NeedConstant r1_instrConstant = null;
-//	NeedDeviation r1_instrDeviation = null;
-//	NeedConstant r1_instrPu2Extended = null;
-//	NeedConstant r2_MAC_Operations = null;
-//	NeedConstant r1_MAC_Operations = null;
+	DiscreteValueConstant  r1_instrConstant = null;
+	DiscreteValueGaussDistribution r1_instrDeviation = null;
+	DiscreteValueConstant r2_MAC_Operations = null;
+	DiscreteValueConstant r1_MAC_Operations = null;
+	DiscreteValueGaussDistribution r3_MAC_Operations = null;
+	
 	Runnable r1 = null;
 	Runnable r2 = null;
+	Runnable r3 = null;
 	
 	Task t1 = null;
 	Task t2 = null;
@@ -51,88 +75,148 @@ public class RuntimeUtilsTest {
 	HwFeature featureIPC_08 = null;
 	HwFeature featureMAC_Operations = null;
 	
+	HwFeatureCategory instructions = null;
+	HwFeatureCategory mac_operations = null;
+	
+	ProcessingUnit core1 = null;
+	ProcessingUnit core2 = null;
+	
 	
 	@Before
 	public void initalizeModel() {
 		amaltheaModel = RuntimeModels.createModel1();
+		Set<Runnable> runnableCollector = AmaltheaIndex.getElements(amaltheaModel, "r1", Runnable.class);
+		assertNotNull("R1 not found", runnableCollector.iterator().next());
+		r1 = runnableCollector.iterator().next();
 		
-//		executionNeedsR1 = new ArrayList<ExecutionNeed>();
-//		executionNeedsR2 = new ArrayList<ExecutionNeed>();
-//		
-//		r1 = (Runnable) AmaltheaIndex.getElements(amaltheaModel, "r1", Runnable.class).iterator().next();
-//		System.out.println(r1.getName());
-//		r2 = (Runnable) AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "r2", Runnable.class).iterator().next();
-//		
-//		t1 = (Task) AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "t1", Task.class).iterator().next();
-//		t2 = (Task) AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "t2", Task.class).iterator().next();
-//		
-//		Pu1_def = (ProcessingUnitDefinition) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "Pu1_def", ProcessingUnitDefinition.class ).iterator().next();
-//		Pu2_def = (ProcessingUnitDefinition) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "Pu2_def", ProcessingUnitDefinition.class ).iterator().next();
-//		
-//		featureIPC_12 = (HwFeature) AmaltheaIndex.getElements(amaltheaModel, "IPC_1.2", HwFeature.class ).iterator().next();
-//		featureIPC_08 = (HwFeature) AmaltheaIndex.getElements(amaltheaModel, "IPC_0.8", HwFeature.class ).iterator().next();
-//		featureMAC_Operations = (HwFeature) AmaltheaIndex.getElements(amaltheaModel, "MacUnit_factor", HwFeature.class).iterator().next();
-//
-//		
-//		
-//		for (RunnableItem rItem : r1.getRunnableItems()) {
-//			if (rItem instanceof ExecutionNeed) {
-//				executionNeedsR1.add((ExecutionNeed)rItem);
-//				Need need = ((ExecutionNeed)rItem).getNeeds().get("Instructions");
-//				if (need instanceof NeedConstant) {
-//					r1_instrConstant = (NeedConstant)need;
-//					// TODO replace
-//					r1_instrPu2Extended = (NeedConstant) ((ExecutionNeed)rItem).getNeeds().get(Pu2_def.getName() + "::Instructions");
-//				}
-//				if (need instanceof NeedDeviation) {
-//					r1_instrDeviation = (NeedDeviation)need;
-//				}
-//				need = ((ExecutionNeed)rItem).getNeeds().get("MAC_Operations");
-//				if (need instanceof NeedConstant) {
-//					r1_MAC_Operations = (NeedConstant)need;
-//				}
-//			}
-//		}
-//		for (RunnableItem rItem : r2.getRunnableItems()) {
-//			if (rItem instanceof ExecutionNeed) {
-//				executionNeedsR2.add((ExecutionNeed)rItem);
-//				Need need = ((ExecutionNeed)rItem).getNeeds().get("MAC_Operations");
-//				if (need instanceof NeedConstant) {
-//					r2_MAC_Operations = (NeedConstant)need;
-//				}
-//				
-//
-//			}
-//		}
+		runnableCollector = AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "r2", Runnable.class);
+		assertNotNull("R2 not found", runnableCollector.iterator().next());
+		r2 = runnableCollector.iterator().next();
+		
+		runnableCollector = AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "r3", Runnable.class);
+		assertNotNull("R3 not found", runnableCollector.iterator().next());
+		r3 = runnableCollector.iterator().next();
+		
+		Set<Task> taskCollector = AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "t1", Task.class);
+		t1 = taskCollector.iterator().next();
+		assertNotNull("T1 not found", taskCollector.iterator().next());
+		
+		taskCollector = AmaltheaIndex.getElements(amaltheaModel.getSwModel(), "t2", Task.class);
+		t2 = taskCollector.iterator().next();
+		assertNotNull("T2 not found", taskCollector.iterator().next());
 
+		
+		executionNeedsR1 = new ArrayList<ExecutionNeed>();
+		executionNeedsR2 = new ArrayList<ExecutionNeed>();
+		executionNeedsR3 = new ArrayList<ExecutionNeed>();
+		
+		for (CallGraphItem rItem : r1.getCallGraph().getItems()) {
+			if (rItem instanceof ExecutionNeed) {
+				executionNeedsR1.add((ExecutionNeed)rItem);
+				
+				EMap<String, IDiscreteValueDeviation> needs = ((ExecutionNeed)rItem).getNeeds();//.get("Instructions");
+				for (String key : needs.keySet()) {
+					if (key.equals("Instructions")) {
+						if (needs.get(key) instanceof DiscreteValueConstant) {
+							r1_instrConstant = (DiscreteValueConstant)needs.get(key);
+						}
+						if (needs.get(key) instanceof DiscreteValueGaussDistribution) {
+							r1_instrDeviation = (DiscreteValueGaussDistribution)needs.get(key);
+						}
+					}
+					if (key.equals("MAC_Operations")) {
+						if (needs.get(key) instanceof DiscreteValueConstant) {
+							r1_MAC_Operations = (DiscreteValueConstant)needs.get(key);
+						}
+					}
+				}	
+			}
+		}
+		for (CallGraphItem rItem : r2.getCallGraph().getItems()) {
+			if (rItem instanceof ExecutionNeed) {
+				executionNeedsR2.add((ExecutionNeed)rItem);
+				
+				EMap<String, IDiscreteValueDeviation> needs = ((ExecutionNeed)rItem).getNeeds();//.get("Instructions");
+				for (String key : needs.keySet()) {
+					if (key.equals("MAC_Operations")) {
+						if (needs.get(key) instanceof DiscreteValueConstant) {
+							r2_MAC_Operations = (DiscreteValueConstant)needs.get(key);
+						}
+					}
+				}	
+			}
+		}
+		for (CallGraphItem rItem : r3.getCallGraph().getItems()) {
+			if (rItem instanceof ExecutionNeed) {
+				executionNeedsR3.add((ExecutionNeed)rItem);
+				EMap<String, IDiscreteValueDeviation> needs = ((ExecutionNeed)rItem).getNeeds();//.get("Instructions");
+				for (String key : needs.keySet()) {
+					if (key.equals("MAC_Operations")) {
+						if (needs.get(key) instanceof DiscreteValueGaussDistribution) {
+							r3_MAC_Operations = (DiscreteValueGaussDistribution)needs.get(key);
+						}
+					}
+				}	
+			}
+//			executionNeedsR3.addAll(executionNeedsR2);
+		}
+	
+
+		Set<ProcessingUnitDefinition> puCollector = AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "Pu1_def", ProcessingUnitDefinition.class );
+		assertNotNull("Pu1 not found", puCollector.iterator().next());
+		Pu1_def = puCollector.iterator().next();
+		
+		puCollector = AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "Pu2_def", ProcessingUnitDefinition.class );
+		assertNotNull("Pu2 not found", puCollector.iterator().next());
+		Pu2_def = puCollector.iterator().next();
+		
+			
+		Set<HwFeature> featureCollector = AmaltheaIndex.getElements(amaltheaModel, "IPC_1.2", HwFeature.class);
+		assertNotNull("Feature IPC_1.2 not found ", featureCollector.iterator().next());
+		featureIPC_12 = featureCollector.iterator().next();
+		
+		featureCollector = AmaltheaIndex.getElements(amaltheaModel, "IPC_0.8", HwFeature.class);
+		assertNotNull("Feature IPC_0.8 not found ", featureCollector.iterator().next());
+		featureIPC_08 = featureCollector.iterator().next();
+		
+		featureCollector = AmaltheaIndex.getElements(amaltheaModel, "MacUnit_factor", HwFeature.class);
+		assertNotNull("Feature MacUnit_factor not found ", featureCollector.iterator().next());
+		featureMAC_Operations = featureCollector.iterator().next();
+
+		Set<ProcessingUnit> coreCollector = AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "core1", ProcessingUnit.class);
+		assertNotNull("Core1 not found ", coreCollector.iterator().next());
+		core1 = coreCollector.iterator().next();
+		
+		coreCollector = AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "core2", ProcessingUnit.class);
+		assertNotNull("Core2 not found ", coreCollector.iterator().next());
+		core2 = coreCollector.iterator().next();
+		
+		Set<HwFeatureCategory> catCollector = AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "Instructions", HwFeatureCategory.class);
+		assertNotNull("Instruction Catogory not found ", catCollector.iterator().next());
+		instructions = catCollector.iterator().next();
+//		
+//		catCollector = AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "MAC_Operations", HwFeatureCategory.class);
+//		assertNotNull("MAC_Operations Catogory not found ", catCollector.iterator().next());
+//		mac_operations = catCollector.iterator().next();
+		
 	}
 
 	@Test
 	public void testModelExistance() {
 
-//		SWModel swModel = amaltheaModel.getSwModel();
-//		assertNotNull("SW model is not loaded", swModel);
-//		
-//		HWModel hwModel = amaltheaModel.getHwModel();
-//		assertNotNull("HW model is not loaded", hwModel);
-//		
-//		OSModel osModel = amaltheaModel.getOsModel();
-//		assertNotNull("OS model is not loaded", osModel);
-//		
-//		MappingModel MappingModel = amaltheaModel.getMappingModel();
-//		assertNotNull("Mapping model is not loaded", MappingModel);
-//
-//		
-//		assertNotNull("Runnable r1 missing ",r1);
-//		assertNotNull("Runnable r2 missing ",r2);
-//		assertNotNull("ProcessUnitDefinition Pu1_def missing ",Pu1_def);
-//		assertNotNull("ProcessUnitDefinition Pu2_def missing ",Pu2_def);
-//		
-//		assertNotNull("HwFeature IPC_1.2 missing ",featureIPC_12);
-//		assertNotNull("HwFeature IPC_0.8 missing ",featureIPC_08);
-//		assertNotNull("HwFeature MacUnit_factor missing ",featureMAC_Operations);
+		SWModel swModel = amaltheaModel.getSwModel();
+		assertNotNull("SW model is not loaded", swModel);
 		
+		HWModel hwModel = amaltheaModel.getHwModel();
+		assertNotNull("HW model is not loaded", hwModel);
 		
+		OSModel osModel = amaltheaModel.getOsModel();
+		assertNotNull("OS model is not loaded", osModel);
+		
+		MappingModel MappingModel = amaltheaModel.getMappingModel();
+		assertNotNull("Mapping model is not loaded", MappingModel);
+
+						
 	}
 	
 	
@@ -140,422 +224,46 @@ public class RuntimeUtilsTest {
 	public void testRunnableItemsCollection() {
 		
 		
-//		//Test search for excecutionNeed items
-//		assert(SoftwareUtil.getExecutionNeedsList(r1, null).containsAll(executionNeedsR1));
-//		assert(SoftwareUtil.getExecutionNeedsList(r2, null).containsAll(executionNeedsR2));
-//		
-//		
-//		//testList PU2
-//		List<HwFeature> featureTest1= new ArrayList<HwFeature>();
-//		featureTest1.add(featureIPC_08);
-//		//testList PU1
-//		List<HwFeature> featureTest2= new ArrayList<HwFeature>();
-//		featureTest2.add(featureIPC_12);
-//		featureTest2.add(featureMAC_Operations);
-//		//testList empty
-//		List<HwFeature> featureTest3= new ArrayList<HwFeature>();
-//		
-//		//test for emty feature or puDefs
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, null, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu1_def, null, null).isEmpty());
-//		
-//		//test combinations of runnable, puDef and feature selections
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu1_def, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu1_def, featureTest2, null)).get(0).getValue().equals(r1_instrConstant);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu1_def, featureTest2, null)).get(1).getValue().equals(r1_instrDeviation);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu1_def, featureTest2, null)).get(2).getValue().equals(r1_MAC_Operations);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu1_def, featureTest2, null)).size() == 3;
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu1_def, featureTest3, null).isEmpty());
-
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu2_def, featureTest1, null)).get(0).getValue().equals(r1_instrPu2Extended);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu2_def, featureTest1, null)).get(1).getValue().equals(r1_instrDeviation);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu2_def, featureTest1, null)).size() == 2;
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu2_def, featureTest2, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r1, Pu2_def, featureTest3, null).isEmpty());
+		//Test search for excecutionNeed items
+		assert(SoftwareUtil.getExecutionNeeds(r1, null).containsAll(executionNeedsR1));
+		assert(SoftwareUtil.getExecutionNeeds(r2, null).containsAll(executionNeedsR2));
+		List<ExecutionNeed> tmp = SoftwareUtil.getExecutionNeeds(r3, null);
+		assert(SoftwareUtil.getExecutionNeeds(r3, null).containsAll(executionNeedsR3));
 		
 		
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r2, Pu1_def, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r2, Pu1_def, featureTest2, null).get(0).getValue().equals(r2_MAC_Operations));
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r2, Pu1_def, featureTest2, null).size() == 1);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r2, Pu1_def, featureTest3, null).isEmpty());
-//		
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r2, Pu2_def, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r2, Pu2_def, featureTest2, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(r2, Pu2_def, featureTest3, null).isEmpty());
-//		
-//		
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, null, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu1_def, null, null).isEmpty());
-//		
-//		//test combinations of task, puDef and feature selections
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu1_def, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu1_def, featureTest2, null).get(0).getValue().equals(r1_instrConstant));
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu1_def, featureTest2, null).get(1).getValue().equals(r1_instrDeviation));
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu1_def, featureTest2, null).get(2).getValue().equals(r1_MAC_Operations));
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu1_def, featureTest2, null).size() ==3);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu1_def, featureTest3, null).isEmpty());
-
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu2_def, featureTest1, null).get(0).getValue().equals(r1_instrPu2Extended));
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu2_def, featureTest1, null).get(1).getValue().equals(r1_instrDeviation));
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu2_def, featureTest1, null).size() == 2);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu2_def, featureTest2, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t1, Pu2_def, featureTest3, null).isEmpty());
 		
-		
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t2, Pu1_def, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t2, Pu1_def, featureTest2, null).get(0).getValue().equals(r2_MAC_Operations));
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t2, Pu1_def, featureTest2, null).size() == 1);
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t2, Pu1_def, featureTest3, null).isEmpty());
-//		
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t2, Pu2_def, featureTest1, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t2, Pu2_def, featureTest2, null).isEmpty());
-//		assert(SoftwareUtil.getExecutionNeedEntryList(t2, Pu2_def, featureTest3, null).isEmpty());
-//
-
 	}
 	
 	
 	@Test
-	public void testExecutionNeedValueCountsFunctions() {
+	public void testExecutionTimeForRunnableFunction() {
+		
 
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.BCET, Pu1_def, featureIPC_08, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.ACET, Pu1_def, featureIPC_08, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.WCET, Pu1_def, featureIPC_08, null).longValue() == 0l);
+		Time r1Bcet = FactoryUtil.createTime(22200000, "PS");
+		Time r1Acet = FactoryUtil.createTime(22800000, "PS");
+		Time r1Wcet = FactoryUtil.createTime(23400000, "PS");
 		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.BCET, Pu1_def, featureIPC_12, null).longValue() == 750l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.ACET, Pu1_def, featureIPC_12, null).longValue() == 1000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.WCET, Pu1_def, featureIPC_12, null).longValue() == 1250l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.BCET, Pu1_def, featureMAC_Operations, null).longValue() == 2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.ACET, Pu1_def, featureMAC_Operations, null).longValue() == 2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.WCET, Pu1_def, featureMAC_Operations, null).longValue() == 2000l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.BCET, Pu2_def, featureIPC_08, null).longValue() == 1050);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.ACET, Pu2_def, featureIPC_08, null).longValue() == 1300);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.WCET, Pu2_def, featureIPC_08, null).longValue() == 1550l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.BCET, Pu2_def, featureIPC_12, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.ACET, Pu2_def, featureIPC_12, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.WCET, Pu2_def, featureIPC_12, null).longValue() == 0l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.BCET, Pu2_def, featureMAC_Operations, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.ACET, Pu2_def, featureMAC_Operations, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r1, TimeType.WCET, Pu2_def, featureMAC_Operations, null).longValue() == 0l);
-		
-		
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.BCET, Pu1_def, featureIPC_08, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.ACET, Pu1_def, featureIPC_08, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.WCET, Pu1_def, featureIPC_08, null).longValue() == 0l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.BCET, Pu1_def, featureIPC_12, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.ACET, Pu1_def, featureIPC_12, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.WCET, Pu1_def, featureIPC_12, null).longValue() == 0l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.BCET, Pu1_def, featureMAC_Operations, null).longValue() == 2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.ACET, Pu1_def, featureMAC_Operations, null).longValue() == 2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.WCET, Pu1_def, featureMAC_Operations, null).longValue() == 2000l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.BCET, Pu2_def, featureIPC_08, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.ACET, Pu2_def, featureIPC_08, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.WCET, Pu2_def, featureIPC_08, null).longValue() == 0l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.BCET, Pu2_def, featureIPC_12, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.ACET, Pu2_def, featureIPC_12, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.WCET, Pu2_def, featureIPC_12, null).longValue() == 0l);
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.BCET, Pu2_def, featureMAC_Operations, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.ACET, Pu2_def, featureMAC_Operations, null).longValue() == 0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForRunnable(r2, TimeType.WCET, Pu2_def, featureMAC_Operations, null).longValue() == 0l);
-		
-		
-		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureIPC_08, null).size() == 2);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureIPC_08, null).get(Pu1_def) == null);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureIPC_08, null).get(Pu2_def) == 800l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureIPC_08, null).get(null) == 750);
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureIPC_08, null).size() == 2);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureIPC_08, null).get(Pu1_def) == null);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureIPC_08, null).get(Pu2_def) == 800l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureIPC_08, null).get(null) == 1000l);
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureIPC_08, null).size() == 2);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureIPC_08, null).get(Pu1_def) == null);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureIPC_08, null).get(Pu2_def) == 800l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureIPC_08, null).get(null) == 1250l);
-//		
-//
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureIPC_12, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureIPC_12, null).get(null) == 750l);
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureIPC_12, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureIPC_12, null).get(null) ==1000l);
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureIPC_12, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureIPC_12, null).get(null) == 1250l);
-//
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureMAC_Operations, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.BCET, featureMAC_Operations, null).get(null) ==2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureMAC_Operations, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.ACET, featureMAC_Operations, null).get(null) ==2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureMAC_Operations, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r1, TimeType.WCET, featureMAC_Operations, null).get(null) ==2000l);
-//		
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.BCET, featureIPC_08, null).size() == 0);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.ACET, featureIPC_08, null).size() == 0);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.WCET, featureIPC_08, null).size() == 0);
-//		
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.BCET, featureIPC_12, null).size() == 0);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.ACET, featureIPC_12, null).size() == 0);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.WCET, featureIPC_12, null).size() == 0);
-//		
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.BCET, featureMAC_Operations, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.BCET, featureMAC_Operations, null).get(null) == 2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.ACET, featureMAC_Operations, null).size() ==  1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.ACET, featureMAC_Operations, null).get(null) ==  2000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.WCET, featureMAC_Operations, null).size() ==  1);
-//		assert(RuntimeUtil.getExecutionNeedValueCountExtendedForRunnable(r2, TimeType.WCET, featureMAC_Operations, null).get(null) ==  2000l);
+		Time r2Time = FactoryUtil.createTime(20000000, "PS");
 
+		Time r3Bcet = FactoryUtil.createTime(2700000, "PS");
+		Time r3Acet = FactoryUtil.createTime(5600000, "PS");
+		Time r3Wcet = FactoryUtil.createTime(8500000, "PS");
+		
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r1, core1, null, RuntimeUtil.TimeType.BCET).compareTo((r1Bcet))==0);
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r1, core1, null, RuntimeUtil.TimeType.ACET).compareTo((r1Acet))==0);
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r1, core1, null, RuntimeUtil.TimeType.WCET).compareTo((r1Wcet))==0);
+		
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r2, core2, null, RuntimeUtil.TimeType.BCET).compareTo((r2Time))==0);
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r2, core2, null, RuntimeUtil.TimeType.ACET).compareTo((r2Time))==0);
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r2, core2, null, RuntimeUtil.TimeType.WCET).compareTo((r2Time))==0);
+		
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r3, core2, null, RuntimeUtil.TimeType.BCET).compareTo((r3Bcet))==0);
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r3, core2, null, RuntimeUtil.TimeType.ACET).compareTo((r3Acet))==0);
+		assert(RuntimeUtil.getExecutionTimeForRunnable(r3, core2, null, RuntimeUtil.TimeType.WCET).compareTo((r3Wcet))==0);
 	}
+
 	
-	@Test
-	public void testExecutionTimeFunctions() {
-		
-//		//testList PU2
-//		List<HwFeature> featureTest1= new ArrayList<HwFeature>();
-//		featureTest1.add(featureIPC_08);
-//		//testList PU1
-//		List<HwFeature> featureTest2= new ArrayList<HwFeature>();
-//		featureTest2.add(featureIPC_12);
-//		featureTest2.add(featureMAC_Operations);
-//		//testList empty
-//		List<HwFeature> featureTest3= new ArrayList<HwFeature>();
-//		Time time;
-//		ProcessingUnit core1 = (ProcessingUnit) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "core1", ProcessingUnit.class).iterator().next();
-//		ProcessingUnit core2 = (ProcessingUnit) AmaltheaIndex.getElements(amaltheaModel.getHwModel(), "core2", ProcessingUnit.class).iterator().next();
-		
-//		time = RuntimeUtil.getExecutionTimeForExecutionNeedValueCount(1000l, core1, featureIPC_08, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0);
-//		
-//		time = RuntimeUtil.getExecutionTimeForExecutionNeedValueCount(1000l, core1, featureIPC_12, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 1666666l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForExecutionNeedValueCount(1000l, core1, featureMAC_Operations, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 400000l);
-//		
-//		
-//		time = RuntimeUtil.getExecutionTimeForExecutionNeedValueCount(1000l, core2, featureIPC_08, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2500000);
-//		
-//		time = RuntimeUtil.getExecutionTimeForExecutionNeedValueCount(1000l, core2, featureIPC_12, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0);
-//		
-//		time = RuntimeUtil.getExecutionTimeForExecutionNeedValueCount(1000l, core2, featureMAC_Operations, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		
-//		time.setValue(BigInteger.valueOf(2500000l));
-//		assert(RuntimeUtil.getExecutionNeedValueCountForTime(core1, time, featureIPC_08).getValue() ==0l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForTime(core2, time, featureIPC_08).getValue() ==1000l);
-//		
-//		
-//		time.setValue(BigInteger.valueOf(1666667l));
-//		assert(RuntimeUtil.getExecutionNeedValueCountForTime(core1, time, featureIPC_12).getValue() ==1000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForTime(core2, time, featureIPC_12).getValue() ==0l);
-//		
-//	
-//		time.setValue(BigInteger.valueOf(400000l));
-//		assert(RuntimeUtil.getExecutionNeedValueCountForTime(core1, time, featureMAC_Operations).getValue() ==1000l);
-//		assert(RuntimeUtil.getExecutionNeedValueCountForTime(core2, time, featureMAC_Operations).getValue() ==0l);
-//		
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.BCET, core1, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.ACET, core1, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.WCET, core1, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.BCET, core1, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2050000l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.ACET, core1, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2466666l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.WCET, core1, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2883333l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.BCET, core1, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.ACET, core1, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.WCET, core1, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.BCET, core2, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2625000l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.ACET, core2, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 3250000l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.WCET, core2, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 3875000l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.BCET, core2, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.ACET, core2, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.WCET, core2, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.BCET, core2, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.ACET, core2, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r1, TimeType.WCET, core2, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		
-//		
-//
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.BCET, core1, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.ACET, core1, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.WCET, core1, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.BCET, core1, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 800000l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.ACET, core1, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 800000l);
-//	
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.WCET, core1, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 800000l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.BCET, core1, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.ACET, core1, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.WCET, core1, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.BCET, core2, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.ACET, core2, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.WCET, core2, featureTest1, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.BCET, core2, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.ACET, core2, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.WCET, core2, featureTest2, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.BCET, core2, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.ACET, core2, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//		
-//		time = RuntimeUtil.getExecutionTimeForRunnable(r2, TimeType.WCET, core2, featureTest3, null);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 0l);
-//
-//
-//
-//
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.BCET, featureIPC_08, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.BCET, featureIPC_08, null).get(core1) == null);
-//		time = RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.BCET, featureIPC_08, null).get(core2);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2000000l);
-//		
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.ACET, featureIPC_08, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.ACET, featureIPC_08, null).get(core1) == null);
-//		time = RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.ACET, featureIPC_08, null).get(core2);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2000000l);
-//		
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.WCET, featureIPC_08, null).size() == 1);
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.WCET, featureIPC_08, null).get(core1) == null);
-//		time = RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.WCET, featureIPC_08, null).get(core2);
-//		time = TimeUtil.convertToTimeUnit(time, TimeUnit.PS);
-//		assert(time.getValue().longValue() == 2000000l);
-//		
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.ACET, featureIPC_12, null).size() ==0);
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r1, TimeType.ACET, featureMAC_Operations, null).size() ==0);
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r2, TimeType.ACET, featureIPC_08, null).size() ==0);
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r2, TimeType.ACET, featureIPC_12, null).size() ==0);
-//		assert(RuntimeUtil.getExecutionTimeExtendedForRunnable(amaltheaModel, r2, TimeType.ACET, featureMAC_Operations, null).size() ==0);
-		
-//TODO:		all task related test -- but they call the basic functions anyway.
-	}
+
+	
 }
 	

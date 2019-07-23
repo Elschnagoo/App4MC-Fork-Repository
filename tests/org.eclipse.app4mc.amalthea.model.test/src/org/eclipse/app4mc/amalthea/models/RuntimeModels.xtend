@@ -18,7 +18,6 @@ package org.eclipse.app4mc.amalthea.models
 import org.eclipse.app4mc.amalthea.model.FrequencyDomain
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit
 import org.eclipse.app4mc.amalthea.model.HwFeature
-import org.eclipse.app4mc.amalthea.model.HwFeatureType
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit
 import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition
 import org.eclipse.app4mc.amalthea.model.Runnable
@@ -27,7 +26,6 @@ import org.eclipse.app4mc.amalthea.model.Task
 import org.eclipse.app4mc.amalthea.model.TaskScheduler
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.HardwareBuilder
-import org.eclipse.app4mc.amalthea.model.builder.InstructionsBuilder
 import org.eclipse.app4mc.amalthea.model.builder.MappingBuilder
 import org.eclipse.app4mc.amalthea.model.builder.OperatingSystemBuilder
 import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder
@@ -40,7 +38,6 @@ class RuntimeModels {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
 	extension HardwareBuilder b2 = new HardwareBuilder
 	extension SoftwareBuilder b3 = new SoftwareBuilder
-	extension InstructionsBuilder b4 = new InstructionsBuilder
 	extension OperatingSystemBuilder b5 = new OperatingSystemBuilder
 	extension MappingBuilder b6 = new MappingBuilder
 
@@ -59,8 +56,8 @@ class RuntimeModels {
 			hardwareModel [
 
 				// ***** Features *****
-				featureCategory_Instructions [
-					featureType = HwFeatureType::PERFORMANCE
+				featureCategory [
+					name = "Instructions"
 					feature [name = "IPC_1.2"; value = 1.2]
 					feature [name = "IPC_0.8"; value = 0.8]
 				]
@@ -78,6 +75,7 @@ class RuntimeModels {
 				definition_ProcessingUnit [
 					name = "Pu2_def"
 					features += _find(HwFeature, "IPC_0.8")
+					features += _find(HwFeature, "MacUnit_factor")
 				]
 
 				// ***** Domains *****
@@ -110,15 +108,23 @@ class RuntimeModels {
 					name = "r1"
 					callGraph [
 						ticks [defaultConstant(200)]
-						execNeed [instructions(500)]
-						execNeed [instructions(createDiscreteValueGaussDistribution(500, 2, 250L, 750L))]
+						execNeed [need("Instructions", createDiscreteValueConstant(500))]
+						execNeed [need("Instructions",createDiscreteValueGaussDistribution(500, 2, 250L, 750L))]
 						execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]
 					]
 				]
 				runnable [
 					name = "r2"
 					callGraph [
-						execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]					
+						execNeed [need("MAC_Operations", createDiscreteValueConstant(2000))]	
+					]
+				]
+				runnable [
+					name = "r3"
+					callGraph [
+						execNeed [need("MAC_Operations", createDiscreteValueGaussDistribution(500, 2, 250L, 750L))]	
+						ticks [defaultDeviation(createDiscreteValueGaussDistribution(300, 2, 100L, 500L))]	
+						runnableCall [runnable = _find(Runnable, "r2")]			
 					]
 				]
 				task [
@@ -131,6 +137,7 @@ class RuntimeModels {
 					name = "t2"
 					callGraph [
 						runnableCall [runnable = _find(Runnable, "r2")]
+						runnableCall [runnable = _find(Runnable, "r3")]
 					]
 				]
 			]
@@ -161,6 +168,10 @@ class RuntimeModels {
 				runnableAllocation [
 					scheduler = _find(TaskScheduler, "Scheduler2")
 					entity = _find(Runnable, "r2")
+				]
+				runnableAllocation [
+					scheduler = _find(TaskScheduler, "Scheduler2")
+					entity = _find(Runnable, "r3")
 				]
 				taskAllocation [
 					task = _find(Task, "t1")

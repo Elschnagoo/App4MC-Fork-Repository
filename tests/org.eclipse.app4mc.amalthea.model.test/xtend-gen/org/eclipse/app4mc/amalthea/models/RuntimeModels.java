@@ -20,7 +20,6 @@ import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
-import org.eclipse.app4mc.amalthea.model.HwFeatureType;
 import org.eclipse.app4mc.amalthea.model.HwStructure;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
@@ -38,7 +37,6 @@ import org.eclipse.app4mc.amalthea.model.TaskScheduler;
 import org.eclipse.app4mc.amalthea.model.Ticks;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.HardwareBuilder;
-import org.eclipse.app4mc.amalthea.model.builder.InstructionsBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.MappingBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.OperatingSystemBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder;
@@ -60,9 +58,6 @@ public class RuntimeModels {
   private SoftwareBuilder b3 = new SoftwareBuilder();
   
   @Extension
-  private InstructionsBuilder b4 = new InstructionsBuilder();
-  
-  @Extension
   private OperatingSystemBuilder b5 = new OperatingSystemBuilder();
   
   @Extension
@@ -81,7 +76,7 @@ public class RuntimeModels {
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<HWModel> _function_1 = (HWModel it_1) -> {
         final Procedure1<HwFeatureCategory> _function_2 = (HwFeatureCategory it_2) -> {
-          it_2.setFeatureType(HwFeatureType.PERFORMANCE);
+          it_2.setName("Instructions");
           final Procedure1<HwFeature> _function_3 = (HwFeature it_3) -> {
             it_3.setName("IPC_1.2");
             it_3.setValue(1.2);
@@ -93,7 +88,7 @@ public class RuntimeModels {
           };
           this.b2.feature(it_2, _function_4);
         };
-        this.b4.featureCategory_Instructions(it_1, _function_2);
+        this.b2.featureCategory(it_1, _function_2);
         final Procedure1<HwFeatureCategory> _function_3 = (HwFeatureCategory it_2) -> {
           it_2.setName("MAC_Operations");
           final Procedure1<HwFeature> _function_4 = (HwFeature it_3) -> {
@@ -118,6 +113,9 @@ public class RuntimeModels {
           EList<HwFeature> _features = it_2.getFeatures();
           HwFeature __find = this.b1.<HwFeature>_find(it_2, HwFeature.class, "IPC_0.8");
           _features.add(__find);
+          EList<HwFeature> _features_1 = it_2.getFeatures();
+          HwFeature __find_1 = this.b1.<HwFeature>_find(it_2, HwFeature.class, "MacUnit_factor");
+          _features_1.add(__find_1);
         };
         this.b2.definition_ProcessingUnit(it_1, _function_5);
         final Procedure1<FrequencyDomain> _function_6 = (FrequencyDomain it_2) -> {
@@ -154,11 +152,11 @@ public class RuntimeModels {
             };
             this.b3.ticks(it_3, _function_5);
             final Procedure1<ExecutionNeed> _function_6 = (ExecutionNeed it_4) -> {
-              this.b4.instructions(it_4, 500);
+              this.b3.need(it_4, "Instructions", FactoryUtil.createDiscreteValueConstant(500));
             };
             this.b3.execNeed(it_3, _function_6);
             final Procedure1<ExecutionNeed> _function_7 = (ExecutionNeed it_4) -> {
-              this.b4.instructions(it_4, FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
+              this.b3.need(it_4, "Instructions", FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
             };
             this.b3.execNeed(it_3, _function_7);
             final Procedure1<ExecutionNeed> _function_8 = (ExecutionNeed it_4) -> {
@@ -180,28 +178,51 @@ public class RuntimeModels {
           this.b3.callGraph(it_2, _function_5);
         };
         this.b3.runnable(it_1, _function_4);
-        final Procedure1<Task> _function_5 = (Task it_2) -> {
-          it_2.setName("t1");
+        final Procedure1<org.eclipse.app4mc.amalthea.model.Runnable> _function_5 = (org.eclipse.app4mc.amalthea.model.Runnable it_2) -> {
+          it_2.setName("r3");
           final Procedure1<CallGraph> _function_6 = (CallGraph it_3) -> {
-            final Procedure1<RunnableCall> _function_7 = (RunnableCall it_4) -> {
-              it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r1"));
+            final Procedure1<ExecutionNeed> _function_7 = (ExecutionNeed it_4) -> {
+              this.b3.need(it_4, "MAC_Operations", FactoryUtil.createDiscreteValueGaussDistribution(500, 2, Long.valueOf(250L), Long.valueOf(750L)));
             };
-            this.b3.runnableCall(it_3, _function_7);
+            this.b3.execNeed(it_3, _function_7);
+            final Procedure1<Ticks> _function_8 = (Ticks it_4) -> {
+              this.b3.defaultDeviation(it_4, FactoryUtil.createDiscreteValueGaussDistribution(300, 2, Long.valueOf(100L), Long.valueOf(500L)));
+            };
+            this.b3.ticks(it_3, _function_8);
+            final Procedure1<RunnableCall> _function_9 = (RunnableCall it_4) -> {
+              it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r2"));
+            };
+            this.b3.runnableCall(it_3, _function_9);
           };
           this.b3.callGraph(it_2, _function_6);
         };
-        this.b3.task(it_1, _function_5);
+        this.b3.runnable(it_1, _function_5);
         final Procedure1<Task> _function_6 = (Task it_2) -> {
-          it_2.setName("t2");
+          it_2.setName("t1");
           final Procedure1<CallGraph> _function_7 = (CallGraph it_3) -> {
             final Procedure1<RunnableCall> _function_8 = (RunnableCall it_4) -> {
-              it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r2"));
+              it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r1"));
             };
             this.b3.runnableCall(it_3, _function_8);
           };
           this.b3.callGraph(it_2, _function_7);
         };
         this.b3.task(it_1, _function_6);
+        final Procedure1<Task> _function_7 = (Task it_2) -> {
+          it_2.setName("t2");
+          final Procedure1<CallGraph> _function_8 = (CallGraph it_3) -> {
+            final Procedure1<RunnableCall> _function_9 = (RunnableCall it_4) -> {
+              it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r2"));
+            };
+            this.b3.runnableCall(it_3, _function_9);
+            final Procedure1<RunnableCall> _function_10 = (RunnableCall it_4) -> {
+              it_4.setRunnable(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_4, org.eclipse.app4mc.amalthea.model.Runnable.class, "r3"));
+            };
+            this.b3.runnableCall(it_3, _function_10);
+          };
+          this.b3.callGraph(it_2, _function_8);
+        };
+        this.b3.task(it_1, _function_7);
       };
       this.b1.softwareModel(it, _function_2);
       final Procedure1<OSModel> _function_3 = (OSModel it_1) -> {
@@ -246,22 +267,27 @@ public class RuntimeModels {
           it_2.setEntity(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_2, org.eclipse.app4mc.amalthea.model.Runnable.class, "r2"));
         };
         this.b6.runnableAllocation(it_1, _function_8);
-        final Procedure1<TaskAllocation> _function_9 = (TaskAllocation it_2) -> {
+        final Procedure1<RunnableAllocation> _function_9 = (RunnableAllocation it_2) -> {
+          it_2.setScheduler(this.b1.<TaskScheduler>_find(it_2, TaskScheduler.class, "Scheduler2"));
+          it_2.setEntity(this.b1.<org.eclipse.app4mc.amalthea.model.Runnable>_find(it_2, org.eclipse.app4mc.amalthea.model.Runnable.class, "r3"));
+        };
+        this.b6.runnableAllocation(it_1, _function_9);
+        final Procedure1<TaskAllocation> _function_10 = (TaskAllocation it_2) -> {
           it_2.setTask(this.b1.<Task>_find(it_2, Task.class, "t1"));
           it_2.setScheduler(this.b1.<TaskScheduler>_find(it_2, TaskScheduler.class, "Scheduler1"));
           EList<ProcessingUnit> _affinity = it_2.getAffinity();
           ProcessingUnit __find = this.b1.<ProcessingUnit>_find(it_2, ProcessingUnit.class, "core1");
           _affinity.add(__find);
         };
-        this.b6.taskAllocation(it_1, _function_9);
-        final Procedure1<TaskAllocation> _function_10 = (TaskAllocation it_2) -> {
+        this.b6.taskAllocation(it_1, _function_10);
+        final Procedure1<TaskAllocation> _function_11 = (TaskAllocation it_2) -> {
           it_2.setTask(this.b1.<Task>_find(it_2, Task.class, "t2"));
           it_2.setScheduler(this.b1.<TaskScheduler>_find(it_2, TaskScheduler.class, "Scheduler2"));
           EList<ProcessingUnit> _affinity = it_2.getAffinity();
           ProcessingUnit __find = this.b1.<ProcessingUnit>_find(it_2, ProcessingUnit.class, "core2");
           _affinity.add(__find);
         };
-        this.b6.taskAllocation(it_1, _function_10);
+        this.b6.taskAllocation(it_1, _function_11);
       };
       this.b1.mappingModel(it, _function_4);
     };
