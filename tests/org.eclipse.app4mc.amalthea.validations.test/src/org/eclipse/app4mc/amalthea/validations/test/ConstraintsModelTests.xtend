@@ -18,22 +18,17 @@ package org.eclipse.app4mc.amalthea.validations.test
 import java.util.List
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
-import org.eclipse.app4mc.amalthea.model.ConstraintsModel
-import org.eclipse.app4mc.amalthea.model.Event
-import org.eclipse.app4mc.amalthea.model.EventChain
-import org.eclipse.app4mc.amalthea.model.EventChainContainer
 import org.eclipse.app4mc.amalthea.model.LabelEvent
-import org.eclipse.app4mc.amalthea.model.SubEventChain
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.ConstraintsBuilder
 import org.eclipse.app4mc.amalthea.validations.ConstraintsProfile
+import org.eclipse.app4mc.amalthea.validations.EMFProfile
 import org.eclipse.app4mc.validation.core.Severity
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic
 import org.eclipse.app4mc.validation.util.ValidationExecutor
 import org.junit.Test
 
 import static org.junit.Assert.assertTrue
-import org.eclipse.app4mc.amalthea.validations.EMFProfile
 
 class ConstraintsModelTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder

@@ -16,10 +16,16 @@
 package org.eclipse.app4mc.amalthea.workflow.mwe2.util;
 
 import org.apache.log4j.Logger;
+import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.CallGraphItem;
 import org.eclipse.app4mc.amalthea.model.Preemption;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.Task;
+import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.amalthea.workflow.mwe2.AmaltheaWorkflow;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.mwe.core.WorkflowContext;
 import org.eclipse.emf.mwe.core.issues.Issues;
 import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
@@ -53,23 +59,18 @@ public class AddSchedulePoints extends AmaltheaWorkflow {
 		for (final Task task : getAmaltheaModel(ctx).getSwModel().getTasks()) {
 			if (null != task.getCallGraph() && task.getPreemption().equals(Preemption.COOPERATIVE)) {
 				this.log.info("Adding schedule points to cooperative Task [" + task.getName() + "]");
-				for (final CallGraphItem graphEntry : task.getCallGraph().getItems()) {
-					// TODO: Check needs to be extended to rest of items
-// FIXME ????
-//					if (graphEntry instanceof Group) {
-//						int index = 0;
-//						final List<CallSequenceItem> tmp = new ArrayList<CallSequenceItem>();
-//						for (final CallSequenceItem callSeqItem : ((CallSequence) graphEntry).getCalls()) {
-//							tmp.add(callSeqItem);
-//							if (callSeqItem instanceof TaskRunnableCall
-//									&& index != ((CallSequence) graphEntry).getCalls().size() - 1) {
-//								tmp.add(AmaltheaFactory.eINSTANCE.createSchedulePoint());
-//							}
-//							index++;
-//						}
-//						((CallSequence) graphEntry).getCalls().clear();
-//						((CallSequence) graphEntry).getCalls().addAll(tmp);
-//					}
+
+				EList<RunnableCall> calls = SoftwareUtil.collectCallGraphItems(task.getCallGraph(), null, RunnableCall.class);
+				
+				for (RunnableCall rc : calls) {
+					EObject container = rc.eContainer();
+					EStructuralFeature feature = rc.eContainingFeature();
+					if (container != null && feature != null && feature.isMany()) {
+						@SuppressWarnings("unchecked")
+						EList<EObject> list = (EList<EObject>) container.eGet(feature);
+						int index = list.indexOf(rc);
+						list.add(index + 1, AmaltheaFactory.eINSTANCE.createSchedulePoint());
+					}
 				}
 			}
 		}

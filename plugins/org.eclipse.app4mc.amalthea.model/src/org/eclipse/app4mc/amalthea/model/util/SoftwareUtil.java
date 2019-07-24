@@ -76,7 +76,7 @@ public class SoftwareUtil {
 	 * Collection can be restricted to specific modes.
 	 * 
 	 * @param container	call graph, group, ...
-	 * @param modes		list of mode literals that should be considered
+	 * @param modes		(optional) - null works
 	 * @return
 	 * 		List of CallGraphItems
 	 */
@@ -89,7 +89,7 @@ public class SoftwareUtil {
 	 * Collection can be restricted to specific modes and filtered by a lambda expression.
 	 * 
 	 * @param container	call graph, group, ...
-	 * @param modes		list of mode literals that should be considered
+	 * @param modes		(optional) - null works
 	 * @param filter	lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
 	 * @return
 	 * 		List of CallGraphItems
@@ -104,7 +104,7 @@ public class SoftwareUtil {
 	 * Collection can be restricted to specific modes and filtered by class.
 	 * 
 	 * @param container		call graph, group, ...
-	 * @param modes			list of mode literals that should be considered
+	 * @param modes			(optional) - null works
 	 * @param targetClass	subclass of CallGraphItem that restricts the result
 	 * @return
 	 * 		List of T extends CallGraphItems
@@ -119,7 +119,7 @@ public class SoftwareUtil {
 	 * Collection can be restricted to specific modes and filtered by class and lambda expression.
 	 * 
 	 * @param container		call graph, group, ...
-	 * @param modes			list of mode literals that should be considered
+	 * @param modes			(optional) - null works
 	 * @param targetClass	subclass of CallGraphItem that restricts the result
 	 * @param filter		lambda expression (e.g. "a -&gt; a instanceof LabelAccess")
 	 * @return

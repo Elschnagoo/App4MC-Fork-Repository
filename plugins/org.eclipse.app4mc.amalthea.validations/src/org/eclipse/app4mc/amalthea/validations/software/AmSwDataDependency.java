@@ -48,7 +48,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>A data dependency can only refer to:</li>
  * <ul>
  * <li>local IN/INOUT parameters</li>
- * <li>local IN/INOUT call arguments</li>
+ * <li>local OUT/INOUT call arguments</li>
  * </ul>
  * </ul>
  */
@@ -133,13 +133,11 @@ public class AmSwDataDependency extends AmaltheaValidation {
 		// CallArguments (out, inout) of contained calls
 		List<DirectionType> possibleDirections = Arrays.asList(DirectionType.OUT, DirectionType.INOUT);
 		
-// FIXME
-//		return SoftwareUtil.collectRunnableItems(runnable, null, (e -> e instanceof RunnableCall)).stream()
-//				.flatMap(e -> ((RunnableCall) e).getArguments().stream())
-//				.filter(e -> e.getParameter() != null)
-//				.filter(e -> possibleDirections.contains(e.getParameter().getDirection()))
-//				.collect(Collectors.toList());
-		return Collections.EMPTY_LIST;
+		return SoftwareUtil.collectCallGraphItems(runnable.getCallGraph(), null, RunnableCall.class).stream()
+				.flatMap(e -> e.getArguments().stream())
+				.filter(e -> e.getParameter() != null)
+				.filter(e -> possibleDirections.contains(e.getParameter().getDirection()))
+				.collect(Collectors.toList());
 	}
 
 }
