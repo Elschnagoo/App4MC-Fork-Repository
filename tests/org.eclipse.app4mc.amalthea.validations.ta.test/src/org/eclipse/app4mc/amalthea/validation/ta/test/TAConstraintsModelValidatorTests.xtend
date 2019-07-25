@@ -102,14 +102,7 @@ class TAConstraintsModelValidatorTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The minimum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_min\")"))
-		assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_max\")"))
-		assertTrue(result.contains("The minimum time must not be negative (-2 ms < 0, in Data Age Constraint \"dac_maxmin\")"))
-		assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_maxmin\")"))
-		assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_maximin\")"))
 		assertTrue(result.contains("The minimum time is greater than the maximum time (0 ms > -1 ms, in Data Age Constraint \"dac_maximin\")"))
-		assertFalse(result.contains("The minimum time must not be negative (4 ms < 0, in Data Age Constraint \"dac_ok\")"))
-		assertFalse(result.contains("The maximum time must not be negative (10 ms < 0, in Data Age Constraint \"dac_ok\")"))
 		assertFalse(result.contains("The minimum time is greater than the maximum time (4 ms > 10 ms, in Data Age Constraint \"dac_ok\")"))
 	}
 	
@@ -126,14 +119,7 @@ class TAConstraintsModelValidatorTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_lower\")"))
-		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upper\")"))
-		assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Delay Constraint \"dc_upperlower\")"))
-		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upperlower\")"))
-		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upperbelower\")"))
 		assertTrue(result.contains("The lower bound is greater than the upper (0 ms > -1 ms, in Delay Constraint \"dc_upperbelower\")"))
-		assertFalse(result.contains("The lower bound must not be negative (4 ms < 0, in Delay Constraint \"dc_ok\")"))
-		assertFalse(result.contains("The upper bound must not be negative (10 ms < 0, in Delay Constraint \"dc_ok\")"))
 		assertFalse(result.contains("The lower bound greater than the upper (4 ms > 10 ms, in Delay Constraint \"dc_ok\")"))
 	}
 	

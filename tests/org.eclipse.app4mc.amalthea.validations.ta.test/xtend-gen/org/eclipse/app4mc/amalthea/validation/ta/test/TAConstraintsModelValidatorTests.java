@@ -163,14 +163,7 @@ public class TAConstraintsModelValidatorTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The minimum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_min\")"));
-    Assert.assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_max\")"));
-    Assert.assertTrue(result.contains("The minimum time must not be negative (-2 ms < 0, in Data Age Constraint \"dac_maxmin\")"));
-    Assert.assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_maxmin\")"));
-    Assert.assertTrue(result.contains("The maximum time must not be negative (-1 ms < 0, in Data Age Constraint \"dac_maximin\")"));
     Assert.assertTrue(result.contains("The minimum time is greater than the maximum time (0 ms > -1 ms, in Data Age Constraint \"dac_maximin\")"));
-    Assert.assertFalse(result.contains("The minimum time must not be negative (4 ms < 0, in Data Age Constraint \"dac_ok\")"));
-    Assert.assertFalse(result.contains("The maximum time must not be negative (10 ms < 0, in Data Age Constraint \"dac_ok\")"));
     Assert.assertFalse(result.contains("The minimum time is greater than the maximum time (4 ms > 10 ms, in Data Age Constraint \"dac_ok\")"));
   }
   
@@ -206,14 +199,7 @@ public class TAConstraintsModelValidatorTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_lower\")"));
-    Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upper\")"));
-    Assert.assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Delay Constraint \"dc_upperlower\")"));
-    Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upperlower\")"));
-    Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Delay Constraint \"dc_upperbelower\")"));
     Assert.assertTrue(result.contains("The lower bound is greater than the upper (0 ms > -1 ms, in Delay Constraint \"dc_upperbelower\")"));
-    Assert.assertFalse(result.contains("The lower bound must not be negative (4 ms < 0, in Delay Constraint \"dc_ok\")"));
-    Assert.assertFalse(result.contains("The upper bound must not be negative (10 ms < 0, in Delay Constraint \"dc_ok\")"));
     Assert.assertFalse(result.contains("The lower bound greater than the upper (4 ms > 10 ms, in Delay Constraint \"dc_ok\")"));
   }
   

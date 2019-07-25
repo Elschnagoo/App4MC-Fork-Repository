@@ -18,6 +18,7 @@ package org.eclipse.app4mc.amalthea.validation.core;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.INamed;
 import org.eclipse.app4mc.amalthea.model.IReferable;
 import org.eclipse.app4mc.validation.core.IValidation;
@@ -60,6 +61,10 @@ public abstract class AmaltheaValidation implements IValidation {
 		} else {
 			return "\"" + prefix + "/" + object.getName() + "\"";			
 		}
+	}
+	
+	protected String namedContainerInfo(final EObject object) {
+		return " (in " + objectInfo(AmaltheaServices.getContainerOfType(object, INamed.class)) + ")";
 	}
 	
 	public String objectInfo(final EObject object) {

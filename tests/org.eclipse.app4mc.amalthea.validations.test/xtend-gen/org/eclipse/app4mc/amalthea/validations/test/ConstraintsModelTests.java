@@ -15,22 +15,33 @@ package org.eclipse.app4mc.amalthea.validations.test;
 import com.google.common.base.Objects;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
+import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
+import org.eclipse.app4mc.amalthea.model.DataAgeTime;
+import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventChain;
 import org.eclipse.app4mc.amalthea.model.EventModel;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
+import org.eclipse.app4mc.amalthea.model.Time;
+import org.eclipse.app4mc.amalthea.model.TimingConstraint;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.ConstraintsBuilder;
+import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
+import org.eclipse.app4mc.amalthea.validations.BasicProfile;
 import org.eclipse.app4mc.amalthea.validations.ConstraintsProfile;
 import org.eclipse.app4mc.amalthea.validations.EMFProfile;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
 import org.eclipse.app4mc.validation.util.ValidationExecutor;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -47,7 +58,7 @@ public class ConstraintsModelTests {
   @Extension
   private ConstraintsBuilder b2 = new ConstraintsBuilder();
   
-  private final ValidationExecutor executor = new ValidationExecutor(Collections.<Class<? extends IProfile>>unmodifiableList(CollectionLiterals.<Class<? extends IProfile>>newArrayList(EMFProfile.class, ConstraintsProfile.class)));
+  private final ValidationExecutor executor = new ValidationExecutor(Collections.<Class<? extends IProfile>>unmodifiableList(CollectionLiterals.<Class<? extends IProfile>>newArrayList(EMFProfile.class, BasicProfile.class, ConstraintsProfile.class)));
   
   public List<ValidationDiagnostic> validate(final Amalthea model) {
     List<ValidationDiagnostic> _xblockexpression = null;
@@ -58,11 +69,37 @@ public class ConstraintsModelTests {
     return _xblockexpression;
   }
   
+  public DataAgeConstraint createDAC(final String name, final Time lower, final Time upper) {
+    DataAgeConstraint _xblockexpression = null;
+    {
+      final DataAgeConstraint dac = AmaltheaFactory.eINSTANCE.createDataAgeConstraint();
+      dac.setName(name);
+      final DataAgeTime dat = AmaltheaFactory.eINSTANCE.createDataAgeTime();
+      dat.setMinimumTime(lower);
+      dat.setMaximumTime(upper);
+      dac.setDataAge(dat);
+      _xblockexpression = dac;
+    }
+    return _xblockexpression;
+  }
+  
+  public DelayConstraint createDC(final String name, final Time lower, final Time upper) {
+    DelayConstraint _xblockexpression = null;
+    {
+      final DelayConstraint dc = AmaltheaFactory.eINSTANCE.createDelayConstraint();
+      dc.setName(name);
+      dc.setLower(lower);
+      dc.setUpper(upper);
+      _xblockexpression = dc;
+    }
+    return _xblockexpression;
+  }
+  
   @Test
   public void testEventChainSimpleGood() {
-    final LabelEvent in = this.createLabelEvent("in");
-    final LabelEvent mid = this.createLabelEvent("mid");
-    final LabelEvent out = this.createLabelEvent("out");
+    final LabelEvent in = ConstraintsModelTests.createLabelEvent("in");
+    final LabelEvent mid = ConstraintsModelTests.createLabelEvent("mid");
+    final LabelEvent out = ConstraintsModelTests.createLabelEvent("out");
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<EventModel> _function_1 = (EventModel it_1) -> {
         it_1.getEvents().addAll(Collections.<Event>unmodifiableList(CollectionLiterals.<Event>newArrayList(in, mid, out)));
@@ -105,10 +142,10 @@ public class ConstraintsModelTests {
   
   @Test
   public void testEventChainSimple_UnmatchingStimulusEventAtChainStart() {
-    final LabelEvent in = this.createLabelEvent("in");
-    final LabelEvent in_false = this.createLabelEvent("in_false");
-    final LabelEvent mid = this.createLabelEvent("mid");
-    final LabelEvent out = this.createLabelEvent("out");
+    final LabelEvent in = ConstraintsModelTests.createLabelEvent("in");
+    final LabelEvent in_false = ConstraintsModelTests.createLabelEvent("in_false");
+    final LabelEvent mid = ConstraintsModelTests.createLabelEvent("mid");
+    final LabelEvent out = ConstraintsModelTests.createLabelEvent("out");
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<EventModel> _function_1 = (EventModel it_1) -> {
         it_1.getEvents().addAll(Collections.<Event>unmodifiableList(CollectionLiterals.<Event>newArrayList(in, in_false, mid, out)));
@@ -151,10 +188,10 @@ public class ConstraintsModelTests {
   
   @Test
   public void testEventChainSimple_UnmatchingResponseEventAtChainEnd() {
-    final LabelEvent in = this.createLabelEvent("in");
-    final LabelEvent mid = this.createLabelEvent("mid");
-    final LabelEvent out = this.createLabelEvent("out");
-    final LabelEvent out_false = this.createLabelEvent("out_false");
+    final LabelEvent in = ConstraintsModelTests.createLabelEvent("in");
+    final LabelEvent mid = ConstraintsModelTests.createLabelEvent("mid");
+    final LabelEvent out = ConstraintsModelTests.createLabelEvent("out");
+    final LabelEvent out_false = ConstraintsModelTests.createLabelEvent("out_false");
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<EventModel> _function_1 = (EventModel it_1) -> {
         it_1.getEvents().addAll(Collections.<Event>unmodifiableList(CollectionLiterals.<Event>newArrayList(in, mid, out, out_false)));
@@ -197,10 +234,10 @@ public class ConstraintsModelTests {
   
   @Test
   public void testEventChainSimpleBadWrongStimulusInSubEvent() {
-    final LabelEvent in = this.createLabelEvent("in");
-    final LabelEvent mid = this.createLabelEvent("mid");
-    final LabelEvent mid_false = this.createLabelEvent("mid_false");
-    final LabelEvent out = this.createLabelEvent("out");
+    final LabelEvent in = ConstraintsModelTests.createLabelEvent("in");
+    final LabelEvent mid = ConstraintsModelTests.createLabelEvent("mid");
+    final LabelEvent mid_false = ConstraintsModelTests.createLabelEvent("mid_false");
+    final LabelEvent out = ConstraintsModelTests.createLabelEvent("out");
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<EventModel> _function_1 = (EventModel it_1) -> {
         it_1.getEvents().addAll(Collections.<Event>unmodifiableList(CollectionLiterals.<Event>newArrayList(in, mid, mid_false, out)));
@@ -243,10 +280,10 @@ public class ConstraintsModelTests {
   
   @Test
   public void testEventChainSimpleBadWrongResponseInSubEvent() {
-    final LabelEvent in = this.createLabelEvent("in");
-    final LabelEvent mid = this.createLabelEvent("mid");
-    final LabelEvent mid_false = this.createLabelEvent("mid_false");
-    final LabelEvent out = this.createLabelEvent("out");
+    final LabelEvent in = ConstraintsModelTests.createLabelEvent("in");
+    final LabelEvent mid = ConstraintsModelTests.createLabelEvent("mid");
+    final LabelEvent mid_false = ConstraintsModelTests.createLabelEvent("mid_false");
+    final LabelEvent out = ConstraintsModelTests.createLabelEvent("out");
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<EventModel> _function_1 = (EventModel it_1) -> {
         it_1.getEvents().addAll(Collections.<Event>unmodifiableList(CollectionLiterals.<Event>newArrayList(in, mid, mid_false, out)));
@@ -289,9 +326,9 @@ public class ConstraintsModelTests {
   
   @Test
   public void testEventChainSimpleBadMissingStimulusInSubEvent() {
-    final LabelEvent in = this.createLabelEvent("in");
-    final LabelEvent mid = this.createLabelEvent("mid");
-    final LabelEvent out = this.createLabelEvent("out");
+    final LabelEvent in = ConstraintsModelTests.createLabelEvent("in");
+    final LabelEvent mid = ConstraintsModelTests.createLabelEvent("mid");
+    final LabelEvent out = ConstraintsModelTests.createLabelEvent("out");
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<EventModel> _function_1 = (EventModel it_1) -> {
         it_1.getEvents().addAll(Collections.<Event>unmodifiableList(CollectionLiterals.<Event>newArrayList(in, mid, out)));
@@ -335,9 +372,9 @@ public class ConstraintsModelTests {
   
   @Test
   public void testEventChainSimpleBadMissingResponseInSubEvent() {
-    final LabelEvent in = this.createLabelEvent("in");
-    final LabelEvent mid = this.createLabelEvent("mid");
-    final LabelEvent out = this.createLabelEvent("out");
+    final LabelEvent in = ConstraintsModelTests.createLabelEvent("in");
+    final LabelEvent mid = ConstraintsModelTests.createLabelEvent("mid");
+    final LabelEvent out = ConstraintsModelTests.createLabelEvent("out");
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<EventModel> _function_1 = (EventModel it_1) -> {
         it_1.getEvents().addAll(Collections.<Event>unmodifiableList(CollectionLiterals.<Event>newArrayList(in, mid, out)));
@@ -379,7 +416,89 @@ public class ConstraintsModelTests {
     Assert.assertTrue(result.contains("The required feature \'response\' of \'SubEventChain SubEvent1\' must be set ( in Event Chain \"BasicEventChain\" )"));
   }
   
-  private LabelEvent createLabelEvent(final String name) {
+  @Test
+  public void testDataAgeTime() {
+    final Procedure1<Amalthea> _function = (Amalthea it) -> {
+      final Procedure1<ConstraintsModel> _function_1 = (ConstraintsModel it_1) -> {
+        EList<DataAgeConstraint> _dataAgeConstraints = it_1.getDataAgeConstraints();
+        DataAgeConstraint _createDAC = this.createDAC("dac_ok", FactoryUtil.createTime(4, "ms"), FactoryUtil.createTime(10, "ms"));
+        _dataAgeConstraints.add(_createDAC);
+        EList<DataAgeConstraint> _dataAgeConstraints_1 = it_1.getDataAgeConstraints();
+        DataAgeConstraint _createDAC_1 = this.createDAC("dac_min", FactoryUtil.createTime((-1), "ms"), null);
+        _dataAgeConstraints_1.add(_createDAC_1);
+        EList<DataAgeConstraint> _dataAgeConstraints_2 = it_1.getDataAgeConstraints();
+        DataAgeConstraint _createDAC_2 = this.createDAC("dac_max", null, FactoryUtil.createTime((-1), "ms"));
+        _dataAgeConstraints_2.add(_createDAC_2);
+        EList<DataAgeConstraint> _dataAgeConstraints_3 = it_1.getDataAgeConstraints();
+        DataAgeConstraint _createDAC_3 = this.createDAC("dac_maxmin", FactoryUtil.createTime((-2), "ms"), FactoryUtil.createTime((-1), "ms"));
+        _dataAgeConstraints_3.add(_createDAC_3);
+        EList<DataAgeConstraint> _dataAgeConstraints_4 = it_1.getDataAgeConstraints();
+        DataAgeConstraint _createDAC_4 = this.createDAC("dac_maximin", FactoryUtil.createTime(0, "ms"), FactoryUtil.createTime((-1), "ms"));
+        _dataAgeConstraints_4.add(_createDAC_4);
+      };
+      this.b1.constraintsModel(it, _function_1);
+    };
+    final Amalthea model = this.b1.amalthea(_function);
+    final List<ValidationDiagnostic> validationResult = this.validate(model);
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
+      return it.getMessage();
+    };
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
+    Assert.assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_min\")"));
+    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_max\")"));
+    Assert.assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"));
+    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"));
+    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maximin\")"));
+    Assert.assertFalse(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"));
+    Assert.assertFalse(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"));
+  }
+  
+  @Test
+  public void test_TAConstraintsDelayConstraint() {
+    final Procedure1<Amalthea> _function = (Amalthea it) -> {
+      final Procedure1<ConstraintsModel> _function_1 = (ConstraintsModel it_1) -> {
+        EList<TimingConstraint> _timingConstraints = it_1.getTimingConstraints();
+        DelayConstraint _createDC = this.createDC("dc_ok", FactoryUtil.createTime(4, "ms"), FactoryUtil.createTime(10, "ms"));
+        _timingConstraints.add(_createDC);
+        EList<TimingConstraint> _timingConstraints_1 = it_1.getTimingConstraints();
+        DelayConstraint _createDC_1 = this.createDC("dc_lower", FactoryUtil.createTime((-1), "ms"), null);
+        _timingConstraints_1.add(_createDC_1);
+        EList<TimingConstraint> _timingConstraints_2 = it_1.getTimingConstraints();
+        DelayConstraint _createDC_2 = this.createDC("dc_upper", null, FactoryUtil.createTime((-1), "ms"));
+        _timingConstraints_2.add(_createDC_2);
+        EList<TimingConstraint> _timingConstraints_3 = it_1.getTimingConstraints();
+        DelayConstraint _createDC_3 = this.createDC("dc_upperlower", FactoryUtil.createTime((-2), "ms"), FactoryUtil.createTime((-1), "ms"));
+        _timingConstraints_3.add(_createDC_3);
+        EList<TimingConstraint> _timingConstraints_4 = it_1.getTimingConstraints();
+        DelayConstraint _createDC_4 = this.createDC("dc_upperbelower", FactoryUtil.createTime(0, "ms"), FactoryUtil.createTime((-1), "ms"));
+        _timingConstraints_4.add(_createDC_4);
+      };
+      this.b1.constraintsModel(it, _function_1);
+    };
+    final Amalthea model = this.b1.amalthea(_function);
+    final List<ValidationDiagnostic> validationResult = this.validate(model);
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
+      return it.getMessage();
+    };
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_lower\")"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upper\")"));
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_upperlower\")"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperlower\")"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperbelower\")"));
+    Assert.assertFalse(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_ok\")"));
+    Assert.assertFalse(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_ok\")"));
+  }
+  
+  private static LabelEvent createLabelEvent(final String name) {
     final LabelEvent event = AmaltheaFactory.eINSTANCE.createLabelEvent();
     event.setName(name);
     return event;

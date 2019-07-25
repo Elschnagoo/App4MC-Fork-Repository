@@ -16,6 +16,7 @@
 package org.eclipse.app4mc.amalthea.validations.test
 
 import java.util.List
+import java.util.stream.Collectors
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
 import org.eclipse.app4mc.amalthea.model.LabelEvent
@@ -28,17 +29,41 @@ import org.eclipse.app4mc.validation.core.ValidationDiagnostic
 import org.eclipse.app4mc.validation.util.ValidationExecutor
 import org.junit.Test
 
+import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
+import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
+import org.eclipse.app4mc.amalthea.model.DataAgeConstraint
+import org.eclipse.app4mc.amalthea.model.Time
+import org.eclipse.app4mc.amalthea.validations.BasicProfile
+import org.eclipse.app4mc.amalthea.model.DelayConstraint
 
 class ConstraintsModelTests {
 	extension AmaltheaBuilder b1 = new AmaltheaBuilder
 	extension ConstraintsBuilder b2 = new ConstraintsBuilder
 
-	val executor = new ValidationExecutor( #[EMFProfile, ConstraintsProfile] )
+	val executor = new ValidationExecutor( #[EMFProfile, BasicProfile, ConstraintsProfile] )
 
 	def List<ValidationDiagnostic> validate(Amalthea model) {
 		executor.validate(model)
 		executor.results
+	}
+	
+	def DataAgeConstraint createDAC(String name, Time lower, Time upper) {
+		val dac = AmaltheaFactory.eINSTANCE.createDataAgeConstraint
+		dac.name = name
+		val dat = AmaltheaFactory.eINSTANCE.createDataAgeTime
+		dat.minimumTime = lower
+		dat.maximumTime = upper
+		dac.dataAge = dat
+		dac
+	}
+	
+	def DelayConstraint createDC(String name, Time lower, Time upper) {
+		val dc = AmaltheaFactory.eINSTANCE.createDelayConstraint
+		dc.name = name
+		dc.lower = lower
+		dc.upper = upper
+		dc
 	}
 
 	@Test
@@ -220,8 +245,52 @@ class ConstraintsModelTests {
 		assertTrue(result.contains("Event Chain \"BasicEventChain\": response of segment 0 <> stimulus of segment 1"))
 		assertTrue(result.contains("The required feature 'response' of 'SubEventChain SubEvent1' must be set ( in Event Chain \"BasicEventChain\" )"))
 	}
+	
+	@Test
+	def void testDataAgeTime() {
+		val model = amalthea [
+			constraintsModel [
+				dataAgeConstraints += createDAC("dac_ok", createTime(4, "ms"), createTime(10, "ms"))
+				dataAgeConstraints += createDAC("dac_min", createTime(-1, "ms"), null)
+				dataAgeConstraints += createDAC("dac_max", null, createTime(-1, "ms"))
+				dataAgeConstraints += createDAC("dac_maxmin", createTime(-2, "ms"), createTime(-1, "ms"))
+				dataAgeConstraints += createDAC("dac_maximin", createTime(0, "ms"), createTime(-1, "ms"))
+			]
+		]
+		val validationResult = validate(model)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
+		assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_min\")"))
+		assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_max\")"))
+		assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"))
+		assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"))
+		assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maximin\")"))
+		assertFalse(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"))
+		assertFalse(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"))
+	}
+	
+	@Test
+	def void test_TAConstraintsDelayConstraint() {
+		val model = amalthea [
+			constraintsModel [
+				timingConstraints += createDC("dc_ok", createTime(4, "ms"), createTime(10, "ms"))
+				timingConstraints += createDC("dc_lower", createTime(-1, "ms"), null)
+				timingConstraints += createDC("dc_upper", null, createTime(-1, "ms"))
+				timingConstraints += createDC("dc_upperlower", createTime(-2, "ms"), createTime(-1, "ms"))
+				timingConstraints += createDC("dc_upperbelower", createTime(0, "ms"), createTime(-1, "ms"))
+			]
+		]
+		val validationResult = validate(model)
+		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
+		assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_lower\")"))
+		assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upper\")"))
+		assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_upperlower\")"))
+		assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperlower\")"))
+		assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperbelower\")"))
+		assertFalse(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_ok\")"))
+		assertFalse(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_ok\")"))
+	}
 
-	def private LabelEvent createLabelEvent(String name) {
+	def private static LabelEvent createLabelEvent(String name) {
 		val LabelEvent event = AmaltheaFactory.eINSTANCE.createLabelEvent()
 		event.setName(name)
 		return event
