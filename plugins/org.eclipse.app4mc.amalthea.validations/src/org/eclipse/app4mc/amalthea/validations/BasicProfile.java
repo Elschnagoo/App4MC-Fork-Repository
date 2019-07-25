@@ -18,6 +18,7 @@ package org.eclipse.app4mc.amalthea.validations;
 import org.eclipse.app4mc.amalthea.validations.basic.AmBasicCounter;
 import org.eclipse.app4mc.amalthea.validations.basic.AmBasicCustomPropertyKey;
 import org.eclipse.app4mc.amalthea.validations.basic.AmBasicDataSize;
+import org.eclipse.app4mc.amalthea.validations.basic.AmBasicFrequency;
 import org.eclipse.app4mc.amalthea.validations.basic.AmBasicQuantity;
 import org.eclipse.app4mc.amalthea.validations.basic.AmBasicTimeRange;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
@@ -30,6 +31,7 @@ import org.eclipse.app4mc.validation.core.Severity;
 		validations =  {
 				AmBasicCounter.class,
 				AmBasicDataSize.class,
+				AmBasicFrequency.class,
 				AmBasicQuantity.class,
 				AmBasicTimeRange.class
 		}

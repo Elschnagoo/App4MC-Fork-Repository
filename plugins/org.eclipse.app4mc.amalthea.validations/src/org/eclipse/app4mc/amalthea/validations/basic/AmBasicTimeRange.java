@@ -62,10 +62,8 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 						
 				|| containingFeature == ePackage.getPeriodicActivation_Recurrence()
 				
-//				|| containingFeature == ePackage.getClockSinusFunction_Period()
-//				|| containingFeature == ePackage.getClockTriangleFunction_Period()
-//				
-//				|| containingFeature == ePackage.getClockMultiplierListEntry_Time()
+				|| containingFeature == ePackage.getClockFunction_Period()
+				|| containingFeature == ePackage.getClockStepList_Period()
 				) {
 					addIssue(results, time, ePackage.getTime_Value(),
 							"Time: " + containingFeature.getName() + " value must be greater than zero" + containerInfo(time));
@@ -85,6 +83,9 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 				
 				|| containingFeature == ePackage.getSingleActivation_Min()
 				|| containingFeature == ePackage.getSingleActivation_Max()
+
+				|| containingFeature == ePackage.getClockFunction_XOffset()
+				|| containingFeature == ePackage.getClockStep_Time()
 				) {
 					addIssue(results, time, ePackage.getTime_Value(),
 							"Time: " + containingFeature.getName() + " value must be positive or zero" + containerInfo(time));
