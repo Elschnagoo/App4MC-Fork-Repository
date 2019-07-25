@@ -62,7 +62,7 @@ public class AmBasicFrequency extends AmaltheaValidation {
 				|| containingFeature == ePackage.getClockFunction_YOffset()
 				) {
 					addIssue(results, frequency, ePackage.getFrequency_Value(),
-							"Frequency: " + containingFeature.getName() + " value must be greater than zero" + containerInfo(frequency));
+							"Frequency: " + containingFeature.getName() + " value must be greater than zero" + namedContainerInfo(frequency));
 				}
 			}
 		}

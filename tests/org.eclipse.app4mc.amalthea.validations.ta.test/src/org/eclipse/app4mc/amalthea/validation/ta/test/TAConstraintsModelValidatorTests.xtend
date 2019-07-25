@@ -136,15 +136,8 @@ class TAConstraintsModelValidatorTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The minimum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_lower\")"))
-		assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upper\")"))
-		assertTrue(result.contains("The minimum must not be negative (-2 ms < 0, in Event Chain Latency Constraint \"eclc_upperlower\")"))
-		assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upperlower\")"))
-		assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upperbelower\")"))
 		assertTrue(result.contains("The minimum is greater than the maximum (0 ms > -1 ms, in Event Chain Latency Constraint \"eclc_upperbelower\")"))
-		assertFalse(result.contains("The minimum must not be negative (4 ms < 0, in Event Chain Latency Constraint \"eclc_ok\")"))
-		assertFalse(result.contains("The maximum must not be negative (10 ms < 0, in Event Chain Latency Constraint \"eclc_ok\")"))
-		assertFalse(result.contains("The minimum greater than the upper (4 ms > 10 ms, in Event Chain Latency Constraint \"eclc_ok\")"))
+		assertFalse(result.contains("The minimum is greater than the maximum (4 ms > 10 ms, in Event Chain Latency Constraint \"eclc_ok\")"))
 	}
 	
 	@Test
@@ -202,19 +195,8 @@ class TAConstraintsModelValidatorTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_lower\")"))
-		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upper\")"))
-		assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Repetition Constraint \"rc_upperlower\")"))
-		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upperlower\")"))
-		assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upperbelower\")"))
 		assertTrue(result.contains("The lower bound is greater than the upper (0 ms > -1 ms, in Repetition Constraint \"rc_upperbelower\")"))
-		assertTrue(result.contains("The jitter must not be negative (-1 ms < 0, in Repetition Constraint \"rc_jitter\")"))
-		assertTrue(result.contains("The period must not be negative (-1 ms < 0, in Repetition Constraint \"rc_period\")"))
-		assertFalse(result.contains("The lower bound must not be negative (4 ms < 0, in Repetition Constraint \"rc_ok\")"))
-		assertFalse(result.contains("The upper bound must not be negative (10 ms < 0, in Repetition Constraint \"rc_ok\")"))
 		assertFalse(result.contains("The lower bound greater than the upper (4 ms > 10 ms, in Repetition Constraint \"rc_ok\")"))
-		assertFalse(result.contains("The jitter must not be negative (1 ms < 0, in Repetition Constraint \"rc_ok\")"))
-		assertFalse(result.contains("The period must not be negative (50 ms < 0, in Repetition Constraint \"rc_ok\")"))
 	}
 	
 	@Test
@@ -237,26 +219,6 @@ class TAConstraintsModelValidatorTests {
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The response time specified in Process Requirement \"Process deadline - t_notOk\" must be greater than 0."))
 		assertFalse(result.contains("The response time specified in Process Requirement \"Process deadline - t_ok\" must be greater than 0."))
-	}
-	
-	@Test
-	def void test_TAConstraintsSynchronizationToleranceNotNegative() {
-		val model = amalthea [
-			constraintsModel [
-				val sc_ok = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint
-				sc_ok.name = "sc_ok"
-				sc_ok.tolerance = createTime(1, "ms")
-				timingConstraints += sc_ok
-				val sc_notOk = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint
-				sc_notOk.name = "sc_notOk"
-				sc_notOk.tolerance = createTime(-42, "ms")
-				timingConstraints += sc_notOk
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_notOk\" must not be negative."))
-		assertFalse(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_ok\" must not be negative."))
 	}
 	
 }

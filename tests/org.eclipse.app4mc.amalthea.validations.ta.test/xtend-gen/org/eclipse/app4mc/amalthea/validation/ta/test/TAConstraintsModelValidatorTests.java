@@ -24,7 +24,6 @@ import org.eclipse.app4mc.amalthea.model.DataAgeConstraint;
 import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
-import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.OSModel;
 import org.eclipse.app4mc.amalthea.model.OperatingSystem;
@@ -235,15 +234,8 @@ public class TAConstraintsModelValidatorTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The minimum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_lower\")"));
-    Assert.assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upper\")"));
-    Assert.assertTrue(result.contains("The minimum must not be negative (-2 ms < 0, in Event Chain Latency Constraint \"eclc_upperlower\")"));
-    Assert.assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upperlower\")"));
-    Assert.assertTrue(result.contains("The maximum must not be negative (-1 ms < 0, in Event Chain Latency Constraint \"eclc_upperbelower\")"));
     Assert.assertTrue(result.contains("The minimum is greater than the maximum (0 ms > -1 ms, in Event Chain Latency Constraint \"eclc_upperbelower\")"));
-    Assert.assertFalse(result.contains("The minimum must not be negative (4 ms < 0, in Event Chain Latency Constraint \"eclc_ok\")"));
-    Assert.assertFalse(result.contains("The maximum must not be negative (10 ms < 0, in Event Chain Latency Constraint \"eclc_ok\")"));
-    Assert.assertFalse(result.contains("The minimum greater than the upper (4 ms > 10 ms, in Event Chain Latency Constraint \"eclc_ok\")"));
+    Assert.assertFalse(result.contains("The minimum is greater than the maximum (4 ms > 10 ms, in Event Chain Latency Constraint \"eclc_ok\")"));
   }
   
   @Test
@@ -342,19 +334,8 @@ public class TAConstraintsModelValidatorTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The lower bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_lower\")"));
-    Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upper\")"));
-    Assert.assertTrue(result.contains("The lower bound must not be negative (-2 ms < 0, in Repetition Constraint \"rc_upperlower\")"));
-    Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upperlower\")"));
-    Assert.assertTrue(result.contains("The upper bound must not be negative (-1 ms < 0, in Repetition Constraint \"rc_upperbelower\")"));
     Assert.assertTrue(result.contains("The lower bound is greater than the upper (0 ms > -1 ms, in Repetition Constraint \"rc_upperbelower\")"));
-    Assert.assertTrue(result.contains("The jitter must not be negative (-1 ms < 0, in Repetition Constraint \"rc_jitter\")"));
-    Assert.assertTrue(result.contains("The period must not be negative (-1 ms < 0, in Repetition Constraint \"rc_period\")"));
-    Assert.assertFalse(result.contains("The lower bound must not be negative (4 ms < 0, in Repetition Constraint \"rc_ok\")"));
-    Assert.assertFalse(result.contains("The upper bound must not be negative (10 ms < 0, in Repetition Constraint \"rc_ok\")"));
     Assert.assertFalse(result.contains("The lower bound greater than the upper (4 ms > 10 ms, in Repetition Constraint \"rc_ok\")"));
-    Assert.assertFalse(result.contains("The jitter must not be negative (1 ms < 0, in Repetition Constraint \"rc_ok\")"));
-    Assert.assertFalse(result.contains("The period must not be negative (50 ms < 0, in Repetition Constraint \"rc_ok\")"));
   }
   
   @Test
@@ -389,36 +370,5 @@ public class TAConstraintsModelValidatorTests {
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The response time specified in Process Requirement \"Process deadline - t_notOk\" must be greater than 0."));
     Assert.assertFalse(result.contains("The response time specified in Process Requirement \"Process deadline - t_ok\" must be greater than 0."));
-  }
-  
-  @Test
-  public void test_TAConstraintsSynchronizationToleranceNotNegative() {
-    final Procedure1<Amalthea> _function = (Amalthea it) -> {
-      final Procedure1<ConstraintsModel> _function_1 = (ConstraintsModel it_1) -> {
-        final EventSynchronizationConstraint sc_ok = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint();
-        sc_ok.setName("sc_ok");
-        sc_ok.setTolerance(FactoryUtil.createTime(1, "ms"));
-        EList<TimingConstraint> _timingConstraints = it_1.getTimingConstraints();
-        _timingConstraints.add(sc_ok);
-        final EventSynchronizationConstraint sc_notOk = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint();
-        sc_notOk.setName("sc_notOk");
-        sc_notOk.setTolerance(FactoryUtil.createTime((-42), "ms"));
-        EList<TimingConstraint> _timingConstraints_1 = it_1.getTimingConstraints();
-        _timingConstraints_1.add(sc_notOk);
-      };
-      this.b1.constraintsModel(it, _function_1);
-    };
-    final Amalthea model = this.b1.amalthea(_function);
-    final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
-      Severity _severityLevel = it.getSeverityLevel();
-      return Objects.equal(_severityLevel, Severity.ERROR);
-    };
-    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
-      return it.getMessage();
-    };
-    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_notOk\" must not be negative."));
-    Assert.assertFalse(result.contains("The tolerance time specified in Event Synchronization Constraint \"sc_ok\" must not be negative."));
   }
 }

@@ -18,8 +18,6 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
-import org.eclipse.app4mc.amalthea.model.FrequencyDomain;
-import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.HWModel;
 import org.eclipse.app4mc.amalthea.model.HwFeature;
 import org.eclipse.app4mc.amalthea.model.HwFeatureCategory;
@@ -27,7 +25,6 @@ import org.eclipse.app4mc.amalthea.model.ProcessingUnitDefinition;
 import org.eclipse.app4mc.amalthea.model.PuType;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.HardwareBuilder;
-import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile;
 import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -55,37 +52,6 @@ public class TAHardwareModelValidatorTests {
       _xblockexpression = this.executor.getResults();
     }
     return _xblockexpression;
-  }
-  
-  @Test
-  public void test_TAHardwareFrequencyDomainPositive() {
-    final Procedure1<Amalthea> _function = (Amalthea it) -> {
-      final Procedure1<HWModel> _function_1 = (HWModel it_1) -> {
-        final Procedure1<FrequencyDomain> _function_2 = (FrequencyDomain it_2) -> {
-          it_2.setName("fd_ok");
-          it_2.setDefaultValue(FactoryUtil.createFrequency(1, FrequencyUnit.MHZ));
-        };
-        this.b2.domain_Frequency(it_1, _function_2);
-        final Procedure1<FrequencyDomain> _function_3 = (FrequencyDomain it_2) -> {
-          it_2.setName("fd_small");
-          it_2.setDefaultValue(FactoryUtil.createFrequency(0, FrequencyUnit.MHZ));
-        };
-        this.b2.domain_Frequency(it_1, _function_3);
-      };
-      this.b1.hardwareModel(it, _function_1);
-    };
-    final Amalthea model = this.b1.amalthea(_function);
-    final List<ValidationDiagnostic> validationResult = this.validate(model);
-    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
-      Severity _severityLevel = it.getSeverityLevel();
-      return Objects.equal(_severityLevel, Severity.ERROR);
-    };
-    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
-      return it.getMessage();
-    };
-    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The frequency must be positive (0.0 MHz <= 0.0d, in Frequency Domain \"fd_small\")"));
-    Assert.assertFalse(result.contains("The frequency must be positive (1.0 MHz <= 0.0d, in Frequency Domain \"fd_ok\")"));
   }
   
   @Test

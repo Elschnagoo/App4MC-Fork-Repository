@@ -26,8 +26,11 @@ import org.eclipse.app4mc.amalthea.model.DataAgeTime;
 import org.eclipse.app4mc.amalthea.model.DelayConstraint;
 import org.eclipse.app4mc.amalthea.model.Event;
 import org.eclipse.app4mc.amalthea.model.EventChain;
+import org.eclipse.app4mc.amalthea.model.EventChainLatencyConstraint;
 import org.eclipse.app4mc.amalthea.model.EventModel;
+import org.eclipse.app4mc.amalthea.model.EventSynchronizationConstraint;
 import org.eclipse.app4mc.amalthea.model.LabelEvent;
+import org.eclipse.app4mc.amalthea.model.RepetitionConstraint;
 import org.eclipse.app4mc.amalthea.model.SubEventChain;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimingConstraint;
@@ -91,6 +94,32 @@ public class ConstraintsModelTests {
       dc.setLower(lower);
       dc.setUpper(upper);
       _xblockexpression = dc;
+    }
+    return _xblockexpression;
+  }
+  
+  public EventChainLatencyConstraint createECLC(final String name, final Time lower, final Time upper) {
+    EventChainLatencyConstraint _xblockexpression = null;
+    {
+      final EventChainLatencyConstraint eclc = AmaltheaFactory.eINSTANCE.createEventChainLatencyConstraint();
+      eclc.setName(name);
+      eclc.setMinimum(lower);
+      eclc.setMaximum(upper);
+      _xblockexpression = eclc;
+    }
+    return _xblockexpression;
+  }
+  
+  public RepetitionConstraint createRC(final String name, final Time lower, final Time upper, final Time jitter, final Time period) {
+    RepetitionConstraint _xblockexpression = null;
+    {
+      final RepetitionConstraint rc = AmaltheaFactory.eINSTANCE.createRepetitionConstraint();
+      rc.setName(name);
+      rc.setLower(lower);
+      rc.setUpper(upper);
+      rc.setJitter(jitter);
+      rc.setPeriod(period);
+      _xblockexpression = rc;
     }
     return _xblockexpression;
   }
@@ -458,7 +487,7 @@ public class ConstraintsModelTests {
   }
   
   @Test
-  public void test_TAConstraintsDelayConstraint() {
+  public void testDelayConstraintTime() {
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<ConstraintsModel> _function_1 = (ConstraintsModel it_1) -> {
         EList<TimingConstraint> _timingConstraints = it_1.getTimingConstraints();
@@ -496,6 +525,129 @@ public class ConstraintsModelTests {
     Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperbelower\")"));
     Assert.assertFalse(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_ok\")"));
     Assert.assertFalse(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_ok\")"));
+  }
+  
+  @Test
+  public void testECLConstraintTime() {
+    final Procedure1<Amalthea> _function = (Amalthea it) -> {
+      final Procedure1<ConstraintsModel> _function_1 = (ConstraintsModel it_1) -> {
+        EList<TimingConstraint> _timingConstraints = it_1.getTimingConstraints();
+        EventChainLatencyConstraint _createECLC = this.createECLC("eclc_ok", FactoryUtil.createTime(4, "ms"), FactoryUtil.createTime(10, "ms"));
+        _timingConstraints.add(_createECLC);
+        EList<TimingConstraint> _timingConstraints_1 = it_1.getTimingConstraints();
+        EventChainLatencyConstraint _createECLC_1 = this.createECLC("eclc_lower", FactoryUtil.createTime((-1), "ms"), null);
+        _timingConstraints_1.add(_createECLC_1);
+        EList<TimingConstraint> _timingConstraints_2 = it_1.getTimingConstraints();
+        EventChainLatencyConstraint _createECLC_2 = this.createECLC("eclc_upper", null, FactoryUtil.createTime((-1), "ms"));
+        _timingConstraints_2.add(_createECLC_2);
+        EList<TimingConstraint> _timingConstraints_3 = it_1.getTimingConstraints();
+        EventChainLatencyConstraint _createECLC_3 = this.createECLC("eclc_upperlower", FactoryUtil.createTime((-2), "ms"), FactoryUtil.createTime((-1), "ms"));
+        _timingConstraints_3.add(_createECLC_3);
+        EList<TimingConstraint> _timingConstraints_4 = it_1.getTimingConstraints();
+        EventChainLatencyConstraint _createECLC_4 = this.createECLC("eclc_upperbelower", FactoryUtil.createTime(0, "ms"), FactoryUtil.createTime((-1), "ms"));
+        _timingConstraints_4.add(_createECLC_4);
+      };
+      this.b1.constraintsModel(it, _function_1);
+    };
+    final Amalthea model = this.b1.amalthea(_function);
+    final List<ValidationDiagnostic> validationResult = this.validate(model);
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
+      return it.getMessage();
+    };
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
+    Assert.assertTrue(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_lower\")"));
+    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upper\")"));
+    Assert.assertTrue(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperlower\")"));
+    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperlower\")"));
+    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperbelower\")"));
+    Assert.assertFalse(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_ok\")"));
+    Assert.assertFalse(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_ok\")"));
+  }
+  
+  @Test
+  public void testRepetitionConstraintTime() {
+    final Procedure1<Amalthea> _function = (Amalthea it) -> {
+      final Procedure1<ConstraintsModel> _function_1 = (ConstraintsModel it_1) -> {
+        EList<TimingConstraint> _timingConstraints = it_1.getTimingConstraints();
+        RepetitionConstraint _createRC = this.createRC("rc_ok", FactoryUtil.createTime(4, "ms"), FactoryUtil.createTime(10, "ms"), FactoryUtil.createTime(1, "ms"), FactoryUtil.createTime(50, "ms"));
+        _timingConstraints.add(_createRC);
+        EList<TimingConstraint> _timingConstraints_1 = it_1.getTimingConstraints();
+        RepetitionConstraint _createRC_1 = this.createRC("rc_lower", FactoryUtil.createTime((-1), "ms"), null, null, null);
+        _timingConstraints_1.add(_createRC_1);
+        EList<TimingConstraint> _timingConstraints_2 = it_1.getTimingConstraints();
+        RepetitionConstraint _createRC_2 = this.createRC("rc_upper", null, FactoryUtil.createTime((-1), "ms"), null, null);
+        _timingConstraints_2.add(_createRC_2);
+        EList<TimingConstraint> _timingConstraints_3 = it_1.getTimingConstraints();
+        RepetitionConstraint _createRC_3 = this.createRC("rc_upperlower", FactoryUtil.createTime((-2), "ms"), FactoryUtil.createTime((-1), "ms"), null, null);
+        _timingConstraints_3.add(_createRC_3);
+        EList<TimingConstraint> _timingConstraints_4 = it_1.getTimingConstraints();
+        RepetitionConstraint _createRC_4 = this.createRC("rc_upperbelower", FactoryUtil.createTime(0, "ms"), FactoryUtil.createTime((-1), "ms"), null, null);
+        _timingConstraints_4.add(_createRC_4);
+        EList<TimingConstraint> _timingConstraints_5 = it_1.getTimingConstraints();
+        RepetitionConstraint _createRC_5 = this.createRC("rc_jitter", null, null, FactoryUtil.createTime((-1), "ms"), null);
+        _timingConstraints_5.add(_createRC_5);
+        EList<TimingConstraint> _timingConstraints_6 = it_1.getTimingConstraints();
+        RepetitionConstraint _createRC_6 = this.createRC("rc_period", null, null, null, FactoryUtil.createTime((-1), "ms"));
+        _timingConstraints_6.add(_createRC_6);
+      };
+      this.b1.constraintsModel(it, _function_1);
+    };
+    final Amalthea model = this.b1.amalthea(_function);
+    final List<ValidationDiagnostic> validationResult = this.validate(model);
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
+      return it.getMessage();
+    };
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_lower\")"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upper\")"));
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_upperlower\")"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upperlower\")"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upperbelower\")"));
+    Assert.assertTrue(result.contains("Time: jitter value must be positive or zero (in Repetition Constraint \"rc_jitter\")"));
+    Assert.assertTrue(result.contains("Time: period value must be positive or zero (in Repetition Constraint \"rc_period\")"));
+    Assert.assertFalse(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
+    Assert.assertFalse(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
+    Assert.assertFalse(result.contains("Time: jitter value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
+    Assert.assertFalse(result.contains("Time: period value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
+  }
+  
+  @Test
+  public void testSynchronizationConstraintTolerance() {
+    final Procedure1<Amalthea> _function = (Amalthea it) -> {
+      final Procedure1<ConstraintsModel> _function_1 = (ConstraintsModel it_1) -> {
+        final EventSynchronizationConstraint sc_ok = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint();
+        sc_ok.setName("sc_ok");
+        sc_ok.setTolerance(FactoryUtil.createTime(1, "ms"));
+        EList<TimingConstraint> _timingConstraints = it_1.getTimingConstraints();
+        _timingConstraints.add(sc_ok);
+        final EventSynchronizationConstraint sc_notOk = AmaltheaFactory.eINSTANCE.createEventSynchronizationConstraint();
+        sc_notOk.setName("sc_notOk");
+        sc_notOk.setTolerance(FactoryUtil.createTime((-42), "ms"));
+        EList<TimingConstraint> _timingConstraints_1 = it_1.getTimingConstraints();
+        _timingConstraints_1.add(sc_notOk);
+      };
+      this.b1.constraintsModel(it, _function_1);
+    };
+    final Amalthea model = this.b1.amalthea(_function);
+    final List<ValidationDiagnostic> validationResult = this.validate(model);
+    final Predicate<ValidationDiagnostic> _function_1 = (ValidationDiagnostic it) -> {
+      Severity _severityLevel = it.getSeverityLevel();
+      return Objects.equal(_severityLevel, Severity.ERROR);
+    };
+    final Function<ValidationDiagnostic, String> _function_2 = (ValidationDiagnostic it) -> {
+      return it.getMessage();
+    };
+    final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
+    Assert.assertTrue(result.contains("Time: tolerance value must be positive or zero (in Event Synchronization Constraint \"sc_notOk\")"));
+    Assert.assertFalse(result.contains("Time: tolerance value must be positive or zero (in Event Synchronization Constraint \"sc_ok\")"));
   }
   
   private static LabelEvent createLabelEvent(final String name) {
