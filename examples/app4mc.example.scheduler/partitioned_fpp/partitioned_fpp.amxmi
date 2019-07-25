@@ -1,95 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <swModel>
-    <tasks name="TaskA1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskB1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskC1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskD1" multipleTaskActivationLimit="0" />
-    <tasks name="TaskA2" multipleTaskActivationLimit="0" />
-    <tasks name="TaskB2" multipleTaskActivationLimit="0" />
-    <tasks name="TaskC2" multipleTaskActivationLimit="0" />
-    <tasks name="TaskD2" multipleTaskActivationLimit="0" />
+    <tasks name="TaskA1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskB1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskC1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskD1" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskA2" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskB2" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskC2" multipleTaskActivationLimit="0"/>
+    <tasks name="TaskD2" multipleTaskActivationLimit="0"/>
   </swModel>
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="Core_Definition" puType="CPU" />
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="Core_Definition" puType="CPU"/>
     <structures name="System" structureType="System">
       <structures name="ECU" structureType="ECU">
-        <modules xsi:type="am:ProcessingUnit" name="CoreA" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition" />
-        <modules xsi:type="am:ProcessingUnit" name="CoreB" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition" />
+        <modules xsi:type="am:ProcessingUnit" name="CoreA" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
+        <modules xsi:type="am:ProcessingUnit" name="CoreB" frequencyDomain="Main_Freq_Domain?type=FrequencyDomain" definition="Core_Definition?type=ProcessingUnitDefinition"/>
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="Main_Freq_Domain" clockGating="false">
-      <defaultValue value="200.0" unit="MHz" />
+      <defaultValue value="200.0" unit="MHz"/>
     </domains>
   </hwModel>
   <osModel>
     <operatingSystems name="">
       <taskSchedulers name="Partitioned_FPP">
-        <schedulingAlgorithm xsi:type="am:UserSpecificSchedulingAlgorithm" />
+        <schedulingAlgorithm xsi:type="am:UserSpecificSchedulingAlgorithm"/>
       </taskSchedulers>
       <taskSchedulers name="GroupA">
-        <schedulingAlgorithm xsi:type="am:Grouping" />
+        <schedulingAlgorithm xsi:type="am:Grouping"/>
         <parentAssociation parent="Partitioned_FPP?type=TaskScheduler">
           <schedulingParameters>
-            <maxBudget value="1" unit="ms" />
-            <replenishment value="10" unit="ms" />
+            <maxBudget value="1" unit="ms"/>
+            <replenishment value="10" unit="ms"/>
           </schedulingParameters>
         </parentAssociation>
       </taskSchedulers>
       <taskSchedulers name="GroupB">
-        <schedulingAlgorithm xsi:type="am:Grouping" />
+        <schedulingAlgorithm xsi:type="am:Grouping"/>
         <parentAssociation parent="Partitioned_FPP?type=TaskScheduler">
           <schedulingParameters>
-            <maxBudget value="2" unit="ms" />
-            <replenishment value="15" unit="ms" />
+            <maxBudget value="2" unit="ms"/>
+            <replenishment value="15" unit="ms"/>
           </schedulingParameters>
         </parentAssociation>
       </taskSchedulers>
       <taskSchedulers name="GroupC">
-        <schedulingAlgorithm xsi:type="am:Grouping" />
+        <schedulingAlgorithm xsi:type="am:Grouping"/>
         <parentAssociation>
           <schedulingParameters>
-            <maxBudget value="5" unit="ms" />
-            <replenishment value="20" unit="ms" />
+            <maxBudget value="5" unit="ms"/>
+            <replenishment value="20" unit="ms"/>
           </schedulingParameters>
         </parentAssociation>
       </taskSchedulers>
       <taskSchedulers name="GroupD">
-        <schedulingAlgorithm xsi:type="am:Grouping" />
+        <schedulingAlgorithm xsi:type="am:Grouping"/>
         <parentAssociation parent="Partitioned_FPP?type=TaskScheduler">
           <schedulingParameters>
-            <maxBudget value="2" unit="ms" />
-            <replenishment value="5" unit="ms" />
+            <maxBudget value="2" unit="ms"/>
+            <replenishment value="5" unit="ms"/>
           </schedulingParameters>
         </parentAssociation>
       </taskSchedulers>
     </operatingSystems>
   </osModel>
   <mappingModel>
-    <schedulerAllocation scheduler="Partitioned_FPP?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingPU="CoreA?type=ProcessingUnit" />
+    <schedulerAllocation scheduler="Partitioned_FPP?type=TaskScheduler" responsibility="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit" executingPU="CoreA?type=ProcessingUnit"/>
     <taskAllocation task="TaskA1?type=Task" scheduler="GroupA?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
-      <schedulingParameters priority="50" />
+      <schedulingParameters priority="50"/>
     </taskAllocation>
     <taskAllocation task="TaskA2?type=Task" scheduler="GroupA?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
-      <schedulingParameters priority="30" />
+      <schedulingParameters priority="30"/>
     </taskAllocation>
     <taskAllocation task="TaskB1?type=Task" scheduler="GroupB?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit">
-      <schedulingParameters priority="55" />
+      <schedulingParameters priority="55"/>
     </taskAllocation>
     <taskAllocation task="TaskB2?type=Task" scheduler="GroupB?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit">
-      <schedulingParameters priority="60" />
+      <schedulingParameters priority="60"/>
     </taskAllocation>
     <taskAllocation task="TaskC1?type=Task" scheduler="GroupC?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
-      <schedulingParameters priority="75" />
+      <schedulingParameters priority="75"/>
     </taskAllocation>
     <taskAllocation task="TaskC2?type=Task" scheduler="GroupC?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit">
-      <schedulingParameters priority="20" />
+      <schedulingParameters priority="20"/>
     </taskAllocation>
     <taskAllocation task="TaskD1?type=Task" scheduler="GroupD?type=TaskScheduler" affinity="CoreA?type=ProcessingUnit CoreB?type=ProcessingUnit">
-      <schedulingParameters priority="100" />
+      <schedulingParameters priority="100"/>
     </taskAllocation>
     <taskAllocation task="TaskD2?type=Task" scheduler="GroupD?type=TaskScheduler" affinity="CoreB?type=ProcessingUnit CoreA?type=ProcessingUnit">
-      <schedulingParameters priority="10" />
+      <schedulingParameters priority="10"/>
     </taskAllocation>
   </mappingModel>
 </am:Amalthea>

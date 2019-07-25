@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <hwModel>
     <definitions xsi:type="am:ProcessingUnitDefinition" name="Cortex-A9" puType="CPU" features="Instructions/IPC_1?type=HwFeature">
       <customProperties key="EnEf-Volt_High">
-        <value xsi:type="am:DoubleObject" value="1.15" />
+        <value xsi:type="am:DoubleObject" value="1.15"/>
       </customProperties>
       <customProperties key="EnEf-Volt_Low">
-        <value xsi:type="am:DoubleObject" value="1.05" />
+        <value xsi:type="am:DoubleObject" value="1.05"/>
       </customProperties>
       <customProperties key="EnEf-Scale_High">
-        <value xsi:type="am:DoubleObject" value="1.0" />
+        <value xsi:type="am:DoubleObject" value="1.0"/>
       </customProperties>
       <customProperties key="EnEf-Scale_Low">
-        <value xsi:type="am:DoubleObject" value="0.5" />
+        <value xsi:type="am:DoubleObject" value="0.5"/>
       </customProperties>
     </definitions>
     <featureCategories name="Instructions" featureType="performance">
-      <features name="IPC_1" value="1.0" />
+      <features name="IPC_1" value="1.0"/>
     </featureCategories>
     <structures name="Homogeneous Example System" structureType="System">
       <structures name="Freescale i.MX6 Board" structureType="ECU">
         <structures name="i.MX 6 Series Processor" structureType="Microcontroller">
-          <modules xsi:type="am:ProcessingUnit" name="Cortex-A9 #2" definition="Cortex-A9?type=ProcessingUnitDefinition" />
-          <modules xsi:type="am:ProcessingUnit" name="Cortex-A9 #1" definition="Cortex-A9?type=ProcessingUnitDefinition" />
+          <modules xsi:type="am:ProcessingUnit" name="Cortex-A9 #2" definition="Cortex-A9?type=ProcessingUnitDefinition"/>
+          <modules xsi:type="am:ProcessingUnit" name="Cortex-A9 #1" definition="Cortex-A9?type=ProcessingUnitDefinition"/>
         </structures>
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="792MHZ Quartz" clockGating="false">
-      <defaultValue value="792.0" unit="MHz" />
+      <defaultValue value="792.0" unit="MHz"/>
     </domains>
   </hwModel>
 </am:Amalthea>

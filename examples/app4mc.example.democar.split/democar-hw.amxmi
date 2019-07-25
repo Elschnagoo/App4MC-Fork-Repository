@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<am:Amalthea xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmi:version="2.0">
+<am:Amalthea xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <hwModel>
-    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" puType="CPU" features="Instructions/IPC_1?type=HwFeature" />
+    <definitions xsi:type="am:ProcessingUnitDefinition" name="DefaultCore" puType="CPU" features="Instructions/IPC_1?type=HwFeature"/>
     <definitions xsi:type="am:MemoryDefinition" name="DefaultMemory">
-      <size value="4" unit="MB" />
-      <accessLatency xsi:type="am:DiscreteValueConstant" value="2" />
+      <size value="4" unit="MB"/>
+      <accessLatency xsi:type="am:DiscreteValueConstant" value="2"/>
     </definitions>
     <featureCategories name="Instructions" featureType="performance">
-      <features name="IPC_1" value="1.0" />
+      <features name="IPC_1" value="1.0"/>
     </featureCategories>
     <structures name="Democar" structureType="System">
       <structures name="ECU_1" structureType="ECU">
         <structures name="Microcontroller_1" structureType="Microcontroller">
           <modules xsi:type="am:Memory" name="Mem_1" frequencyDomain="FrequencyDomain_1?type=FrequencyDomain" definition="DefaultMemory?type=MemoryDefinition">
-            <ports name="port" bitWidth="32" priority="0" portType="responder" />
+            <ports name="port" bitWidth="32" priority="0" portType="responder"/>
           </modules>
           <modules xsi:type="am:ProcessingUnit" name="Core_1" frequencyDomain="FrequencyDomain_1?type=FrequencyDomain" definition="DefaultCore?type=ProcessingUnitDefinition">
-            <ports name="port" bitWidth="32" priority="0" portType="initiator" />
+            <ports name="port" bitWidth="32" priority="0" portType="initiator"/>
           </modules>
-          <connections name="con1" port1="Core_1/port?type=HwPort" port2="Mem_1/port?type=HwPort" />
+          <connections name="con1" port1="Core_1/port?type=HwPort" port2="Mem_1/port?type=HwPort"/>
         </structures>
       </structures>
     </structures>
     <domains xsi:type="am:FrequencyDomain" name="FrequencyDomain_1" clockGating="false">
-      <defaultValue value="200.0" unit="MHz" />
+      <defaultValue value="200.0" unit="MHz"/>
     </domains>
   </hwModel>
 </am:Amalthea>
