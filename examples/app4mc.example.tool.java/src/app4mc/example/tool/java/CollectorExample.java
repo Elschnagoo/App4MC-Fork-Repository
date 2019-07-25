@@ -16,6 +16,7 @@
 package app4mc.example.tool.java;
 
 import java.io.File;
+import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
@@ -27,10 +28,10 @@ import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.RunnableCall;
 import org.eclipse.app4mc.amalthea.model.SWModel;
 import org.eclipse.app4mc.amalthea.model.io.AmaltheaWriter;
+import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 
 public class CollectorExample {
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		final File outputFile = new File("model-output/Collector/CollectorModel.amxmi");
@@ -50,31 +51,48 @@ public class CollectorExample {
 		addNewRunnableCall(sw, run, "Service A");
 		addNewRunnableCall(sw, run, "Service B");
 
-		// ***** Some tests *****
-// FIXME		
-//		List<RunnableItem> items1 = SoftwareUtil.collectRunnableItems(run);
-//
-//		List<RunnableItem> items2 = SoftwareUtil.collectRunnableItems(run, null, a -> a instanceof LabelAccess);
-//
-//		List<RunnableItem> items3 = SoftwareUtil.collectRunnableItems(run, null, a -> isWritingLabelAccess(a));
-//
-//		List<RunnableItem> items4 = SoftwareUtil.collectRunnableItems(run, null,
-//				a -> a instanceof LabelAccess && ((LabelAccess) a).getAccess() == LabelAccessEnum.READ);
-
 		// ***** Save model *****
 
 		AmaltheaWriter.writeToFile(model, outputFile);
 		
 		System.out.println("done");
+		
+		// ***** Some tests *****
+
+		List<CallGraphItem> items1 = SoftwareUtil.collectCallGraphItems(run.getCallGraph());
+
+		System.out.println("\nAll items:");
+		for (CallGraphItem item : items1) {
+			System.out.println(" - " + item.toString());
+		}
+		
+		List<CallGraphItem> items2 = SoftwareUtil.collectCallGraphItems(run.getCallGraph(), null,
+				a -> a instanceof LabelAccess && ((LabelAccess) a).getAccess() == LabelAccessEnum.READ);
+
+		System.out.println("\nLabel accesses (read):");
+		for (CallGraphItem item : items2) {
+			System.out.println(" - " + item.toString());
+		}
+		
+		List<LabelAccess> items3 = SoftwareUtil.collectCallGraphItems(run.getCallGraph(), null, LabelAccess.class);
+		
+		System.out.println("\nLabel accesses:");
+		for (LabelAccess item : items3) {
+			System.out.println(" - " + item.eClass().getName() + " " + item.getData().getName());
+		}
+		
+
+		List<LabelAccess> items4 = SoftwareUtil.collectCallGraphItems(run.getCallGraph(), null, LabelAccess.class, a -> isWritingLabelAccess(a));
+
+		System.out.println("\nLabel accesses (write):");
+		for (LabelAccess item : items4) {
+			System.out.println(" - " + item.eClass().getName() + " " + item.getData().getName());
+		}
+		
 	}
 
-	private static boolean isWritingLabelAccess(CallGraphItem item) {
-		if (item instanceof LabelAccess) {
-			LabelAccess access = (LabelAccess) item;
-			return access.getAccess() == LabelAccessEnum.WRITE;
-		}
-		;
-		return false;
+	private static boolean isWritingLabelAccess(LabelAccess access) {
+		return access.getAccess() == LabelAccessEnum.WRITE;
 	}
 
 	private static LabelAccess addNewLabelAccess(SWModel sw, Runnable r, String labelName, LabelAccessEnum rw) {

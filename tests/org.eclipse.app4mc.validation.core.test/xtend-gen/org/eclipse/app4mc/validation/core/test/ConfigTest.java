@@ -9,20 +9,15 @@
  */
 package org.eclipse.app4mc.validation.core.test;
 
-import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("all")
 public class ConfigTest {
-  @Before
-  public void initalizeModel() {
+  @Test
+  public void test1() {
   }
   
   @Test
-  public void testRunnableDeadline() {
-  }
-  
-  @Test
-  public void testProcessDeadline() {
+  public void test2() {
   }
 }

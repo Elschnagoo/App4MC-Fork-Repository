@@ -66,6 +66,7 @@ public class AmaltheaMerger {
 			addMappingModel(mainModel, tmpModel);
 			addComponentsModel(mainModel, tmpModel);
 			addConfigModel(mainModel, tmpModel);
+			addMeasurementModel(mainModel, tmpModel);
 		}
 		copier.copyReferences();
 	}
@@ -78,9 +79,9 @@ public class AmaltheaMerger {
 		if (main == null) {
 			mainModel.setCommonElements(tmp);
 		} else {
-			addIfAbsent(main.getTags(), tmp.getTags());
 			addIfAbsent(main.getCoreClassifiers(), tmp.getCoreClassifiers());
 			addIfAbsent(main.getMemoryClassifiers(), tmp.getMemoryClassifiers());
+			addIfAbsent(main.getTags(), tmp.getTags());
 		}	
 	}
 
@@ -92,20 +93,20 @@ public class AmaltheaMerger {
 		if (main == null) {
 			mainModel.setSwModel(tmp);
 		} else {
-			addIfAbsent(main.getRunnables(), tmp.getRunnables());
-			addIfAbsent(main.getLabels(), tmp.getLabels());
-			addIfAbsent(main.getTasks(), tmp.getTasks());
-			addIfAbsent(main.getIsrs(), tmp.getIsrs());
-			addIfAbsent(main.getEvents(), tmp.getEvents());
-			addIfAbsent(main.getProcessChains(), tmp.getProcessChains());
-			addIfAbsent(main.getProcessPrototypes(), tmp.getProcessPrototypes());
 			addIfAbsent(main.getActivations(), tmp.getActivations());
-			addIfAbsent(main.getSections(), tmp.getSections());
-			addIfAbsent(main.getModes(), tmp.getModes());
-			addIfAbsent(main.getModeLabels(), tmp.getModeLabels());
-			addIfAbsent(main.getTypeDefinitions(), tmp.getTypeDefinitions());
 			addIfAbsent(main.getChannels(), tmp.getChannels());
 			addIfAbsent(main.getCustomEntities(), tmp.getCustomEntities());
+			addIfAbsent(main.getEvents(), tmp.getEvents());
+			addIfAbsent(main.getIsrs(), tmp.getIsrs());
+			addIfAbsent(main.getLabels(), tmp.getLabels());
+			addIfAbsent(main.getModeLabels(), tmp.getModeLabels());
+			addIfAbsent(main.getModes(), tmp.getModes());
+			addIfAbsent(main.getProcessChains(), tmp.getProcessChains());
+			addIfAbsent(main.getProcessPrototypes(), tmp.getProcessPrototypes());
+			addIfAbsent(main.getRunnables(), tmp.getRunnables());
+			addIfAbsent(main.getSections(), tmp.getSections());
+			addIfAbsent(main.getTasks(), tmp.getTasks());
+			addIfAbsent(main.getTypeDefinitions(), tmp.getTypeDefinitions());
 		}	
 	}
 
@@ -117,17 +118,10 @@ public class AmaltheaMerger {
 		if (main == null) {
 			mainModel.setHwModel(tmp);
 		} else {
-// TODO implement HW merger
-//			if (main.getSystem() == null) {
-//				main.setSystem(tmp.getSystem());
-//			}
-//			addIfAbsent(main.getSystemTypes(), tmp.getSystemTypes());
-//			addIfAbsent(main.getEcuTypes(), tmp.getEcuTypes());
-//			addIfAbsent(main.getMcTypes(), tmp.getMcTypes());
-//			addIfAbsent(main.getCoreTypes(), tmp.getCoreTypes());
-//			addIfAbsent(main.getMemoryTypes(), tmp.getMemoryTypes());
-//			addIfAbsent(main.getNetworkTypes(), tmp.getNetworkTypes());
-//			addIfAbsent(main.getAccessPaths(), tmp.getAccessPaths());
+			addIfAbsent(main.getDefinitions(), tmp.getDefinitions());
+			addIfAbsent(main.getDomains(), tmp.getDomains());
+			addIfAbsent(main.getFeatureCategories(), tmp.getFeatureCategories());
+			addIfAbsent(main.getStructures(), tmp.getStructures());
 		}	
 	}
 
@@ -140,8 +134,8 @@ public class AmaltheaMerger {
 			mainModel.setOsModel(tmp);
 		} else {
 			addAll(main.getOperatingSystems(), tmp.getOperatingSystems());
-			addIfAbsent(main.getSemaphores(), tmp.getSemaphores());
 			addIfAbsent(main.getOsOverheads(), tmp.getOsOverheads());
+			addIfAbsent(main.getSemaphores(), tmp.getSemaphores());
 		}	
 	}
 
@@ -153,8 +147,8 @@ public class AmaltheaMerger {
 		if (main == null) {
 			mainModel.setStimuliModel(tmp);
 		} else {
-			addIfAbsent(main.getStimuli(), tmp.getStimuli());
 			addIfAbsent(main.getClocks(), tmp.getClocks());
+			addIfAbsent(main.getStimuli(), tmp.getStimuli());
 		}	
 	}
 
@@ -248,7 +242,19 @@ public class AmaltheaMerger {
 		}	
 	}
 
-	
+	private static void addMeasurementModel(Amalthea mainModel, Amalthea tmpModel) {
+		final MeasurementModel main = mainModel.getMeasurementModel();
+		final MeasurementModel tmp = tmpModel.getMeasurementModel();
+		if (tmp == null) return;
+		
+		if (main == null) {
+			mainModel.setMeasurementModel(tmp);
+		} else {
+			addAll(main.getMeasurements(), tmp.getMeasurements());
+		}	
+	}
+
+
 	private static <T extends BaseObject> void addAll(final EList<T> main, final EList<T> input) {
 		if (main == null || input == null) return;
 		

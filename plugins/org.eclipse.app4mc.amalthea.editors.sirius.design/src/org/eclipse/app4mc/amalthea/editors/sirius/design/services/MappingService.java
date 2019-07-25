@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Amalthea;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.MappingModel;
 import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
 import org.eclipse.app4mc.amalthea.model.Scheduler;
@@ -63,14 +64,9 @@ public class MappingService {
 	}
 
 	private Amalthea getAmaltheaForScheduler(Scheduler scheduler) {
-		if (null != scheduler) {
-			// TODO: Dirty hack to get mapping model, needs to be improved to generic design
-			if (null != scheduler.eContainer() && null != scheduler.eContainer().eContainer()
-					&& null != scheduler.eContainer().eContainer().eContainer()) {
-				return (Amalthea) scheduler.eContainer().eContainer().eContainer();
-			}
-		}
-		return null;
+		if (scheduler == null) return null;
+		
+		return AmaltheaServices.getContainerOfType(scheduler, Amalthea.class);
 	}
 
 	public List<Task> getTasksForScheduler(final Scheduler scheduler) {

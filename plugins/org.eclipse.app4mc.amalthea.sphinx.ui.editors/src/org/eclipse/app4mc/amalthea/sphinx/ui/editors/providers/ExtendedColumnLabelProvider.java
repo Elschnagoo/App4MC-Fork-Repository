@@ -187,8 +187,7 @@ public class ExtendedColumnLabelProvider extends ColumnLabelProvider {
 	
 	
 	/**
-	 * Add overlay image depending upon the type of error/warning marker TODO: Move this to a clean up LabelDecorator
-	 * Implementation because not stable enough
+	 * Add overlay image depending upon the type of error/warning marker
 	 *
 	 * @param image
 	 * @param
