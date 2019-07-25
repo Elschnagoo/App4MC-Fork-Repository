@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.ClockStep;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
@@ -235,6 +236,13 @@ public class FactoryUtil {
 		if(unit.equals("s")) return TimeUnit.S;
 	
 		return null;
+	}
+	
+	public static ClockStep createClockStep(double freqValue, FrequencyUnit freqUnit, long timeValue, String timeUnit) {
+		ClockStep clockStep = AmaltheaFactory.eINSTANCE.createClockStep();
+		clockStep.setFrequency(createFrequency(freqValue, freqUnit));
+		clockStep.setTime(createTime(timeValue, timeUnit));
+		return clockStep;
 	}
 
 	/**

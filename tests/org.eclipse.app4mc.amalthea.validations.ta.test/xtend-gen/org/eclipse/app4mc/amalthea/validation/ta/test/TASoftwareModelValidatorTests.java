@@ -40,7 +40,6 @@ import org.eclipse.app4mc.amalthea.model.SetEvent;
 import org.eclipse.app4mc.amalthea.model.Task;
 import org.eclipse.app4mc.amalthea.model.WaitEvent;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
-import org.eclipse.app4mc.amalthea.model.builder.OperatingSystemBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.SoftwareBuilder;
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile;
 import org.eclipse.app4mc.validation.core.Severity;
@@ -59,9 +58,6 @@ public class TASoftwareModelValidatorTests {
   
   @Extension
   private SoftwareBuilder b2 = new SoftwareBuilder();
-  
-  @Extension
-  private OperatingSystemBuilder b3 = new OperatingSystemBuilder();
   
   private final ValidationExecutor executor = new ValidationExecutor(TimingArchitectsProfile.class);
   
@@ -655,10 +651,6 @@ public class TASoftwareModelValidatorTests {
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
     Assert.assertTrue(result.contains("The runnable called by Runnable Call in Runnable \"r_looped\" must not refer to the containing runnable."));
     Assert.assertFalse(result.contains("The runnable called by Runnable Call in Runnable \"r_ok\" must not refer to the containing runnable."));
-  }
-  
-  @Test
-  public void test_TASoftwareEnforcedMigration() {
   }
   
   @Test

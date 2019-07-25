@@ -26,6 +26,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	ConstraintsModelTests.class,
 	HardwareModelTests.class,
 	MappingModelTests.class,
+	StimuliModelTests.class,
 	EMFIntrinsicTests.class
 })
 

@@ -16,6 +16,7 @@
 package org.eclipse.app4mc.amalthea.model.builder;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
+import org.eclipse.app4mc.amalthea.model.ClockStepList;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
@@ -32,6 +33,12 @@ public class StimuliBuilder {
 	public void variableRateStimulus(final StimuliModel container, Procedure1<VariableRateStimulus> initializer) {
 		final VariableRateStimulus obj = AmaltheaFactory.eINSTANCE.createVariableRateStimulus();
 		container.getStimuli().add(obj);
+		initializer.apply(obj);
+	}
+	
+	public void clockStepList(final StimuliModel container, Procedure1<ClockStepList> initializer) {
+		final ClockStepList obj = AmaltheaFactory.eINSTANCE.createClockStepList();
+		container.getClocks().add(obj);
 		initializer.apply(obj);
 	}
 }
