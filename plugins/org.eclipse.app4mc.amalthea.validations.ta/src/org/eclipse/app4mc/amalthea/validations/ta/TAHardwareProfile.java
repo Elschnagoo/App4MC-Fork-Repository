@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.validations.ta;
 
-import org.eclipse.app4mc.amalthea.validations.ta.hardware.TAHardwareFrequencyDomainPositive;
 import org.eclipse.app4mc.amalthea.validations.ta.hardware.TAHardwareHWFIPCPositive;
 import org.eclipse.app4mc.amalthea.validations.ta.hardware.TAHardwarePUDIPCMissing;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
@@ -24,7 +23,6 @@ import org.eclipse.app4mc.validation.core.Severity;
 @ValidationGroup(
 	severity = Severity.ERROR,
 	validations =  {
-		TAHardwareFrequencyDomainPositive.class,
 		TAHardwareHWFIPCPositive.class
 	}
 )

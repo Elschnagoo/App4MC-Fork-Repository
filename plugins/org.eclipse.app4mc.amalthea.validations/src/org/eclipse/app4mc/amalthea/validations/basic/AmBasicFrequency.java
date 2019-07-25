@@ -29,7 +29,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * Checks the correctness of Frequencies
  * 
  * <ul>
- * <li>Some frequencies have to fulfill the condition >0 or >=0.</li>
+ * <li>Some frequencies have to fulfill the condition >0 or >=0, however,
+ *     since the frequency value is a NonNegativeDouble the >=0 validation is already covered by EMF.</li>
  * </ul>
  */
 
@@ -64,18 +65,6 @@ public class AmBasicFrequency extends AmaltheaValidation {
 							"Frequency: " + containingFeature.getName() + " value must be greater than zero" + containerInfo(frequency));
 				}
 			}
-
-			//*** the value of the following elements should be >= 0
-			
-			if (frequency.getValue() < 0d) {
-				if (containingFeature == ePackage.getClockStep_Frequency()
-				|| containingFeature == ePackage.getClockFunction_PeakToPeak()
-				) {
-					addIssue(results, frequency, ePackage.getFrequency_Value(),
-							"Frequency: " + containingFeature.getName() + " value must be positive or zero" + containerInfo(frequency));
-				}
-			}
-
 		}
 	}
 

@@ -14,11 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.validations.ta;
 
-import org.eclipse.app4mc.amalthea.validations.ta.stimuli.TAStimuliArrivalCurveStimulus;
-import org.eclipse.app4mc.amalthea.validations.ta.stimuli.TAStimuliClockMultiplierList;
-import org.eclipse.app4mc.amalthea.validations.ta.stimuli.TAStimuliClockSinusFunction;
-import org.eclipse.app4mc.amalthea.validations.ta.stimuli.TAStimuliClockTriangleFunction;
-import org.eclipse.app4mc.amalthea.validations.ta.stimuli.TAStimuliPeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.validations.ta.stimuli.TAStimuliVRStimulus;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
@@ -27,11 +22,6 @@ import org.eclipse.app4mc.validation.core.Severity;
 @ValidationGroup(
 		severity = Severity.ERROR,
 		validations =  {
-			TAStimuliArrivalCurveStimulus.class,
-			TAStimuliClockMultiplierList.class,
-			TAStimuliClockSinusFunction.class,
-			TAStimuliClockTriangleFunction.class,
-			TAStimuliPeriodicSyntheticStimulus.class,
 			TAStimuliVRStimulus.class
 		}
 	)

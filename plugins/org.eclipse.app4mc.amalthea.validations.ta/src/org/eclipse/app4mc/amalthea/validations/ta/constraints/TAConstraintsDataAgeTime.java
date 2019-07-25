@@ -30,8 +30,6 @@ import org.eclipse.emf.ecore.EObject;
  * Validates min and max times of data age time.
  * 
  * <ul>
- * <li>minimum time must be non negative</li>
- * <li>maximum time must be non negative</li>
  * <li>maximum time must not be smaller than minimum time</li>
  * </ul>
  */
@@ -50,13 +48,7 @@ public class TAConstraintsDataAgeTime extends AmaltheaValidation {
 			DataAgeTime dat = (DataAgeTime) eObject;
 			INamed namedContainer = AmaltheaServices.getContainerOfType(dat, INamed.class);
 			Time minimum = dat.getMinimumTime();
-			if (minimum != null && minimum.getValue() != null && 0 > minimum.getValue().signum()) {
-				addIssue(results, dat, ePackage.getDataAgeTime_MinimumTime(), "The minimum time must not be negative (" + minimum + " < 0, in "+ objectInfo(namedContainer) + ")");
-			}
 			Time maximum = dat.getMaximumTime();
-			if (maximum != null && maximum.getValue() != null && 0 > maximum.getValue().signum()) {
-				addIssue(results, dat, ePackage.getDataAgeTime_MaximumTime(), "The maximum time must not be negative (" + maximum + " < 0, in "+ objectInfo(namedContainer) + ")");
-			}
 			if (maximum != null && minimum != null && minimum.compareTo(maximum) > 0) {
 				addIssue(results, dat, ePackage.getDataAgeTime_MinimumTime(), "The minimum time is greater than the maximum time (" + minimum + " > " + maximum + ", in "+ objectInfo(namedContainer) + ")");
 			}

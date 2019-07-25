@@ -14,11 +14,8 @@
  */
 package org.eclipse.app4mc.amalthea.validations.ta.stimuli;
 
-import java.math.BigInteger;
 import java.util.List;
 
-import org.eclipse.app4mc.amalthea.model.Scenario;
-import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.validation.core.AmaltheaValidation;
 import org.eclipse.app4mc.validation.annotation.Validation;
@@ -31,7 +28,6 @@ import org.eclipse.emf.ecore.EObject;
  * 
  * <ul>
  * <li>scenario must be set</li>
- * <li>scenario recurrence time must not be negative</li>
  * </ul>
  */
 
@@ -49,16 +45,6 @@ public class TAStimuliVRStimulus extends AmaltheaValidation {
 			VariableRateStimulus vrs = (VariableRateStimulus) eObject;
 			if (vrs.getScenario() == null) {
 				addIssue(results, vrs, ePackage.getVariableRateStimulus_Scenario(), "Scenario must be set in "+ objectInfo(vrs) + ".");
-			} else {
-				Scenario s = vrs.getScenario();
-				Time r = s.getRecurrence();
-				if (r != null) {
-					BigInteger value = r.getValue();
-					if (0 >= value.signum()) {
-						addIssue(results, s, ePackage.getScenario_Recurrence(), "The recurrence time specified in the scenario of " + objectInfo(vrs) +
-								" must be greater than 0.");
-					}
-				}
 			}
 		}
 	}

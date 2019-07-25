@@ -20,7 +20,6 @@ import org.eclipse.app4mc.amalthea.validations.ta.constraints.TAConstraintsECLCo
 import org.eclipse.app4mc.amalthea.validations.ta.constraints.TAConstraintsEDFTaskMustHaveDeadline;
 import org.eclipse.app4mc.amalthea.validations.ta.constraints.TAConstraintsRTLimitMustBePositive;
 import org.eclipse.app4mc.amalthea.validations.ta.constraints.TAConstraintsRepetitionConstraint;
-import org.eclipse.app4mc.amalthea.validations.ta.constraints.TAConstraintsSynchronizationToleranceNotNegative;
 import org.eclipse.app4mc.validation.annotation.ValidationGroup;
 import org.eclipse.app4mc.validation.core.IProfile;
 import org.eclipse.app4mc.validation.core.Severity;
@@ -33,8 +32,7 @@ import org.eclipse.app4mc.validation.core.Severity;
 		TAConstraintsECLConstraint.class,
 		TAConstraintsEDFTaskMustHaveDeadline.class,
 		TAConstraintsRepetitionConstraint.class,
-		TAConstraintsRTLimitMustBePositive.class,
-		TAConstraintsSynchronizationToleranceNotNegative.class
+		TAConstraintsRTLimitMustBePositive.class
 	}
 )
 public class TAConstraintsProfile implements IProfile {

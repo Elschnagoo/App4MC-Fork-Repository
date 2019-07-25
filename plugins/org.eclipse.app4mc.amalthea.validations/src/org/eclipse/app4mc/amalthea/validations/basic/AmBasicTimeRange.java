@@ -59,6 +59,8 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 			
 			if (time.getValue().signum() <= 0) {
 				if (containingFeature == ePackage.getFixedPeriodic_Recurrence()
+				
+				|| containingFeature == ePackage.getScenario_Recurrence()
 						
 				|| containingFeature == ePackage.getPeriodicActivation_Recurrence()
 				
@@ -76,6 +78,11 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 				if (containingFeature == ePackage.getFixedPeriodic_Offset()
 						
 				|| containingFeature == ePackage.getSingleStimulus_Occurrence()
+				
+				|| containingFeature == ePackage.getArrivalCurveEntry_LowerTimeBorder()
+				|| containingFeature == ePackage.getArrivalCurveEntry_UpperTimeBorder()
+				
+				|| containingFeature == ePackage.getPeriodicSyntheticStimulus_OccurrenceTimes()
 						
 				|| containingFeature == ePackage.getPeriodicActivation_Offset()
 				|| containingFeature == ePackage.getPeriodicActivation_Min()
@@ -86,6 +93,22 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 
 				|| containingFeature == ePackage.getClockFunction_XOffset()
 				|| containingFeature == ePackage.getClockStep_Time()
+				
+				|| containingFeature == ePackage.getDataAgeTime_MinimumTime()
+				|| containingFeature == ePackage.getDataAgeTime_MaximumTime()
+				
+				|| containingFeature == ePackage.getDelayConstraint_Lower()
+				|| containingFeature == ePackage.getDelayConstraint_Upper()
+				
+				|| containingFeature == ePackage.getEventChainLatencyConstraint_Minimum()
+				|| containingFeature == ePackage.getEventChainLatencyConstraint_Maximum()
+				
+				|| containingFeature == ePackage.getRepetitionConstraint_Lower()
+				|| containingFeature == ePackage.getRepetitionConstraint_Upper()
+				|| containingFeature == ePackage.getRepetitionConstraint_Jitter()
+				|| containingFeature == ePackage.getRepetitionConstraint_Period()
+				
+				|| containingFeature == ePackage.getSynchronizationConstraint_Tolerance()
 				) {
 					addIssue(results, time, ePackage.getTime_Value(),
 							"Time: " + containingFeature.getName() + " value must be positive or zero" + containerInfo(time));
