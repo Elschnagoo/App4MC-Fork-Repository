@@ -150,8 +150,8 @@ The Timing Augmented Description Language (TADL) is coming from the "TIMMO-2-USE
 
 The __(Abstract)EventChain__ consists of __EventChainItems__. These items are classified in two types:
 
-# EventChainReferences -> EventChain: Used to reference already global defined EvenChains in the root list of the model.
-# EventChainContainers -> SubEventChain: Inner anonymous EventChains, which are only defined once and has no global meaning, but only in the context of the current defined EventChain.
+# EventChainReferences -> EventChain: Used to refer to already defined EvenChains.
+# EventChainContainers -> SubEventChain: Inner anonymous EventChains, which are only available in the context of the current EventChain.
 
 An Event Chain object references always two events, a stimulus event and a response event. To define a simple event chain that just contains two events, one event chain object is enough. In this case it would just be a chain that with its stimulus as first event and the response as second event. 
 If more events are required it is necessary to add sub event chains. The stimulus is always the first event of an event chain, the response is always the last event. The events that are defined in the sub event chains are the events in between. 
@@ -166,7 +166,6 @@ The stimulus of other child event chains have to be equal to the response of the
 The response of the last child event chain has to be the same as the response of the parent (green in picture).
 
 !{width: 500px}../pictures/model_constraints_eventchain_segments.png!
-
 
 As a stimulus or response event it is either possible to use an Entity Event or an Event Set.
 An Entity Event is a single event regarding to an entity like a task or a runnable. So it can be e.g. the start of a runnable. 
