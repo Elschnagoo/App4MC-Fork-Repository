@@ -177,21 +177,26 @@ public class AmaltheaValidations {
 		}
 		
 		if (value == null) {
-			addError(obj, feature, obj.eClass().getName() + ": missing value", diagnostics);
-			return false;
+			if (feature.getLowerBound() != 0) {
+				addError(obj, feature, obj.eClass().getName() + ": missing value", diagnostics);
+				return false;
+			} else {
+				// value does not have to be set
+				return true;
+			}
 		}
 		
 		String trimmedValue = value.trim();
 		if (mode instanceof EnumMode) {
 			if (((EnumMode) mode).getLiteral(trimmedValue) == null) {
-				addError(obj, feature, obj.eClass().getName() + " (EnumMode): value does not match a literal name", diagnostics);
+				addError(obj, feature, "The " + feature.getName() + " '" + trimmedValue + "' is not a valid literal of Enum Mode \"" + mode.getName() + "\"", diagnostics);
 				return false;
 			}
 		}
 
 		if (mode instanceof NumericMode) {
 			if (trimmedValue.matches("-?\\d+") == false) {
-				addError(obj, feature, obj.eClass().getName() + " (NumericMode): value is not an integer", diagnostics);
+				addError(obj, feature, "The " + feature.getName() + " '" + trimmedValue + "' is not an integer", diagnostics);
 				return false;
 			}
 		}
