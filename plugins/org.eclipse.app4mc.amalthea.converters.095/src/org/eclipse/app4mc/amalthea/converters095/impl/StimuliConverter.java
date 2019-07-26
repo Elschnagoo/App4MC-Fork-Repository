@@ -65,6 +65,7 @@ public class StimuliConverter extends AbstractConverter {
 		for (Element element : clocks) {
 			element.setAttribute("type", "am:ClockFunction", this.helper.getGenericNS("xsi"));
 			element.setAttribute("curveType","sine");
+			
 			Attribute amplitude = element.getAttribute("amplitude");
 			amplitude.detach();
 			customPropsValue.append(getStringValue(amplitude));
@@ -73,18 +74,11 @@ public class StimuliConverter extends AbstractConverter {
 			Attribute offset = element.getAttribute("yOffset");
 			offset.detach();
 			customPropsValue.append(getStringValue(offset));
-			
 			customPropsValue.append(" ");
-			customPropsValue.append(getPeriodAndShiftVals(element));
 			
-			Element customProps = new Element("customProperties");
-			customProps.setAttribute("key", "old_definition_0.9.4");
-			element.addContent(customProps);
+			customPropsValue.append(extractPeriodAndShift(element));
 			
-			Element value = new Element("value");
-			value.setAttribute("type", "am:StringObject", this.helper.getGenericNS("xsi"));
-			value.setAttribute("value", customPropsValue.toString().trim());
-			customProps.addContent(value);
+			addCustomProperty(element, "old_definition_v0.9.4", customPropsValue.toString().trim());
 		}
 
 	}
@@ -99,6 +93,7 @@ public class StimuliConverter extends AbstractConverter {
 		for (Element element : clocks) {
 			element.setAttribute("type", "am:ClockFunction", this.helper.getGenericNS("xsi"));
 			element.setAttribute("curveType","triangle");
+			
 			Attribute max = element.getAttribute("max");
 			max.detach();
 			customPropsValue.append(getStringValue(max));
@@ -107,41 +102,34 @@ public class StimuliConverter extends AbstractConverter {
 			Attribute min = element.getAttribute("min");
 			min.detach();
 			customPropsValue.append(getStringValue(min));
-			
 			customPropsValue.append(" ");
-			customPropsValue.append(getPeriodAndShiftVals(element));
+			
+			customPropsValue.append(extractPeriodAndShift(element));
 		
-			
-			Element customProps = new Element("customProperties");
-			customProps.setAttribute("key", "old_definition_0.9.4");
-			element.addContent(customProps);
-			
-			Element value = new Element("value");
-			value.setAttribute("type", "am:StringObject", this.helper.getGenericNS("xsi"));
-			value.setAttribute("value", customPropsValue.toString().trim());
-			customProps.addContent(value);
+			addCustomProperty(element, "old_definition_v0.9.4", customPropsValue.toString().trim());
 		}
 
 	}
 	
-	private String getPeriodAndShiftVals(Element ele) {
+	private String extractPeriodAndShift(Element element) {
 		StringBuilder str = new StringBuilder();
-		List<Element> children = ele.getChildren();
-		for (Element element : children) {
-			str.append(element.getName());
+		List<Element> children = element.getChildren();
+		for (Element e : children) {
+			str.append(e.getName());
 			str.append("=");
-			str.append(element.getAttributeValue("value"));
+			str.append(e.getAttributeValue("value"));
+			str.append(e.getAttributeValue("unit"));
 			str.append(" ");
 		}
 
-		ele.removeChild("period");
-		ele.removeChild("shift");
+		element.removeChild("period");
+		element.removeChild("shift");
 		
 		return str.toString();
 	}
 	
 	private String getStringValue(Attribute attr) {
-		String str = attr.getName()+"="+attr.getValue();
+		String str = attr.getName() + "= "+ attr.getValue();
 		
 		return str;
 	}
@@ -161,19 +149,25 @@ public class StimuliConverter extends AbstractConverter {
 	
 	private void update_ClockEntries(Element clockElement) {
 		List<Element> entries = clockElement.getChildren("entries");
-		for (Element element : entries) {
-			Attribute multiplier = element.getAttribute("multiplier");
-			Element customProps = new Element("customProperties");
-			element.addContent(customProps);
-			customProps.setAttribute("key", "multiplier");
-			
-			Element value = new Element("value");
-			value.setAttribute("type", "am:DoubleObject", this.helper.getGenericNS("xsi"));
-			customProps.addContent(value);
-			
+		for (Element entry : entries) {
+			Attribute multiplier = entry.getAttribute("multiplier");
 			multiplier.detach();
+			
+			addCustomProperty(entry, "old_definition_v0.9.4", "multiplier=" + multiplier.getValue());
 		}
 	}
 	
+	private void addCustomProperty(Element element, String key, String value) {
+		Element customProps = new Element("customProperties");
+		// set key
+		customProps.setAttribute("key", key);
+		// set value
+		Element valueElement = new Element("value");
+		valueElement.setAttribute("type", "am:StringObject", this.helper.getGenericNS("xsi"));
+		valueElement.setAttribute("value", value);
+		customProps.addContent(valueElement);
+		
+		element.addContent(customProps);
+	}
 
 }

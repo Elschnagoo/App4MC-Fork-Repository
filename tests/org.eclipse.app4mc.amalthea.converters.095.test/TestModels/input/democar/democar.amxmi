@@ -745,12 +745,12 @@
       </entries>
     </clocks>
     <clocks xsi:type="am:ClockSinusFunction" name="clock2" amplitude="0.0" yOffset="0.0">
-      <shift value="0"/>
-      <period value="0"/>
+      <shift value="0" unit="ns"/>
+      <period value="0" unit="ns"/>
     </clocks>
     <clocks xsi:type="am:ClockTriangleFunction" name="clock3" max="0.0" min="0.0">
-      <shift value="0"/>
-      <period value="0"/>
+      <shift value="0" unit="ns"/>
+      <period value="0" unit="ns"/>
     </clocks>
   </stimuliModel>
   <constraintsModel>
