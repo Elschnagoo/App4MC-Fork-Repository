@@ -275,7 +275,7 @@ The __Custom Event Trigger__ references an event of type __Custom Event__. The e
 
 h4. Enforced Migration
 
-Each process is controlled by at least one scheduler. A scheduler is the resource owner of one or multiple processor cores (The scheduler decides on which of its cores the process is executed). The __Enforced Migration__ forces the process to switch to another scheduler. Therefore the __Enforced Migration__ entry contains a reference to the new scheduler.
+Each task is controlled by at least one task scheduler. A task scheduler is the resource owner of one or multiple processor cores (The task scheduler decides on which of its cores the task is executed). The __Enforced Migration__ forces the task to switch to another task scheduler. Therefore the __Enforced Migration__ entry contains a reference to the new task scheduler.
 
 This element is used as a short notation to simplify the simulation of different design possibilities. It should normally be modeled as two separate tasks and an inter process trigger.
 

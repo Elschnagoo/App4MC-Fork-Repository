@@ -14,7 +14,6 @@
  */
 package org.eclipse.app4mc.amalthea.validations.ta;
 
-import org.eclipse.app4mc.amalthea.validations.ta.software.TASoftwareEnforcedMigration;
 import org.eclipse.app4mc.amalthea.validations.ta.software.TASoftwareModeConditionConjunctionAlwaysFalse;
 import org.eclipse.app4mc.amalthea.validations.ta.software.TASoftwareModeConditionDisjunctionAlwaysTrue;
 import org.eclipse.app4mc.amalthea.validations.ta.software.TASoftwareModeLabel;
@@ -30,7 +29,6 @@ import org.eclipse.app4mc.validation.core.Severity;
 @ValidationGroup(
 	severity = Severity.ERROR,
 	validations =  {
-		TASoftwareEnforcedMigration.class,
 		TASoftwareModeLabel.class,
 		TASoftwareModeLabelAccess.class,
 		TASoftwareModeValue.class,
