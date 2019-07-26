@@ -736,6 +736,22 @@
       <offset value="0" unit="ms"/>
       <recurrence value="5" unit="ms"/>
     </stimuli>
+    <clocks xsi:type="am:ClockMultiplierList" name="clock1">
+      <entries multiplier="4.0">
+        <time value="4" unit="ms"/>
+      </entries>
+      <entries multiplier="2.0">
+        <time value="2" unit="ns"/>
+      </entries>
+    </clocks>
+    <clocks xsi:type="am:ClockSinusFunction" name="clock2" amplitude="0.0" yOffset="0.0">
+      <shift value="0"/>
+      <period value="0"/>
+    </clocks>
+    <clocks xsi:type="am:ClockTriangleFunction" name="clock3" max="0.0" min="0.0">
+      <shift value="0"/>
+      <period value="0"/>
+    </clocks>
   </stimuliModel>
   <constraintsModel>
     <requirements xsi:type="am:ProcessRequirement" name="Deadline_05" severity="Critical" process="Task_5MS?type=Task">

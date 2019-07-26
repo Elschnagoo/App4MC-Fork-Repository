@@ -20,7 +20,14 @@
             name="software converter"
             output-model-version="0.9.5">
       </converter>
-      
+      <converter
+            converter-class="org.eclipse.app4mc.amalthea.converters095.impl.StimuliConverter"
+            enabled="true"
+            id="converters.095.stimuli"
+            input-model-version="0.9.4"
+            name="stimuli converter"
+            output-model-version="0.9.5">
+      </converter>
    </extension>
 
 </plugin>
