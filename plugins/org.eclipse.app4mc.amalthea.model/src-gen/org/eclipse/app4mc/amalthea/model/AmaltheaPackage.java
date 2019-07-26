@@ -29705,13 +29705,31 @@ public interface AmaltheaPackage extends EPackage {
 	int POSITIVE_DOUBLE = 427;
 
 	/**
+	 * The meta object id for the '<em>Non Negative Int</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNonNegativeInt()
+	 * @generated
+	 */
+	int NON_NEGATIVE_INT = 428;
+
+	/**
+	 * The meta object id for the '<em>Non Negative Long</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNonNegativeLong()
+	 * @generated
+	 */
+	int NON_NEGATIVE_LONG = 429;
+
+	/**
 	 * The meta object id for the '<em>Non Negative Double</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.app4mc.amalthea.model.impl.AmaltheaPackageImpl#getNonNegativeDouble()
 	 * @generated
 	 */
-	int NON_NEGATIVE_DOUBLE = 428;
+	int NON_NEGATIVE_DOUBLE = 430;
 
 
 	/**
@@ -42197,9 +42215,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * Returns the meta object for data type '<em>Positive Int</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * <!-- begin-model-doc -->
-     * Positive Integer (int)
-     * <!-- end-model-doc -->
 	 * @return the meta object for data type '<em>Positive Int</em>'.
 	 * @model instanceClass="int"
 	 *        extendedMetaData="minExclusive='0'"
@@ -42211,9 +42226,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * Returns the meta object for data type '<em>Positive Long</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * <!-- begin-model-doc -->
-     * Positive Long (long)
-     * <!-- end-model-doc -->
 	 * @return the meta object for data type '<em>Positive Long</em>'.
 	 * @model instanceClass="long"
 	 *        extendedMetaData="minExclusive='0'"
@@ -42225,9 +42237,6 @@ public interface AmaltheaPackage extends EPackage {
 	 * Returns the meta object for data type '<em>Positive Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * <!-- begin-model-doc -->
-     * Positive Double (double)
-     * <!-- end-model-doc -->
 	 * @return the meta object for data type '<em>Positive Double</em>'.
 	 * @model instanceClass="double"
 	 *        extendedMetaData="minExclusive='0'"
@@ -42236,12 +42245,31 @@ public interface AmaltheaPackage extends EPackage {
 	EDataType getPositiveDouble();
 
 	/**
+	 * Returns the meta object for data type '<em>Non Negative Int</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Non Negative Int</em>'.
+	 * @model instanceClass="int"
+	 *        extendedMetaData="minInclusive='0'"
+	 * @generated
+	 */
+	EDataType getNonNegativeInt();
+
+	/**
+	 * Returns the meta object for data type '<em>Non Negative Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Non Negative Long</em>'.
+	 * @model instanceClass="long"
+	 *        extendedMetaData="minInclusive='0'"
+	 * @generated
+	 */
+	EDataType getNonNegativeLong();
+
+	/**
 	 * Returns the meta object for data type '<em>Non Negative Double</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * <!-- begin-model-doc -->
-     * Non Negative Double (double)
-     * <!-- end-model-doc -->
 	 * @return the meta object for data type '<em>Non Negative Double</em>'.
 	 * @model instanceClass="double"
 	 *        extendedMetaData="minInclusive='0'"

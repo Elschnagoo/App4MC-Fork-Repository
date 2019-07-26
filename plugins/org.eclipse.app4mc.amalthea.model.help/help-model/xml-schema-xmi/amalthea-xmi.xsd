@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:ecore_1="http://www.eclipse.org/emf/2002/Ecore" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.9.4">
+<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://app4mc.eclipse.org/amalthea/0.9.5">
   <xsd:annotation>
     <xsd:documentation>*
 *******************************************************************************
@@ -12,7 +12,6 @@ which is available at https://www.eclipse.org/legal/epl-2.0/
 SPDX-License-Identifier: EPL-2.0
 *******************************************************************************</xsd:documentation>
   </xsd:annotation>
-  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="ecore.xsd"/>
   <xsd:import namespace="http://www.omg.org/XMI" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/XMI.xsd"/>
   <xsd:simpleType name="RelationalOperator">
     <xsd:restriction base="xsd:NCName">
@@ -469,6 +468,13 @@ SPDX-License-Identifier: EPL-2.0
       <xsd:enumeration value="atLeastOneOfThem"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="CurveType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration value="sine"/>
+      <xsd:enumeration value="triangle"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="WaitEventType">
     <xsd:restriction base="xsd:NCName">
       <xsd:enumeration value="_undefined_"/>
@@ -896,7 +902,7 @@ Needs to be extended by other classes.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Quantity">
-        <xsd:attribute name="value" type="xsd:double"/>
+        <xsd:attribute name="value" type="xsd:string"/>
         <xsd:attribute name="unit" type="am:FrequencyUnit"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -4345,8 +4351,7 @@ AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
   <xsd:complexType abstract="true" name="Stimulus">
     <xsd:annotation>
       <xsd:documentation>Every process/task can have one or more stimuli.
-A stimulus activates the process
-deviationStimulus: defines the deviation of the activation times of the stimulus</xsd:documentation>
+A stimulus activates the process</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -4362,8 +4367,7 @@ deviationStimulus: defines the deviation of the activation times of the stimulus
   <xsd:element name="Stimulus" type="am:Stimulus">
     <xsd:annotation>
       <xsd:documentation>Every process/task can have one or more stimuli.
-A stimulus activates the process
-deviationStimulus: defines the deviation of the activation times of the stimulus</xsd:documentation>
+A stimulus activates the process</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ModeValueList">
@@ -4684,9 +4688,7 @@ burstLength: Time frame for the burst (occurrences after the length are clipped)
   <xsd:element name="ArrivalCurveEntry" type="am:ArrivalCurveEntry"/>
   <xsd:complexType abstract="true" name="Clock">
     <xsd:annotation>
-      <xsd:documentation>This is the time base for one or more periodic stimuli
-A clock defines the time of its stimuli.
-The faster the clock, the faster stimuli</xsd:documentation>
+      <xsd:documentation>Within a Scenario a Clock defines the predefined curve progression in a simulation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject"/>
@@ -4694,74 +4696,45 @@ The faster the clock, the faster stimuli</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="Clock" type="am:Clock">
     <xsd:annotation>
-      <xsd:documentation>This is the time base for one or more periodic stimuli
-A clock defines the time of its stimuli.
-The faster the clock, the faster stimuli</xsd:documentation>
+      <xsd:documentation>Within a Scenario a Clock defines the predefined curve progression in a simulation</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="ClockTriangleFunction">
+  <xsd:complexType name="ClockFunction">
     <xsd:complexContent>
       <xsd:extension base="am:Clock">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="shift" type="am:Time"/>
+          <xsd:element name="period" type="am:Time"/>
+          <xsd:element name="peakToPeak" type="am:Frequency"/>
+          <xsd:element name="xOffset" type="am:Time"/>
+          <xsd:element name="yOffset" type="am:Frequency"/>
+        </xsd:choice>
+        <xsd:attribute name="curveType" type="am:CurveType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ClockFunction" type="am:ClockFunction"/>
+  <xsd:complexType name="ClockStepList">
+    <xsd:complexContent>
+      <xsd:extension base="am:Clock">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="entries" type="am:ClockStep"/>
           <xsd:element name="period" type="am:Time"/>
         </xsd:choice>
-        <xsd:attribute name="max" type="xsd:double"/>
-        <xsd:attribute name="min" type="xsd:double"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ClockTriangleFunction" type="am:ClockTriangleFunction"/>
-  <xsd:complexType name="ClockSinusFunction">
-    <xsd:complexContent>
-      <xsd:extension base="am:Clock">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="shift" type="am:Time"/>
-          <xsd:element name="period" type="am:Time"/>
-        </xsd:choice>
-        <xsd:attribute name="amplitude" type="xsd:double"/>
-        <xsd:attribute name="yOffset" type="xsd:double"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ClockSinusFunction" type="am:ClockSinusFunction"/>
-  <xsd:complexType name="ClockMultiplierList">
-    <xsd:annotation>
-      <xsd:documentation>A list of timestamp-value pairs
-At the specified timestamp, the clock changes to the corresponding value</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Clock">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ClockMultiplierListEntry"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="ClockMultiplierList" type="am:ClockMultiplierList">
-    <xsd:annotation>
-      <xsd:documentation>A list of timestamp-value pairs
-At the specified timestamp, the clock changes to the corresponding value</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="ClockMultiplierListEntry">
-    <xsd:annotation>
-      <xsd:documentation>A timestamp-value par for ClockMultiplierList</xsd:documentation>
-    </xsd:annotation>
+  <xsd:element name="ClockStepList" type="am:ClockStepList"/>
+  <xsd:complexType name="ClockStep">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="frequency" type="am:Frequency"/>
           <xsd:element name="time" type="am:Time"/>
         </xsd:choice>
-        <xsd:attribute name="multiplier" type="xsd:double"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="ClockMultiplierListEntry" type="am:ClockMultiplierListEntry">
-    <xsd:annotation>
-      <xsd:documentation>A timestamp-value par for ClockMultiplierList</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
+  <xsd:element name="ClockStep" type="am:ClockStep"/>
   <xsd:complexType name="SWModel">
     <xsd:annotation>
       <xsd:documentation>Central instance to provide central access.</xsd:documentation>
@@ -4832,7 +4805,7 @@ At the specified timestamp, the clock changes to the corresponding value</xsd:do
   <xsd:complexType name="ProcessChain">
     <xsd:annotation>
       <xsd:documentation>Groups a list of processes to a process chain.
-This does not define how the processes are chained, like beeing executed by one parent or like they trigger each other (therfore Enforced Migration is used)
+This does not define how the processes are chained, like being executed by one parent or like they trigger each other
 This just defines that the processes should be chained.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -4847,7 +4820,7 @@ This just defines that the processes should be chained.</xsd:documentation>
   <xsd:element name="ProcessChain" type="am:ProcessChain">
     <xsd:annotation>
       <xsd:documentation>Groups a list of processes to a process chain.
-This does not define how the processes are chained, like beeing executed by one parent or like they trigger each other (therfore Enforced Migration is used)
+This does not define how the processes are chained, like being executed by one parent or like they trigger each other
 This just defines that the processes should be chained.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -4870,60 +4843,51 @@ This just defines that the processes should be chained.</xsd:documentation>
       <xsd:documentation>Generalizes interrupt service routines and tasks</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
+  <xsd:complexType abstract="true" name="ICallGraphItemContainer">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="items" type="am:CallGraphItem"/>
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+  </xsd:complexType>
+  <xsd:element name="ICallGraphItemContainer" type="am:ICallGraphItemContainer"/>
   <xsd:complexType name="CallGraph">
     <xsd:annotation>
-      <xsd:documentation>Describes the different execution paths of a process</xsd:documentation>
+      <xsd:documentation>Describes the different execution paths of a process or runnable</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="graphEntries" type="am:GraphEntryBase"/>
+          <xsd:element name="items" type="am:CallGraphItem"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="CallGraph" type="am:CallGraph">
     <xsd:annotation>
-      <xsd:documentation>Describes the different execution paths of a process</xsd:documentation>
+      <xsd:documentation>Describes the different execution paths of a process or runnable</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="GraphEntryBase">
+  <xsd:complexType abstract="true" name="CallGraphItem">
     <xsd:annotation>
-      <xsd:documentation>An abstract entry for a call graph</xsd:documentation>
+      <xsd:documentation>An abstract item of a call graph</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:element name="GraphEntryBase" type="am:GraphEntryBase">
+  <xsd:element name="CallGraphItem" type="am:CallGraphItem">
     <xsd:annotation>
-      <xsd:documentation>An abstract entry for a call graph</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
-  <xsd:complexType name="CallSequence">
-    <xsd:annotation>
-      <xsd:documentation>A sequence of callable items that can be placed in the call graph</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:GraphEntryBase">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="calls" type="am:CallSequenceItem"/>
-        </xsd:choice>
-        <xsd:attribute name="name" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="CallSequence" type="am:CallSequence">
-    <xsd:annotation>
-      <xsd:documentation>A sequence of callable items that can be placed in the call graph</xsd:documentation>
+      <xsd:documentation>An abstract item of a call graph</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ModeSwitch">
     <xsd:annotation>
-      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided ModeLabel</xsd:documentation>
+      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided mode conditions</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:GraphEntryBase">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entries" type="am:ModeSwitchEntry"/>
           <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
@@ -4933,7 +4897,7 @@ This just defines that the processes should be chained.</xsd:documentation>
   </xsd:complexType>
   <xsd:element name="ModeSwitch" type="am:ModeSwitch">
     <xsd:annotation>
-      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided ModeLabel</xsd:documentation>
+      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided mode conditions</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="ModeSwitchEntry">
@@ -4944,8 +4908,8 @@ It describes a path of the switch and the required mode condition to use this pa
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="items" type="am:CallGraphItem"/>
           <xsd:element name="condition" type="am:ModeConditionDisjunction"/>
-          <xsd:element name="items" type="ecore_1:EObject"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
       </xsd:extension>
@@ -4961,7 +4925,7 @@ It describes a path of the switch and the required mode condition to use this pa
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="ecore_1:EObject"/>
+          <xsd:element name="items" type="am:CallGraphItem"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -4972,7 +4936,7 @@ It describes a path of the switch and the required mode condition to use this pa
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:GraphEntryBase">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="entries" type="am:ProbabilitySwitchEntry"/>
         </xsd:choice>
@@ -4992,7 +4956,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="ecore_1:EObject"/>
+          <xsd:element name="items" type="am:CallGraphItem"/>
         </xsd:choice>
         <xsd:attribute name="probability" type="xsd:double"/>
       </xsd:extension>
@@ -5010,7 +4974,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:attribute name="prescaler" type="xsd:long"/>
+        <xsd:attribute name="prescaler" type="xsd:string"/>
         <xsd:attribute name="offset" type="xsd:long"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5020,32 +4984,16 @@ It describes a path of the switch and it's probability</xsd:documentation>
       <xsd:documentation>A counter for the call sequence items</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="CallSequenceItem">
-    <xsd:annotation>
-      <xsd:documentation>Generalizes task calls</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="counter" type="am:Counter"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="CallSequenceItem" type="am:CallSequenceItem">
-    <xsd:annotation>
-      <xsd:documentation>Generalizes task calls</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="WaitEvent">
     <xsd:annotation>
       <xsd:documentation>Let the process wait for a combination of events defined by eventMask
 maskType defines if the events in eventMask are linked by a AND or OR</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="eventMask" type="am:EventMask"/>
+          <xsd:element name="counter" type="am:Counter"/>
         </xsd:choice>
         <xsd:attribute name="maskType" type="am:WaitEventType"/>
         <xsd:attribute name="waitingBehaviour" type="am:WaitingBehaviour"/>
@@ -5065,10 +5013,11 @@ These events can be set for a specific process, if there is no process, is is gl
 If there is a process, it is possible to set the event for a specific process instance that is currently activated</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="eventMask" type="am:EventMask"/>
           <xsd:element name="process" type="am:Process"/>
+          <xsd:element name="counter" type="am:Counter"/>
         </xsd:choice>
         <xsd:attribute name="process" type="xsd:string"/>
       </xsd:extension>
@@ -5086,9 +5035,10 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Clears the events of eventMask</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="eventMask" type="am:EventMask"/>
+          <xsd:element name="counter" type="am:Counter"/>
         </xsd:choice>
       </xsd:extension>
     </xsd:complexContent>
@@ -5140,9 +5090,10 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Triggers a stimulus to activate its processes</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="stimulus" type="am:InterProcessStimulus"/>
+          <xsd:element name="counter" type="am:Counter"/>
         </xsd:choice>
         <xsd:attribute name="stimulus" type="xsd:string"/>
       </xsd:extension>
@@ -5158,9 +5109,9 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Migrates task to core of resource owner</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="resourceOwner" type="am:Scheduler"/>
+          <xsd:element name="resourceOwner" type="am:TaskScheduler"/>
         </xsd:choice>
         <xsd:attribute name="resourceOwner" type="xsd:string"/>
       </xsd:extension>
@@ -5171,31 +5122,12 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Migrates task to core of resource owner</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="TaskRunnableCall">
-    <xsd:annotation>
-      <xsd:documentation>Executes a runnable</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="runnable" type="am:Runnable"/>
-          <xsd:element name="statistic" type="am:RunEntityCallStatistic"/>
-        </xsd:choice>
-        <xsd:attribute name="runnable" type="xsd:string"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="TaskRunnableCall" type="am:TaskRunnableCall">
-    <xsd:annotation>
-      <xsd:documentation>Executes a runnable</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="SchedulePoint">
     <xsd:annotation>
       <xsd:documentation>Triggers scheduler</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem"/>
+      <xsd:extension base="am:CallGraphItem"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="SchedulePoint" type="am:SchedulePoint">
@@ -5208,7 +5140,11 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Terminates the process</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem"/>
+      <xsd:extension base="am:CallGraphItem">
+        <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="counter" type="am:Counter"/>
+        </xsd:choice>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="TerminateProcess" type="am:TerminateProcess">
@@ -5272,7 +5208,7 @@ The final state can be several Tasks, which can be computed using provided infor
           </xsd:element>
           <xsd:element name="chainedPrototypes" type="am:ChainedProcessPrototype"/>
           <xsd:element name="activation" type="am:Activation"/>
-          <xsd:element name="runnableCalls" type="am:TaskRunnableCall"/>
+          <xsd:element name="runnableCalls" type="am:RunnableCall"/>
         </xsd:choice>
         <xsd:attribute name="preemption" type="am:Preemption"/>
         <xsd:attribute name="firstRunnable" type="xsd:string"/>
@@ -5380,7 +5316,7 @@ The final state can be several Tasks, which can be computed using provided infor
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="executionCondition" type="am:ModeConditionDisjunction"/>
           <xsd:element name="parameters" type="am:RunnableParameter"/>
-          <xsd:element name="runnableItems" type="am:RunnableItem"/>
+          <xsd:element name="callGraph" type="am:CallGraph"/>
           <xsd:element name="activations" type="am:Activation"/>
           <xsd:element name="section" type="am:Section"/>
         </xsd:choice>
@@ -5494,25 +5430,12 @@ It is used to provide an easy mechanism to distribute objects to memory,
 which are belonging together.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType abstract="true" name="RunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>Representation of a object that can be executed by a Runnable</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject"/>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="RunnableItem" type="am:RunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>Representation of a object that can be executed by a Runnable</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType abstract="true" name="ComputationItem">
     <xsd:annotation>
       <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem"/>
+      <xsd:extension base="am:CallGraphItem"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ComputationItem" type="am:ComputationItem">
@@ -5525,7 +5448,7 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="needs" type="am:NeedEntry"/>
         </xsd:choice>
@@ -5581,7 +5504,7 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="data" type="am:ModeLabel"/>
         </xsd:choice>
@@ -5607,17 +5530,6 @@ It can be used to define a step other than 1.</xsd:documentation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="RunnableModeSwitch">
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ModeSwitchEntry"/>
-          <xsd:element name="defaultEntry" type="am:ModeSwitchDefault"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="RunnableModeSwitch" type="am:RunnableModeSwitch"/>
   <xsd:complexType name="LabelAccess">
     <xsd:annotation>
       <xsd:documentation>Representation of a label access of a run entity.</xsd:documentation>
@@ -5658,7 +5570,7 @@ It can be used to define a step other than 1.</xsd:documentation>
   </xsd:element>
   <xsd:complexType abstract="true" name="ChannelAccess">
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="data" type="am:Channel"/>
           <xsd:element name="transmissionPolicy" type="am:TransmissionPolicy"/>
@@ -5691,7 +5603,7 @@ It can be used to define a step other than 1.</xsd:documentation>
       <xsd:documentation>Describes an semaphore access</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="semaphore" type="am:Semaphore"/>
         </xsd:choice>
@@ -5711,7 +5623,7 @@ It can be used to define a step other than 1.</xsd:documentation>
       <xsd:documentation>An abstract description for sender-receiver-communication (it can be read or write)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="label" type="am:Label"/>
           <xsd:element name="port" type="am:Port"/>
@@ -5766,7 +5678,7 @@ It contains the runnables that have the corresponding SenderReceiverRead</xsd:do
 It refers to a required runnable that describes the called server operation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="serverRunnable" type="am:Runnable"/>
           <xsd:element name="port" type="am:Port"/>
@@ -5832,32 +5744,14 @@ It refers to a optional runnable that exploits the results produced by the serve
       <xsd:documentation>Get the result of a previous asynchronous server call</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="RunnableProbabilitySwitch">
-    <xsd:annotation>
-      <xsd:documentation>A switch in the runnable items, each path has a probability</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
-        <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="entries" type="am:ProbabilitySwitchEntry"/>
-        </xsd:choice>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:element name="RunnableProbabilitySwitch" type="am:RunnableProbabilitySwitch">
-    <xsd:annotation>
-      <xsd:documentation>A switch in the runnable items, each path has a probability</xsd:documentation>
-    </xsd:annotation>
-  </xsd:element>
   <xsd:complexType name="Group">
     <xsd:annotation>
-      <xsd:documentation>Describes a group of deviation runnable items
-It can be also a group of runnable items without deviation, because the deviation is optional for each item</xsd:documentation>
+      <xsd:documentation>Describes a group of deviation runnable items</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="items" type="am:RunnableItem"/>
+          <xsd:element name="items" type="am:CallGraphItem"/>
         </xsd:choice>
         <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="ordered" type="xsd:boolean"/>
@@ -5866,8 +5760,7 @@ It can be also a group of runnable items without deviation, because the deviatio
   </xsd:complexType>
   <xsd:element name="Group" type="am:Group">
     <xsd:annotation>
-      <xsd:documentation>Describes a group of deviation runnable items
-It can be also a group of runnable items without deviation, because the deviation is optional for each item</xsd:documentation>
+      <xsd:documentation>Describes a group of deviation runnable items</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
   <xsd:complexType name="CallArgument">
@@ -5889,7 +5782,7 @@ It can be also a group of runnable items without deviation, because the deviatio
       <xsd:documentation>Representation of a runnable call of a run entity.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="tags" type="am:Tag"/>
           <xsd:element name="runnable" type="am:Runnable"/>
@@ -5911,7 +5804,7 @@ It can be also a group of runnable items without deviation, because the deviatio
       <xsd:documentation>Explicitly trigger a custom event from a runnable.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="event" type="am:CustomEvent"/>
         </xsd:choice>

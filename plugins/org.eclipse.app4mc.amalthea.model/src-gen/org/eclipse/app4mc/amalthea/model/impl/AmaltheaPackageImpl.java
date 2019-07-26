@@ -3454,6 +3454,20 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EDataType nonNegativeIntEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType nonNegativeLongEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType nonNegativeDoubleEDataType = null;
 
 	/**
@@ -15366,6 +15380,26 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
+	public EDataType getNonNegativeInt() {
+		return nonNegativeIntEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EDataType getNonNegativeLong() {
+		return nonNegativeLongEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getNonNegativeDouble() {
 		return nonNegativeDoubleEDataType;
 	}
@@ -16949,6 +16983,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		positiveIntEDataType = createEDataType(POSITIVE_INT);
 		positiveLongEDataType = createEDataType(POSITIVE_LONG);
 		positiveDoubleEDataType = createEDataType(POSITIVE_DOUBLE);
+		nonNegativeIntEDataType = createEDataType(NON_NEGATIVE_INT);
+		nonNegativeLongEDataType = createEDataType(NON_NEGATIVE_LONG);
 		nonNegativeDoubleEDataType = createEDataType(NON_NEGATIVE_DOUBLE);
 	}
 
@@ -19506,6 +19542,8 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEDataType(positiveIntEDataType, int.class, "PositiveInt", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(positiveLongEDataType, long.class, "PositiveLong", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(positiveDoubleEDataType, double.class, "PositiveDouble", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(nonNegativeIntEDataType, int.class, "NonNegativeInt", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(nonNegativeLongEDataType, long.class, "NonNegativeLong", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(nonNegativeDoubleEDataType, double.class, "NonNegativeDouble", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
@@ -19547,6 +19585,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		   source,
 		   new String[] {
 			   "minExclusive", "0"
+		   });
+		addAnnotation
+		  (nonNegativeIntEDataType,
+		   source,
+		   new String[] {
+			   "minInclusive", "0"
+		   });
+		addAnnotation
+		  (nonNegativeLongEDataType,
+		   source,
+		   new String[] {
+			   "minInclusive", "0"
 		   });
 		addAnnotation
 		  (nonNegativeDoubleEDataType,

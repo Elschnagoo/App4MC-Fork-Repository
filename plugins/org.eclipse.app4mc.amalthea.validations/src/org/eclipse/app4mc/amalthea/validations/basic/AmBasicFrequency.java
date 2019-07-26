@@ -29,8 +29,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * Checks the correctness of Frequencies
  * 
  * <ul>
- * <li>Some frequencies have to fulfill the condition >0 or >=0, however,
- *     since the frequency value is a NonNegativeDouble the >=0 validation is already covered by EMF.</li>
+ * <li>Some frequencies have to fulfill the condition >0 (validation >=0 is already covered by EMF).</li>
  * </ul>
  */
 

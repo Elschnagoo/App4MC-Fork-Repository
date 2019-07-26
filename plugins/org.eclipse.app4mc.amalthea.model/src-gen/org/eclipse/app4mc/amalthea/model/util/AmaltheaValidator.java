@@ -1457,6 +1457,10 @@ public class AmaltheaValidator extends EObjectValidator {
 				return validatePositiveLong((Long)value, diagnostics, context);
 			case AmaltheaPackage.POSITIVE_DOUBLE:
 				return validatePositiveDouble((Double)value, diagnostics, context);
+			case AmaltheaPackage.NON_NEGATIVE_INT:
+				return validateNonNegativeInt((Integer)value, diagnostics, context);
+			case AmaltheaPackage.NON_NEGATIVE_LONG:
+				return validateNonNegativeLong((Long)value, diagnostics, context);
 			case AmaltheaPackage.NON_NEGATIVE_DOUBLE:
 				return validateNonNegativeDouble((Double)value, diagnostics, context);
 			default:
@@ -7041,6 +7045,68 @@ public class AmaltheaValidator extends EObjectValidator {
 		boolean result = positiveDouble > POSITIVE_DOUBLE__MIN__VALUE;
 		if (!result && diagnostics != null)
 			reportMinViolation(AmaltheaPackage.eINSTANCE.getPositiveDouble(), positiveDouble, POSITIVE_DOUBLE__MIN__VALUE, false, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNonNegativeInt(int nonNegativeInt, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateNonNegativeInt_Min(nonNegativeInt, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateNonNegativeInt_Min
+	 */
+	public static final int NON_NEGATIVE_INT__MIN__VALUE = 0;
+
+	/**
+	 * Validates the Min constraint of '<em>Non Negative Int</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNonNegativeInt_Min(int nonNegativeInt, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = nonNegativeInt >= NON_NEGATIVE_INT__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getNonNegativeInt(), nonNegativeInt, NON_NEGATIVE_INT__MIN__VALUE, true, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNonNegativeLong(long nonNegativeLong, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = validateNonNegativeLong_Min(nonNegativeLong, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @see #validateNonNegativeLong_Min
+	 */
+	public static final long NON_NEGATIVE_LONG__MIN__VALUE = 0L;
+
+	/**
+	 * Validates the Min constraint of '<em>Non Negative Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateNonNegativeLong_Min(long nonNegativeLong, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		boolean result = nonNegativeLong >= NON_NEGATIVE_LONG__MIN__VALUE;
+		if (!result && diagnostics != null)
+			reportMinViolation(AmaltheaPackage.eINSTANCE.getNonNegativeLong(), nonNegativeLong, NON_NEGATIVE_LONG__MIN__VALUE, true, diagnostics, context);
 		return result;
 	}
 

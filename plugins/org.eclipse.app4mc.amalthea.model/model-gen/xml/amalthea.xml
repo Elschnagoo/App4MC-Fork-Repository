@@ -1001,33 +1001,31 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="PositiveInt" instanceClassName="int">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Positive Integer (int)"/>
-    </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="minExclusive" value="0"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="PositiveLong" instanceClassName="long">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Positive Long (long)"/>
-    </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="minExclusive" value="0"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="PositiveDouble" instanceClassName="double">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Positive Double (double)"/>
-    </eAnnotations>
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="minExclusive" value="0"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="NonNegativeDouble" instanceClassName="double">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Non Negative Double (double)"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="NonNegativeInt" instanceClassName="int">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="minInclusive" value="0"/>
     </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NonNegativeLong" instanceClassName="long">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="minInclusive" value="0"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NonNegativeDouble" instanceClassName="double">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="minInclusive" value="0"/>
     </eAnnotations>
@@ -1310,8 +1308,10 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Describes an event chain which must have a minimum of two events (stimulus and response)&#xA;If there are more events the event chain have to be divided into segments. Each segment is another event chain.&#xA;Alternative event paths are contained in strands.&#xA;stimulus: Beginning of chain&#xA;response: End of chain&#xA;segments: Sub event chains&#xA;strands: alternative event paths"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="stimulus" eType="#//Event"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="response" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stimulus" lowerBound="1"
+        eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="response" lowerBound="1"
+        eType="#//Event"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="segments" upperBound="-1"
         eType="#//EventChainItem" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="strands" upperBound="-1"

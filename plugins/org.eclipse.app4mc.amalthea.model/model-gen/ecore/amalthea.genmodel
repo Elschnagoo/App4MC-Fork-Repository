@@ -3,12 +3,15 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="*******************************************************************************&#xD;&#xA; Copyright (c) 2015-2019 Robert Bosch GmbH and others.&#xD;&#xA;&#xD;&#xA; This program and the accompanying materials are made&#xD;&#xA; available under the terms of the Eclipse Public License 2.0&#xD;&#xA; which is available at https://www.eclipse.org/legal/epl-2.0/&#xD;&#xA;&#xD;&#xA; SPDX-License-Identifier: EPL-2.0&#xD;&#xA;&#xD;&#xA;    Generated using Eclipse EMF&#xD;&#xA;&#xD;&#xA;*******************************************************************************"
     modelDirectory="/org.eclipse.app4mc.amalthea.model/src" creationIcons="false"
     creationSubmenus="true" editDirectory="/org.eclipse.app4mc.amalthea.model.edit/src-gen"
-    modelPluginID="org.eclipse.app4mc.amalthea.model" runtimeJar="true" forceOverwrite="true"
-    modelName="Amalthea" updateClasspath="false" rootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl"
+    editorDirectory="/org.eclipse.app4mc.amalthea.model.editor/src-gen" modelPluginID="org.eclipse.app4mc.amalthea.model"
+    runtimeJar="true" forceOverwrite="true" modelName="Amalthea" updateClasspath="false"
+    rootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedEObjectImpl"
     testsDirectory="" booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.emf.ecore.xcore.importer"
     containmentProxies="true" complianceLevel="8.0" providerRootExtendsClass="org.eclipse.app4mc.amalthea.sphinx.AmaltheaExtendedItemProviderAdapter"
     language="en" operationReflection="true" importOrganizing="true" decoration="Live"
-    oSGiCompatible="true">
+    oSGiCompatible="true" eclipsePlatformVersion="Photon" autoResizeProperties="true"
+    autoExpandProperties="1" findAction="true" expandAllAction="true" collapseAllAction="true"
+    revertAction="true">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
       <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
@@ -358,6 +361,11 @@
       <genEnumLiterals ecoreEnumLiteral="amalthea.ecore#//GroupingType/allOfThem"/>
       <genEnumLiterals ecoreEnumLiteral="amalthea.ecore#//GroupingType/atLeastOneOfThem"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="amalthea.ecore#//CurveType">
+      <genEnumLiterals ecoreEnumLiteral="amalthea.ecore#//CurveType/_undefined_"/>
+      <genEnumLiterals ecoreEnumLiteral="amalthea.ecore#//CurveType/sine"/>
+      <genEnumLiterals ecoreEnumLiteral="amalthea.ecore#//CurveType/triangle"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="amalthea.ecore#//WaitEventType">
       <genEnumLiterals ecoreEnumLiteral="amalthea.ecore#//WaitEventType/_undefined_"/>
       <genEnumLiterals ecoreEnumLiteral="amalthea.ecore#//WaitEventType/AND"/>
@@ -469,9 +477,12 @@
     <genDataTypes ecoreDataType="amalthea.ecore#//PositiveInt"/>
     <genDataTypes ecoreDataType="amalthea.ecore#//PositiveLong"/>
     <genDataTypes ecoreDataType="amalthea.ecore#//PositiveDouble"/>
+    <genDataTypes ecoreDataType="amalthea.ecore#//NonNegativeInt"/>
+    <genDataTypes ecoreDataType="amalthea.ecore#//NonNegativeLong"/>
+    <genDataTypes ecoreDataType="amalthea.ecore#//NonNegativeDouble"/>
     <genClasses ecoreClass="amalthea.ecore#//Amalthea">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Amalthea/version"
-          get="return &quot;0.9.4&quot;;"/>
+          get="return &quot;0.9.5&quot;;"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Amalthea/commonElements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Amalthea/swModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Amalthea/hwModel"/>
@@ -644,6 +655,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//TimeInterval/lowerBound"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//TimeInterval/upperBound"/>
       <genOperations ecoreOperation="amalthea.ecore#//TimeInterval/getAverage" body="return this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(0.5));"/>
+      <genOperations ecoreOperation="amalthea.ecore#//TimeInterval/validateInvariants"
+          body="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%>.validateInvariants(this, diagnostics, context);">
+        <genParameters ecoreParameter="amalthea.ecore#//TimeInterval/validateInvariants/diagnostics"/>
+        <genParameters ecoreParameter="amalthea.ecore#//TimeInterval/validateInvariants/context"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//TimeConstant">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//TimeConstant/value"/>
@@ -668,6 +684,11 @@
     <genClasses image="false" ecoreClass="amalthea.ecore#//TruncatedTimeDistribution">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//TruncatedTimeDistribution/lowerBound"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//TruncatedTimeDistribution/upperBound"/>
+      <genOperations ecoreOperation="amalthea.ecore#//TruncatedTimeDistribution/validateInvariants"
+          body="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%>.validateInvariants(this, diagnostics, context);">
+        <genParameters ecoreParameter="amalthea.ecore#//TruncatedTimeDistribution/validateInvariants/diagnostics"/>
+        <genParameters ecoreParameter="amalthea.ecore#//TruncatedTimeDistribution/validateInvariants/context"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//TimeBoundaries">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//TimeBoundaries/samplingType"/>
@@ -702,6 +723,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//DiscreteValueInterval/upperBound"/>
       <genOperations ecoreOperation="amalthea.ecore#//DiscreteValueInterval/getAverage"
           body="&lt;%java.lang.Long%> _lowerBound = this.getLowerBound();&#xA;&lt;%java.lang.Long%> _upperBound = this.getUpperBound();&#xA;&lt;%java.lang.Long%> _lowerBound_1 = this.getLowerBound();&#xA;long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());&#xA;double _divide = (_minus / 2.0);&#xA;return ((_lowerBound).longValue() + _divide);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//DiscreteValueInterval/validateInvariants"
+          body="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%>.validateInvariants(this, diagnostics, context);">
+        <genParameters ecoreParameter="amalthea.ecore#//DiscreteValueInterval/validateInvariants/diagnostics"/>
+        <genParameters ecoreParameter="amalthea.ecore#//DiscreteValueInterval/validateInvariants/context"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//DiscreteValueConstant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//DiscreteValueConstant/value"/>
@@ -728,6 +754,11 @@
     <genClasses image="false" ecoreClass="amalthea.ecore#//TruncatedDiscreteValueDistribution">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//TruncatedDiscreteValueDistribution/lowerBound"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//TruncatedDiscreteValueDistribution/upperBound"/>
+      <genOperations ecoreOperation="amalthea.ecore#//TruncatedDiscreteValueDistribution/validateInvariants"
+          body="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%>.validateInvariants(this, diagnostics, context);">
+        <genParameters ecoreParameter="amalthea.ecore#//TruncatedDiscreteValueDistribution/validateInvariants/diagnostics"/>
+        <genParameters ecoreParameter="amalthea.ecore#//TruncatedDiscreteValueDistribution/validateInvariants/context"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//DiscreteValueBoundaries">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//DiscreteValueBoundaries/samplingType"/>
@@ -762,6 +793,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ContinuousValueInterval/upperBound"/>
       <genOperations ecoreOperation="amalthea.ecore#//ContinuousValueInterval/getAverage"
           body="&lt;%java.lang.Double%> _lowerBound = this.getLowerBound();&#xA;&lt;%java.lang.Double%> _upperBound = this.getUpperBound();&#xA;&lt;%java.lang.Double%> _lowerBound_1 = this.getLowerBound();&#xA;double _minus = &lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%>.operator_minus(_upperBound, _lowerBound_1);&#xA;double _divide = (_minus / 2.0);&#xA;return ((_lowerBound).doubleValue() + _divide);"/>
+      <genOperations ecoreOperation="amalthea.ecore#//ContinuousValueInterval/validateInvariants"
+          body="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%>.validateInvariants(this, diagnostics, context);">
+        <genParameters ecoreParameter="amalthea.ecore#//ContinuousValueInterval/validateInvariants/diagnostics"/>
+        <genParameters ecoreParameter="amalthea.ecore#//ContinuousValueInterval/validateInvariants/context"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ContinuousValueConstant">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ContinuousValueConstant/value"/>
@@ -788,6 +824,11 @@
     <genClasses image="false" ecoreClass="amalthea.ecore#//TruncatedContinuousValueDistribution">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//TruncatedContinuousValueDistribution/lowerBound"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//TruncatedContinuousValueDistribution/upperBound"/>
+      <genOperations ecoreOperation="amalthea.ecore#//TruncatedContinuousValueDistribution/validateInvariants"
+          body="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%>.validateInvariants(this, diagnostics, context);">
+        <genParameters ecoreParameter="amalthea.ecore#//TruncatedContinuousValueDistribution/validateInvariants/diagnostics"/>
+        <genParameters ecoreParameter="amalthea.ecore#//TruncatedContinuousValueDistribution/validateInvariants/context"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ContinuousValueBoundaries">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ContinuousValueBoundaries/samplingType"/>
@@ -1649,24 +1690,20 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ArrivalCurveEntry/upperTimeBorder"/>
     </genClasses>
     <genClasses image="false" ecoreClass="amalthea.ecore#//Clock"/>
-    <genClasses ecoreClass="amalthea.ecore#//ClockTriangleFunction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockTriangleFunction/shift"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockTriangleFunction/period"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ClockTriangleFunction/max"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ClockTriangleFunction/min"/>
+    <genClasses ecoreClass="amalthea.ecore#//ClockFunction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ClockFunction/curveType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockFunction/period"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockFunction/peakToPeak"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockFunction/xOffset"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockFunction/yOffset"/>
     </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//ClockSinusFunction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockSinusFunction/shift"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockSinusFunction/period"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ClockSinusFunction/amplitude"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ClockSinusFunction/yOffset"/>
+    <genClasses ecoreClass="amalthea.ecore#//ClockStepList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockStepList/entries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockStepList/period"/>
     </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//ClockMultiplierList">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockMultiplierList/entries"/>
-    </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//ClockMultiplierListEntry">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ClockMultiplierListEntry/multiplier"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockMultiplierListEntry/time"/>
+    <genClasses ecoreClass="amalthea.ecore#//ClockStep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockStep/frequency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClockStep/time"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//SWModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//SWModel/isrs"/>
@@ -1713,57 +1750,54 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Process/callGraph"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//Process/stimuli"/>
     </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//CallGraph">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//CallGraph/graphEntries"/>
+    <genClasses image="false" ecoreClass="amalthea.ecore#//ICallGraphItemContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ICallGraphItemContainer/items"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="amalthea.ecore#//GraphEntryBase"/>
-    <genClasses ecoreClass="amalthea.ecore#//CallSequence">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//CallSequence/calls"/>
+    <genClasses ecoreClass="amalthea.ecore#//CallGraph"/>
+    <genClasses image="false" ecoreClass="amalthea.ecore#//CallGraphItem">
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
+          ecoreFeature="ecore:EReference amalthea.ecore#//CallGraphItem/containingProcess"
+          get="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Process%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Process%>.class);">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
+          ecoreFeature="ecore:EReference amalthea.ecore#//CallGraphItem/containingRunnable"
+          get="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Runnable%>.class);">
+        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
+      </genFeatures>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ModeSwitch">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ModeSwitch/entries"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ModeSwitch/defaultEntry"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ModeSwitchEntry">
-      <genTypeParameters ecoreTypeParameter="amalthea.ecore#//ModeSwitchEntry/T"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ModeSwitchEntry/condition"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ModeSwitchEntry/items"/>
     </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//ModeSwitchDefault">
-      <genTypeParameters ecoreTypeParameter="amalthea.ecore#//ModeSwitchDefault/T"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ModeSwitchDefault/items"/>
-    </genClasses>
+    <genClasses ecoreClass="amalthea.ecore#//ModeSwitchDefault"/>
     <genClasses ecoreClass="amalthea.ecore#//ProbabilitySwitch">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ProbabilitySwitch/entries"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ProbabilitySwitchEntry">
-      <genTypeParameters ecoreTypeParameter="amalthea.ecore#//ProbabilitySwitchEntry/T"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//ProbabilitySwitchEntry/probability"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ProbabilitySwitchEntry/items"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//Counter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Counter/prescaler"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Counter/offset"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="amalthea.ecore#//CallSequenceItem">
-      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
-          ecoreFeature="ecore:EReference amalthea.ecore#//CallSequenceItem/containingProcess"
-          get="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Process%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Process%>.class);">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//CallSequenceItem/counter"/>
-    </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//WaitEvent">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//WaitEvent/eventMask"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//WaitEvent/maskType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//WaitEvent/waitingBehaviour"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//WaitEvent/counter"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//SetEvent">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//SetEvent/eventMask"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//SetEvent/process"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//SetEvent/counter"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//ClearEvent">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClearEvent/eventMask"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ClearEvent/counter"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//EventMask">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//EventMask/events"/>
@@ -1778,16 +1812,15 @@
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//InterProcessTrigger">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//InterProcessTrigger/stimulus"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//InterProcessTrigger/counter"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//EnforcedMigration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//EnforcedMigration/resourceOwner"/>
     </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//TaskRunnableCall">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//TaskRunnableCall/runnable"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//TaskRunnableCall/statistic"/>
-    </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//SchedulePoint"/>
-    <genClasses ecoreClass="amalthea.ecore#//TerminateProcess"/>
+    <genClasses ecoreClass="amalthea.ecore#//TerminateProcess">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//TerminateProcess/counter"/>
+    </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Task/preemption"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Task/multipleTaskActivationLimit"/>
@@ -1845,7 +1878,7 @@
     <genClasses ecoreClass="amalthea.ecore#//Runnable">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Runnable/executionCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Runnable/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Runnable/runnableItems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Runnable/callGraph"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//Runnable/activations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Runnable/callback"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Runnable/service"/>
@@ -1857,15 +1890,11 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
-          ecoreFeature="ecore:EReference amalthea.ecore#//Runnable/taskRunnableCalls"
-          get="&lt;%org.eclipse.emf.ecore.EReference%> _taskRunnableCall_Runnable = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getTaskRunnableCall_Runnable();&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaIndex%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TaskRunnableCall%>>getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getRunnable_TaskRunnableCalls(), &#xA;&#x9;java.util.Collections.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>newHashSet(_taskRunnableCall_Runnable)));">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
-      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
           ecoreFeature="ecore:EReference amalthea.ecore#//Runnable/referringComponents"
           get="&lt;%org.eclipse.emf.ecore.EReference%> _component_Runnables = &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getComponent_Runnables();&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaIndex%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Component%>>getInverseReferences(this, &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaPackage%>.eINSTANCE.getRunnable_ReferringComponents(), &#xA;&#x9;java.util.Collections.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>unmodifiableSet(org.eclipse.xtext.xbase.lib.CollectionLiterals.&lt;&lt;%org.eclipse.emf.ecore.EReference%>>newHashSet(_component_Runnables)));">
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
+      <genOperations ecoreOperation="amalthea.ecore#//Runnable/getRunnableItems" body="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.CallGraphItem%>> _xblockexpression = null;&#xA;{&#xA;&#x9;&lt;%org.eclipse.app4mc.amalthea.model.CallGraph%> _callGraph = this.getCallGraph();&#xA;&#x9;boolean _tripleEquals = (_callGraph == null);&#xA;&#x9;if (_tripleEquals)&#xA;&#x9;{&#xA;&#x9;&#x9;this.setCallGraph(&lt;%org.eclipse.app4mc.amalthea.model.AmaltheaFactory%>.eINSTANCE.createCallGraph());&#xA;&#x9;}&#xA;&#x9;_xblockexpression = this.getCallGraph().getItems();&#xA;}&#xA;return _xblockexpression;"/>
       <genOperations ecoreOperation="amalthea.ecore#//Runnable/getFirstActivation"
           body="return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Activation%>>head(this.getActivations());"/>
     </genClasses>
@@ -1918,13 +1947,6 @@
         <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
       </genFeatures>
     </genClasses>
-    <genClasses image="false" ecoreClass="amalthea.ecore#//RunnableItem">
-      <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"
-          ecoreFeature="ecore:EReference amalthea.ecore#//RunnableItem/containingRunnable"
-          get="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Runnable%>>getContainerOfType(this, &lt;%org.eclipse.app4mc.amalthea.model.Runnable%>.class);">
-        <propertyFilterFlags>org.eclipse.ui.views.properties.expert</propertyFilterFlags>
-      </genFeatures>
-    </genClasses>
     <genClasses image="false" ecoreClass="amalthea.ecore#//ComputationItem"/>
     <genClasses ecoreClass="amalthea.ecore#//ExecutionNeed">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//ExecutionNeed/needs"/>
@@ -1951,10 +1973,6 @@
         <genParameters ecoreParameter="amalthea.ecore#//ModeLabelAccess/validateInvariants/diagnostics"/>
         <genParameters ecoreParameter="amalthea.ecore#//ModeLabelAccess/validateInvariants/context"/>
       </genOperations>
-    </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//RunnableModeSwitch">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//RunnableModeSwitch/entries"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//RunnableModeSwitch/defaultEntry"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//LabelAccess">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//LabelAccess/data"/>
@@ -2004,12 +2022,8 @@
     <genClasses ecoreClass="amalthea.ecore#//GetResultServerCall">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//GetResultServerCall/blockingType"/>
     </genClasses>
-    <genClasses ecoreClass="amalthea.ecore#//RunnableProbabilitySwitch">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//RunnableProbabilitySwitch/entries"/>
-    </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//Group">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Group/ordered"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Group/items"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//CallArgument">
       <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Read only"

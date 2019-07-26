@@ -818,6 +818,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return createPositiveLongFromString(eDataType, initialValue);
 			case AmaltheaPackage.POSITIVE_DOUBLE:
 				return createPositiveDoubleFromString(eDataType, initialValue);
+			case AmaltheaPackage.NON_NEGATIVE_INT:
+				return createNonNegativeIntFromString(eDataType, initialValue);
+			case AmaltheaPackage.NON_NEGATIVE_LONG:
+				return createNonNegativeLongFromString(eDataType, initialValue);
 			case AmaltheaPackage.NON_NEGATIVE_DOUBLE:
 				return createNonNegativeDoubleFromString(eDataType, initialValue);
 			default:
@@ -961,6 +965,10 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 				return convertPositiveLongToString(eDataType, instanceValue);
 			case AmaltheaPackage.POSITIVE_DOUBLE:
 				return convertPositiveDoubleToString(eDataType, instanceValue);
+			case AmaltheaPackage.NON_NEGATIVE_INT:
+				return convertNonNegativeIntToString(eDataType, instanceValue);
+			case AmaltheaPackage.NON_NEGATIVE_LONG:
+				return convertNonNegativeLongToString(eDataType, instanceValue);
 			case AmaltheaPackage.NON_NEGATIVE_DOUBLE:
 				return convertNonNegativeDoubleToString(eDataType, instanceValue);
 			default:
@@ -5287,6 +5295,42 @@ public class AmaltheaFactoryImpl extends EFactoryImpl implements AmaltheaFactory
 	 * @generated
 	 */
 	public String convertPositiveDoubleToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer createNonNegativeIntFromString(EDataType eDataType, String initialValue) {
+		return (Integer)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertNonNegativeIntToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Long createNonNegativeLongFromString(EDataType eDataType, String initialValue) {
+		return (Long)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertNonNegativeLongToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

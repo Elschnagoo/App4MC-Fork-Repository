@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.4" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="am" ecore:package="org.eclipse.app4mc.amalthea.model" targetNamespace="http://app4mc.eclipse.org/amalthea/0.9.4">
+<xsd:schema xmlns:am="http://app4mc.eclipse.org/amalthea/0.9.5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="am" ecore:package="org.eclipse.app4mc.amalthea.model" targetNamespace="http://app4mc.eclipse.org/amalthea/0.9.5">
   <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
   <xsd:annotation>
     <xsd:documentation>*
@@ -289,26 +289,24 @@ SPDX-License-Identifier: EPL-2.0
   <xsd:element ecore:ignore="true" name="ArrivalCurveStimulus" type="am:ArrivalCurveStimulus"/>
   <xsd:element ecore:ignore="true" name="ArrivalCurveEntry" type="am:ArrivalCurveEntry"/>
   <xsd:element ecore:ignore="true" name="Clock" type="am:Clock"/>
-  <xsd:element ecore:ignore="true" name="ClockTriangleFunction" type="am:ClockTriangleFunction"/>
-  <xsd:element ecore:ignore="true" name="ClockSinusFunction" type="am:ClockSinusFunction"/>
-  <xsd:element ecore:ignore="true" name="ClockMultiplierList" type="am:ClockMultiplierList"/>
-  <xsd:element ecore:ignore="true" name="ClockMultiplierListEntry" type="am:ClockMultiplierListEntry"/>
+  <xsd:element ecore:ignore="true" name="ClockFunction" type="am:ClockFunction"/>
+  <xsd:element ecore:ignore="true" name="ClockStepList" type="am:ClockStepList"/>
+  <xsd:element ecore:ignore="true" name="ClockStep" type="am:ClockStep"/>
   <xsd:element ecore:ignore="true" name="SWModel" type="am:SWModel"/>
   <xsd:element ecore:ignore="true" name="AbstractMemoryElement" type="am:AbstractMemoryElement"/>
   <xsd:element ecore:ignore="true" name="AbstractProcess" type="am:AbstractProcess"/>
   <xsd:element ecore:ignore="true" name="CustomEntity" type="am:CustomEntity"/>
   <xsd:element ecore:ignore="true" name="ProcessChain" type="am:ProcessChain"/>
   <xsd:element ecore:ignore="true" name="Process" type="am:Process"/>
+  <xsd:element ecore:ignore="true" name="ICallGraphItemContainer" type="am:ICallGraphItemContainer"/>
   <xsd:element ecore:ignore="true" name="CallGraph" type="am:CallGraph"/>
-  <xsd:element ecore:ignore="true" name="GraphEntryBase" type="am:GraphEntryBase"/>
-  <xsd:element ecore:ignore="true" name="CallSequence" type="am:CallSequence"/>
+  <xsd:element ecore:ignore="true" name="CallGraphItem" type="am:CallGraphItem"/>
   <xsd:element ecore:ignore="true" name="ModeSwitch" type="am:ModeSwitch"/>
   <xsd:element ecore:ignore="true" name="ModeSwitchEntry" type="am:ModeSwitchEntry"/>
   <xsd:element ecore:ignore="true" name="ModeSwitchDefault" type="am:ModeSwitchDefault"/>
   <xsd:element ecore:ignore="true" name="ProbabilitySwitch" type="am:ProbabilitySwitch"/>
   <xsd:element ecore:ignore="true" name="ProbabilitySwitchEntry" type="am:ProbabilitySwitchEntry"/>
   <xsd:element ecore:ignore="true" name="Counter" type="am:Counter"/>
-  <xsd:element ecore:ignore="true" name="CallSequenceItem" type="am:CallSequenceItem"/>
   <xsd:element ecore:ignore="true" name="WaitEvent" type="am:WaitEvent"/>
   <xsd:element ecore:ignore="true" name="SetEvent" type="am:SetEvent"/>
   <xsd:element ecore:ignore="true" name="ClearEvent" type="am:ClearEvent"/>
@@ -316,7 +314,6 @@ SPDX-License-Identifier: EPL-2.0
   <xsd:element ecore:ignore="true" name="OsEvent" type="am:OsEvent"/>
   <xsd:element ecore:ignore="true" name="InterProcessTrigger" type="am:InterProcessTrigger"/>
   <xsd:element ecore:ignore="true" name="EnforcedMigration" type="am:EnforcedMigration"/>
-  <xsd:element ecore:ignore="true" name="TaskRunnableCall" type="am:TaskRunnableCall"/>
   <xsd:element ecore:ignore="true" name="SchedulePoint" type="am:SchedulePoint"/>
   <xsd:element ecore:ignore="true" name="TerminateProcess" type="am:TerminateProcess"/>
   <xsd:element ecore:ignore="true" name="Task" type="am:Task"/>
@@ -333,14 +330,12 @@ SPDX-License-Identifier: EPL-2.0
   <xsd:element ecore:ignore="true" name="Channel" type="am:Channel"/>
   <xsd:element ecore:ignore="true" name="ModeLabel" type="am:ModeLabel"/>
   <xsd:element ecore:ignore="true" name="Section" type="am:Section"/>
-  <xsd:element ecore:ignore="true" name="RunnableItem" type="am:RunnableItem"/>
   <xsd:element ecore:ignore="true" name="ComputationItem" type="am:ComputationItem"/>
   <xsd:element ecore:ignore="true" name="ExecutionNeed" type="am:ExecutionNeed"/>
   <xsd:element ecore:ignore="true" name="NeedEntry" type="am:NeedEntry"/>
   <xsd:element ecore:ignore="true" name="Ticks" type="am:Ticks"/>
   <xsd:element ecore:ignore="true" name="TicksEntry" type="am:TicksEntry"/>
   <xsd:element ecore:ignore="true" name="ModeLabelAccess" type="am:ModeLabelAccess"/>
-  <xsd:element ecore:ignore="true" name="RunnableModeSwitch" type="am:RunnableModeSwitch"/>
   <xsd:element ecore:ignore="true" name="LabelAccess" type="am:LabelAccess"/>
   <xsd:element ecore:ignore="true" name="ChannelAccess" type="am:ChannelAccess"/>
   <xsd:element ecore:ignore="true" name="ChannelSend" type="am:ChannelSend"/>
@@ -353,7 +348,6 @@ SPDX-License-Identifier: EPL-2.0
   <xsd:element ecore:ignore="true" name="SynchronousServerCall" type="am:SynchronousServerCall"/>
   <xsd:element ecore:ignore="true" name="AsynchronousServerCall" type="am:AsynchronousServerCall"/>
   <xsd:element ecore:ignore="true" name="GetResultServerCall" type="am:GetResultServerCall"/>
-  <xsd:element ecore:ignore="true" name="RunnableProbabilitySwitch" type="am:RunnableProbabilitySwitch"/>
   <xsd:element ecore:ignore="true" name="Group" type="am:Group"/>
   <xsd:element ecore:ignore="true" name="CallArgument" type="am:CallArgument"/>
   <xsd:element ecore:ignore="true" name="RunnableCall" type="am:RunnableCall"/>
@@ -677,7 +671,7 @@ return (_plus + _xifexpression);</body>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:Quantity">
-        <xsd:attribute default="0.0" ecore:unsettable="false" name="value" type="ecore:EDouble"/>
+        <xsd:attribute default="0.0" ecore:unsettable="false" name="value" type="am:NonNegativeDouble"/>
         <xsd:attribute ecore:unsettable="false" name="unit" type="am:FrequencyUnit"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -1046,6 +1040,11 @@ return (_plus + _xifexpression);</body>
         <operation name="getAverage" type="am:Time" unique="false">
           <body>return this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(0.5));</body>
         </operation>
+        <operation name="validateInvariants" type="ecore:EBoolean" unique="false">
+          <parameter name="diagnostics" type="ecore:EDiagnosticChain" unique="false"/>
+          <parameter name="context" type="ecore:EMap{ecore:EJavaObject, ecore:EJavaObject}" unique="false"/>
+          <body>return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%&gt;.validateInvariants(this, diagnostics, context);</body>
+        </operation>
       </xsd:appinfo>
     </xsd:annotation>
     <xsd:sequence>
@@ -1158,6 +1157,15 @@ return _xblockexpression;</body>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType abstract="true" name="TruncatedTimeDistribution">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation name="validateInvariants" type="ecore:EBoolean" unique="false">
+          <parameter name="diagnostics" type="ecore:EDiagnosticChain" unique="false"/>
+          <parameter name="context" type="ecore:EMap{ecore:EJavaObject, ecore:EJavaObject}" unique="false"/>
+          <body>return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%&gt;.validateInvariants(this, diagnostics, context);</body>
+        </operation>
+      </xsd:appinfo>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ITimeDeviation">
         <xsd:sequence>
@@ -1278,6 +1286,11 @@ long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());
 double _divide = (_minus / 2.0);
 return ((_lowerBound).longValue() + _divide);</body>
         </operation>
+        <operation name="validateInvariants" type="ecore:EBoolean" unique="false">
+          <parameter name="diagnostics" type="ecore:EDiagnosticChain" unique="false"/>
+          <parameter name="context" type="ecore:EMap{ecore:EJavaObject, ecore:EJavaObject}" unique="false"/>
+          <body>return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%&gt;.validateInvariants(this, diagnostics, context);</body>
+        </operation>
       </xsd:appinfo>
     </xsd:annotation>
     <xsd:attribute ecore:default="0" ecore:unsettable="false" name="lowerBound" type="ecore:ELongObject" use="required"/>
@@ -1388,6 +1401,15 @@ return _xblockexpression;</body>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType abstract="true" name="TruncatedDiscreteValueDistribution">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation name="validateInvariants" type="ecore:EBoolean" unique="false">
+          <parameter name="diagnostics" type="ecore:EDiagnosticChain" unique="false"/>
+          <parameter name="context" type="ecore:EMap{ecore:EJavaObject, ecore:EJavaObject}" unique="false"/>
+          <body>return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%&gt;.validateInvariants(this, diagnostics, context);</body>
+        </operation>
+      </xsd:appinfo>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:IDiscreteValueDeviation">
         <xsd:attribute name="lowerBound" type="ecore:ELongObject"/>
@@ -1505,6 +1527,11 @@ double _minus = &lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%&gt;.operator_
 double _divide = (_minus / 2.0);
 return ((_lowerBound).doubleValue() + _divide);</body>
         </operation>
+        <operation name="validateInvariants" type="ecore:EBoolean" unique="false">
+          <parameter name="diagnostics" type="ecore:EDiagnosticChain" unique="false"/>
+          <parameter name="context" type="ecore:EMap{ecore:EJavaObject, ecore:EJavaObject}" unique="false"/>
+          <body>return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%&gt;.validateInvariants(this, diagnostics, context);</body>
+        </operation>
       </xsd:appinfo>
     </xsd:annotation>
     <xsd:attribute ecore:default="0.0" ecore:unsettable="false" name="lowerBound" type="ecore:EDoubleObject" use="required"/>
@@ -1615,6 +1642,15 @@ return _xblockexpression;</body>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType abstract="true" name="TruncatedContinuousValueDistribution">
+    <xsd:annotation>
+      <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation name="validateInvariants" type="ecore:EBoolean" unique="false">
+          <parameter name="diagnostics" type="ecore:EDiagnosticChain" unique="false"/>
+          <parameter name="context" type="ecore:EMap{ecore:EJavaObject, ecore:EJavaObject}" unique="false"/>
+          <body>return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaValidations%&gt;.validateInvariants(this, diagnostics, context);</body>
+        </operation>
+      </xsd:appinfo>
+    </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:IContinuousValueDeviation">
         <xsd:attribute name="lowerBound" type="ecore:EDoubleObject"/>
@@ -1789,27 +1825,33 @@ return _xifexpression;</body>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType ecore:instanceClass="int" name="PositiveInt">
-    <xsd:annotation>
-      <xsd:documentation>Positive Integer (int)</xsd:documentation>
-    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minExclusive value="0"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType ecore:instanceClass="long" name="PositiveLong">
-    <xsd:annotation>
-      <xsd:documentation>Positive Long (long)</xsd:documentation>
-    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minExclusive value="0"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType ecore:instanceClass="double" name="PositiveDouble">
-    <xsd:annotation>
-      <xsd:documentation>Positive Double (double)</xsd:documentation>
-    </xsd:annotation>
     <xsd:restriction base="xsd:string">
       <xsd:minExclusive value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType ecore:instanceClass="int" name="NonNegativeInt">
+    <xsd:restriction base="xsd:string">
+      <xsd:minInclusive value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType ecore:instanceClass="long" name="NonNegativeLong">
+    <xsd:restriction base="xsd:string">
+      <xsd:minInclusive value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType ecore:instanceClass="double" name="NonNegativeDouble">
+    <xsd:restriction base="xsd:string">
+      <xsd:minInclusive value="0"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:complexType name="ComponentsModel">
@@ -2272,8 +2314,8 @@ strands: alternative event paths</xsd:documentation>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="segments" type="am:EventChainItem"/>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="strands" type="am:EventChainItem"/>
         </xsd:sequence>
-        <xsd:attribute ecore:reference="am:Event" name="stimulus" type="xsd:anyURI"/>
-        <xsd:attribute ecore:reference="am:Event" name="response" type="xsd:anyURI"/>
+        <xsd:attribute ecore:reference="am:Event" name="stimulus" type="xsd:anyURI" use="required"/>
+        <xsd:attribute ecore:reference="am:Event" name="response" type="xsd:anyURI" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4283,8 +4325,7 @@ AbstractMemoryElement-to-Memory Mapping</xsd:documentation>
   <xsd:complexType abstract="true" ecore:implements="am:ITaggable" name="Stimulus">
     <xsd:annotation>
       <xsd:documentation>Every process/task can have one or more stimuli.
-A stimulus activates the process
-deviationStimulus: defines the deviation of the activation times of the stimulus</xsd:documentation>
+A stimulus activates the process</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject">
@@ -4679,61 +4720,49 @@ burstLength: Time frame for the burst (occurrences after the length are clipped)
   </xsd:complexType>
   <xsd:complexType abstract="true" name="Clock">
     <xsd:annotation>
-      <xsd:documentation>This is the time base for one or more periodic stimuli
-A clock defines the time of its stimuli.
-The faster the clock, the faster stimuli</xsd:documentation>
+      <xsd:documentation>Within a Scenario a Clock defines the predefined curve progression in a simulation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:ReferableBaseObject"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="ClockTriangleFunction">
+  <xsd:complexType name="ClockFunction">
     <xsd:complexContent>
       <xsd:extension base="am:Clock">
         <xsd:sequence>
-          <xsd:element minOccurs="0" name="shift" type="am:Time"/>
+          <xsd:element name="period" type="am:Time"/>
+          <xsd:element name="peakToPeak" type="am:Frequency"/>
+          <xsd:element minOccurs="0" name="xOffset" type="am:Time"/>
+          <xsd:element minOccurs="0" name="yOffset" type="am:Frequency"/>
+        </xsd:sequence>
+        <xsd:attribute ecore:unsettable="false" name="curveType" type="am:CurveType"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="CurveType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="_undefined_"/>
+      <xsd:enumeration ecore:value="0" value="sine"/>
+      <xsd:enumeration ecore:value="0" value="triangle"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ClockStepList">
+    <xsd:complexContent>
+      <xsd:extension base="am:Clock">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="entries" type="am:ClockStep"/>
           <xsd:element minOccurs="0" name="period" type="am:Time"/>
         </xsd:sequence>
-        <xsd:attribute default="0.0" ecore:unsettable="false" name="max" type="ecore:EDouble"/>
-        <xsd:attribute default="0.0" ecore:unsettable="false" name="min" type="ecore:EDouble"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="ClockSinusFunction">
-    <xsd:complexContent>
-      <xsd:extension base="am:Clock">
-        <xsd:sequence>
-          <xsd:element minOccurs="0" name="shift" type="am:Time"/>
-          <xsd:element minOccurs="0" name="period" type="am:Time"/>
-        </xsd:sequence>
-        <xsd:attribute default="0.0" ecore:unsettable="false" name="amplitude" type="ecore:EDouble"/>
-        <xsd:attribute default="0.0" ecore:unsettable="false" name="yOffset" type="ecore:EDouble"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="ClockMultiplierList">
-    <xsd:annotation>
-      <xsd:documentation>A list of timestamp-value pairs
-At the specified timestamp, the clock changes to the corresponding value</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:Clock">
-        <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entries" type="am:ClockMultiplierListEntry"/>
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="ClockMultiplierListEntry">
-    <xsd:annotation>
-      <xsd:documentation>A timestamp-value par for ClockMultiplierList</xsd:documentation>
-    </xsd:annotation>
+  <xsd:complexType name="ClockStep">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:sequence>
-          <xsd:element minOccurs="0" name="time" type="am:Time"/>
+          <xsd:element name="frequency" type="am:Frequency"/>
+          <xsd:element name="time" type="am:Time"/>
         </xsd:sequence>
-        <xsd:attribute default="0.0" ecore:unsettable="false" name="multiplier" type="ecore:EDouble"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -4860,7 +4889,7 @@ return _findFirst_1;</body>
   <xsd:complexType name="ProcessChain">
     <xsd:annotation>
       <xsd:documentation>Groups a list of processes to a process chain.
-This does not define how the processes are chained, like beeing executed by one parent or like they trigger each other (therfore Enforced Migration is used)
+This does not define how the processes are chained, like being executed by one parent or like they trigger each other
 This just defines that the processes should be chained.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
@@ -4890,56 +4919,45 @@ This just defines that the processes should be chained.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="CallGraph">
-    <xsd:annotation>
-      <xsd:documentation>Describes the different execution paths of a process</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="graphEntries" type="am:GraphEntryBase"/>
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
+  <xsd:complexType abstract="true" ecore:interface="true" name="ICallGraphItemContainer">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="items" type="am:CallGraphItem"/>
+    </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType abstract="true" name="GraphEntryBase">
+  <xsd:complexType ecore:implements="am:ICallGraphItemContainer" name="CallGraph">
     <xsd:annotation>
-      <xsd:documentation>An abstract entry for a call graph</xsd:documentation>
+      <xsd:documentation>Describes the different execution paths of a process or runnable</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject"/>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType ecore:implements="am:INamed" name="CallSequence">
+  <xsd:complexType abstract="true" name="CallGraphItem">
     <xsd:annotation>
-      <xsd:documentation>A sequence of callable items that can be placed in the call graph</xsd:documentation>
+      <xsd:documentation>An abstract item of a call graph</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:GraphEntryBase">
-        <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="calls" type="am:CallSequenceItem"/>
-        </xsd:sequence>
+      <xsd:extension base="am:BaseObject">
+        <xsd:attribute ecore:changeable="false" ecore:derived="true" ecore:reference="am:Process" ecore:transient="true" ecore:volatile="true" name="containingProcess" type="xsd:IDREF"/>
+        <xsd:attribute ecore:changeable="false" ecore:derived="true" ecore:reference="am:Runnable" ecore:transient="true" ecore:volatile="true" name="containingRunnable" type="xsd:IDREF"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="ModeSwitch">
     <xsd:annotation>
-      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided ModeLabel</xsd:documentation>
+      <xsd:documentation>A switch in the call graph, the selected path depends on the value of the provided mode conditions</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:GraphEntryBase">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
-          <xsd:element ecore:type="am:ModeSwitchEntry{am:GraphEntryBase}" maxOccurs="unbounded" minOccurs="0" name="entries" type="am:ModeSwitchEntry"/>
-          <xsd:element ecore:type="am:ModeSwitchDefault{am:GraphEntryBase}" minOccurs="0" name="defaultEntry" type="am:ModeSwitchDefault"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entries" type="am:ModeSwitchEntry"/>
+          <xsd:element minOccurs="0" name="defaultEntry" type="am:ModeSwitchDefault"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType ecore:implements="am:INamed" name="ModeSwitchEntry">
+  <xsd:complexType ecore:implements="am:INamed am:ICallGraphItemContainer" name="ModeSwitchEntry">
     <xsd:annotation>
-      <xsd:appinfo ecore:key="typeParameters" source="http://www.eclipse.org/emf/2002/Ecore">
-        <typeParameter name="T"/>
-      </xsd:appinfo>
       <xsd:documentation>A switch entry for a ModeSwitch.
 It describes a path of the switch and the required mode condition to use this path</xsd:documentation>
     </xsd:annotation>
@@ -4947,23 +4965,13 @@ It describes a path of the switch and the required mode condition to use this pa
       <xsd:extension base="am:BaseObject">
         <xsd:sequence>
           <xsd:element name="condition" type="am:ModeConditionDisjunction"/>
-          <xsd:element ecore:type="T" maxOccurs="unbounded" minOccurs="0" name="items" type="xsd:anyType"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="ModeSwitchDefault">
-    <xsd:annotation>
-      <xsd:appinfo ecore:key="typeParameters" source="http://www.eclipse.org/emf/2002/Ecore">
-        <typeParameter name="T"/>
-      </xsd:appinfo>
-    </xsd:annotation>
+  <xsd:complexType ecore:implements="am:ICallGraphItemContainer" name="ModeSwitchDefault">
     <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:sequence>
-          <xsd:element ecore:type="T" maxOccurs="unbounded" minOccurs="0" name="items" type="xsd:anyType"/>
-        </xsd:sequence>
-      </xsd:extension>
+      <xsd:extension base="am:BaseObject"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="ProbabilitySwitch">
@@ -4971,26 +4979,20 @@ It describes a path of the switch and the required mode condition to use this pa
       <xsd:documentation>A switch in the call graph, each path has a probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:GraphEntryBase">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
-          <xsd:element ecore:type="am:ProbabilitySwitchEntry{am:GraphEntryBase}" maxOccurs="unbounded" minOccurs="0" name="entries" type="am:ProbabilitySwitchEntry"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="entries" type="am:ProbabilitySwitchEntry"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType name="ProbabilitySwitchEntry">
+  <xsd:complexType ecore:implements="am:ICallGraphItemContainer" name="ProbabilitySwitchEntry">
     <xsd:annotation>
-      <xsd:appinfo ecore:key="typeParameters" source="http://www.eclipse.org/emf/2002/Ecore">
-        <typeParameter name="T"/>
-      </xsd:appinfo>
       <xsd:documentation>A switch entry for a ProbabilitySwitch
 It describes a path of the switch and it's probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:sequence>
-          <xsd:element ecore:type="T" maxOccurs="unbounded" minOccurs="0" name="items" type="xsd:anyType"/>
-        </xsd:sequence>
         <xsd:attribute default="0.0" ecore:unsettable="false" name="probability" type="ecore:EDouble"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5001,21 +5003,8 @@ It describes a path of the switch and it's probability</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:attribute default="1" ecore:unsettable="false" name="prescaler" type="ecore:ELong"/>
+        <xsd:attribute default="1" ecore:unsettable="false" name="prescaler" type="am:PositiveLong"/>
         <xsd:attribute default="0" ecore:unsettable="false" name="offset" type="ecore:ELong"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType abstract="true" name="CallSequenceItem">
-    <xsd:annotation>
-      <xsd:documentation>Generalizes task calls</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:sequence>
-          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
-        </xsd:sequence>
-        <xsd:attribute ecore:changeable="false" ecore:derived="true" ecore:reference="am:Process" ecore:transient="true" ecore:volatile="true" name="containingProcess" type="xsd:IDREF"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5025,9 +5014,10 @@ It describes a path of the switch and it's probability</xsd:documentation>
 maskType defines if the events in eventMask are linked by a AND or OR</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="eventMask" type="am:EventMask"/>
+          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
         </xsd:sequence>
         <xsd:attribute ecore:unsettable="false" name="maskType" type="am:WaitEventType"/>
         <xsd:attribute ecore:unsettable="false" name="waitingBehaviour" type="am:WaitingBehaviour"/>
@@ -5055,9 +5045,10 @@ These events can be set for a specific process, if there is no process, is is gl
 If there is a process, it is possible to set the event for a specific process instance that is currently activated</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="eventMask" type="am:EventMask"/>
+          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
         </xsd:sequence>
         <xsd:attribute ecore:reference="am:Process" name="process" type="xsd:anyURI"/>
       </xsd:extension>
@@ -5068,9 +5059,10 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Clears the events of eventMask</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="eventMask" type="am:EventMask"/>
+          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
@@ -5116,7 +5108,10 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Triggers a stimulus to activate its processes</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
+      <xsd:extension base="am:CallGraphItem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
+        </xsd:sequence>
         <xsd:attribute ecore:reference="am:InterProcessStimulus" name="stimulus" type="xsd:anyURI" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -5126,21 +5121,8 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Migrates task to core of resource owner</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
-        <xsd:attribute ecore:reference="am:Scheduler" name="resourceOwner" type="xsd:anyURI"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="TaskRunnableCall">
-    <xsd:annotation>
-      <xsd:documentation>Executes a runnable</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem">
-        <xsd:sequence>
-          <xsd:element minOccurs="0" name="statistic" type="am:RunEntityCallStatistic"/>
-        </xsd:sequence>
-        <xsd:attribute ecore:reference="am:Runnable" name="runnable" type="xsd:anyURI" use="required"/>
+      <xsd:extension base="am:CallGraphItem">
+        <xsd:attribute ecore:reference="am:TaskScheduler" name="resourceOwner" type="xsd:anyURI" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5149,7 +5131,7 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Triggers scheduler</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem"/>
+      <xsd:extension base="am:CallGraphItem"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="TerminateProcess">
@@ -5157,7 +5139,11 @@ If there is a process, it is possible to set the event for a specific process in
       <xsd:documentation>Terminates the process</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:CallSequenceItem"/>
+      <xsd:extension base="am:CallGraphItem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
+        </xsd:sequence>
+      </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="Task">
@@ -5209,7 +5195,7 @@ The final state can be several Tasks, which can be computed using provided infor
             </xsd:annotation>
           </xsd:element>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="chainedPrototypes" type="am:ChainedProcessPrototype"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="runnableCalls" type="am:TaskRunnableCall"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="runnableCalls" type="am:RunnableCall"/>
         </xsd:sequence>
         <xsd:attribute ecore:unsettable="false" name="preemption" type="am:Preemption"/>
         <xsd:attribute ecore:reference="am:Runnable" name="firstRunnable" type="xsd:anyURI"/>
@@ -5382,6 +5368,19 @@ return (_plus + _xifexpression_1);</body>
   <xsd:complexType name="Runnable">
     <xsd:annotation>
       <xsd:appinfo ecore:key="operations" source="http://www.eclipse.org/emf/2002/Ecore">
+        <operation name="getRunnableItems" type="am:CallGraphItem" unique="false" upperBound="-1">
+          <body>&lt;%org.eclipse.emf.common.util.EList%&gt;&lt;&lt;%org.eclipse.app4mc.amalthea.model.CallGraphItem%&gt;&gt; _xblockexpression = null;
+{
+	&lt;%org.eclipse.app4mc.amalthea.model.CallGraph%&gt; _callGraph = this.getCallGraph();
+	boolean _tripleEquals = (_callGraph == null);
+	if (_tripleEquals)
+	{
+		this.setCallGraph(&lt;%org.eclipse.app4mc.amalthea.model.AmaltheaFactory%&gt;.eINSTANCE.createCallGraph());
+	}
+	_xblockexpression = this.getCallGraph().getItems();
+}
+return _xblockexpression;</body>
+        </operation>
         <operation name="getFirstActivation" type="am:Activation" unique="false">
           <body>return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%&gt;.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Activation%&gt;&gt;head(this.getActivations());</body>
         </operation>
@@ -5393,7 +5392,7 @@ return (_plus + _xifexpression_1);</body>
         <xsd:sequence>
           <xsd:element minOccurs="0" name="executionCondition" type="am:ModeConditionDisjunction"/>
           <xsd:element ecore:opposite="containingRunnable" maxOccurs="unbounded" minOccurs="0" name="parameters" type="am:RunnableParameter"/>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="runnableItems" type="am:RunnableItem"/>
+          <xsd:element minOccurs="0" name="callGraph" type="am:CallGraph"/>
         </xsd:sequence>
         <xsd:attribute ecore:reference="am:Activation" name="activations">
           <xsd:simpleType>
@@ -5421,18 +5420,6 @@ return (_plus + _xifexpression_1);</body>
             <xsd:documentation>
               <p>
                 <b>Returns an <em>immutable</em> list of callers (RunnableCalls).</b>
-              </p>
-            </xsd:documentation>
-          </xsd:annotation>
-          <xsd:simpleType>
-            <xsd:list itemType="xsd:anyURI"/>
-          </xsd:simpleType>
-        </xsd:attribute>
-        <xsd:attribute ecore:changeable="false" ecore:derived="true" ecore:reference="am:TaskRunnableCall" ecore:transient="true" ecore:volatile="true" name="taskRunnableCalls">
-          <xsd:annotation>
-            <xsd:documentation>
-              <p>
-                <b>Returns an <em>immutable</em> list of callers (TaskRunnableCalls).</b>
               </p>
             </xsd:documentation>
           </xsd:annotation>
@@ -5605,22 +5592,12 @@ which are belonging together.</xsd:documentation>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType abstract="true" name="RunnableItem">
-    <xsd:annotation>
-      <xsd:documentation>Representation of a object that can be executed by a Runnable</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:BaseObject">
-        <xsd:attribute ecore:changeable="false" ecore:derived="true" ecore:reference="am:Runnable" ecore:transient="true" ecore:volatile="true" name="containingRunnable" type="xsd:IDREF"/>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
   <xsd:complexType abstract="true" name="ComputationItem">
     <xsd:annotation>
       <xsd:documentation>Representation of a object that describes computation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem"/>
+      <xsd:extension base="am:CallGraphItem"/>
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:complexType name="ExecutionNeed">
@@ -5628,7 +5605,7 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of the execution needs of a Runnable (default and core-specific)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
           <xsd:element maxOccurs="unbounded" minOccurs="0" name="needs" type="am:NeedEntry"/>
         </xsd:sequence>
@@ -5681,7 +5658,7 @@ which are belonging together.</xsd:documentation>
       <xsd:documentation>Representation of a mode label access of a run entity.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:attribute ecore:reference="am:ModeLabel" name="data" type="xsd:anyURI" use="required"/>
         <xsd:attribute ecore:unsettable="false" name="access" type="am:ModeLabelAccessEnum"/>
         <xsd:attribute name="value" type="ecore:EString">
@@ -5696,16 +5673,6 @@ It can be used to define which mode value is written to the label.</xsd:document
 It can be used to define a step other than 1.</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType name="RunnableModeSwitch">
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
-        <xsd:sequence>
-          <xsd:element ecore:type="am:ModeSwitchEntry{am:RunnableItem}" maxOccurs="unbounded" minOccurs="0" name="entries" type="am:ModeSwitchEntry"/>
-          <xsd:element ecore:type="am:ModeSwitchDefault{am:RunnableItem}" minOccurs="0" name="defaultEntry" type="am:ModeSwitchDefault"/>
-        </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5741,7 +5708,7 @@ It can be used to define a step other than 1.</xsd:documentation>
   </xsd:complexType>
   <xsd:complexType abstract="true" name="ChannelAccess">
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
           <xsd:element minOccurs="0" name="transmissionPolicy" type="am:TransmissionPolicy"/>
         </xsd:sequence>
@@ -5808,7 +5775,7 @@ Inherited means that the setting of the Label is used</xsd:documentation>
       <xsd:documentation>Describes an semaphore access</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:attribute ecore:reference="am:Semaphore" name="semaphore" type="xsd:anyURI" use="required"/>
         <xsd:attribute ecore:unsettable="false" name="access" type="am:SemaphoreAccessEnum"/>
         <xsd:attribute ecore:unsettable="false" name="waitingBehaviour" type="am:WaitingBehaviour"/>
@@ -5833,7 +5800,7 @@ exclusive: gets access to requested semaphore only when there is no other user a
       <xsd:documentation>An abstract description for sender-receiver-communication (it can be read or write)</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:attribute default="false" ecore:unsettable="false" name="buffered" type="ecore:EBoolean"/>
         <xsd:attribute ecore:reference="am:Label" name="label" type="xsd:anyURI" use="required"/>
         <xsd:attribute ecore:reference="am:Port" name="port" type="xsd:anyURI"/>
@@ -5869,7 +5836,7 @@ It contains the runnables that have the corresponding SenderReceiverRead</xsd:do
 It refers to a required runnable that describes the called server operation</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:attribute ecore:reference="am:Runnable" name="serverRunnable" type="xsd:anyURI" use="required"/>
         <xsd:attribute ecore:reference="am:Port" name="port" type="xsd:anyURI"/>
       </xsd:extension>
@@ -5917,28 +5884,12 @@ It refers to a optional runnable that exploits the results produced by the serve
       <xsd:enumeration ecore:value="0" value="non_blocking"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:complexType name="RunnableProbabilitySwitch">
+  <xsd:complexType ecore:implements="am:INamed am:ICallGraphItemContainer" name="Group">
     <xsd:annotation>
-      <xsd:documentation>A switch in the runnable items, each path has a probability</xsd:documentation>
+      <xsd:documentation>Describes a group of deviation runnable items</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
-        <xsd:sequence>
-          <xsd:element ecore:type="am:ProbabilitySwitchEntry{am:RunnableItem}" maxOccurs="unbounded" minOccurs="0" name="entries" type="am:ProbabilitySwitchEntry"/>
-        </xsd:sequence>
-      </xsd:extension>
-    </xsd:complexContent>
-  </xsd:complexType>
-  <xsd:complexType ecore:implements="am:INamed" name="Group">
-    <xsd:annotation>
-      <xsd:documentation>Describes a group of deviation runnable items
-It can be also a group of runnable items without deviation, because the deviation is optional for each item</xsd:documentation>
-    </xsd:annotation>
-    <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
-        <xsd:sequence>
-          <xsd:element maxOccurs="unbounded" minOccurs="0" name="items" type="am:RunnableItem"/>
-        </xsd:sequence>
+      <xsd:extension base="am:CallGraphItem">
         <xsd:attribute default="true" ecore:unsettable="false" name="ordered" type="ecore:EBoolean"/>
       </xsd:extension>
     </xsd:complexContent>
@@ -6019,7 +5970,7 @@ return (_plus_6 + _name_3);</body>
       <xsd:documentation>Representation of a runnable call of a run entity.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:sequence>
           <xsd:element ecore:opposite="containingCall" maxOccurs="unbounded" minOccurs="0" name="arguments" type="am:CallArgument"/>
           <xsd:element minOccurs="0" name="statistic" type="am:RunEntityCallStatistic"/>
@@ -6063,7 +6014,7 @@ return (_plus_6 + _name_3);</body>
       <xsd:documentation>Explicitly trigger a custom event from a runnable.</xsd:documentation>
     </xsd:annotation>
     <xsd:complexContent>
-      <xsd:extension base="am:RunnableItem">
+      <xsd:extension base="am:CallGraphItem">
         <xsd:attribute ecore:reference="am:CustomEvent" name="event" type="xsd:anyURI" use="required"/>
       </xsd:extension>
     </xsd:complexContent>

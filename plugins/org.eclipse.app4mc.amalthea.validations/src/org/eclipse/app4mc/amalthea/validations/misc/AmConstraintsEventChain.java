@@ -33,7 +33,9 @@ import org.eclipse.emf.ecore.EObject;
  * Checks the correctness of event chains
  * 
  * <ul>
- * <li>todo</li>
+ * <li>The stimulus of the first segment has to be the same as the stimulus of the event chain</li>
+ * <li>The stimulus of other segments have to be equal to the response of the previous segment.</li>
+ * <li>The response of the last segment has to be the same as the response of the event chain</li>
  * </ul>
  */
 

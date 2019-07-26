@@ -28,7 +28,7 @@
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
-  <xsd:complexType ecore:constraints="WellFormedSourceURI" name="EAnnotation">
+  <xsd:complexType ecore:constraints="WellFormed WellFormedSourceURI" name="EAnnotation">
     <xsd:complexContent>
       <xsd:extension base="ecore:EModelElement">
         <xsd:sequence>
