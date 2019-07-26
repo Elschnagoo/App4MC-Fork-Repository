@@ -69,7 +69,7 @@ class AmEmfIntrinsic implements IValidation {
 
 					val ValidationDiagnostic result = new ValidationDiagnostic(
 						emfDiagnostic.getMessage()
-							+ containerInfo2(problematicObject)
+							+ objectOrContainerInfo(problematicObject)
 							+ emfDiagnostic.children.map[message].join(" => ", ", ", "", [trim]),
 						if(problematicObject !== null) problematicObject else eObject,
 						problematicFeature
@@ -92,8 +92,9 @@ class AmEmfIntrinsic implements IValidation {
 	}
 
 
-	def private containerInfo2(EObject object) {
+	def private objectOrContainerInfo(EObject object) {
 		if (object === null) return ""
+		if (object instanceof IReferable && !(object as IReferable).name.nullOrEmpty) return " ( in " + objectInfo(object) + " )"
 		
 		val container = AmaltheaServices.getContainerOfType(object, IReferable)
 		if (container === null || container.name.nullOrEmpty) return ""

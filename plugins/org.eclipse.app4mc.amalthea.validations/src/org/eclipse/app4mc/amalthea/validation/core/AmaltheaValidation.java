@@ -64,7 +64,7 @@ public abstract class AmaltheaValidation implements IValidation {
 	}
 	
 	protected String namedContainerInfo(final EObject object) {
-		return " (in " + objectInfo(AmaltheaServices.getContainerOfType(object, INamed.class)) + ")";
+		return " ( in " + objectInfo(AmaltheaServices.getContainerOfType(object, INamed.class)) + " )";
 	}
 	
 	public String objectInfo(final EObject object) {

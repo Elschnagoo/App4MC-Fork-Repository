@@ -79,8 +79,8 @@ public class AmEmfIntrinsic implements IValidation {
             Object _findFirst_1 = IterableExtensions.findFirst(emfDiagnostic.getData(), _function_1);
             final EStructuralFeature problematicFeature = ((EStructuralFeature) _findFirst_1);
             String _message = emfDiagnostic.getMessage();
-            String _containerInfo2 = this.containerInfo2(problematicObject);
-            String _plus = (_message + _containerInfo2);
+            String _objectOrContainerInfo = this.objectOrContainerInfo(problematicObject);
+            String _plus = (_message + _objectOrContainerInfo);
             final Function1<Diagnostic, String> _function_2 = (Diagnostic it) -> {
               return it.getMessage();
             };
@@ -120,17 +120,22 @@ public class AmEmfIntrinsic implements IValidation {
     }
   }
   
-  private String containerInfo2(final EObject object) {
+  private String objectOrContainerInfo(final EObject object) {
     if ((object == null)) {
       return "";
+    }
+    if (((object instanceof IReferable) && (!StringExtensions.isNullOrEmpty(((IReferable) object).getName())))) {
+      String _objectInfo = this.objectInfo(object);
+      String _plus = (" ( in " + _objectInfo);
+      return (_plus + " )");
     }
     final IReferable container = AmaltheaServices.<IReferable>getContainerOfType(object, IReferable.class);
     if (((container == null) || StringExtensions.isNullOrEmpty(container.getName()))) {
       return "";
     }
-    String _objectInfo = this.objectInfo(container);
-    String _plus = (" ( in " + _objectInfo);
-    return (_plus + " )");
+    String _objectInfo_1 = this.objectInfo(container);
+    String _plus_1 = (" ( in " + _objectInfo_1);
+    return (_plus_1 + " )");
   }
   
   private static HashMap<Object, Object> createContextMap() {
