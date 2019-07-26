@@ -153,10 +153,10 @@ public class StimuliModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: lowerTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_small\")"));
-    Assert.assertTrue(result.contains("Time: upperTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_big\")"));
-    Assert.assertFalse(result.contains("Time: lowerTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_ok\")"));
-    Assert.assertFalse(result.contains("Time: upperTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_ok\")"));
+    Assert.assertTrue(result.contains("Time: lowerTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_small\" )"));
+    Assert.assertTrue(result.contains("Time: upperTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_big\" )"));
+    Assert.assertFalse(result.contains("Time: lowerTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_ok\" )"));
+    Assert.assertFalse(result.contains("Time: upperTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_ok\" )"));
   }
   
   @Test
@@ -185,9 +185,9 @@ public class StimuliModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero (in Periodic Synthetic Stimulus \"pss_small1\")"));
-    Assert.assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero (in Periodic Synthetic Stimulus \"pss_small2\")"));
-    Assert.assertFalse(result.contains("Time: occurrenceTimes value must be positive or zero (in Periodic Synthetic Stimulus \"pss_ok\")"));
+    Assert.assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero ( in Periodic Synthetic Stimulus \"pss_small1\" )"));
+    Assert.assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero ( in Periodic Synthetic Stimulus \"pss_small2\" )"));
+    Assert.assertFalse(result.contains("Time: occurrenceTimes value must be positive or zero ( in Periodic Synthetic Stimulus \"pss_ok\" )"));
   }
   
   @Test
@@ -217,8 +217,8 @@ public class StimuliModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: recurrence value must be greater than zero (in Variable Rate Stimulus \"vrs_wrongPeriod\")"));
-    Assert.assertFalse(result.contains("Time: recurrence value must be greater than zero (in Variable Rate Stimulus \"vrs_ok\")"));
+    Assert.assertTrue(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"));
+    Assert.assertFalse(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_ok\" )"));
   }
   
   @Test
@@ -268,11 +268,11 @@ public class StimuliModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: period value must be greater than zero (in Clock Step List \"csl_period\")"));
+    Assert.assertTrue(result.contains("Time: period value must be greater than zero ( in Clock Step List \"csl_period\" )"));
     Assert.assertTrue(result.contains("The feature \'value\' of \'Frequency\' contains a bad value ( in Clock Step List \"csl_frequency\" ) => The value \'-1.0\' must be greater than or equal to \'0.0\'"));
-    Assert.assertTrue(result.contains("Time: time value must be positive or zero (in Clock Step List \"csl_time\")"));
-    Assert.assertFalse(result.contains("Time: period value must be greater than zero (in Clock Step List \"csl_ok\")"));
+    Assert.assertTrue(result.contains("Time: time value must be positive or zero ( in Clock Step List \"csl_time\" )"));
+    Assert.assertFalse(result.contains("Time: period value must be greater than zero ( in Clock Step List \"csl_ok\" )"));
     Assert.assertFalse(result.contains("The feature \'value\' of \'Frequency\' contains a bad value ( in Clock Step List \"csl_ok\" ) => The value \'0.0\' must be greater than or equal to \'0.0\'"));
-    Assert.assertFalse(result.contains("Time: time value must be positive or zero (in Clock Step List \"csl_ok\")"));
+    Assert.assertFalse(result.contains("Time: time value must be positive or zero ( in Clock Step List \"csl_ok\" )"));
   }
 }

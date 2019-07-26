@@ -88,7 +88,7 @@ public class HardwareModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Frequency: defaultValue value must be greater than zero (in Frequency Domain \"fd_small\")"));
-    Assert.assertFalse(result.contains("Frequency: defaultValue value must be greater than zero (in Frequency Domain \"fd_ok\")"));
+    Assert.assertTrue(result.contains("Frequency: defaultValue value must be greater than zero ( in Frequency Domain \"fd_small\" )"));
+    Assert.assertFalse(result.contains("Frequency: defaultValue value must be greater than zero ( in Frequency Domain \"fd_ok\" )"));
   }
 }

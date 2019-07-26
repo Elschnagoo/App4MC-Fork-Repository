@@ -477,13 +477,13 @@ public class ConstraintsModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_min\")"));
-    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_max\")"));
-    Assert.assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"));
-    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"));
-    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maximin\")"));
-    Assert.assertFalse(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"));
-    Assert.assertFalse(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"));
+    Assert.assertTrue(result.contains("Time: minimumTime value must be positive or zero ( in Data Age Constraint \"dac_min\" )"));
+    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_max\" )"));
+    Assert.assertTrue(result.contains("Time: minimumTime value must be positive or zero ( in Data Age Constraint \"dac_maxmin\" )"));
+    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_maxmin\" )"));
+    Assert.assertTrue(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_maximin\" )"));
+    Assert.assertFalse(result.contains("Time: minimumTime value must be positive or zero ( in Data Age Constraint \"dac_ok\" )"));
+    Assert.assertFalse(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_ok\" )"));
   }
   
   @Test
@@ -518,13 +518,13 @@ public class ConstraintsModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_lower\")"));
-    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upper\")"));
-    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_upperlower\")"));
-    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperlower\")"));
-    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperbelower\")"));
-    Assert.assertFalse(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_ok\")"));
-    Assert.assertFalse(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_ok\")"));
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero ( in Delay Constraint \"dc_lower\" )"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_upper\" )"));
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero ( in Delay Constraint \"dc_upperlower\" )"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_upperlower\" )"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_upperbelower\" )"));
+    Assert.assertFalse(result.contains("Time: lower value must be positive or zero ( in Delay Constraint \"dc_ok\" )"));
+    Assert.assertFalse(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_ok\" )"));
   }
   
   @Test
@@ -559,13 +559,13 @@ public class ConstraintsModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_lower\")"));
-    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upper\")"));
-    Assert.assertTrue(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperlower\")"));
-    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperlower\")"));
-    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperbelower\")"));
-    Assert.assertFalse(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_ok\")"));
-    Assert.assertFalse(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_ok\")"));
+    Assert.assertTrue(result.contains("Time: minimum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_lower\" )"));
+    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upper\" )"));
+    Assert.assertTrue(result.contains("Time: minimum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upperlower\" )"));
+    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upperlower\" )"));
+    Assert.assertTrue(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upperbelower\" )"));
+    Assert.assertFalse(result.contains("Time: minimum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_ok\" )"));
+    Assert.assertFalse(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_ok\" )"));
   }
   
   @Test
@@ -606,17 +606,17 @@ public class ConstraintsModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_lower\")"));
-    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upper\")"));
-    Assert.assertTrue(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_upperlower\")"));
-    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upperlower\")"));
-    Assert.assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upperbelower\")"));
-    Assert.assertTrue(result.contains("Time: jitter value must be positive or zero (in Repetition Constraint \"rc_jitter\")"));
-    Assert.assertTrue(result.contains("Time: period value must be positive or zero (in Repetition Constraint \"rc_period\")"));
-    Assert.assertFalse(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
-    Assert.assertFalse(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
-    Assert.assertFalse(result.contains("Time: jitter value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
-    Assert.assertFalse(result.contains("Time: period value must be positive or zero (in Repetition Constraint \"rc_ok\")"));
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero ( in Repetition Constraint \"rc_lower\" )"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_upper\" )"));
+    Assert.assertTrue(result.contains("Time: lower value must be positive or zero ( in Repetition Constraint \"rc_upperlower\" )"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_upperlower\" )"));
+    Assert.assertTrue(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_upperbelower\" )"));
+    Assert.assertTrue(result.contains("Time: jitter value must be positive or zero ( in Repetition Constraint \"rc_jitter\" )"));
+    Assert.assertTrue(result.contains("Time: period value must be positive or zero ( in Repetition Constraint \"rc_period\" )"));
+    Assert.assertFalse(result.contains("Time: lower value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"));
+    Assert.assertFalse(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"));
+    Assert.assertFalse(result.contains("Time: jitter value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"));
+    Assert.assertFalse(result.contains("Time: period value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"));
   }
   
   @Test
@@ -646,8 +646,8 @@ public class ConstraintsModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: tolerance value must be positive or zero (in Event Synchronization Constraint \"sc_notOk\")"));
-    Assert.assertFalse(result.contains("Time: tolerance value must be positive or zero (in Event Synchronization Constraint \"sc_ok\")"));
+    Assert.assertTrue(result.contains("Time: tolerance value must be positive or zero ( in Event Synchronization Constraint \"sc_notOk\" )"));
+    Assert.assertFalse(result.contains("Time: tolerance value must be positive or zero ( in Event Synchronization Constraint \"sc_ok\" )"));
   }
   
   private static LabelEvent createLabelEvent(final String name) {

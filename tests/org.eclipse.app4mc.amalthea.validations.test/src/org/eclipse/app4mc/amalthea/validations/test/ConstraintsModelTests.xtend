@@ -279,13 +279,13 @@ class ConstraintsModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_min\")"))
-		assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_max\")"))
-		assertTrue(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"))
-		assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maxmin\")"))
-		assertTrue(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_maximin\")"))
-		assertFalse(result.contains("Time: minimumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"))
-		assertFalse(result.contains("Time: maximumTime value must be positive or zero (in Data Age Constraint \"dac_ok\")"))
+		assertTrue(result.contains("Time: minimumTime value must be positive or zero ( in Data Age Constraint \"dac_min\" )"))
+		assertTrue(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_max\" )"))
+		assertTrue(result.contains("Time: minimumTime value must be positive or zero ( in Data Age Constraint \"dac_maxmin\" )"))
+		assertTrue(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_maxmin\" )"))
+		assertTrue(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_maximin\" )"))
+		assertFalse(result.contains("Time: minimumTime value must be positive or zero ( in Data Age Constraint \"dac_ok\" )"))
+		assertFalse(result.contains("Time: maximumTime value must be positive or zero ( in Data Age Constraint \"dac_ok\" )"))
 	}
 	
 	@Test
@@ -301,13 +301,13 @@ class ConstraintsModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_lower\")"))
-		assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upper\")"))
-		assertTrue(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_upperlower\")"))
-		assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperlower\")"))
-		assertTrue(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_upperbelower\")"))
-		assertFalse(result.contains("Time: lower value must be positive or zero (in Delay Constraint \"dc_ok\")"))
-		assertFalse(result.contains("Time: upper value must be positive or zero (in Delay Constraint \"dc_ok\")"))
+		assertTrue(result.contains("Time: lower value must be positive or zero ( in Delay Constraint \"dc_lower\" )"))
+		assertTrue(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_upper\" )"))
+		assertTrue(result.contains("Time: lower value must be positive or zero ( in Delay Constraint \"dc_upperlower\" )"))
+		assertTrue(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_upperlower\" )"))
+		assertTrue(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_upperbelower\" )"))
+		assertFalse(result.contains("Time: lower value must be positive or zero ( in Delay Constraint \"dc_ok\" )"))
+		assertFalse(result.contains("Time: upper value must be positive or zero ( in Delay Constraint \"dc_ok\" )"))
 	}
 	
 	@Test
@@ -323,13 +323,13 @@ class ConstraintsModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_lower\")"))
-		assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upper\")"))
-		assertTrue(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperlower\")"))
-		assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperlower\")"))
-		assertTrue(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_upperbelower\")"))
-		assertFalse(result.contains("Time: minimum value must be positive or zero (in Event Chain Latency Constraint \"eclc_ok\")"))
-		assertFalse(result.contains("Time: maximum value must be positive or zero (in Event Chain Latency Constraint \"eclc_ok\")"))
+		assertTrue(result.contains("Time: minimum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_lower\" )"))
+		assertTrue(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upper\" )"))
+		assertTrue(result.contains("Time: minimum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upperlower\" )"))
+		assertTrue(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upperlower\" )"))
+		assertTrue(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_upperbelower\" )"))
+		assertFalse(result.contains("Time: minimum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_ok\" )"))
+		assertFalse(result.contains("Time: maximum value must be positive or zero ( in Event Chain Latency Constraint \"eclc_ok\" )"))
 	}
 	
 	@Test
@@ -347,17 +347,17 @@ class ConstraintsModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_lower\")"))
-		assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upper\")"))
-		assertTrue(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_upperlower\")"))
-		assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upperlower\")"))
-		assertTrue(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_upperbelower\")"))
-		assertTrue(result.contains("Time: jitter value must be positive or zero (in Repetition Constraint \"rc_jitter\")"))
-		assertTrue(result.contains("Time: period value must be positive or zero (in Repetition Constraint \"rc_period\")"))
-		assertFalse(result.contains("Time: lower value must be positive or zero (in Repetition Constraint \"rc_ok\")"))
-		assertFalse(result.contains("Time: upper value must be positive or zero (in Repetition Constraint \"rc_ok\")"))
-		assertFalse(result.contains("Time: jitter value must be positive or zero (in Repetition Constraint \"rc_ok\")"))
-		assertFalse(result.contains("Time: period value must be positive or zero (in Repetition Constraint \"rc_ok\")"))
+		assertTrue(result.contains("Time: lower value must be positive or zero ( in Repetition Constraint \"rc_lower\" )"))
+		assertTrue(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_upper\" )"))
+		assertTrue(result.contains("Time: lower value must be positive or zero ( in Repetition Constraint \"rc_upperlower\" )"))
+		assertTrue(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_upperlower\" )"))
+		assertTrue(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_upperbelower\" )"))
+		assertTrue(result.contains("Time: jitter value must be positive or zero ( in Repetition Constraint \"rc_jitter\" )"))
+		assertTrue(result.contains("Time: period value must be positive or zero ( in Repetition Constraint \"rc_period\" )"))
+		assertFalse(result.contains("Time: lower value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"))
+		assertFalse(result.contains("Time: upper value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"))
+		assertFalse(result.contains("Time: jitter value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"))
+		assertFalse(result.contains("Time: period value must be positive or zero ( in Repetition Constraint \"rc_ok\" )"))
 	}
 	
 	@Test
@@ -376,8 +376,8 @@ class ConstraintsModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: tolerance value must be positive or zero (in Event Synchronization Constraint \"sc_notOk\")"))
-		assertFalse(result.contains("Time: tolerance value must be positive or zero (in Event Synchronization Constraint \"sc_ok\")"))
+		assertTrue(result.contains("Time: tolerance value must be positive or zero ( in Event Synchronization Constraint \"sc_notOk\" )"))
+		assertFalse(result.contains("Time: tolerance value must be positive or zero ( in Event Synchronization Constraint \"sc_ok\" )"))
 	}
 
 	def private static LabelEvent createLabelEvent(String name) {

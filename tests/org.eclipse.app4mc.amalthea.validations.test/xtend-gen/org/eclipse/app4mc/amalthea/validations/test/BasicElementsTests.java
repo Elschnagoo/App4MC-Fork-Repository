@@ -115,6 +115,6 @@ public class BasicElementsTests {
       return it.getMessage();
     };
     final List<String> result = IterableExtensions.<String>toList(IterableExtensions.<ValidationDiagnostic, String>map(IterableExtensions.<ValidationDiagnostic>filter(validationResult, _function_1), _function_2));
-    Assert.assertTrue(result.contains("The feature \'customProperties\' has a map entry at index 2 with a key that collides with that of the map entry at index 1"));
+    Assert.assertTrue(result.contains("The feature \'customProperties\' has a map entry at index 2 with a key that collides with that of the map entry at index 1 ( in Label \"TestLabel\" )"));
   }
 }

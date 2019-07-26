@@ -22,7 +22,6 @@ import org.eclipse.app4mc.amalthea.model.EnumMode
 import org.eclipse.app4mc.amalthea.model.ModeCondition
 import org.eclipse.app4mc.amalthea.model.ModeConditionConjunction
 import org.eclipse.app4mc.amalthea.model.ModeLabel
-import org.eclipse.app4mc.amalthea.model.ModeLabelAccessEnum
 import org.eclipse.app4mc.amalthea.model.ModeSwitchEntry
 import org.eclipse.app4mc.amalthea.model.OsEvent
 import org.eclipse.app4mc.amalthea.model.RelationalOperator
@@ -47,15 +46,6 @@ class TASoftwareModelValidatorTests {
 	def List<ValidationDiagnostic> validate(Amalthea model) {
 		executor.validate(model)
 		executor.results
-	}
-	
-	def void modeCondition(ModeSwitchEntry container, Procedure1<ModeCondition> initializer) {
-		if (container.condition === null) {
-			container.condition = AmaltheaFactory.eINSTANCE.createModeConditionDisjunction
-		}
-		val obj = AmaltheaFactory.eINSTANCE.createModeCondition
-		container.condition.entries += obj
-		initializer.apply(obj)
 	}
 	
 	def void modeConditionSingleConjunction(ModeSwitchEntry container, Procedure1<ModeCondition> initializer) {
@@ -94,101 +84,6 @@ class TASoftwareModelValidatorTests {
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("Os Event \"ev_wait\" is waited upon, but it is never set."))
 		assertFalse(result.contains("Os Event \"ev_ok\" is waited upon, but it is never set."))
-	}
-	
-	@Test
-	def void test_TASoftwareModeLabel() {
-		val model = amalthea [
-			softwareModel [
-				mode_Enum[
-					name = "enumerated"
-					literal [name = "first"]
-					literal [name = "second"]
-				]
-				modeLabel [name = "ml_ok" mode = _find(EnumMode, "enumerated") initialValue = "first"]
-				modeLabel [name = "ml_notOk" mode = _find(EnumMode, "enumerated") initialValue = "third"]
-				modeLabel [name = "ml_okok" mode = _find(EnumMode, "enumerated")]
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The initial value \"third\" in Mode Label \"ml_notOk\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertFalse(result.contains("The initial value \"first\" in Mode Label \"ml_ok\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertFalse(result.contains("The initial value \"\" in Mode Label \"ml_okok\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertFalse(result.contains("The initial value \"null\" in Mode Label \"ml_okok\" is not a valid literal of Enum Mode \"enumerated\"."))
-	}
-	
-	@Test
-	def void test_TASoftwareModeValue() {
-		val model = amalthea [
-			softwareModel [
-				mode_Enum[
-					name = "enumerated"
-					literal [name = "first"]
-					literal [name = "second"]
-				]
-				modeLabel [name = "ml" mode = _find(EnumMode, "enumerated") initialValue = "first"]
-				runnable [
-					name = "r1"
-					callGraph [modeSwitch [entry [name = "r1_mse_ok" modeCondition [label = _find(ModeLabel, "ml") value = "first" relation = RelationalOperator.EQUAL]]]]]
-				runnable [
-					name = "r2"
-					callGraph [modeSwitch [entry [name = "r2_mse_notOk" modeCondition [label = _find(ModeLabel, "ml") value = "third" relation = RelationalOperator.EQUAL]]]]
-				]
-				task [
-					name = "t1"
-					callGraph [modeSwitch [entry [name = "t1_mse_ok" modeCondition [label = _find(ModeLabel, "ml") value = "second" relation = RelationalOperator.EQUAL]]]]
-				]
-				task [
-					name = "t2k"
-					callGraph [modeSwitch [entry [name = "t2_mse_notOk" modeCondition [label = _find(ModeLabel, "ml") value = "fourth" relation = RelationalOperator.EQUAL]]]]
-				]
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The mode value \"third\" in Mode Switch Entry \"r2_mse_notOk\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertFalse(result.contains("The mode value \"first\" in Mode Switch Entry \"r1_mse_ok\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertTrue(result.contains("The mode value \"fourth\" in Mode Switch Entry \"t2_mse_notOk\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertFalse(result.contains("The mode value \"second\" in Mode Switch Entry \"t1_mse_ok\" is not a valid literal of Enum Mode \"enumerated\"."))
-	}
-	
-	@Test
-	def void test_TASoftwareModeConditionDisjunctionAlwaysTrue() {
-		val model = amalthea [
-			softwareModel [
-				mode_Enum[
-					name = "enumerated"
-					literal [name = "first"]
-					literal [name = "second"]
-				]
-				modeLabel [name = "ml" mode = _find(EnumMode, "enumerated") initialValue = "first"]
-				runnable [
-					name = "r"
-					callGraph [
-						modeSwitch [entry [name = "r_mse_ok"
-							modeCondition [label = _find(ModeLabel, "ml") value = "first" relation = RelationalOperator.EQUAL]
-							modeCondition [label = _find(ModeLabel, "ml") value = "second" relation = RelationalOperator.NOT_EQUAL]
-						]]
-						modeSwitch [entry [name = "r_mse_allLiterals"
-							modeCondition [label = _find(ModeLabel, "ml") value = "first" relation = RelationalOperator.EQUAL]
-							modeCondition [label = _find(ModeLabel, "ml") value = "second" relation = RelationalOperator.EQUAL]
-						]]
-						modeSwitch [entry [name = "r_mse_sameLiteral"
-							modeCondition [label = _find(ModeLabel, "ml") value = "first" relation = RelationalOperator.EQUAL]
-							modeCondition [label = _find(ModeLabel, "ml") value = "first" relation = RelationalOperator.NOT_EQUAL]
-						]]
-					]
-				]
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.WARNING].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Disjoining all possible mode literals in Mode Switch Entry \"r_mse_allLiterals\" always evaluates to TRUE, which might not be intended here."))
-		assertTrue(result.contains("Disjoining mode conditions on the same Mode Literal \"first\" with relations [EQUAL, NOT_EQUAL] in Mode Switch Entry \"r_mse_sameLiteral\" always evaluates to TRUE, which might not be intended here."))
-		assertFalse(result.contains("Disjoining all possible mode literals in Mode Switch Entry \"r_mse_ok\" always evaluates to TRUE, which might not be intended here."))
-		assertFalse(result.contains("Disjoining mode conditions on the same Mode Literal \"first\" with relations [EQUAL, NOT_EQUAL] in Mode Switch Entry \"r_mse_ok\" always evaluates to TRUE, which might not be intended here."))
-		assertFalse(result.contains("Disjoining mode conditions on the same Mode Literal \"second\" with relations [EQUAL, NOT_EQUAL] in Mode Switch Entry \"r_mse_ok\" always evaluates to TRUE, which might not be intended here."))
 	}
 	
 	@Test
@@ -278,54 +173,6 @@ class TASoftwareModelValidatorTests {
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
 		assertTrue(result.contains("The runnable called by Runnable Call in Runnable \"r_looped\" must not refer to the containing runnable."))
 		assertFalse(result.contains("The runnable called by Runnable Call in Runnable \"r_ok\" must not refer to the containing runnable."))
-	}
-	
-	@Test
-	def void test_TASoftwareModeLabelAccess() {
-		val model = amalthea [
-			softwareModel [
-				mode_Enum[
-					name = "enumerated"
-					literal [name = "first"]
-					literal [name = "second"]
-				]
-				modeLabel [name = "ml" mode = _find(EnumMode, "enumerated") initialValue = "first"]
-				runnable [
-					name = "r_ok"
-					callGraph [modeLabelAccess [access = ModeLabelAccessEnum.SET
-						data = _find(ModeLabel, "ml")
-						value = "first"
-					]]
-				]
-				runnable [
-					name = "r_notOk"
-					callGraph [modeLabelAccess [access = ModeLabelAccessEnum.SET
-						data = _find(ModeLabel, "ml")
-						value = "third"
-					]]
-				]
-				task [
-					name = "t_ok"
-					callGraph [modeLabelAccess [access = ModeLabelAccessEnum.SET
-						data = _find(ModeLabel, "ml")
-						value = "second"
-					]]
-				]
-				task [
-					name = "t_notOk"
-					callGraph [modeLabelAccess [access = ModeLabelAccessEnum.SET
-						data = _find(ModeLabel, "ml")
-						value = "fourth"
-					]]
-				]
-			]
-		]
-		val validationResult = validate(model)
-		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The mode label access value to be updated to \"third\" in Runnable \"r_notOk\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertFalse(result.contains("The mode label access value to be updated to \"first\" in Runnable \"r1_ok\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertTrue(result.contains("The mode label access value to be updated to \"fourth\" in Task \"t_notOk\" is not a valid literal of Enum Mode \"enumerated\"."))
-		assertFalse(result.contains("The mode label access value to be updated to \"second\" in Task \"t_ok\" is not a valid literal of Enum Mode \"enumerated\"."))
 	}
 	
 }

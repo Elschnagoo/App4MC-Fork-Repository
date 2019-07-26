@@ -89,10 +89,10 @@ class StimuliModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: lowerTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_small\")"))
-		assertTrue(result.contains("Time: upperTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_big\")"))
-		assertFalse(result.contains("Time: lowerTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_ok\")"))
-		assertFalse(result.contains("Time: upperTimeBorder value must be positive or zero (in Arrival Curve Stimulus \"acs_ok\")"))
+		assertTrue(result.contains("Time: lowerTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_small\" )"))
+		assertTrue(result.contains("Time: upperTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_big\" )"))
+		assertFalse(result.contains("Time: lowerTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_ok\" )"))
+		assertFalse(result.contains("Time: upperTimeBorder value must be positive or zero ( in Arrival Curve Stimulus \"acs_ok\" )"))
 	}
 	
 	@Test
@@ -106,9 +106,9 @@ class StimuliModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero (in Periodic Synthetic Stimulus \"pss_small1\")"))
-		assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero (in Periodic Synthetic Stimulus \"pss_small2\")"))
-		assertFalse(result.contains("Time: occurrenceTimes value must be positive or zero (in Periodic Synthetic Stimulus \"pss_ok\")"))
+		assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero ( in Periodic Synthetic Stimulus \"pss_small1\" )"))
+		assertTrue(result.contains("Time: occurrenceTimes value must be positive or zero ( in Periodic Synthetic Stimulus \"pss_small2\" )"))
+		assertFalse(result.contains("Time: occurrenceTimes value must be positive or zero ( in Periodic Synthetic Stimulus \"pss_ok\" )"))
 	}
 	
 	@Test
@@ -127,8 +127,8 @@ class StimuliModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: recurrence value must be greater than zero (in Variable Rate Stimulus \"vrs_wrongPeriod\")"))
-		assertFalse(result.contains("Time: recurrence value must be greater than zero (in Variable Rate Stimulus \"vrs_ok\")"))
+		assertTrue(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"))
+		assertFalse(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_ok\" )"))
 	}
 	
 	@Test
@@ -157,12 +157,12 @@ class StimuliModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: period value must be greater than zero (in Clock Step List \"csl_period\")"))
+		assertTrue(result.contains("Time: period value must be greater than zero ( in Clock Step List \"csl_period\" )"))
 		assertTrue(result.contains("The feature 'value' of 'Frequency' contains a bad value ( in Clock Step List \"csl_frequency\" ) => The value '-1.0' must be greater than or equal to '0.0'"))
-		assertTrue(result.contains("Time: time value must be positive or zero (in Clock Step List \"csl_time\")"))
-		assertFalse(result.contains("Time: period value must be greater than zero (in Clock Step List \"csl_ok\")"))
+		assertTrue(result.contains("Time: time value must be positive or zero ( in Clock Step List \"csl_time\" )"))
+		assertFalse(result.contains("Time: period value must be greater than zero ( in Clock Step List \"csl_ok\" )"))
 		assertFalse(result.contains("The feature 'value' of 'Frequency' contains a bad value ( in Clock Step List \"csl_ok\" ) => The value '0.0' must be greater than or equal to '0.0'"))
-		assertFalse(result.contains("Time: time value must be positive or zero (in Clock Step List \"csl_ok\")"))
+		assertFalse(result.contains("Time: time value must be positive or zero ( in Clock Step List \"csl_ok\" )"))
 	}
 
 }

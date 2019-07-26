@@ -18,6 +18,7 @@ package org.eclipse.app4mc.amalthea.validations.test
 import java.util.List
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
+import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution
 import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution
 import org.eclipse.app4mc.amalthea.model.ContinuousValueStatistics
 import org.eclipse.app4mc.amalthea.model.ContinuousValueUniformDistribution
@@ -52,6 +53,15 @@ class BasicDistributionTests {
 	extension SoftwareBuilder b3 = new SoftwareBuilder
 	
 	val executor = new ValidationExecutor(EMFProfile)
+	
+	def ContinuousValueBetaDistribution createCVBetaD(double alpha, double beta, double lower, double upper) {
+		val ret = AmaltheaFactory.eINSTANCE.createContinuousValueBetaDistribution
+		ret.alpha = alpha
+		ret.beta = beta
+		ret.lowerBound = lower
+		ret.upperBound = upper
+		ret
+	}
 
 	def ContinuousValueGaussDistribution createCVGaussD(double mean, double sd, double lower, double upper) {
 		val ret = AmaltheaFactory.eINSTANCE.createContinuousValueGaussDistribution
@@ -181,6 +191,39 @@ class BasicDistributionTests {
 	def List<ValidationDiagnostic> validate(Amalthea model) {
 		executor.validate(model)
 		executor.results
+	}
+	
+	@Test
+	def void test_BasicContinuousValueBetaDistribution() {
+		val model = amalthea [
+			stimuliModel[
+				variableRateStimulus[
+					name = "vrs_ok"
+					occurrencesPerStep = createCVBetaD(0.5d, 0.5d, 20d, 40d)
+				]
+				variableRateStimulus[
+					name = "vrs_alphaZero"
+					occurrencesPerStep = createCVBetaD(0d, 0.5d, 20d, 40d)
+				]
+				variableRateStimulus[
+					name = "vrs_betaZero"
+					occurrencesPerStep = createCVBetaD(0.5d, 0d, 20d, 40d)
+				]
+				variableRateStimulus[
+					name = "vrs_alphabetaZero"
+					occurrencesPerStep = createCVBetaD(0d, 0d, 20d, 40d)
+				]
+			]
+		]
+		val validationResult = validate(model)
+		val result = validationResult.filter[it.severityLevel == Severity.ERROR].map[it.message].toList
+
+		assertTrue(result.contains("The feature 'alpha' of 'ContinuousValueBetaDistribution' contains a bad value ( in Variable Rate Stimulus \"vrs_alphaZero\" ) => The value '0.0' must be greater than '0.0'"))
+		assertTrue(result.contains("The feature 'alpha' of 'ContinuousValueBetaDistribution' contains a bad value ( in Variable Rate Stimulus \"vrs_alphabetaZero\" ) => The value '0.0' must be greater than '0.0'"))
+		assertFalse(result.contains("The feature 'alpha' of 'ContinuousValueBetaDistribution' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value '0.5' must be greater than '0.0'"))
+		assertTrue(result.contains("The feature 'beta' of 'ContinuousValueBetaDistribution' contains a bad value ( in Variable Rate Stimulus \"vrs_betaZero\" ) => The value '0.0' must be greater than '0.0'"))
+		assertTrue(result.contains("The feature 'beta' of 'ContinuousValueBetaDistribution' contains a bad value ( in Variable Rate Stimulus \"vrs_alphabetaZero\" ) => The value '0.0' must be greater than '0.0'"))
+		assertFalse(result.contains("The feature 'beta' of 'ContinuousValueBetaDistribution' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value '0.5' must be greater than '0.0'"))
 	}
 
 	@Test

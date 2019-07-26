@@ -91,7 +91,7 @@ class BasicElementsTests {
 		val validationResult = validate(model)
 
 		val result = validationResult.filter[it.severityLevel == Severity.ERROR].map[it.message].toList
-		assertTrue(result.contains("The feature 'customProperties' has a map entry at index 2 with a key that collides with that of the map entry at index 1"))
+		assertTrue(result.contains("The feature 'customProperties' has a map entry at index 2 with a key that collides with that of the map entry at index 1 ( in Label \"TestLabel\" )"))
 	}
 
 }

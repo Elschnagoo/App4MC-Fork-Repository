@@ -65,8 +65,8 @@ class HardwareModelTests {
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Frequency: defaultValue value must be greater than zero (in Frequency Domain \"fd_small\")"))
-		assertFalse(result.contains("Frequency: defaultValue value must be greater than zero (in Frequency Domain \"fd_ok\")"))
+		assertTrue(result.contains("Frequency: defaultValue value must be greater than zero ( in Frequency Domain \"fd_small\" )"))
+		assertFalse(result.contains("Frequency: defaultValue value must be greater than zero ( in Frequency Domain \"fd_ok\" )"))
 	}
 
 }
