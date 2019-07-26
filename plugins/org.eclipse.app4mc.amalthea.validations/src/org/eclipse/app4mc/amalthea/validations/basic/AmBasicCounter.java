@@ -45,7 +45,7 @@ public class AmBasicCounter extends AmaltheaValidation {
 			Counter c = (Counter) eObject;
 			long offset = c.getOffset();
 			if (offset < 0) {
-				addIssue(results, c, ePackage.getCounter_Offset(), "Counter: offset value must not be negative" + containerInfo(c));
+				addIssue(results, c, ePackage.getCounter_Offset(), "Counter: offset value must not be negative" + namedContainerInfo(c));
 			}
 		}
 	}

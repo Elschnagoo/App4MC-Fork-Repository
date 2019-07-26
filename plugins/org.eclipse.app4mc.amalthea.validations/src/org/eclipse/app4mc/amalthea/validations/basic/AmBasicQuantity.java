@@ -54,7 +54,7 @@ public class AmBasicQuantity extends AmaltheaValidation {
 			if (unit instanceof Enumerator) {
 				if (((Enumerator) unit).getLiteral() == "_undefined_") {
 					addIssue(results, quantity, quantity.eClass().getEStructuralFeature(UNIT),
-							typeInfo(quantity) + ": undefined unit" + containerInfo(quantity));
+							typeInfo(quantity) + ": undefined unit" + namedContainerInfo(quantity));
 				}
 			}
 

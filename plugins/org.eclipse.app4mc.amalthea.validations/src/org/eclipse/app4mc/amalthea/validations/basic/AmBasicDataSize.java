@@ -57,7 +57,7 @@ public class AmBasicDataSize extends AmaltheaValidation {
 			// check for features where data size has to be positive (>0)
 			if (containingFeature == ePackage.getAbstractMemoryElement_Size()) {
 				addIssue(results, ds, ePackage.getDataSize_Value(),
-						"DataSize: " + containingFeature.getName() + " value must be greater than zero" + containerInfo(ds));
+						"DataSize: " + containingFeature.getName() + " value must be greater than zero" + namedContainerInfo(ds));
 			}
 		}
 	}

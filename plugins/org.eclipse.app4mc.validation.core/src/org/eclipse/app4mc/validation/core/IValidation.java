@@ -54,12 +54,6 @@ public interface IValidation {
 		return s1 + s2;
 	}
 	
-	default String containerInfo(final EObject object) {
-		if (object == null) return "";
-		
-		return " ( in " + objectInfo(object.eContainer()) + " )";
-	}
-	
 	default Object attributeValue(final EObject object, final String attribName) {
 		if (object == null || attribName == null) return null;
 		
