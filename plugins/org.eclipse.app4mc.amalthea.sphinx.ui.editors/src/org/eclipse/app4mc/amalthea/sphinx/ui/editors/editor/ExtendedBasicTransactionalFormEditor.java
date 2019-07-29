@@ -18,7 +18,16 @@
 
 package org.eclipse.app4mc.amalthea.sphinx.ui.editors.editor;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.app4mc.amalthea.sphinx.ui.editors.SphinxSupportPlugin;
+import org.eclipse.core.commands.Command;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.commands.NotEnabledException;
+import org.eclipse.core.commands.NotHandledException;
+import org.eclipse.core.commands.common.NotDefinedException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
@@ -49,6 +58,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.commands.ICommandService;
 
 
 @SuppressWarnings("restriction")
@@ -265,13 +275,26 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 			return true;
 		} else {
 			// old APP4MC version detected -> do not open and show migration hint
-			MessageDialog.openWarning(
-				getSite().getShell(),
-				"AMALTHEA Model Editor",
-				NLS.bind(
+			MessageDialog dialog = new MessageDialog(getSite().getShell(), "AMALTHEA Model Editor", null, NLS.bind(
 					"Unsupported File ! \r\rEditor could not be opened because of an outdated model file. \r\rFound AMALTHEA model version : {0}\rCurrent editor supports only AMALTHEA model version :  {1}\r\r** Use AMALTHEA Model Migration utility to convert the model to latest version ",
-					new Object[] { versionFromModel, versionFromMetaModel })
-			);
+					new Object[] { versionFromModel, versionFromMetaModel }), MessageDialog.QUESTION_WITH_CANCEL, 0, "Start Simple Migration","Show Migration Dialog","No");
+				int open = dialog.open();
+				//If user chose Migrate option then the Model Migration command is executed to show the migration dialog
+				//IF Start Simple Migration is selected then return value is 0 & for Show Migration Dialog it is 1
+				if(open == MessageDialog.OK || open == MessageDialog.CANCEL) {
+				  	ICommandService cmdService = getSite().getService(ICommandService.class);
+				    Command sampleCommand = cmdService.getCommand("org.itea2.amalthea.model.converter.models.command.modelmigration.dialog.cmd");
+				    
+				    Map<String, String> params = new HashMap<>();
+				    if(open == MessageDialog.OK) 
+				    	params.put("executioncontext", "simplemigration");
+				    try {
+				      sampleCommand.executeWithChecks(new ExecutionEvent(sampleCommand, params, null, null));
+				    }
+				    catch (ExecutionException | NotDefinedException | NotEnabledException | NotHandledException e) {
+				      e.printStackTrace();
+				    }
+				}
 			
 			close(false);
 			return false;
