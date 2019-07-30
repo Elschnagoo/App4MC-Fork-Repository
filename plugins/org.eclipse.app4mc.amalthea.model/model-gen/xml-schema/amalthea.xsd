@@ -4598,9 +4598,9 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:sequence>
-          <xsd:element name="recurrence" type="am:Time"/>
+          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
         </xsd:sequence>
-        <xsd:attribute ecore:reference="am:Clock" name="clock" type="xsd:anyURI"/>
+        <xsd:attribute ecore:reference="am:Clock" name="clock" type="xsd:anyURI" use="required"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -5004,7 +5004,7 @@ It describes a path of the switch and it's probability</xsd:documentation>
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
         <xsd:attribute default="1" ecore:unsettable="false" name="prescaler" type="am:PositiveLong"/>
-        <xsd:attribute default="0" ecore:unsettable="false" name="offset" type="ecore:ELong"/>
+        <xsd:attribute default="0" ecore:unsettable="false" name="offset" type="am:NonNegativeLong"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

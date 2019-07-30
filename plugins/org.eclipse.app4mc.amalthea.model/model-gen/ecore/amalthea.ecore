@@ -2928,9 +2928,9 @@
         containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Scenario" eSuperTypes="#//BaseObject">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="recurrence" lowerBound="1"
-        eType="#//Time" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" eType="#//Clock"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="counter" eType="#//Counter"
+        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clock" lowerBound="1" eType="#//Clock"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PeriodicSyntheticStimulus" eSuperTypes="#//Stimulus #//FixedPeriodic">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3204,8 +3204,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prescaler" unique="false"
         eType="#//PositiveLong" defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" unique="false"
-        eType="ecore:EDataType ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//ELong"
-        defaultValueLiteral="0"/>
+        eType="#//NonNegativeLong" defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WaitEvent" eSuperTypes="#//CallGraphItem">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

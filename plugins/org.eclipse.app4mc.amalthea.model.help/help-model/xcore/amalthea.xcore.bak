@@ -2971,8 +2971,8 @@ class VariableRateStimulus extends Stimulus
 
 class Scenario extends BaseObject
 {
-	contains Time[1] recurrence
-	refers Clock clock
+	contains Counter counter
+	refers Clock[1] clock
 }
 
 /*
@@ -3246,7 +3246,7 @@ class ProbabilitySwitchEntry extends BaseObject, ICallGraphItemContainer
 class Counter extends BaseObject
 {
 	PositiveLong prescaler = "1"
-	long offset = "0"
+	NonNegativeLong offset = "0"
 }
 
 /*
