@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ * Copyright (c) 2019 Robert Bosch GmbH and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -60,7 +60,7 @@ public class SimpleModelMigrationJob {
 		try {
 			String filebackupName = migrationInputFile.getFile().getParent() + File.separator + newFileName;
 			Files.copy(origFile, new File(filebackupName));
-			migrationJob.getLogger().info( "Original model file backedup as " + filebackupName
+			migrationJob.getLogger().info( "Original model file saved as " + filebackupName
 					+ System.getProperty("line.separator"));
 			if (new File(filebackupName).exists()) {
 				sourceFileBackup = true;

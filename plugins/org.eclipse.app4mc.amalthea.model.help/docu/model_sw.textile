@@ -128,10 +128,10 @@ table(minimal){padding:10px; border:1px solid black; background:#f8f8f8}.
 |_. Name |_. Description |
 | __callback__ | __True__ if a runnable is used as a callback |
 | __service__ | __True__ if __Runnable__ element can be seen in a service or global function manner. In more detail, the __Runnable__ is only called from other __Runnables__ and not directly from a __Task__ context. |
+| __activations__ | Although runnables in the simulation can only be called by tasks, it is possible to specify activation patterns for a runnable. |
+| __executionCondition__ | It is possible to specify an execution condition for a runnable (depending on modes).|
 | __callGraph__ | Top level object containing __CallGraphItem__ objects, representing runtime, label accesses, other __Runnable__ accesses. The possibilities are described below. |
 | __tags__ | Can be used to annotate or group special kind of __Runnables__ |
-| __activation__ | Although runnables in the simulation can only be called by tasks, it is possible to specify an activation pattern for a runnable. |
-| __asilLevel__ | Possibility to specify the ASIL level ("automotive safety integrity level"). |
 
 
 h3. Call Graph

@@ -149,7 +149,7 @@ The list of clock steps defines the clock period change via a step function. Eac
 
 h4. Example
 
-The engine crankshaft is a good example in which Clocks can be used to model the behavior. Let’s suppose a scenario in which a stimulus is triggered each time the rotating crankshaft reaches a specific angle.
+The engine crankshaft is a good example in which Clocks can be used to model the behavior. Let's suppose a scenario in which a stimulus is triggered each time the rotating crankshaft reaches a specific angle.
 
 In this example, the engine speed steeply increases from 3000rpm to 6000rpm in 5s, then the speed again decreases to 3000rpm in 5s. An stimulus shall be triggered when the engine crankshaft reaches 30 degrees. Triggering should repeat every two rotations.
 

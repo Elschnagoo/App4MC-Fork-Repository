@@ -276,8 +276,8 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 		} else {
 			// old APP4MC version detected -> do not open and show migration hint
 			MessageDialog dialog = new MessageDialog(getSite().getShell(), "AMALTHEA Model Editor", null, NLS.bind(
-					"Unsupported File ! \r\rEditor could not be opened because of an outdated model file. \r\rFound AMALTHEA model version : {0}\rCurrent editor supports only AMALTHEA model version :  {1}\r\r** Use AMALTHEA Model Migration utility to convert the model to latest version ",
-					new Object[] { versionFromModel, versionFromMetaModel }), MessageDialog.QUESTION_WITH_CANCEL, 0, "Start Simple Migration","Show Migration Dialog","No");
+					"Unsupported File ! \r\rEditor could not be opened because of an outdated model file. \r\rFound AMALTHEA model version : {0}\rCurrent editor supports only AMALTHEA model version :  {1}\r\r** Start AMALTHEA Model Migration utility to convert the model",
+					new Object[] { versionFromModel, versionFromMetaModel }), MessageDialog.QUESTION_WITH_CANCEL, 0, "Migrate to " + versionFromMetaModel,"Show Migration Dialog","Cancel");
 				int open = dialog.open();
 				//If user chose Migrate option then the Model Migration command is executed to show the migration dialog
 				//IF Start Simple Migration is selected then return value is 0 & for Show Migration Dialog it is 1
