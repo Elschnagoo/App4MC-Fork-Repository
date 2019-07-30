@@ -15,47 +15,28 @@
 
 package org.eclipse.app4mc.amalthea.converters.ui.dialog;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.spi.Filter;
-import org.apache.log4j.spi.LoggingEvent;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.IMigrationJobConstants;
-import org.eclipse.app4mc.amalthea.converters.ui.jobs.ModelMigrationJob;
 import org.eclipse.app4mc.amalthea.converters.ui.providers.MigrationInputDataProvider;
 import org.eclipse.app4mc.amalthea.converters.ui.providers.StyledLabelProvider;
-import org.eclipse.app4mc.amalthea.converters.ui.utils.IMigrationStatus;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationInputFile;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationSettings;
+import org.eclipse.app4mc.amalthea.converters.ui.utils.ModelMigrationDelegator;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.ModelVersions;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.beans.PojoProperties;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.IWidgetValueProperty;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
@@ -99,7 +80,6 @@ public class ModelMigrationDialog extends Dialog {
 
 	final Logger logger;
 
-	private FileAppender fileAppender;
 
 	public ModelMigrationDialog(final Shell parentShell, final MigrationSettings migrationSettings) {
 		super(parentShell);
@@ -118,7 +98,6 @@ public class ModelMigrationDialog extends Dialog {
 		// newShell.setSize(800, 500);
 		newShell.setText("AMALTHEA Model Migration");
 	}
-
 
 	@Override
 	protected Control createDialogArea(final Composite parent) {
@@ -147,7 +126,8 @@ public class ModelMigrationDialog extends Dialog {
 		table.setLayoutData(tableViewerGridData);
 		table.getHorizontalBar().setEnabled(true);
 
-		// this.tableViewer.setColumnProperties(new String[] { "Relative file paths", "Folder " });
+		// this.tableViewer.setColumnProperties(new String[] { "Relative file paths",
+		// "Folder " });
 		createTableViewerColumn(this.tableViewer, "Relative file paths");
 
 		final MigrationInputDataProvider provider = new MigrationInputDataProvider(new StyledLabelProvider());
@@ -165,7 +145,6 @@ public class ModelMigrationDialog extends Dialog {
 		});
 		this.tableViewer.setInput(getMigrationSettings().getMigModelFiles());
 
-
 		table.addControlListener(new ControlAdapter() {
 			@Override
 			public void controlResized(final ControlEvent e) {
@@ -178,7 +157,6 @@ public class ModelMigrationDialog extends Dialog {
 
 			}
 		});
-
 
 		final Label lblInputModelsIdentificationInfo = new Label(grpInitialModel, SWT.NONE);
 		lblInputModelsIdentificationInfo.setText("* Blue color: Selected Model files. Black color: Model scope files");
@@ -201,32 +179,28 @@ public class ModelMigrationDialog extends Dialog {
 				final String version = ModelMigrationDialog.this.getTxtInputModelVersion().getText();
 
 				if (version != null) {
-					
-					
-					List<String> allSupportedVersions=ModelVersions.get();
-					 
-					
-					int totalVersionSize=allSupportedVersions.size();
-					
-					int startIndex=allSupportedVersions.indexOf(version);
-					
-					if(startIndex!=-1){
-						
-						List<String> subList = allSupportedVersions.subList(startIndex+1, totalVersionSize);
+
+					List<String> allSupportedVersions = ModelVersions.get();
+
+					int totalVersionSize = allSupportedVersions.size();
+
+					int startIndex = allSupportedVersions.indexOf(version);
+
+					if (startIndex != -1) {
+
+						List<String> subList = allSupportedVersions.subList(startIndex + 1, totalVersionSize);
 						Collections.reverse(subList);
-						ModelMigrationDialog.this.getMig_model_version_combo().setItems(
-								subList.toArray(new String[]{}));
+						ModelMigrationDialog.this.getMig_model_version_combo()
+								.setItems(subList.toArray(new String[] {}));
 						ModelMigrationDialog.this.getMig_model_version_combo().select(0);
 					}
-					
+
 				}
 
 			}
 		});
 
-
 		addEmptyLabels(grpInitialModel);
-
 
 		final Group grpMigrationModels = new Group(shlAmalthea, SWT.NONE);
 		grpMigrationModels.setText("Migration details");
@@ -245,7 +219,8 @@ public class ModelMigrationDialog extends Dialog {
 
 		this.mig_model_version_combo = new Combo(mig_model_version_composite, SWT.READ_ONLY);
 		this.mig_model_version_combo.setBounds(150, 0, 91, 23);
-		// this.mig_model_version_combo.setItems(new String[] { "0.7.0", "itea.111", "itea.110" });
+		// this.mig_model_version_combo.setItems(new String[] { "0.7.0", "itea.111",
+		// "itea.110" });
 		this.mig_model_version_combo.select(0);
 
 		final Composite mig_folder_selection_composite = new Composite(grpMigrationModels, SWT.NONE);
@@ -261,7 +236,6 @@ public class ModelMigrationDialog extends Dialog {
 
 		final Composite mig_output_directory_selection_composite = new Composite(mig_folder_selection_composite,
 				SWT.NONE);
-
 
 		this.lblOutputDirectory = new Label(mig_output_directory_selection_composite, SWT.NONE);
 		this.lblOutputDirectory.setBounds(0, 3, 96, 15);
@@ -307,8 +281,9 @@ public class ModelMigrationDialog extends Dialog {
 		mig_folder_selection_composite.layout();
 
 		/*
-		 * createButton(buttonsComposite, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-		 * createButton(buttonsComposite, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+		 * createButton(buttonsComposite, IDialogConstants.OK_ID,
+		 * IDialogConstants.OK_LABEL, true); createButton(buttonsComposite,
+		 * IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
 		 */
 
 		/*- Added SWT.Modify listener to Checkbox (for selection of output model version) - this is work around for JFace databinding issue reported on MAC */
@@ -339,8 +314,7 @@ public class ModelMigrationDialog extends Dialog {
 					sl_mig_folder_selection_composite.topControl = empty_composite;
 					mig_folder_selection_composite.layout();
 
-				}
-				else {
+				} else {
 
 					ModelMigrationDialog.this.getTxtOutputDirectory()
 							.setText(ModelMigrationDialog.this.getOutputDirectoryLocation());
@@ -348,13 +322,11 @@ public class ModelMigrationDialog extends Dialog {
 					sl_mig_folder_selection_composite.topControl = mig_output_directory_selection_composite;
 					mig_folder_selection_composite.layout();
 
-
 				}
 
 			}
 		});
 		initDataBindings();
-
 
 		return shlAmalthea;
 	}
@@ -386,120 +358,13 @@ public class ModelMigrationDialog extends Dialog {
 		this.migrateModelsButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
+				/*
+				 * perform model migration
+				 */
+				ModelMigrationDelegator migrationJob = new ModelMigrationDelegator(
+						ModelMigrationDialog.this.getMigrationSettings(), ModelMigrationDialog.this.logger);
+				migrationJob.execute();
 
-				/* ====== Adding log file appender for logging model migration events====== */
-
-
-				final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH_mm_ss");
-				final String dateToStr = format.format(new Date());
-
-				final File modelMigrationLogFile = new File(
-						ModelMigrationDialog.this.getMigrationSettings().getOutputDirectoryLocation(),
-						"ModelMigration__" + dateToStr + ".log");
-				try {
-					setFileAppender(new FileAppender(new PatternLayout("%d{yyyy-MM-dd_HH_mm_ss} - %-5p:  %m%n"),
-							modelMigrationLogFile.getAbsolutePath(), false));
-
-					getFileAppender().addFilter(new Filter() {
-
-						@Override
-						public int decide(final LoggingEvent event) {
-
-							if (event.getLevel() == Level.TRACE) {
-								/*-For developers: By changing the return value to Filter.ACCEPT -> TRACE log entries  will also be generated into the Log file*/
-
-								return Filter.DENY;
-							}
-							return Filter.ACCEPT;
-						}
-					});
-					ModelMigrationDialog.this.logger.addAppender(getFileAppender());
-					// ModelMigrationDialog.this.logger.setLevel(Level.ALL);
-
-				}
-				catch (final IOException e1) {
-					ModelMigrationDialog.this.logger.error("Unable to add FileAppender for model migration logger"
-							+ modelMigrationLogFile.getAbsolutePath(), e1);
-				}
-
-				final ModelMigrationJob job = new ModelMigrationJob("AMALTHEA Model Migration",
-						ModelMigrationDialog.this.getMigrationSettings());
-
-				job.setUser(true);
-
-				job.schedule();
-
-				job.addJobChangeListener(new JobChangeAdapter() {
-					@Override
-					public void done(final IJobChangeEvent event) {
-						super.done(event);
-						final IStatus result = event.getResult();
-
-						if (result.getCode() == IMigrationStatus.UNSUPPORTED_MODEL_VERSIONS) {
-
-							Display.getDefault().asyncExec(new Runnable() {
-
-								@Override
-								public void run() {
-
-									final Shell shell = new Shell(Display.getDefault());
-
-									MessageDialog.openError(shell, "AMALTHEA Model Migration",
-											event.getResult().getMessage());
-
-								}
-							});
-
-						}
-						else if (result.getCode() == IMigrationStatus.ERROR) {
-
-							Display.getDefault().asyncExec(new Runnable() {
-
-								@Override
-								public void run() {
-									final Shell shell = new Shell(Display.getDefault());
-
-									ErrorDialog.openError(shell, "AMALTHEA Model Migration",
-											event.getResult().getMessage(), event.getResult());
-
-								}
-							});
-
-						}
-						else if (result.equals(Status.OK_STATUS)) {
-
-							Display.getDefault().asyncExec(new Runnable() {
-
-								@Override
-								public void run() {
-									final Shell shell = new Shell(Display.getDefault());
-
-									MessageDialog.openInformation(shell, "AMALTHEA Model Migration",
-											"Model Migration successful !!");
-
-									try {
-										getMigrationSettings().getiProject().refreshLocal(IResource.DEPTH_INFINITE,
-												new NullProgressMonitor());
-									}
-									catch (final CoreException e) {
-										ModelMigrationDialog.this.logger.error(e.getMessage(), e);
-									}
-
-								}
-							});
-
-						}
-
-						if (getFileAppender() != null) {
-							getFileAppender().close();
-							ModelMigrationDialog.this.logger.removeAppender(getFileAppender());
-						}
-
-
-					}
-
-
-				});
 			}
 		});
 		this.cancelMigrationButton = createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL,
@@ -529,28 +394,31 @@ public class ModelMigrationDialog extends Dialog {
 		final DataBindingContext bindingContext = new DataBindingContext();
 		//
 		final IWidgetValueProperty text = WidgetProperties.text(SWT.Modify);
-		final ISWTObservableValue observeTextTxtInputModelVersionObserveWidget = text.observe(this.txtInputModelVersion);
-		final ISWTObservableValue observeTextTxtOutputDirectoryObserveWidget = WidgetProperties.text(SWT.Modify).observe(this.txtOutputDirectory);
-		final ISWTObservableValue observeSelectionMig_model_version_comboObserveWidget = WidgetProperties.selection().observe(this.mig_model_version_combo);
+		final ISWTObservableValue observeTextTxtInputModelVersionObserveWidget = text
+				.observe(this.txtInputModelVersion);
+		final ISWTObservableValue observeTextTxtOutputDirectoryObserveWidget = WidgetProperties.text(SWT.Modify)
+				.observe(this.txtOutputDirectory);
+		final ISWTObservableValue observeSelectionMig_model_version_comboObserveWidget = WidgetProperties.selection()
+				.observe(this.mig_model_version_combo);
 		//
 		@SuppressWarnings("unchecked")
-		final IObservableValue<?> inputModelVersionMigDataModelObserveValue = 
-				PojoProperties.value("inputModelVersion").observe(getMigrationSettings());
+		final IObservableValue<?> inputModelVersionMigDataModelObserveValue = PojoProperties.value("inputModelVersion")
+				.observe(getMigrationSettings());
 		bindingContext.bindValue(observeTextTxtInputModelVersionObserveWidget,
 				inputModelVersionMigDataModelObserveValue, null, null);
 		//
 		@SuppressWarnings("unchecked")
-		final IObservableValue<?> outputDirectoryLocationMigDataModelObserveValue = 
-				PojoProperties.value("outputDirectoryLocation").observe(getMigrationSettings());
+		final IObservableValue<?> outputDirectoryLocationMigDataModelObserveValue = PojoProperties
+				.value("outputDirectoryLocation").observe(getMigrationSettings());
 		bindingContext.bindValue(observeTextTxtOutputDirectoryObserveWidget,
 				outputDirectoryLocationMigDataModelObserveValue, null, null);
 		//
 		@SuppressWarnings("unchecked")
-		final IObservableValue<?> migrationModelVersionMigrationSettingsObserveValue = 
-				PojoProperties.value("migrationModelVersion").observe(this.migrationSettings);
+		final IObservableValue<?> migrationModelVersionMigrationSettingsObserveValue = PojoProperties
+				.value("migrationModelVersion").observe(this.migrationSettings);
 		bindingContext.bindValue(observeSelectionMig_model_version_comboObserveWidget,
 				migrationModelVersionMigrationSettingsObserveValue, null, null);
-		
+
 		return bindingContext;
 	}
 
@@ -602,11 +470,4 @@ public class ModelMigrationDialog extends Dialog {
 		this.cancelMigrationButton = cancelMigrationButton;
 	}
 
-	public FileAppender getFileAppender() {
-		return this.fileAppender;
-	}
-
-	public void setFileAppender(final FileAppender fileAppender) {
-		this.fileAppender = fileAppender;
-	}
 }

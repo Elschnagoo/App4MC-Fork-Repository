@@ -28,6 +28,7 @@ import org.eclipse.app4mc.amalthea.converters.common.utils.BaseHelperUtils;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.MigrationErrorDialog;
 import org.eclipse.app4mc.amalthea.converters.ui.dialog.ModelMigrationDialog;
 import org.eclipse.app4mc.amalthea.converters.ui.jobs.ModelLoaderJob;
+import org.eclipse.app4mc.amalthea.converters.ui.jobs.SimpleModelMigrationJob;
 import org.eclipse.app4mc.amalthea.converters.ui.log.utils.CustomEclipseLogAppender;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationInputFile;
 import org.eclipse.app4mc.amalthea.converters.ui.utils.MigrationSettings;
@@ -53,6 +54,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 	private MigrationSettings migrationSettings;
 
 	private final String LATEST_MODEL_VERSION = "0.9.5";
+	
+	private final String SIMPLE_MIGRATION = "simplemigration";
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
@@ -115,8 +118,8 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 						final String path = iProject.getLocation().toOSString();
 
 						final File file = new File(path);
-
-						this.migrationSettings.setProject(file);
+						
+						this.migrationSettings.setProject(file); //,isSimpleMigration(event));											
 
 						this.migrationSettings.setiProject(iProject);
 
@@ -165,10 +168,10 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 			job.addJobChangeListener(new JobChangeAdapter() {
 
 				@Override
-				public void done(final IJobChangeEvent event) {
-					super.done(event);
+				public void done(final IJobChangeEvent jobEvent) {
+					super.done(jobEvent);
 
-					if (event.getResult().equals(Status.OK_STATUS)) {
+					if (jobEvent.getResult().equals(Status.OK_STATUS)) {
 
 						Display.getDefault().asyncExec(new Runnable() {
 
@@ -277,9 +280,17 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 															+ ")\nIt is not required to migrate these models !!");
 										}
 										else {
-											final ModelMigrationDialog dialog = new ModelMigrationDialog(shell,
-													getMigrationSettings());
-											dialog.open();
+											//if simple migration then simple call ModelMigrationJob.
+											if(isSimpleMigration(event) && migrationSettings.getMigModelFiles().size() == 1) {
+												SimpleModelMigrationJob migrate = new SimpleModelMigrationJob(migrationSettings);
+												migrate.run();
+												
+											} else {
+												final ModelMigrationDialog dialog = new ModelMigrationDialog(shell,
+														getMigrationSettings());
+												dialog.open();
+											}
+											
 
 										}
 
@@ -387,7 +398,7 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 
 
 					}
-					else if (event.getResult().getCode() == Status.CANCEL_STATUS.getCode()) {
+					else if (jobEvent.getResult().getCode() == Status.CANCEL_STATUS.getCode()) {
 
 						Display.getDefault().asyncExec(new Runnable() {
 
@@ -398,7 +409,7 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 								final Shell shell = new Shell(Display.getDefault());
 
 								MessageDialog.openError(shell, "AMALTHEA Model Migration",
-										event.getResult().getMessage());
+										jobEvent.getResult().getMessage());
 
 							}
 						});
@@ -420,6 +431,10 @@ public class AmaltheaModelMigrationHandler extends AbstractModelConverterHandler
 		return this.migrationSettings;
 	}
 
+	private boolean isSimpleMigration(ExecutionEvent event) {
+		String context = event.getParameter("executioncontext");
+		return (context != null && context.equals(SIMPLE_MIGRATION)) ? true : false;
+	}
 
 }
 
