@@ -143,9 +143,31 @@ The triangle clock function increases and decreases at a constant rate. The shap
 
 h4. ClockStepList
 
-The list of clock steps defines the clock period change via a step function. Each _ClockStep_ of that function is defined by a _frequency_ and a _time_ stamp. The optional period attribute of the clock step list can be used to repeat the pattern (exactly like the recurrence in the _PeriodicSynthetic_ stimulus). If the period is not set, the clock rate will remain the same after the last clock step change. Considering the clock steps: <1Hz, 1s>, <3Hz, 3s>, <2Hz, 5s>, <0Hz, 6s>, <2Hz, 7s>, a scenario recurrence of 2s, and a period of 9s, the clock step function will result in the plot depicted in the following figure.
+The list of clock steps defines the clock period change via a step function. Each _ClockStep_ of that function is defined by a _frequency_ and a _time_ stamp. The optional period attribute of the clock step list can be used to repeat the pattern (exactly like the recurrence in the _PeriodicSynthetic_ stimulus). If the period is not set, the clock rate will remain the same after the last clock step change. Considering the clock steps: <1Hz, 1s>, <3Hz, 3s>, <2Hz, 5s>, <0Hz, 6s>, <2Hz, 7s>, a scenario counter prescaler of 2, and a period of 9s, the clock step function will result in the plot depicted in the following figure.
 
 !{width:750px}../pictures/model_stimuli_clocks_steplist.png!
+
+h4. Example
+
+The engine crankshaft is a good example in which Clocks can be used to model the behavior. Let’s suppose a scenario in which a stimulus is triggered each time the rotating crankshaft reaches a specific angle.
+
+In this example, the engine speed steeply increases from 3000rpm to 6000rpm in 5s, then the speed again decreases to 3000rpm in 5s. An stimulus shall be triggered when the engine crankshaft reaches 30 degrees. Triggering should repeat every two rotations.
+
+Steeply increasing and decreasing pattern fits to the triangle clock function. The equations below show the calculations for the triangle clock function. _xOffset_ is added to make the triangle wave begin at the desired engine speed of 3000rpm:
+* _yOffset_ = min.ticks = 3000rpm = 50rps = 50Hz
+* _peakToPeak_ = max.ticks - min.ticks = 6000rpm - 3000rpm = 50Hz
+* _period_ = 2 * risingSteepTime = 2 * 5s = 10s
+* _xOffset_ = risingSteepTime / 2 = 2.5s
+
+!{width:750px}../pictures/model_stimuli_clocks_triangle_example.png!
+
+Task shall be triggered when the engine crankshaft reaches 30 degrees. Triggering should repeat for every two rotations. The counter configuration for this scenario can then be derived as follows:
+* _offset_ = firstTriggerAngle = 30 ^o^ / 360 ^o^ = 0.0833
+* _prescaler_ = everySecondRotation = 2
+
+!{width:750px}../pictures/model_stimuli_clocks_triangle_example_scenario.png!
+
+The engine crankshaft reaches 30 degrees at 1.66ms. From then on, the crankshaft completes 2 rotations at 41.49ms and 4 rotations at 81ms.
 
 h3. Mode Value List and Execution Condition
 
