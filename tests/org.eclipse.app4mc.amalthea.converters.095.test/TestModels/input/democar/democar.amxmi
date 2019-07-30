@@ -724,6 +724,20 @@
     </operatingSystems>
   </osModel>
   <stimuliModel>
+    <stimuli xsi:type="am:VariableRateStimulus" name="V1"/>
+    <stimuli xsi:type="am:VariableRateStimulus" name="V2">
+      <scenario/>
+    </stimuli>
+    <stimuli xsi:type="am:VariableRateStimulus" name="V3">
+      <scenario>
+        <recurrence value="0"/>
+      </scenario>
+    </stimuli>
+    <stimuli xsi:type="am:VariableRateStimulus" name="V4">
+      <scenario>
+        <recurrence value="78" unit="ns"/>
+      </scenario>
+    </stimuli>
     <stimuli xsi:type="am:PeriodicStimulus" name="Timer_10MS">
       <offset value="0" unit="ms"/>
       <recurrence value="10" unit="ms"/>

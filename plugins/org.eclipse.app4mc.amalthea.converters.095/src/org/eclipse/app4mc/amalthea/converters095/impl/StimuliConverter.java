@@ -49,68 +49,88 @@ public class StimuliConverter extends AbstractConverter {
 		}
 
 		final Element rootElement = document.getRootElement();
-		//migrate clocks to 0.9.5
+		// migrate scenario
+		update_Scenario(rootElement);
+
+		// migrate clocks
 		update_ClocksMulitplierList(rootElement);
 		update_ClockSineFunction(rootElement);
 		update_ClockTriangleFunction(rootElement);
 	}
 
+	private void update_Scenario(Element rootElement) {
+		final String xpath = "./stimuliModel/stimuli[@xsi:type=\"am:VariableRateStimulus\"]/scenario";
+
+		final List<Element> scenarios = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
+
+		for (Element element : scenarios) {
+			Element recurrence = element.getChild("recurrence");
+			if (recurrence != null) {
+				recurrence.detach();
+
+				String value = recurrence.getAttributeValue("value");
+				String unit = recurrence.getAttributeValue("unit");
+
+				addCustomProperty(element, "old_definition_v0.9.4", "recurrence=" + value + unit);
+			}
+		}
+	}
+
 	private void update_ClockSineFunction(Element rootElement) {
 		final String xpath = "./stimuliModel/clocks[@xsi:type=\"am:ClockSinusFunction\"]";
-		
-		final List<Element> clocks = this.helper.getXpathResult(rootElement, xpath,
-				Element.class, this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
-		
-		StringBuilder customPropsValue =new StringBuilder();
+
+		final List<Element> clocks = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
+
+		StringBuilder customPropsValue = new StringBuilder();
 		for (Element element : clocks) {
 			element.setAttribute("type", "am:ClockFunction", this.helper.getGenericNS("xsi"));
-			element.setAttribute("curveType","sine");
-			
+			element.setAttribute("curveType", "sine");
+
 			Attribute amplitude = element.getAttribute("amplitude");
 			amplitude.detach();
 			customPropsValue.append(getStringValue(amplitude));
 			customPropsValue.append(" ");
-			
+
 			Attribute offset = element.getAttribute("yOffset");
 			offset.detach();
 			customPropsValue.append(getStringValue(offset));
 			customPropsValue.append(" ");
-			
+
 			customPropsValue.append(extractPeriodAndShift(element));
-			
+
 			addCustomProperty(element, "old_definition_v0.9.4", customPropsValue.toString().trim());
 		}
-
 	}
-	
+
 	private void update_ClockTriangleFunction(Element rootElement) {
 		final String xpath = "./stimuliModel/clocks[@xsi:type=\"am:ClockTriangleFunction\"]";
-		
-		final List<Element> clocks = this.helper.getXpathResult(rootElement, xpath,
-				Element.class, this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
-		
-		StringBuilder customPropsValue =new StringBuilder();
+
+		final List<Element> clocks = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
+
+		StringBuilder customPropsValue = new StringBuilder();
 		for (Element element : clocks) {
 			element.setAttribute("type", "am:ClockFunction", this.helper.getGenericNS("xsi"));
-			element.setAttribute("curveType","triangle");
-			
+			element.setAttribute("curveType", "triangle");
+
 			Attribute max = element.getAttribute("max");
 			max.detach();
 			customPropsValue.append(getStringValue(max));
 			customPropsValue.append(" ");
-			 
+
 			Attribute min = element.getAttribute("min");
 			min.detach();
 			customPropsValue.append(getStringValue(min));
 			customPropsValue.append(" ");
-			
+
 			customPropsValue.append(extractPeriodAndShift(element));
-		
+
 			addCustomProperty(element, "old_definition_v0.9.4", customPropsValue.toString().trim());
 		}
-
 	}
-	
+
 	private String extractPeriodAndShift(Element element) {
 		StringBuilder str = new StringBuilder();
 		List<Element> children = element.getChildren();
@@ -124,39 +144,39 @@ public class StimuliConverter extends AbstractConverter {
 
 		element.removeChild("period");
 		element.removeChild("shift");
-		
+
 		return str.toString();
 	}
-	
+
 	private String getStringValue(Attribute attr) {
-		String str = attr.getName() + "= "+ attr.getValue();
-		
+		String str = attr.getName() + "=" + attr.getValue();
+
 		return str;
 	}
 
 	private void update_ClocksMulitplierList(final Element rootElement) {
 		final String xpath = "./stimuliModel/clocks[@xsi:type=\"am:ClockMultiplierList\"]";
-		
-		final List<Element> clocks = this.helper.getXpathResult(rootElement, xpath,
-				Element.class, this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
-		
+
+		final List<Element> clocks = this.helper.getXpathResult(rootElement, xpath, Element.class,
+				this.helper.getNS_094("am"), this.helper.getGenericNS("xsi"));
+
 		for (Element element : clocks) {
-			 element.setAttribute("type", "am:ClockStepList", this.helper.getGenericNS("xsi"));
-			 update_ClockEntries(element);
-			 
+			element.setAttribute("type", "am:ClockStepList", this.helper.getGenericNS("xsi"));
+			update_ClockEntries(element);
+
 		}
 	}
-	
+
 	private void update_ClockEntries(Element clockElement) {
 		List<Element> entries = clockElement.getChildren("entries");
 		for (Element entry : entries) {
 			Attribute multiplier = entry.getAttribute("multiplier");
 			multiplier.detach();
-			
+
 			addCustomProperty(entry, "old_definition_v0.9.4", "multiplier=" + multiplier.getValue());
 		}
 	}
-	
+
 	private void addCustomProperty(Element element, String key, String value) {
 		Element customProps = new Element("customProperties");
 		// set key
@@ -166,7 +186,7 @@ public class StimuliConverter extends AbstractConverter {
 		valueElement.setAttribute("type", "am:StringObject", this.helper.getGenericNS("xsi"));
 		valueElement.setAttribute("value", value);
 		customProps.addContent(valueElement);
-		
+
 		element.addContent(customProps);
 	}
 
