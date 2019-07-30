@@ -1,6 +1,7 @@
 
 h2. Model Workflow
 
+
 h3. Introduction
 
 The APP4MC AMALTHEA platform provides the option to define a workflow on a model with different steps. AMALTHEA provides a simple API for implementing such a workflow. The definition of the workflow can be done either in plain Java or any other language, which is able to access Java classes.
@@ -16,6 +17,7 @@ AMALTHEA provides several plugins for this purpose:
 - org.eclipse.app4mc.amalthea.workflow.ease := Provides some helper modules for EASE
 
 - org.eclipse.app4mc.amalthea.workflow.mwe2 := Provides basic classes for usage with MWE2
+
 
 h3. General Structure
 
@@ -54,6 +56,7 @@ Therefore using the context, data can be shared between the different workflow c
 The following diagram is showing this flow in more detail:
 
 !../pictures/uml_workflow_overview_sequence.png!
+
 
 h3(#workflow-basic-components). Available Basic Components
 
@@ -105,37 +108,6 @@ AddSchedulePoints addSchedulePoints = new AddSchedulePoints();
 addSchedulePoints.run(ctx);
 p. 
 
-h3. Other Components
-
-h4(#component-create-tasks). Create Tasks
-
-The component @org.eclipse.app4mc.multicore.openmapping.workflow.CreateTasks@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Task creation example":../../org.eclipse.app4mc.multicore.help/help/tutorial_create_task.html#example-task-creation. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs the action @org.eclipse.app4mc.multicore.openmapping.algorithms.taskgen.pragmatic.PragmaticTaskCreator@. The result of this action is stored as default in the model slot __createtasks__.
-
-!../pictures/uml_create_tasks.png!
-
-Sample configuration inside of a workflow:
-
-bc.. 
-CreateTasks ct = new CreateTasks();
-ct.run(ctx);
-p. 
-
-h4(#component-generate-mapping). Generate Mapping
-
-The component @org.eclipse.app4mc.multicore.openmapping.workflow.GenerateMapping@ from the plugin __org.eclipse.app4mc.multicore.openmapping__ is the corresponding workflow element for the "Mapping example":../../org.eclipse.app4mc.multicore.help/help/tutorial_mapping_1.html#example-mapping-1. It takes a copy of a given model (defaults to @AMALTHEA_SLOT@) and performs one of the actions @org.eclipse.app4mc.multicore.openmapping.algorithms.heuristic.lb.LoadBalancingDFG@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.lb.ILPBasedLoadBalancing@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ilp.energyminimization.EnergyMinimization@ or @org.eclipse.app4mc.multicore.openmapping.algorithms.ga.lb.GABasedLoadBalancing@ depending on the parameter @mappingAlg@. The result of this action is stored as default in the model slot __mapping__.
-Parameter:
-
-* @String@ @mappingAlg@ with the value of either __dfg__ or __ilp_lb__ or __ilp_energy__ or __ga_lb__
-
-Sample configuration inside of a workflow:
-
-bc.. 
-GenerateMapping mappingDfg = new GenerateMapping();
-mappingDfg.setModelSlot("createtasks");
-mappingDfg.setMappingAlg("dfg");
-mappingDfg.setEnableLog(true);
-mappingDfg.run(ctx);
-p. 
 
 h3. EASE modules
 
@@ -160,6 +132,7 @@ table(minimal).
 | addLoggerToConsole | String loggerName | Adds a Log4J logger to the output of the current used output of the EASE script engine. |
 | addLoggerToConsole | String loggerName, String pattern | Adds a Log4J logger to the output of the current used output of the EASE script engine with a given pattern, see @org.apache.log4j.PatternLayout@ for more details |
 | endWorkflow | - | Basic finish actions to be performed, should be called at the end |
+
 
 h3. MWE2 Workflow
 
@@ -230,6 +203,7 @@ bc.
 component = AddSchedulePoints {
 }
 
+
 h3. Current Limitations / Open Points
 
 As there are two options available (Basic Java/EASE and MWE2 based) for running a workflow, there are currently also some limitations existent. The following table should help you to chose the right base:
@@ -250,26 +224,10 @@ bc.
 var labelsCreationComponent = createInstance("workspace://com.ease.example/src/org/eclipse/app4mc/amalthea/example/workflow/components/CreateLabelsComponent.java")
 
 
-h3. Overall Sample
-
-A sample workflow is available in the AMALTHEA example projects inside of @org.eclipse.app4mc.amalthea.example.democar.mapping/workflow/sample_workflow.js@. In general this workflow contains all steps as shown in the AMALTHEA examples tutorial "Task creation":../../org.eclipse.app4mc.multicore.help/help/tutorial_create_task.html#example-task-creation and "Mapping example":../../org.eclipse.app4mc.multicore.help/help/tutorial_mapping_1.html#example-mapping-1, but it can be executed in one script. Execute it by doing a right click and then __Run As -> EASE Script__.
-The following steps are performed in the sample configuration:
-
-# Read the files __AMALTHEA_Democar_MappingExample.amxmi__ and __AMALTHEA_Democar_MappingExample-hw.amxmi__ inside if the model folder. Result model is saved in the default @AMALTHEA_SLOT@.
-# Perform the "Create Tasks":#component-create-tasks component
-# Write the result model available in the __createtasks__ model slot to a single model file __createtasks__ in the directory __workflow-output__.
-# Perform the "Generate Mapping":#component-generate-mapping component with the dfg algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@.
-# Write the result model available in the __mapping__ model slot to a single model file __mapping_dfg__ in the directory __workflow-output__.
-# Perform the "Generate Mapping":#component-generate-mapping component with the ilp algorithm on the result of the Create Tasks component. This is done by specifying @modelSlot = "createtasks"@. In addition the result slot is overwritten by @resultSlot = "mappingilp"@, as the previous run of Generate Mapping is already stored in the mapping slot.
-# Write the result model available in the __mapping_ilp__ model slot to a single model file __mapping_ilp__ in the directory __workflow-output__.
-
-The following diagram shows a snippet of this workflow:
-
-!../pictures/sample_workflow.png!
-
 h3. Adding a new workflow component
 
 Below you will find a sample how to add and implement a new workflow component.
+
 
 h3. Create project
 
