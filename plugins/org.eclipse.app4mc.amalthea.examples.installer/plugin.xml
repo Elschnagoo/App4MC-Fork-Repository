@@ -70,6 +70,17 @@
             icon="icons/full/ctool16/NewEMFExample.gif">
          <description>%_UI_Tools_JavaExamplesWizard_desc</description>
       </wizard>
+      <wizard
+            category="org.eclipse.ui.Examples/org.eclipse.app4mc.tools.Examples"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/full/ctool16/NewEMFExample.gif"
+            id="org.eclipse.app4mc.tools.examples.ValidationExamplesWizard"
+            name="%_UI_Tools_ValidationExamplesWizard_name"
+            project="true">
+         <description>
+            %_UI_Tools_ValidationExamplesWizard_desc
+         </description>
+      </wizard>
    </extension>
 
    <extension point="org.eclipse.emf.common.ui.examples">
@@ -145,13 +156,23 @@
          </projectDescriptor>
       </example>
       <example
-            id="APP4MC Tools - Java Projects"
+            id="APP4MC Tools - Java Project"
             pageImage="icons/full/wizban/NewEMFExample.gif"
             wizardID="org.eclipse.app4mc.tools.examples.JavaExamplesWizard">
          <projectDescriptor
                contentURI="examples/app4mc.example.tool.java/"
                description="%_UI_Tools_Example_Java_Project_desc"
                name="app4mc.example.tool.java">
+         </projectDescriptor>
+      </example>
+      <example
+            id="APP4MC Tools - Validation Project"
+            pageImage="icons/full/wizban/NewEMFExample.gif"
+            wizardID="org.eclipse.app4mc.tools.examples.ValidationExamplesWizard">
+         <projectDescriptor
+               contentURI="examples/app4mc.example.tool.validation/"
+               description="%_UI_Tools_Example_Validation_Project_desc"
+               name="app4mc.example.tool.validation">
          </projectDescriptor>
       </example>
     </extension>
