@@ -24,6 +24,7 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.ClockStep;
 import org.eclipse.app4mc.amalthea.model.ClockStepList;
+import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Scenario;
@@ -66,11 +67,11 @@ public class StimuliModelTests {
     return _xblockexpression;
   }
   
-  public Scenario createScenario(final Time recurrence) {
+  public Scenario createScenario(final Counter counter) {
     Scenario _xblockexpression = null;
     {
       final Scenario ret = AmaltheaFactory.eINSTANCE.createScenario();
-      ret.setRecurrence(recurrence);
+      ret.setCounter(counter);
       _xblockexpression = ret;
     }
     return _xblockexpression;
@@ -191,17 +192,17 @@ public class StimuliModelTests {
   }
   
   @Test
-  public void testVariableRateStimulusScenarioTimes() {
+  public void testVariableRateStimulusScenario() {
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<StimuliModel> _function_1 = (StimuliModel it_1) -> {
         final Procedure1<VariableRateStimulus> _function_2 = (VariableRateStimulus it_2) -> {
           it_2.setName("vrs_ok");
-          it_2.setScenario(this.createScenario(FactoryUtil.createTime(2, "ms")));
+          it_2.setScenario(this.createScenario(FactoryUtil.createCounter(2)));
         };
         this.b2.variableRateStimulus(it_1, _function_2);
         final Procedure1<VariableRateStimulus> _function_3 = (VariableRateStimulus it_2) -> {
           it_2.setName("vrs_wrongPeriod");
-          it_2.setScenario(this.createScenario(FactoryUtil.createTime(0, "ms")));
+          it_2.setScenario(this.createScenario(FactoryUtil.createCounter(0)));
         };
         this.b2.variableRateStimulus(it_1, _function_3);
       };
@@ -217,8 +218,9 @@ public class StimuliModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"));
-    Assert.assertFalse(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_ok\" )"));
+    Assert.assertTrue(result.contains("The feature \'prescaler\' of \'Counter\' contains a bad value ( in Variable Rate Stimulus \"vrs_wrongPeriod\" ) => The value \'0\' must be greater than \'0\'"));
+    Assert.assertTrue(result.contains("The required feature \'clock\' of \'Scenario\' must be set ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"));
+    Assert.assertFalse(result.contains("The feature \'prescaler\' of \'Counter\' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value \'2\' must be greater than \'0\'"));
   }
   
   @Test

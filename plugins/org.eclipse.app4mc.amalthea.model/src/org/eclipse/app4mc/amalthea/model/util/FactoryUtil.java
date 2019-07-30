@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
 import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
 import org.eclipse.app4mc.amalthea.model.ClockStep;
+import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.DataRate;
 import org.eclipse.app4mc.amalthea.model.DataRateUnit;
 import org.eclipse.app4mc.amalthea.model.DataSize;
@@ -47,6 +48,23 @@ import org.eclipse.app4mc.amalthea.model.Voltage;
 import org.eclipse.app4mc.amalthea.model.VoltageUnit;
 
 public class FactoryUtil {
+
+	/**
+	 * Creates a counter (with offset = 0)
+	 */
+	public static Counter createCounter(long prescaler) {
+		return createCounter(prescaler, 0);
+	}
+	
+	/**
+	 * Creates a counter
+	 */
+	public static Counter createCounter(long prescaler, long offset) {
+		Counter counter = AmaltheaFactory.eINSTANCE.createCounter();
+		counter.setPrescaler(prescaler);
+		counter.setOffset(offset);
+		return counter;
+	}
 
 	/**
 	 * Creates a data size (initialized with zero value and base unit)

@@ -18,8 +18,8 @@ import java.util.List
 import java.util.stream.Collectors
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
+import org.eclipse.app4mc.amalthea.model.Counter
 import org.eclipse.app4mc.amalthea.model.Scenario
-import org.eclipse.app4mc.amalthea.model.Time
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile
@@ -42,9 +42,9 @@ class TAStimuliModelValidatorTests {
 		executor.results
 	}
 	
-	def Scenario createScenario(Time recurrence) {
+	def Scenario createScenario(Counter counter) {
 		val ret = AmaltheaFactory.eINSTANCE.createScenario
-		ret.recurrence = recurrence
+		ret.counter = counter
 		ret
 	}
 	
@@ -54,7 +54,7 @@ class TAStimuliModelValidatorTests {
 			stimuliModel [
 				variableRateStimulus [
 					name = "vrs_ok"
-					scenario = createScenario(createTime(2, "ms"))
+					scenario = createScenario(createCounter(2))
 				]
 				variableRateStimulus [
 					name = "vrs_nos"

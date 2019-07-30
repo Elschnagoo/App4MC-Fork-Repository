@@ -16,8 +16,8 @@ package org.eclipse.app4mc.amalthea.model.impl;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
 import org.eclipse.app4mc.amalthea.model.Clock;
+import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.Scenario;
-import org.eclipse.app4mc.amalthea.model.Time;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ScenarioImpl#getRecurrence <em>Recurrence</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ScenarioImpl#getCounter <em>Counter</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.impl.ScenarioImpl#getClock <em>Clock</em>}</li>
  * </ul>
  *
@@ -43,14 +43,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	/**
-	 * The cached value of the '{@link #getRecurrence() <em>Recurrence</em>}' containment reference.
+	 * The cached value of the '{@link #getCounter() <em>Counter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRecurrence()
+	 * @see #getCounter()
 	 * @generated
 	 * @ordered
 	 */
-	protected Time recurrence;
+	protected Counter counter;
 
 	/**
 	 * The cached value of the '{@link #getClock() <em>Clock</em>}' reference.
@@ -87,8 +87,8 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	 * @generated
 	 */
 	@Override
-	public Time getRecurrence() {
-		return recurrence;
+	public Counter getCounter() {
+		return counter;
 	}
 
 	/**
@@ -96,11 +96,11 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRecurrence(Time newRecurrence, NotificationChain msgs) {
-		Time oldRecurrence = recurrence;
-		recurrence = newRecurrence;
+	public NotificationChain basicSetCounter(Counter newCounter, NotificationChain msgs) {
+		Counter oldCounter = counter;
+		counter = newCounter;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCENARIO__RECURRENCE, oldRecurrence, newRecurrence);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCENARIO__COUNTER, oldCounter, newCounter);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -112,18 +112,18 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	 * @generated
 	 */
 	@Override
-	public void setRecurrence(Time newRecurrence) {
-		if (newRecurrence != recurrence) {
+	public void setCounter(Counter newCounter) {
+		if (newCounter != counter) {
 			NotificationChain msgs = null;
-			if (recurrence != null)
-				msgs = ((InternalEObject)recurrence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCENARIO__RECURRENCE, null, msgs);
-			if (newRecurrence != null)
-				msgs = ((InternalEObject)newRecurrence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCENARIO__RECURRENCE, null, msgs);
-			msgs = basicSetRecurrence(newRecurrence, msgs);
+			if (counter != null)
+				msgs = ((InternalEObject)counter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCENARIO__COUNTER, null, msgs);
+			if (newCounter != null)
+				msgs = ((InternalEObject)newCounter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AmaltheaPackage.SCENARIO__COUNTER, null, msgs);
+			msgs = basicSetCounter(newCounter, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCENARIO__RECURRENCE, newRecurrence, newRecurrence));
+			eNotify(new ENotificationImpl(this, Notification.SET, AmaltheaPackage.SCENARIO__COUNTER, newCounter, newCounter));
 	}
 
 	/**
@@ -174,8 +174,8 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AmaltheaPackage.SCENARIO__RECURRENCE:
-				return basicSetRecurrence(null, msgs);
+			case AmaltheaPackage.SCENARIO__COUNTER:
+				return basicSetCounter(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -188,8 +188,8 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AmaltheaPackage.SCENARIO__RECURRENCE:
-				return getRecurrence();
+			case AmaltheaPackage.SCENARIO__COUNTER:
+				return getCounter();
 			case AmaltheaPackage.SCENARIO__CLOCK:
 				if (resolve) return getClock();
 				return basicGetClock();
@@ -205,8 +205,8 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AmaltheaPackage.SCENARIO__RECURRENCE:
-				setRecurrence((Time)newValue);
+			case AmaltheaPackage.SCENARIO__COUNTER:
+				setCounter((Counter)newValue);
 				return;
 			case AmaltheaPackage.SCENARIO__CLOCK:
 				setClock((Clock)newValue);
@@ -223,8 +223,8 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SCENARIO__RECURRENCE:
-				setRecurrence((Time)null);
+			case AmaltheaPackage.SCENARIO__COUNTER:
+				setCounter((Counter)null);
 				return;
 			case AmaltheaPackage.SCENARIO__CLOCK:
 				setClock((Clock)null);
@@ -241,8 +241,8 @@ public class ScenarioImpl extends BaseObjectImpl implements Scenario {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AmaltheaPackage.SCENARIO__RECURRENCE:
-				return recurrence != null;
+			case AmaltheaPackage.SCENARIO__COUNTER:
+				return counter != null;
 			case AmaltheaPackage.SCENARIO__CLOCK:
 				return clock != null;
 		}

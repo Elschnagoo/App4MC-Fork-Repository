@@ -68,7 +68,7 @@ public interface Counter extends BaseObject {
 	 * @return the value of the '<em>Offset</em>' attribute.
 	 * @see #setOffset(long)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getCounter_Offset()
-	 * @model default="0" unique="false"
+	 * @model default="0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.NonNegativeLong"
 	 * @generated
 	 */
 	long getOffset();

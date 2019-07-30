@@ -59,8 +59,6 @@ public class AmBasicTimeRange extends AmaltheaValidation {
 			
 			if (time.getValue().signum() <= 0) {
 				if (containingFeature == ePackage.getFixedPeriodic_Recurrence()
-				
-				|| containingFeature == ePackage.getScenario_Recurrence()
 						
 				|| containingFeature == ePackage.getPeriodicActivation_Recurrence()
 				

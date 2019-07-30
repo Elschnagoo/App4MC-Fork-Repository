@@ -96,7 +96,7 @@ public class ScenarioItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getScenario_Recurrence());
+			childrenFeatures.add(AmaltheaPackage.eINSTANCE.getScenario_Counter());
 		}
 		return childrenFeatures;
 	}
@@ -159,7 +159,7 @@ public class ScenarioItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Scenario.class)) {
-			case AmaltheaPackage.SCENARIO__RECURRENCE:
+			case AmaltheaPackage.SCENARIO__COUNTER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -179,8 +179,8 @@ public class ScenarioItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(AmaltheaPackage.eINSTANCE.getScenario_Recurrence(),
-				 AmaltheaFactory.eINSTANCE.createTime()));
+				(AmaltheaPackage.eINSTANCE.getScenario_Counter(),
+				 AmaltheaFactory.eINSTANCE.createCounter()));
 	}
 
 }

@@ -24,7 +24,7 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Scenario#getRecurrence <em>Recurrence</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Scenario#getCounter <em>Counter</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Scenario#getClock <em>Clock</em>}</li>
  * </ul>
  *
@@ -34,26 +34,26 @@ package org.eclipse.app4mc.amalthea.model;
  */
 public interface Scenario extends BaseObject {
 	/**
-	 * Returns the value of the '<em><b>Recurrence</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Recurrence</em>' containment reference.
-	 * @see #setRecurrence(Time)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario_Recurrence()
-	 * @model containment="true" required="true"
+	 * @return the value of the '<em>Counter</em>' containment reference.
+	 * @see #setCounter(Counter)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario_Counter()
+	 * @model containment="true"
 	 * @generated
 	 */
-	Time getRecurrence();
+	Counter getCounter();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Scenario#getRecurrence <em>Recurrence</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Scenario#getCounter <em>Counter</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Recurrence</em>' containment reference.
-	 * @see #getRecurrence()
+	 * @param value the new value of the '<em>Counter</em>' containment reference.
+	 * @see #getCounter()
 	 * @generated
 	 */
-	void setRecurrence(Time value);
+	void setCounter(Counter value);
 
 	/**
 	 * Returns the value of the '<em><b>Clock</b></em>' reference.
@@ -62,7 +62,7 @@ public interface Scenario extends BaseObject {
 	 * @return the value of the '<em>Clock</em>' reference.
 	 * @see #setClock(Clock)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario_Clock()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	Clock getClock();

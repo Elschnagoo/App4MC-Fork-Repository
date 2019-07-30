@@ -62,7 +62,7 @@ public class HardwareModelTests {
   }
   
   @Test
-  public void test_TAHardwareFrequencyDomainPositive() {
+  public void test_HardwareFrequencyDomainPositive() {
     final Procedure1<Amalthea> _function = (Amalthea it) -> {
       final Procedure1<HWModel> _function_1 = (HWModel it_1) -> {
         final Procedure1<FrequencyDomain> _function_2 = (FrequencyDomain it_2) -> {

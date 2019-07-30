@@ -50,7 +50,7 @@ class HardwareModelTests {
 	}
 	
 	@Test
-	def void test_TAHardwareFrequencyDomainPositive() {
+	def void test_HardwareFrequencyDomainPositive() {
 		val model = amalthea [
 			hardwareModel[
 				domain_Frequency[

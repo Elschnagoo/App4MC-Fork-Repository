@@ -20,10 +20,10 @@ import java.util.stream.Collectors
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus
+import org.eclipse.app4mc.amalthea.model.Counter
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus
 import org.eclipse.app4mc.amalthea.model.Scenario
-import org.eclipse.app4mc.amalthea.model.Time
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder
 import org.eclipse.app4mc.amalthea.validations.BasicProfile
@@ -48,9 +48,9 @@ class StimuliModelTests {
 		executor.results
 	}
 	
-	def Scenario createScenario(Time recurrence) {
+	def Scenario createScenario(Counter counter) {
 		val ret = AmaltheaFactory.eINSTANCE.createScenario
-		ret.recurrence = recurrence
+		ret.counter = counter
 		ret
 	}
 	
@@ -112,23 +112,24 @@ class StimuliModelTests {
 	}
 	
 	@Test
-	def void testVariableRateStimulusScenarioTimes() {
+	def void testVariableRateStimulusScenario() {
 		val model = amalthea [
 			stimuliModel [
 				variableRateStimulus [
 					name = "vrs_ok"
-					scenario = createScenario(createTime(2, "ms"))
+					scenario = createScenario(createCounter(2))
 				]
 				variableRateStimulus [
 					name = "vrs_wrongPeriod"
-					scenario = createScenario(createTime(0, "ms"))
+					scenario = createScenario(createCounter(0))
 				]
 			]
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"))
-		assertFalse(result.contains("Time: recurrence value must be greater than zero ( in Variable Rate Stimulus \"vrs_ok\" )"))
+		assertTrue(result.contains("The feature 'prescaler' of 'Counter' contains a bad value ( in Variable Rate Stimulus \"vrs_wrongPeriod\" ) => The value '0' must be greater than '0'"))
+		assertTrue(result.contains("The required feature 'clock' of 'Scenario' must be set ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"))
+		assertFalse(result.contains("The feature 'prescaler' of 'Counter' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value '2' must be greater than '0'"))
 	}
 	
 	@Test

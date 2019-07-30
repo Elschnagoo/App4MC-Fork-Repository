@@ -20359,13 +20359,13 @@ public interface AmaltheaPackage extends EPackage {
 	int SCENARIO__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Recurrence</b></em>' containment reference.
+	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__RECURRENCE = BASE_OBJECT_FEATURE_COUNT + 0;
+	int SCENARIO__COUNTER = BASE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Clock</b></em>' reference.
@@ -38258,15 +38258,15 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getScenario();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Scenario#getRecurrence <em>Recurrence</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Scenario#getCounter <em>Counter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Recurrence</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Scenario#getRecurrence()
+	 * @return the meta object for the containment reference '<em>Counter</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Scenario#getCounter()
 	 * @see #getScenario()
 	 * @generated
 	 */
-	EReference getScenario_Recurrence();
+	EReference getScenario_Counter();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Scenario#getClock <em>Clock</em>}'.
