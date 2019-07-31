@@ -24,7 +24,6 @@ import org.eclipse.app4mc.amalthea.model.ArrivalCurveEntry;
 import org.eclipse.app4mc.amalthea.model.ArrivalCurveStimulus;
 import org.eclipse.app4mc.amalthea.model.ClockStep;
 import org.eclipse.app4mc.amalthea.model.ClockStepList;
-import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.FrequencyUnit;
 import org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus;
 import org.eclipse.app4mc.amalthea.model.Scenario;
@@ -67,11 +66,11 @@ public class StimuliModelTests {
     return _xblockexpression;
   }
   
-  public Scenario createScenario(final Counter counter) {
+  public Scenario createScenario(final double samplingRecurrence) {
     Scenario _xblockexpression = null;
     {
       final Scenario ret = AmaltheaFactory.eINSTANCE.createScenario();
-      ret.setCounter(counter);
+      ret.setSamplingRecurrence(samplingRecurrence);
       _xblockexpression = ret;
     }
     return _xblockexpression;
@@ -197,12 +196,12 @@ public class StimuliModelTests {
       final Procedure1<StimuliModel> _function_1 = (StimuliModel it_1) -> {
         final Procedure1<VariableRateStimulus> _function_2 = (VariableRateStimulus it_2) -> {
           it_2.setName("vrs_ok");
-          it_2.setScenario(this.createScenario(FactoryUtil.createCounter(2)));
+          it_2.setScenario(this.createScenario(2.0));
         };
         this.b2.variableRateStimulus(it_1, _function_2);
         final Procedure1<VariableRateStimulus> _function_3 = (VariableRateStimulus it_2) -> {
           it_2.setName("vrs_wrongPeriod");
-          it_2.setScenario(this.createScenario(FactoryUtil.createCounter(0)));
+          it_2.setScenario(this.createScenario((-1.0)));
         };
         this.b2.variableRateStimulus(it_1, _function_3);
       };
@@ -218,9 +217,9 @@ public class StimuliModelTests {
       return it.getMessage();
     };
     final List<String> result = validationResult.stream().filter(_function_1).<String>map(_function_2).collect(Collectors.<String>toList());
-    Assert.assertTrue(result.contains("The feature \'prescaler\' of \'Counter\' contains a bad value ( in Variable Rate Stimulus \"vrs_wrongPeriod\" ) => The value \'0\' must be greater than \'0\'"));
+    this.executor.dumpResultMap(null);
+    Assert.assertTrue(result.contains("The feature \'samplingRecurrence\' of \'Scenario\' contains a bad value ( in Variable Rate Stimulus \"vrs_wrongPeriod\" ) => The value \'-1.0\' must be greater than or equal to \'0.0\'"));
     Assert.assertTrue(result.contains("The required feature \'clock\' of \'Scenario\' must be set ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"));
-    Assert.assertFalse(result.contains("The feature \'prescaler\' of \'Counter\' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value \'2\' must be greater than \'0\'"));
   }
   
   @Test

@@ -532,8 +532,8 @@ table(classic){margin-left:40px}.
 |CallSequence| Equivalent element is Group in 0.9.5|
 |RunnableModeSwitch| Equivalent element is ModeSwitch in 0.9.5|
 |RunnableProbabilitySwitch| Equivalent element is ProbabilitySwitch in 0.9.5|
-|GraphEntryBase| Equivalent element is CallGraph in 0.9.5|
-|RunnableItem| Equivalent element is CallGraph in 0.9.5|
+|GraphEntryBase| Equivalent element is CallGraphItem in 0.9.5|
+|RunnableItem| Equivalent element is CallGraphItem in 0.9.5|
 |ClockSinusFunction| Equivalent is ClockFunction in 0.9.5 with a new attribute type curvetype=triangle|
 |ClockTraingleFunction| Equivalent is ClockFunction in 0.9.5 with a new attribute type curvetype=sine|
 
@@ -550,7 +550,7 @@ table(classic){margin-left:40px}.
 table(classic){margin-left:40px}. 
 |*Class name*|*Amalthea sub-model*|*Changed behavior in 0.9.5*|
 |Runnable|sw| Runnable class has a new attribute callGraph. It is now possible to have all the child elements same as Task or Process|
-|Scenario|stimuli|recurrence reference type is changed to counter for VariableRateStimulus|
+|Scenario|stimuli| Reference _recurrence_ (Time) is replaced by _samplingRecurrence_ (non negative double)|
 
 
 *Below references are changed:*

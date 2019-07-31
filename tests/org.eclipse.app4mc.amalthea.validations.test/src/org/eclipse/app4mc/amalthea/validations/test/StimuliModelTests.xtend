@@ -48,9 +48,9 @@ class StimuliModelTests {
 		executor.results
 	}
 	
-	def Scenario createScenario(Counter counter) {
+	def Scenario createScenario(double samplingRecurrence) {
 		val ret = AmaltheaFactory.eINSTANCE.createScenario
-		ret.counter = counter
+		ret.samplingRecurrence = samplingRecurrence
 		ret
 	}
 	
@@ -117,19 +117,20 @@ class StimuliModelTests {
 			stimuliModel [
 				variableRateStimulus [
 					name = "vrs_ok"
-					scenario = createScenario(createCounter(2))
+					scenario = createScenario(2.0)
 				]
 				variableRateStimulus [
 					name = "vrs_wrongPeriod"
-					scenario = createScenario(createCounter(0))
+					scenario = createScenario(-1.0)
 				]
 			]
 		]
 		val validationResult = validate(model)
 		val result = validationResult.stream.filter[it.severityLevel == Severity.ERROR].map[it.message].collect(Collectors.toList)
-		assertTrue(result.contains("The feature 'prescaler' of 'Counter' contains a bad value ( in Variable Rate Stimulus \"vrs_wrongPeriod\" ) => The value '0' must be greater than '0'"))
+
+executor.dumpResultMap(null);
+		assertTrue(result.contains("The feature 'samplingRecurrence' of 'Scenario' contains a bad value ( in Variable Rate Stimulus \"vrs_wrongPeriod\" ) => The value '-1.0' must be greater than or equal to '0.0'"))
 		assertTrue(result.contains("The required feature 'clock' of 'Scenario' must be set ( in Variable Rate Stimulus \"vrs_wrongPeriod\" )"))
-		assertFalse(result.contains("The feature 'prescaler' of 'Counter' contains a bad value ( in Variable Rate Stimulus \"vrs_ok\" ) => The value '2' must be greater than '0'"))
 	}
 	
 	@Test

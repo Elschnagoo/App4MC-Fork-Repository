@@ -11610,7 +11610,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getScenario_Counter() {
+	public EReference getScenario_Clock() {
 		return (EReference)scenarioEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -11620,8 +11620,18 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getScenario_Clock() {
-		return (EReference)scenarioEClass.getEStructuralFeatures().get(1);
+	public EAttribute getScenario_SamplingOffset() {
+		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScenario_SamplingRecurrence() {
+		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -16505,8 +16515,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		createEReference(variableRateStimulusEClass, VARIABLE_RATE_STIMULUS__SCENARIO);
 
 		scenarioEClass = createEClass(SCENARIO);
-		createEReference(scenarioEClass, SCENARIO__COUNTER);
 		createEReference(scenarioEClass, SCENARIO__CLOCK);
+		createEAttribute(scenarioEClass, SCENARIO__SAMPLING_OFFSET);
+		createEAttribute(scenarioEClass, SCENARIO__SAMPLING_RECURRENCE);
 
 		periodicSyntheticStimulusEClass = createEClass(PERIODIC_SYNTHETIC_STIMULUS);
 		createEReference(periodicSyntheticStimulusEClass, PERIODIC_SYNTHETIC_STIMULUS__OCCURRENCE_TIMES);
@@ -18655,8 +18666,9 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEReference(getVariableRateStimulus_Scenario(), this.getScenario(), null, "scenario", null, 0, 1, VariableRateStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScenario_Counter(), this.getCounter(), null, "counter", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScenario_Clock(), this.getClock(), null, "clock", null, 1, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScenario_SamplingOffset(), this.getNonNegativeDouble(), "samplingOffset", "0.0", 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScenario_SamplingRecurrence(), this.getNonNegativeDouble(), "samplingRecurrence", "1.0", 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(periodicSyntheticStimulusEClass, PeriodicSyntheticStimulus.class, "PeriodicSyntheticStimulus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPeriodicSyntheticStimulus_OccurrenceTimes(), this.getTime(), null, "occurrenceTimes", null, 1, -1, PeriodicSyntheticStimulus.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

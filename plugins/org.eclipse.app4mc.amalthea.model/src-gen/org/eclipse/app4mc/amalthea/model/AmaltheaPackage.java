@@ -20359,22 +20359,31 @@ public interface AmaltheaPackage extends EPackage {
 	int SCENARIO__CUSTOM_PROPERTIES = BASE_OBJECT__CUSTOM_PROPERTIES;
 
 	/**
-	 * The feature id for the '<em><b>Counter</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__COUNTER = BASE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Clock</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__CLOCK = BASE_OBJECT_FEATURE_COUNT + 1;
+	int SCENARIO__CLOCK = BASE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Sampling Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__SAMPLING_OFFSET = BASE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Sampling Recurrence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__SAMPLING_RECURRENCE = BASE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
@@ -20383,7 +20392,7 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 2;
+	int SCENARIO_FEATURE_COUNT = BASE_OBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Scenario</em>' class.
@@ -38258,17 +38267,6 @@ public interface AmaltheaPackage extends EPackage {
 	EClass getScenario();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.app4mc.amalthea.model.Scenario#getCounter <em>Counter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Counter</em>'.
-	 * @see org.eclipse.app4mc.amalthea.model.Scenario#getCounter()
-	 * @see #getScenario()
-	 * @generated
-	 */
-	EReference getScenario_Counter();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.eclipse.app4mc.amalthea.model.Scenario#getClock <em>Clock</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -38278,6 +38276,28 @@ public interface AmaltheaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getScenario_Clock();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Scenario#getSamplingOffset <em>Sampling Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sampling Offset</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Scenario#getSamplingOffset()
+	 * @see #getScenario()
+	 * @generated
+	 */
+	EAttribute getScenario_SamplingOffset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.app4mc.amalthea.model.Scenario#getSamplingRecurrence <em>Sampling Recurrence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sampling Recurrence</em>'.
+	 * @see org.eclipse.app4mc.amalthea.model.Scenario#getSamplingRecurrence()
+	 * @see #getScenario()
+	 * @generated
+	 */
+	EAttribute getScenario_SamplingRecurrence();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.app4mc.amalthea.model.PeriodicSyntheticStimulus <em>Periodic Synthetic Stimulus</em>}'.

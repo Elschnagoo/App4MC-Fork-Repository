@@ -1652,8 +1652,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//VariableRateStimulus/scenario"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//Scenario">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//Scenario/counter"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference amalthea.ecore#//Scenario/clock"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Scenario/samplingOffset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute amalthea.ecore#//Scenario/samplingRecurrence"/>
     </genClasses>
     <genClasses ecoreClass="amalthea.ecore#//PeriodicSyntheticStimulus">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference amalthea.ecore#//PeriodicSyntheticStimulus/occurrenceTimes"/>

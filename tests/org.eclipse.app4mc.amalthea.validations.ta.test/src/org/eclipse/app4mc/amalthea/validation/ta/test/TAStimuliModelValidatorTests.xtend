@@ -18,7 +18,6 @@ import java.util.List
 import java.util.stream.Collectors
 import org.eclipse.app4mc.amalthea.model.Amalthea
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory
-import org.eclipse.app4mc.amalthea.model.Counter
 import org.eclipse.app4mc.amalthea.model.Scenario
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder
 import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder
@@ -28,7 +27,6 @@ import org.eclipse.app4mc.validation.core.ValidationDiagnostic
 import org.eclipse.app4mc.validation.util.ValidationExecutor
 import org.junit.Test
 
-import static org.eclipse.app4mc.amalthea.model.util.FactoryUtil.*
 import static org.junit.Assert.assertFalse
 import static org.junit.Assert.assertTrue
 
@@ -42,9 +40,9 @@ class TAStimuliModelValidatorTests {
 		executor.results
 	}
 	
-	def Scenario createScenario(Counter counter) {
+	def Scenario createScenario(double samplingRecurrence) {
 		val ret = AmaltheaFactory.eINSTANCE.createScenario
-		ret.counter = counter
+		ret.samplingRecurrence = samplingRecurrence
 		ret
 	}
 	
@@ -54,7 +52,7 @@ class TAStimuliModelValidatorTests {
 			stimuliModel [
 				variableRateStimulus [
 					name = "vrs_ok"
-					scenario = createScenario(createCounter(2))
+					scenario = createScenario(2.0)
 				]
 				variableRateStimulus [
 					name = "vrs_nos"

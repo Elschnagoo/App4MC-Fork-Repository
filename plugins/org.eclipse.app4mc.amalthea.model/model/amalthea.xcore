@@ -2971,8 +2971,10 @@ class VariableRateStimulus extends Stimulus
 
 class Scenario extends BaseObject
 {
-	contains Counter counter
 	refers Clock[1] clock
+	
+	NonNegativeDouble samplingOffset = "0.0"
+	NonNegativeDouble samplingRecurrence = "1.0"
 }
 
 /*

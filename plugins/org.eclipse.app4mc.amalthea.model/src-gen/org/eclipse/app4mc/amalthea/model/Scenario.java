@@ -24,8 +24,9 @@ package org.eclipse.app4mc.amalthea.model;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.app4mc.amalthea.model.Scenario#getCounter <em>Counter</em>}</li>
  *   <li>{@link org.eclipse.app4mc.amalthea.model.Scenario#getClock <em>Clock</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Scenario#getSamplingOffset <em>Sampling Offset</em>}</li>
+ *   <li>{@link org.eclipse.app4mc.amalthea.model.Scenario#getSamplingRecurrence <em>Sampling Recurrence</em>}</li>
  * </ul>
  *
  * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario()
@@ -33,28 +34,6 @@ package org.eclipse.app4mc.amalthea.model;
  * @generated
  */
 public interface Scenario extends BaseObject {
-	/**
-	 * Returns the value of the '<em><b>Counter</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Counter</em>' containment reference.
-	 * @see #setCounter(Counter)
-	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario_Counter()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Counter getCounter();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Scenario#getCounter <em>Counter</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Counter</em>' containment reference.
-	 * @see #getCounter()
-	 * @generated
-	 */
-	void setCounter(Counter value);
-
 	/**
 	 * Returns the value of the '<em><b>Clock</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -76,5 +55,51 @@ public interface Scenario extends BaseObject {
 	 * @generated
 	 */
 	void setClock(Clock value);
+
+	/**
+	 * Returns the value of the '<em><b>Sampling Offset</b></em>' attribute.
+	 * The default value is <code>"0.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sampling Offset</em>' attribute.
+	 * @see #setSamplingOffset(double)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario_SamplingOffset()
+	 * @model default="0.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.NonNegativeDouble"
+	 * @generated
+	 */
+	double getSamplingOffset();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Scenario#getSamplingOffset <em>Sampling Offset</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sampling Offset</em>' attribute.
+	 * @see #getSamplingOffset()
+	 * @generated
+	 */
+	void setSamplingOffset(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Sampling Recurrence</b></em>' attribute.
+	 * The default value is <code>"1.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sampling Recurrence</em>' attribute.
+	 * @see #setSamplingRecurrence(double)
+	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getScenario_SamplingRecurrence()
+	 * @model default="1.0" unique="false" dataType="org.eclipse.app4mc.amalthea.model.NonNegativeDouble"
+	 * @generated
+	 */
+	double getSamplingRecurrence();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.Scenario#getSamplingRecurrence <em>Sampling Recurrence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sampling Recurrence</em>' attribute.
+	 * @see #getSamplingRecurrence()
+	 * @generated
+	 */
+	void setSamplingRecurrence(double value);
 
 } // Scenario

@@ -4597,10 +4597,9 @@ clock: Time base which defines deviation of time, multiple stimuli can have the 
   <xsd:complexType name="Scenario">
     <xsd:complexContent>
       <xsd:extension base="am:BaseObject">
-        <xsd:sequence>
-          <xsd:element minOccurs="0" name="counter" type="am:Counter"/>
-        </xsd:sequence>
         <xsd:attribute ecore:reference="am:Clock" name="clock" type="xsd:anyURI" use="required"/>
+        <xsd:attribute default="0.0" ecore:unsettable="false" name="samplingOffset" type="am:NonNegativeDouble"/>
+        <xsd:attribute default="1.0" ecore:unsettable="false" name="samplingRecurrence" type="am:NonNegativeDouble"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

@@ -19,13 +19,11 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.eclipse.app4mc.amalthea.model.Amalthea;
 import org.eclipse.app4mc.amalthea.model.AmaltheaFactory;
-import org.eclipse.app4mc.amalthea.model.Counter;
 import org.eclipse.app4mc.amalthea.model.Scenario;
 import org.eclipse.app4mc.amalthea.model.StimuliModel;
 import org.eclipse.app4mc.amalthea.model.VariableRateStimulus;
 import org.eclipse.app4mc.amalthea.model.builder.AmaltheaBuilder;
 import org.eclipse.app4mc.amalthea.model.builder.StimuliBuilder;
-import org.eclipse.app4mc.amalthea.model.util.FactoryUtil;
 import org.eclipse.app4mc.amalthea.validations.ta.TimingArchitectsProfile;
 import org.eclipse.app4mc.validation.core.Severity;
 import org.eclipse.app4mc.validation.core.ValidationDiagnostic;
@@ -54,11 +52,11 @@ public class TAStimuliModelValidatorTests {
     return _xblockexpression;
   }
   
-  public Scenario createScenario(final Counter counter) {
+  public Scenario createScenario(final double samplingRecurrence) {
     Scenario _xblockexpression = null;
     {
       final Scenario ret = AmaltheaFactory.eINSTANCE.createScenario();
-      ret.setCounter(counter);
+      ret.setSamplingRecurrence(samplingRecurrence);
       _xblockexpression = ret;
     }
     return _xblockexpression;
@@ -70,7 +68,7 @@ public class TAStimuliModelValidatorTests {
       final Procedure1<StimuliModel> _function_1 = (StimuliModel it_1) -> {
         final Procedure1<VariableRateStimulus> _function_2 = (VariableRateStimulus it_2) -> {
           it_2.setName("vrs_ok");
-          it_2.setScenario(this.createScenario(FactoryUtil.createCounter(2)));
+          it_2.setScenario(this.createScenario(2.0));
         };
         this.b2.variableRateStimulus(it_1, _function_2);
         final Procedure1<VariableRateStimulus> _function_3 = (VariableRateStimulus it_2) -> {
