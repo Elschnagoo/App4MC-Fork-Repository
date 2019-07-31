@@ -119,7 +119,7 @@ The user can set _maxDecrease_ and _maxIncrease_ values to describe the number o
 !{width:700px}../pictures/model_stimuli_variableRate.png!
 
 An additional feature for the _variableRate_ Stimulus is the description of _simulationScenario_ that specifies the progression of the _variableRate_ over time.
-In contrast to the generic specification via statistical values the scenario defines the computation via the _recurrence_ property that is modified by a factor based on a _clock_.
+In contrast to the generic specification via statistical values the scenario defines the computation via the _samplingOffset_ and _samplingRecurrence_ property that is modified by a factor based on a _clock_.
 
 
 h3. Clocks
@@ -143,13 +143,13 @@ The triangle clock function increases and decreases at a constant rate. The shap
 
 h4. ClockStepList
 
-The list of clock steps defines the clock period change via a step function. Each _ClockStep_ of that function is defined by a _frequency_ and a _time_ stamp. The optional period attribute of the clock step list can be used to repeat the pattern (exactly like the recurrence in the _PeriodicSynthetic_ stimulus). If the period is not set, the clock rate will remain the same after the last clock step change. Considering the clock steps: <1Hz, 1s>, <3Hz, 3s>, <2Hz, 5s>, <0Hz, 6s>, <2Hz, 7s>, a scenario counter prescaler of 2, and a period of 9s, the clock step function will result in the plot depicted in the following figure.
+The list of clock steps defines the clock period change via a step function. Each _ClockStep_ of that function is defined by a _frequency_ and a _time_ stamp. The optional period attribute of the clock step list can be used to repeat the pattern (exactly like the recurrence in the _PeriodicSynthetic_ stimulus). If the period is not set, the clock rate will remain the same after the last clock step change. Considering the clock steps: <1Hz, 1s>, <3Hz, 3s>, <2Hz, 5s>, <0Hz, 6s>, <2Hz, 7s>, a sampling recurrence of 2, and a period of 9s, the clock step function will result in the plot depicted in the following figure.
 
 !{width:750px}../pictures/model_stimuli_clocks_steplist.png!
 
 h4. Example
 
-The engine crankshaft is a good example in which Clocks can be used to model the behavior. Let's suppose a scenario in which a stimulus is triggered each time the rotating crankshaft reaches a specific angle.
+The engine crankshaft is a good example in which Clocks can be used to model the behavior. Let’s suppose a scenario in which a stimulus is triggered each time the rotating crankshaft reaches a specific angle.
 
 In this example, the engine speed steeply increases from 3000rpm to 6000rpm in 5s, then the speed again decreases to 3000rpm in 5s. An stimulus shall be triggered when the engine crankshaft reaches 30 degrees. Triggering should repeat every two rotations.
 
@@ -161,9 +161,9 @@ Steeply increasing and decreasing pattern fits to the triangle clock function. T
 
 !{width:750px}../pictures/model_stimuli_clocks_triangle_example.png!
 
-Task shall be triggered when the engine crankshaft reaches 30 degrees. Triggering should repeat for every two rotations. The counter configuration for this scenario can then be derived as follows:
-* _offset_ = firstTriggerAngle = 30 ^o^ / 360 ^o^ = 0.0833
-* _prescaler_ = everySecondRotation = 2
+Task shall be triggered when the engine crankshaft reaches 30 degrees. Triggering should repeat for every two rotations. The scenario configuration for this example can then be derived as follows:
+* _samplingOffset_ = firstTriggerAngle = 30 ^o^ / 360 ^o^ = 0.0833
+* _samplingRecurrence_ = everySecondRotation = 2
 
 !{width:750px}../pictures/model_stimuli_clocks_triangle_example_scenario.png!
 
