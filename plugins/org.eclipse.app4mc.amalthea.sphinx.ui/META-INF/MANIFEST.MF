@@ -14,6 +14,10 @@ Bundle-Vendor: Eclipse APP4MC
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Export-Package: org.eclipse.app4mc.amalthea.sphinx.ui,
+ org.eclipse.app4mc.amalthea.sphinx.ui.common.container,
+ org.eclipse.app4mc.amalthea.sphinx.ui.common.extended,
+ org.eclipse.app4mc.amalthea.sphinx.ui.hw.container,
+ org.eclipse.app4mc.amalthea.sphinx.ui.hw.extended,
  org.eclipse.app4mc.amalthea.sphinx.ui.sw.container,
  org.eclipse.app4mc.amalthea.sphinx.ui.sw.extended
 Automatic-Module-Name: org.eclipse.app4mc.amalthea.sphinx.ui

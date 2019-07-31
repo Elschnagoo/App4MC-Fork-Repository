@@ -25,11 +25,13 @@ Bundle-Vendor: Eclipse APP4MC
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Export-Package: org.eclipse.app4mc.amalthea.sphinx.ui.editors,
+ org.eclipse.app4mc.amalthea.sphinx.ui.editors.actions,
  org.eclipse.app4mc.amalthea.sphinx.ui.editors.editor,
  org.eclipse.app4mc.amalthea.sphinx.ui.editors.messages,
  org.eclipse.app4mc.amalthea.sphinx.ui.editors.providers,
  org.eclipse.app4mc.amalthea.sphinx.ui.editors.search,
- org.eclipse.app4mc.amalthea.sphinx.ui.editors.search.handlers
+ org.eclipse.app4mc.amalthea.sphinx.ui.editors.search.handlers,
+ org.eclipse.app4mc.amalthea.sphinx.ui.editors.wizards
 Bundle-Activator: org.eclipse.app4mc.amalthea.sphinx.ui.editors.SphinxSupportPlugin
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: org.eclipse.app4mc.amalthea.sphinx.ui.editors
