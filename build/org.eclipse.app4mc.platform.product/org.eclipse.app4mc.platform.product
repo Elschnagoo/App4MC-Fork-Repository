@@ -19,7 +19,7 @@ Version 0.9.5
    </configIni>
 
    <launcherArgs>
-      <programArgsLin>--launcher.GTK_version 2
+      <programArgsLin>--launcher.GTK_version 3
       </programArgsLin>
       <vmArgs>-Xmx3g -Dosgi.framework.extensions=org.eclipse.fx.osgi -Dds.delayed.keepInstances=true --add-modules=ALL-SYSTEM
       </vmArgs>
