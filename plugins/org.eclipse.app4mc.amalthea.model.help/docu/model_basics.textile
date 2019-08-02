@@ -168,13 +168,12 @@ If for example __prescaler__ is 5 and __offset__ is 2 it is executed on the 2<su
 
 Counters are available at the following elements:
 
-* Call sequence items:
+* Call graph items:
 ** __ClearEvent__
 ** __EnforcedMigration__
 ** __InterProcessActivation__
 ** __SchedulePoint__
 ** __SetEvent__
-** __TaskRunnableCall__
 ** __TerminateProcess__
 ** __WaitEvent__
 * Stimuli:

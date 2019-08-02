@@ -10,7 +10,7 @@ The __Runnable__ element is the basic software unit that defines the behavior of
 
 # timing only (activation and runtime)
 # including communication (in general)
-# adding detailed call sequences
+# adding detailed call graphs
 
 To allow a more detailed simulation a description can also include statistical values like deviations or probabilities. This requires additional information that is typically derived from an already implemented function. The modeling of observed behavior is described in more detail in chapter "Software (runtime)":./user_sw_runtime.html#user-sw-runtime.
 

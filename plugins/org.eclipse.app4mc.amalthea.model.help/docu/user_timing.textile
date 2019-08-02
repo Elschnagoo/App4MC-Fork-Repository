@@ -13,7 +13,7 @@ Essential software model elements are runnables, tasks, and data elements (label
 * Items that specify *data access* of data elements (channel receive/send, label access).
 * Items that specify *execution time* (ticks, execution needs).
 
-Tasks may call runnables in a call sequence. Note that a runnable can be called by several tasks. We then map tasks to task schedulers in the operating system model, and we map every task scheduler to one or more processing units of the hardware model. Further, we map data elements to memories of the hardware model.
+Tasks may call runnables in a call graph. Note that a runnable can be called by several tasks. We then map tasks to task schedulers in the operating system model, and we map every task scheduler to one or more processing units of the hardware model. Further, we map data elements to memories of the hardware model.
 
 This coarse level of hardware model detail-the hardware model consists only of *mapping targets*, without routing or timing for data accesses-may already be sufficient for analysis focusing on event-chains or scheduling.
 
