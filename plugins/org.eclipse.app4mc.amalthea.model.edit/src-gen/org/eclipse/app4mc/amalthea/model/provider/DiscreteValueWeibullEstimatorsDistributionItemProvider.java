@@ -80,7 +80,7 @@ public class DiscreteValueWeibullEstimatorsDistributionItemProvider extends Boun
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}

@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeBetaDistribution;
@@ -157,16 +158,7 @@ public class TimeBetaDistributionImpl extends BoundedTimeDistributionImpl implem
 	 */
 	@Override
 	public Time getAverage() {
-		Time _xblockexpression = null;
-		{
-			double _beta = this.getBeta();
-			double _alpha = this.getAlpha();
-			double _divide = (_beta / _alpha);
-			double _plus = (1.0 + _divide);
-			final double ratio = (1.0 / _plus);
-			_xblockexpression = this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(ratio));
-		}
-		return _xblockexpression;
+		return AmaltheaServices2.getAverageOfBetaDistribution(this.getLowerBound(), this.getUpperBound(), Double.valueOf(this.getAlpha()), Double.valueOf(this.getBeta()));
 	}
 
 	/**

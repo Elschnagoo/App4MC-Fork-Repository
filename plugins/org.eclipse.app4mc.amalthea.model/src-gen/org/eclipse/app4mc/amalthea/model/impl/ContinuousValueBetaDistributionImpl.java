@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueInterval;
 import org.eclipse.app4mc.amalthea.model.IContinuousValueDeviation;
@@ -28,8 +29,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.xtext.xbase.lib.DoubleExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -157,22 +156,8 @@ public class ContinuousValueBetaDistributionImpl extends BoundedContinuousValueD
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		double _xblockexpression = (double) 0;
-		{
-			double _beta = this.getBeta();
-			double _alpha = this.getAlpha();
-			double _divide = (_beta / _alpha);
-			double _plus = (1.0 + _divide);
-			final double ratio = (1.0 / _plus);
-			Double _lowerBound = this.getLowerBound();
-			Double _upperBound = this.getUpperBound();
-			Double _lowerBound_1 = this.getLowerBound();
-			double _minus = DoubleExtensions.operator_minus(_upperBound, _lowerBound_1);
-			double _multiply = (_minus * ratio);
-			_xblockexpression = ((_lowerBound).doubleValue() + _multiply);
-		}
-		return _xblockexpression;
+	public Double getAverage() {
+		return AmaltheaServices2.getAverageOfBetaDistribution(this.getLowerBound(), this.getUpperBound(), Double.valueOf(this.getAlpha()), Double.valueOf(this.getBeta()));
 	}
 
 	/**

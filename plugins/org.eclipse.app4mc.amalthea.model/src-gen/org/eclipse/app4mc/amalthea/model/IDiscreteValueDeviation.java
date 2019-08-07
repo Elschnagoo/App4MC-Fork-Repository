@@ -49,6 +49,6 @@ public interface IDiscreteValueDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // IDiscreteValueDeviation

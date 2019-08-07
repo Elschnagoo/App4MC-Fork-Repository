@@ -21,7 +21,6 @@ import org.eclipse.app4mc.amalthea.model.BoundedContinuousValueDistribution;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.app4mc.amalthea.model.BoundedContinuousValueDistribution} object.
@@ -81,7 +80,6 @@ public class BoundedContinuousValueDistributionItemProvider
 			getString("_UI_BoundedContinuousValueDistribution_type") + " " + label;
 	}
 
-
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
@@ -89,28 +87,9 @@ public class BoundedContinuousValueDistributionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
-
-	/**
-	 * @generated NOT
-	 */
 	@Override
-	public void notifyChanged(final Notification notification) {
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
-				.getBoundedContinuousValueDistributionItemProviderNotifications(notification);
-		if (!notifications.isEmpty()) {
-			for (final ViewerNotification vn : notifications) {
-				fireNotifyChanged(vn);
-			}
-			return;
-		}
-
 		super.notifyChanged(notification);
 	}
 

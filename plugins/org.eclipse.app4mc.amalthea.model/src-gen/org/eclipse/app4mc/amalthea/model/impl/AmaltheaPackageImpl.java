@@ -17711,13 +17711,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getIDiscreteValueDeviation__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getIDiscreteValueDeviation__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIDiscreteValueDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(discreteValueIntervalEClass, DiscreteValueInterval.class, "DiscreteValueInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteValueInterval_LowerBound(), theEcorePackage.getELongObject(), "lowerBound", "0", 1, 1, DiscreteValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscreteValueInterval_UpperBound(), theEcorePackage.getELongObject(), "upperBound", "0", 1, 1, DiscreteValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteValueInterval__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getDiscreteValueInterval__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
@@ -17735,7 +17735,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getDiscreteValueConstant__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteValueConstant__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueConstant__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(discreteValueHistogramEClass, DiscreteValueHistogram.class, "DiscreteValueHistogram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDiscreteValueHistogram_Entries(), this.getDiscreteValueHistogramEntry(), null, "entries", null, 1, -1, DiscreteValueHistogram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17744,7 +17744,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getDiscreteValueHistogram__GetUpperBound(), theEcorePackage.getELongObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getDiscreteValueHistogram__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueHistogram__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(discreteValueHistogramEntryEClass, DiscreteValueHistogramEntry.class, "DiscreteValueHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteValueHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, DiscreteValueHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17768,7 +17768,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getDiscreteValueBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, DiscreteValueBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discreteValueStatisticsEClass, DiscreteValueStatistics.class, "DiscreteValueStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteValueStatistics_Average(), theEcorePackage.getEDouble(), "average", "0.0", 1, 1, DiscreteValueStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiscreteValueStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteValueStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discreteValueUniformDistributionEClass, DiscreteValueUniformDistribution.class, "DiscreteValueUniformDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -17776,17 +17776,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getDiscreteValueGaussDistribution_Mean(), theEcorePackage.getEDouble(), "mean", "0.0", 1, 1, DiscreteValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscreteValueGaussDistribution_Sd(), this.getPositiveDouble(), "sd", "1.0", 1, 1, DiscreteValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteValueGaussDistribution__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(discreteValueWeibullEstimatorsDistributionEClass, DiscreteValueWeibullEstimatorsDistribution.class, "DiscreteValueWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDiscreteValueWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDouble(), "average", "0.0", 1, 1, DiscreteValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDiscreteValueWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, DiscreteValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscreteValueWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, DiscreteValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(discreteValueBetaDistributionEClass, DiscreteValueBetaDistribution.class, "DiscreteValueBetaDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDiscreteValueBetaDistribution_Alpha(), this.getPositiveDouble(), "alpha", "1.0", 1, 1, DiscreteValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDiscreteValueBetaDistribution_Beta(), this.getPositiveDouble(), "beta", "1.0", 1, 1, DiscreteValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getDiscreteValueBetaDistribution__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getDiscreteValueBetaDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(iContinuousValueDeviationEClass, IContinuousValueDeviation.class, "IContinuousValueDeviation", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -17794,13 +17794,13 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getIContinuousValueDeviation__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getIContinuousValueDeviation__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIContinuousValueDeviation__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(continuousValueIntervalEClass, ContinuousValueInterval.class, "ContinuousValueInterval", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousValueInterval_LowerBound(), theEcorePackage.getEDoubleObject(), "lowerBound", "0.0", 1, 1, ContinuousValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContinuousValueInterval_UpperBound(), theEcorePackage.getEDoubleObject(), "upperBound", "0.0", 1, 1, ContinuousValueInterval.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousValueInterval__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueInterval__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		op = initEOperation(getContinuousValueInterval__ValidateInvariants__DiagnosticChain_Map(), theEcorePackage.getEBoolean(), "validateInvariants", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theEcorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, !IS_UNIQUE, IS_ORDERED);
@@ -17818,7 +17818,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getContinuousValueConstant__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousValueConstant__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueConstant__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(continuousValueHistogramEClass, ContinuousValueHistogram.class, "ContinuousValueHistogram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContinuousValueHistogram_Entries(), this.getContinuousValueHistogramEntry(), null, "entries", null, 1, -1, ContinuousValueHistogram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17827,7 +17827,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 
 		initEOperation(getContinuousValueHistogram__GetUpperBound(), theEcorePackage.getEDoubleObject(), "getUpperBound", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getContinuousValueHistogram__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueHistogram__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(continuousValueHistogramEntryEClass, ContinuousValueHistogramEntry.class, "ContinuousValueHistogramEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousValueHistogramEntry_Occurrences(), this.getPositiveLong(), "occurrences", "1", 1, 1, ContinuousValueHistogramEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -17851,7 +17851,7 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getContinuousValueBoundaries_SamplingType(), this.getSamplingType(), "samplingType", null, 0, 1, ContinuousValueBoundaries.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(continuousValueStatisticsEClass, ContinuousValueStatistics.class, "ContinuousValueStatistics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousValueStatistics_Average(), theEcorePackage.getEDouble(), "average", "0.0", 1, 1, ContinuousValueStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContinuousValueStatistics_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousValueStatistics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(continuousValueUniformDistributionEClass, ContinuousValueUniformDistribution.class, "ContinuousValueUniformDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -17859,17 +17859,17 @@ public class AmaltheaPackageImpl extends EPackageImpl implements AmaltheaPackage
 		initEAttribute(getContinuousValueGaussDistribution_Mean(), theEcorePackage.getEDouble(), "mean", "0.0", 1, 1, ContinuousValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContinuousValueGaussDistribution_Sd(), this.getPositiveDouble(), "sd", "1.0", 1, 1, ContinuousValueGaussDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousValueGaussDistribution__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueGaussDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(continuousValueWeibullEstimatorsDistributionEClass, ContinuousValueWeibullEstimatorsDistribution.class, "ContinuousValueWeibullEstimatorsDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContinuousValueWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDouble(), "average", "0.0", 1, 1, ContinuousValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContinuousValueWeibullEstimatorsDistribution_Average(), theEcorePackage.getEDoubleObject(), "average", "0.0", 1, 1, ContinuousValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContinuousValueWeibullEstimatorsDistribution_PRemainPromille(), this.getPositiveDouble(), "pRemainPromille", "1.0", 1, 1, ContinuousValueWeibullEstimatorsDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(continuousValueBetaDistributionEClass, ContinuousValueBetaDistribution.class, "ContinuousValueBetaDistribution", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContinuousValueBetaDistribution_Alpha(), this.getPositiveDouble(), "alpha", "1.0", 1, 1, ContinuousValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContinuousValueBetaDistribution_Beta(), this.getPositiveDouble(), "beta", "1.0", 1, 1, ContinuousValueBetaDistribution.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getContinuousValueBetaDistribution__GetAverage(), theEcorePackage.getEDouble(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getContinuousValueBetaDistribution__GetAverage(), theEcorePackage.getEDoubleObject(), "getAverage", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(modeEClass, Mode.class, "Mode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

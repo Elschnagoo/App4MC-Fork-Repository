@@ -1,6 +1,6 @@
 /**
  * *******************************************************************************
- *  Copyright (c) 2015-2018 Robert Bosch GmbH and others.
+ *  Copyright (c) 2015-2019 Robert Bosch GmbH and others.
  * 
  *  This program and the accompanying materials are made
  *  available under the terms of the Eclipse Public License 2.0
@@ -138,7 +138,8 @@ public class TruncatedTimeDistributionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void notifyChangedGen(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TruncatedTimeDistribution.class)) {
@@ -147,26 +148,6 @@ public class TruncatedTimeDistributionItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
-		super.notifyChanged(notification);
-	}
-
-	/**
-	 * @generated NOT
-	 */
-	@Override
-	public void notifyChanged(final Notification notification) {
-		updateChildren(notification);
-
-		// delegate to custom item provider and execute locally
-		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
-				.getTruncatedTimeDistributionItemProviderNotifications(notification);
-		if (!notifications.isEmpty()) {
-			for (final ViewerNotification vn : notifications) {
-				fireNotifyChanged(vn);
-			}
-			return;
-		}
-
 		super.notifyChanged(notification);
 	}
 

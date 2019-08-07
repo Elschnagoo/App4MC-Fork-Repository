@@ -77,6 +77,6 @@ public interface DiscreteValueConstant extends IDiscreteValueDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // DiscreteValueConstant

@@ -61,11 +61,15 @@ public class AmaltheaServices {
 	private static final String ARG_OBJECT_MESSAGE = "Object argument is null, expected: EObject";
 	private static final String ARG_CLASS_MESSAGE = "Class argument is null, expected: Class<T extends EObject>";
 	private static final String ARG_QUANTITY_MESSAGE = "Invalid %s object: value and unit must be set";
+	private static final String ARG_BOUNDS_MESSAGE = "Invalid bounds: lower bound > upper bound";
+	private static final String ARG_POSITIVE_VALUE_MESSAGE = "Invalid number, expected: value > 0";
 	private static final String DATA_SIZE = DataSize.class.getSimpleName();
 	private static final String DATA_RATE = DataRate.class.getSimpleName();
 	private static final String TIME = Time.class.getSimpleName();
 	private static final String FREQUENCY = Frequency.class.getSimpleName();
 	private static final String VOLTAGE = Voltage.class.getSimpleName();
+	private static final String I_REFERABLE = IReferable.class.getSimpleName();
+	private static final String NUMBER = Number.class.getSimpleName();
 
 	private static void checkDataSizeArgument(final DataSize size) {
 		checkArgument(size != null, ARG_NULL_MESSAGE, DATA_SIZE);
@@ -89,7 +93,7 @@ public class AmaltheaServices {
 			.unmodifiableList(Arrays.asList(TimeUnit.PS, TimeUnit.NS, TimeUnit.US, TimeUnit.MS, TimeUnit.S));
 
 	public static String getLongName(final @NonNull IReferable object) {
-		checkArgument(object != null, ARG_OBJECT_MESSAGE);
+		checkArgument(object != null, ARG_NULL_MESSAGE, I_REFERABLE);
 		
 		final String name = object.getName();
 		final String prefix = object.getNamePrefix();
@@ -99,7 +103,7 @@ public class AmaltheaServices {
 	}
 	
 	public static String getUniqueName(final @NonNull IReferable object) {
-		checkArgument(object != null, ARG_OBJECT_MESSAGE);
+		checkArgument(object != null, ARG_NULL_MESSAGE, I_REFERABLE);
 		
 		final String name = object.getName();
 		final String prefix = object.getNamePrefix();
@@ -362,7 +366,7 @@ public class AmaltheaServices {
 	 * @param time
 	 * @return new Time with adjusted value and unit
 	 */
-	public static Time adjustTimeUnit(final @NonNull Time time) {
+	public static @NonNull Time adjustTimeUnit(final @NonNull Time time) {
 		checkTimeArgument(time);
 
 		if (time.getValue() == BigInteger.ZERO)
@@ -381,14 +385,14 @@ public class AmaltheaServices {
 		return createTime(value, TIME_UNIT_LIST.get(index));
 	}
 
-	public static Time addTime(final @NonNull Time t1, final @NonNull Time t2) {
+	public static @NonNull Time addTime(final @NonNull Time t1, final @NonNull Time t2) {
 		checkTimeArgument(t1);
 		checkTimeArgument(t2);
 
 		return applyToTimes(BigInteger::add, t1, t2);
 	}
 
-	public static Time subtractTime(final @NonNull Time t1, final @NonNull Time t2) {
+	public static @NonNull Time subtractTime(final @NonNull Time t1, final @NonNull Time t2) {
 		checkTimeArgument(t1);
 		checkTimeArgument(t2);
 
@@ -405,7 +409,7 @@ public class AmaltheaServices {
 		return v1 / v2;
 	}
 
-	public static Time multiply(final @NonNull Time t1, long value) {
+	public static @NonNull Time multiply(final @NonNull Time t1, long value) {
 		checkTimeArgument(t1);
 
 		BigInteger v1 = t1.getValue();
@@ -414,7 +418,7 @@ public class AmaltheaServices {
 		return createTime(v1.multiply(v2), t1.getUnit());
 	}
 
-	public static Time multiply(final @NonNull Time t1, double value) {
+	public static @NonNull Time multiply(final @NonNull Time t1, double value) {
 		checkTimeArgument(t1);
 
 		BigDecimal v1 = BigDecimal.valueOf(convertToPicoSeconds(t1).doubleValue());
@@ -423,7 +427,7 @@ public class AmaltheaServices {
 		return createTime(v1.multiply(v2).toBigInteger(), TimeUnit.PS);
 	}
 
-	private static Time applyToTimes(final @NonNull BinaryOperator<BigInteger> func, final @NonNull Time t1, final @NonNull Time t2) {
+	private static @NonNull Time applyToTimes(final @NonNull BinaryOperator<BigInteger> func, final @NonNull Time t1, final @NonNull Time t2) {
 		BigInteger v1 = t1.getValue();
 		BigInteger v2 = t2.getValue();
 
@@ -440,7 +444,7 @@ public class AmaltheaServices {
 		return createTime(func.apply(v1, v2), TIME_UNIT_LIST.get(minIndex));
 	}
 
-	private static Time createTime(BigInteger value, TimeUnit unit) {
+	private static @NonNull Time createTime(final BigInteger value, final TimeUnit unit) {
 		Time time = AmaltheaFactory.eINSTANCE.createTime();
 		time.setValue(value);
 		time.setUnit(unit);
@@ -462,9 +466,16 @@ public class AmaltheaServices {
 	 * @param sd   standard deviation
 	 * @return Average of the truncated distribution
 	 */
-	public static Time getAverageOfTruncatedNormalDistribution(final @Nullable Time a, final @Nullable Time b, final @NonNull Time mean, final @NonNull Time sd) {
+	public static @NonNull Time getAverageOfTruncatedNormalDistribution(final @Nullable Time a, final @Nullable Time b, final @NonNull Time mean, final @NonNull Time sd) {
 		checkTimeArgument(mean);
+		
+		// simple result for the unlimited distribution
+		if (a == null && b == null) return mean;
+		
 		checkTimeArgument(sd);
+		if (a != null) checkTimeArgument(a);
+		if (b != null) checkTimeArgument(b);
+		if (a != null && b != null) checkArgument(a.compareTo(b) <= 0, ARG_BOUNDS_MESSAGE);
 
 		Double alpha = null;
 		Double beta = null;
@@ -477,7 +488,7 @@ public class AmaltheaServices {
 
 		double factor = computeTruncatedNormalDistFactor(alpha, beta);
 
-		return mean.add(sd.multiply(factor));
+		return addTime(mean, multiply(sd, factor));
 	}
 
 	/**
@@ -496,13 +507,20 @@ public class AmaltheaServices {
 	 * @return Average of the truncated distribution
 	 */
 	public static double getAverageOfTruncatedNormalDistribution(final @Nullable Number a, final @Nullable Number b, double mean, double sd) {
+		// simple result for the unlimited distribution
+		if (a == null && b == null) return mean;
+		
+		final Double a_double = (a != null) ? a.doubleValue() : null;
+		final Double b_double = (b != null) ? b.doubleValue() : null;
+		if (a_double != null && b_double != null) checkArgument(a_double <= b_double, ARG_BOUNDS_MESSAGE);
+
 		Double alpha = null;
 		Double beta = null;
-		if (a != null) { // truncated from below
-			alpha = (a.doubleValue() - mean) / sd;
+		if (a_double != null) { // truncated from below
+			alpha = (a_double - mean) / sd;
 		}
-		if (b != null) { // truncated from above
-			beta = (b.doubleValue() - mean) / sd;
+		if (b_double != null) { // truncated from above
+			beta = (b_double - mean) / sd;
 		}
 
 		double factor = computeTruncatedNormalDistFactor(alpha, beta);
@@ -510,7 +528,7 @@ public class AmaltheaServices {
 		return mean + factor * sd;
 	}
 
-	private static double computeTruncatedNormalDistFactor(Double alpha, Double beta) {
+	private static double computeTruncatedNormalDistFactor(final @Nullable Double alpha, final @Nullable Double beta) {
 		// Standard normal distribution (mean = 0, sd = 1)
 		NormalDistribution normDist = new NormalDistribution(null, 0, 1);
 
@@ -532,6 +550,31 @@ public class AmaltheaServices {
 
 		return (pdf_alpha - pdf_beta) / (cdf_beta - cdf_alpha);
 	}
+
+	public static Time getAverageOfBetaDistribution(final @NonNull Time a, final @NonNull Time b, final double alpha, final double beta) {
+		checkTimeArgument(a);
+		checkTimeArgument(b);
+		checkArgument(a.compareTo(b) <= 0, ARG_BOUNDS_MESSAGE);
+		checkArgument(alpha > 0, ARG_POSITIVE_VALUE_MESSAGE);
+		checkArgument(beta > 0, ARG_POSITIVE_VALUE_MESSAGE);
+		
+		double ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
+		return addTime(a, multiply(subtractTime(b, a), ratio));
+	}
+
+	public static Double getAverageOfBetaDistribution(final @NonNull Number a, final @NonNull Number b, final double alpha, final double beta) {
+		checkArgument(a != null, ARG_NULL_MESSAGE, NUMBER);
+		checkArgument(b != null, ARG_NULL_MESSAGE, NUMBER);
+		double a_double = a.doubleValue();
+		double b_double = b.doubleValue();
+		checkArgument(a_double <= b_double, ARG_BOUNDS_MESSAGE);
+		checkArgument(alpha > 0, ARG_POSITIVE_VALUE_MESSAGE);
+		checkArgument(beta > 0, ARG_POSITIVE_VALUE_MESSAGE);
+
+		double ratio = 1.0 / (1.0 + (beta / alpha)); // mean in interval [0,1] is 1 / (1 + (beta/alpha))
+		return a_double + (b_double - a_double) * ratio;
+	}
+
 
 	public static EList<QualifiedPort> getInnerPorts(final @NonNull ISystem system) {
 		checkArgument(system != null, ARG_NULL_MESSAGE, "ISystem");

@@ -169,7 +169,7 @@ public abstract class TruncatedDiscreteValueDistributionImpl extends AmaltheaExt
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
+	public Double getAverage() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

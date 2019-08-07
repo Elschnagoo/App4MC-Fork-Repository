@@ -89,6 +89,6 @@ public interface DiscreteValueGaussDistribution extends TruncatedDiscreteValueDi
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // DiscreteValueGaussDistribution

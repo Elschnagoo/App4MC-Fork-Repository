@@ -67,6 +67,6 @@ public interface ContinuousValueHistogram extends IContinuousValueDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // ContinuousValueHistogram

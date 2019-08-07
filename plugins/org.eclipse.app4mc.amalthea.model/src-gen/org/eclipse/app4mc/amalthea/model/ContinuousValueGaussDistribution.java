@@ -89,6 +89,6 @@ public interface ContinuousValueGaussDistribution extends TruncatedContinuousVal
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // ContinuousValueGaussDistribution

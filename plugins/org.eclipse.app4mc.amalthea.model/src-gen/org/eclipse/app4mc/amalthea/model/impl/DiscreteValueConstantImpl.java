@@ -131,8 +131,8 @@ public class DiscreteValueConstantImpl extends AmaltheaExtendedEObjectImpl imple
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		return Long.valueOf(this.getValue()).doubleValue();
+	public Double getAverage() {
+		return Double.valueOf(Long.valueOf(this.getValue()).doubleValue());
 	}
 
 	/**

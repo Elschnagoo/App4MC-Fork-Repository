@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogram;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry;
 
@@ -33,15 +34,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
-
-import org.eclipse.xtext.xbase.lib.DoubleExtensions;
-
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
-
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,12 +98,7 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 */
 	@Override
 	public Long getLowerBound() {
-		final Function1<DiscreteValueHistogramEntry, Long> _function = new Function1<DiscreteValueHistogramEntry, Long>() {
-			public Long apply(final DiscreteValueHistogramEntry it) {
-				return it.getLowerBound();
-			}
-		};
-		return IterableExtensions.<Long>min(XcoreEListExtensions.<DiscreteValueHistogramEntry, Long>map(this.getEntries(), _function));
+		return AmaltheaServices2.getLowerBound_DV(this.getEntries());
 	}
 
 	/**
@@ -121,12 +108,7 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 */
 	@Override
 	public Long getUpperBound() {
-		final Function1<DiscreteValueHistogramEntry, Long> _function = new Function1<DiscreteValueHistogramEntry, Long>() {
-			public Long apply(final DiscreteValueHistogramEntry it) {
-				return it.getUpperBound();
-			}
-		};
-		return IterableExtensions.<Long>max(XcoreEListExtensions.<DiscreteValueHistogramEntry, Long>map(this.getEntries(), _function));
+		return AmaltheaServices2.getUpperBound_DV(this.getEntries());
 	}
 
 	/**
@@ -135,36 +117,8 @@ public class DiscreteValueHistogramImpl extends AmaltheaExtendedEObjectImpl impl
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		double _xblockexpression = (double) 0;
-		{
-			final Function1<DiscreteValueHistogramEntry, Double> _function = new Function1<DiscreteValueHistogramEntry, Double>() {
-				public Double apply(final DiscreteValueHistogramEntry it) {
-					double _average = it.getAverage();
-					long _occurrences = it.getOccurrences();
-					return Double.valueOf((_average * _occurrences));
-				}
-			};
-			final Function2<Double, Double, Double> _function_1 = new Function2<Double, Double, Double>() {
-				public Double apply(final Double p1, final Double p2) {
-					return Double.valueOf(DoubleExtensions.operator_plus(p1, p2));
-				}
-			};
-			final Double sum = IterableExtensions.<Double>reduce(XcoreEListExtensions.<DiscreteValueHistogramEntry, Double>map(this.getEntries(), _function), _function_1);
-			final Function1<DiscreteValueHistogramEntry, Long> _function_2 = new Function1<DiscreteValueHistogramEntry, Long>() {
-				public Long apply(final DiscreteValueHistogramEntry it) {
-					return Long.valueOf(it.getOccurrences());
-				}
-			};
-			final Function2<Long, Long, Long> _function_3 = new Function2<Long, Long, Long>() {
-				public Long apply(final Long p1, final Long p2) {
-					return Long.valueOf(((p1).longValue() + (p2).longValue()));
-				}
-			};
-			final Long count = IterableExtensions.<Long>reduce(XcoreEListExtensions.<DiscreteValueHistogramEntry, Long>map(this.getEntries(), _function_2), _function_3);
-			_xblockexpression = DoubleExtensions.operator_divide(sum, count);
-		}
-		return _xblockexpression;
+	public Double getAverage() {
+		return AmaltheaServices2.getAverage_DV(this.getEntries());
 	}
 
 	/**

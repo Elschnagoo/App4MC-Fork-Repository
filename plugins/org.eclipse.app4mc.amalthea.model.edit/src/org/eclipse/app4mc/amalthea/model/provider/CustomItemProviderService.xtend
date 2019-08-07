@@ -521,48 +521,6 @@ class CustomItemProviderService {
 	}
 
 	/*****************************************************************************
-	 * 						BoundariesItemProvider
-	 *****************************************************************************/
-	def static String getBoundariesItemProviderText(Object object, String defaultText) {
-		return "Dist: Boundaries"
-	}
-
-	/*****************************************************************************
-	 * 						BetaDistributionItemProvider
-	 *****************************************************************************/
-	def static String getBetaDistributionItemProviderText(Object object, String defaultText) {
-		return "Dist: Beta"
-	}
-
-	/*****************************************************************************
-	 * 						GaussDistributionItemProvider
-	 *****************************************************************************/
-	def static String getGaussDistributionItemProviderText(Object object, String defaultText) {
-		return "Dist: Gauss"
-	}
-
-	/*****************************************************************************
-	 * 						UniformDistributionItemProvider
-	 *****************************************************************************/
-	def static String getUniformDistributionItemProviderText(Object object, String defaultText) {
-		return "Dist: Uniform";
-	}
-
-	/*****************************************************************************
-	 * 						WeibullEstimatorsItemProvider
-	 *****************************************************************************/
-	def static String getWeibullEstimatorsItemProviderText(Object object, String defaultText) {
-		return "Dist: Weibull Estimators";
-	}
-
-	/*****************************************************************************
-	 * 						WeibullParametersItemProvider
-	 *****************************************************************************/
-	def static String getWeibullParametersItemProviderText(Object object, String defaultText) {
-		return "Dist: Weibull Parameters";
-	}
-
-	/*****************************************************************************
 	 * 						FrequencyItemProvider
 	 *****************************************************************************/
 	def static String getFrequencyItemProviderText(Object object, String defaultText) {
@@ -694,7 +652,7 @@ class CustomItemProviderService {
 			case AmaltheaPackage::TIME__VALUE,
 			case AmaltheaPackage::TIME__UNIT: {
 				list.add(new ViewerNotification(notification, notification.getNotifier(), false, true))
-				addParentLabelNotification(list, notification)
+				addParentLabelNotification(list, notification, 2)
 				}
 		}
 		return list
@@ -2437,7 +2395,7 @@ class CustomItemProviderService {
 	def static String getTicksItemProviderText(Object object, String defaultText) {
 		if (object instanceof Ticks) {
 			val feature = getContainingFeatureName(object, "", "")
-			val s1 = if(#["runnableItems", "computationItems"].contains(feature)) "" else feature + " -- "
+			val s1 = if(#["items", "computationItems"].contains(feature)) "" else feature + " -- "
 			return s1 + defaultText;
 		} else {
 			return defaultText
@@ -2453,7 +2411,7 @@ class CustomItemProviderService {
 			val deviation = object?.getValue()
 
 			val s1 = if(typeName.isNullOrEmpty) "<pu definition>" else "Definition " + typeName
-			val s2 = if(deviation === null) "<ticks>" else CustomDeviationItemProviderService.getDiscreteValueDeviationText(deviation)
+			val s2 = if(deviation === null) "<ticks>" else CustomDeviationItemProviderService.deviationText(deviation)
 			return s1 + " -- " + s2;
 		} else {
 			return defaultText
@@ -2481,7 +2439,7 @@ class CustomItemProviderService {
 			val dev = object?.getValue()
 
 			val s1 = if(featureName.isNullOrEmpty) "<feature>" else "Feature \"" + featureName + "\""
-			val s2 = if(dev === null) "<usages>" else CustomDeviationItemProviderService.getDiscreteValueDeviationText(dev)
+			val s2 = if(dev === null) "<usages>" else CustomDeviationItemProviderService.deviationText(dev)
 			return s1 + " -- " + s2;
 		} else {
 			return defaultText

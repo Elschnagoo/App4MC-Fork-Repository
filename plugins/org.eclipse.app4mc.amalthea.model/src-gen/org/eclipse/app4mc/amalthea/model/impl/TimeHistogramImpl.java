@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeHistogram;
 import org.eclipse.app4mc.amalthea.model.TimeHistogramEntry;
@@ -34,13 +35,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
-
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
-
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,12 +99,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	 */
 	@Override
 	public Time getLowerBound() {
-		final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
-			public Time apply(final TimeHistogramEntry it) {
-				return it.getLowerBound();
-			}
-		};
-		return IterableExtensions.<Time>min(XcoreEListExtensions.<TimeHistogramEntry, Time>map(this.getEntries(), _function));
+		return AmaltheaServices2.getLowerBound_Time(this.getEntries());
 	}
 
 	/**
@@ -120,12 +109,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	 */
 	@Override
 	public Time getUpperBound() {
-		final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
-			public Time apply(final TimeHistogramEntry it) {
-				return it.getUpperBound();
-			}
-		};
-		return IterableExtensions.<Time>max(XcoreEListExtensions.<TimeHistogramEntry, Time>map(this.getEntries(), _function));
+		return AmaltheaServices2.getUpperBound_Time(this.getEntries());
 	}
 
 	/**
@@ -135,33 +119,7 @@ public class TimeHistogramImpl extends AmaltheaExtendedEObjectImpl implements Ti
 	 */
 	@Override
 	public Time getAverage() {
-		Time _xblockexpression = null;
-		{
-			final Function1<TimeHistogramEntry, Time> _function = new Function1<TimeHistogramEntry, Time>() {
-				public Time apply(final TimeHistogramEntry it) {
-					return it.getAverage().multiply(it.getOccurrences());
-				}
-			};
-			final Function2<Time, Time, Time> _function_1 = new Function2<Time, Time, Time>() {
-				public Time apply(final Time p1, final Time p2) {
-					return p1.add(p2);
-				}
-			};
-			final Time sum = IterableExtensions.<Time>reduce(XcoreEListExtensions.<TimeHistogramEntry, Time>map(this.getEntries(), _function), _function_1);
-			final Function1<TimeHistogramEntry, Long> _function_2 = new Function1<TimeHistogramEntry, Long>() {
-				public Long apply(final TimeHistogramEntry it) {
-					return Long.valueOf(it.getOccurrences());
-				}
-			};
-			final Function2<Long, Long, Long> _function_3 = new Function2<Long, Long, Long>() {
-				public Long apply(final Long p1, final Long p2) {
-					return Long.valueOf(((p1).longValue() + (p2).longValue()));
-				}
-			};
-			final Long count = IterableExtensions.<Long>reduce(XcoreEListExtensions.<TimeHistogramEntry, Long>map(this.getEntries(), _function_2), _function_3);
-			_xblockexpression = sum.multiply((1.0 / (count).longValue()));
-		}
-		return _xblockexpression;
+		return AmaltheaServices2.getAverage_Time(this.getEntries());
 	}
 
 	/**

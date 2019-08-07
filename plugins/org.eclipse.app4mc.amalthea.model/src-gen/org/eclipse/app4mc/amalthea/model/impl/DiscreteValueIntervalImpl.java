@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueInterval;
 
@@ -159,13 +160,8 @@ public abstract class DiscreteValueIntervalImpl extends AmaltheaExtendedEObjectI
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		Long _lowerBound = this.getLowerBound();
-		Long _upperBound = this.getUpperBound();
-		Long _lowerBound_1 = this.getLowerBound();
-		long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());
-		double _divide = (_minus / 2.0);
-		return ((_lowerBound).longValue() + _divide);
+	public Double getAverage() {
+		return AmaltheaServices2.getAverage(this.getLowerBound(), this.getUpperBound());
 	}
 
 	/**

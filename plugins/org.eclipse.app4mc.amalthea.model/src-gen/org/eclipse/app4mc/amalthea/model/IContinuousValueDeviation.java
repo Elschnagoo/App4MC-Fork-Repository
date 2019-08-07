@@ -49,6 +49,6 @@ public interface IContinuousValueDeviation extends EObject {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // IContinuousValueDeviation

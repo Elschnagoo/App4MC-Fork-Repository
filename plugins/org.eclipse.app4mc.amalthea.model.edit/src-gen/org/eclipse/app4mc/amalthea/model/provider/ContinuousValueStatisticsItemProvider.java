@@ -79,7 +79,7 @@ public class ContinuousValueStatisticsItemProvider extends BoundedContinuousValu
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}

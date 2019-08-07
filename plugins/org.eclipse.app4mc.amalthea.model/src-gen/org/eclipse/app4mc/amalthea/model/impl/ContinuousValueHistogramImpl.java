@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogram;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry;
 
@@ -33,15 +34,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions;
-
-import org.eclipse.xtext.xbase.lib.DoubleExtensions;
-
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
-
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,12 +98,7 @@ public class ContinuousValueHistogramImpl extends AmaltheaExtendedEObjectImpl im
 	 */
 	@Override
 	public Double getLowerBound() {
-		final Function1<ContinuousValueHistogramEntry, Double> _function = new Function1<ContinuousValueHistogramEntry, Double>() {
-			public Double apply(final ContinuousValueHistogramEntry it) {
-				return it.getLowerBound();
-			}
-		};
-		return IterableExtensions.<Double>min(XcoreEListExtensions.<ContinuousValueHistogramEntry, Double>map(this.getEntries(), _function));
+		return AmaltheaServices2.getLowerBound_CV(this.getEntries());
 	}
 
 	/**
@@ -121,12 +108,7 @@ public class ContinuousValueHistogramImpl extends AmaltheaExtendedEObjectImpl im
 	 */
 	@Override
 	public Double getUpperBound() {
-		final Function1<ContinuousValueHistogramEntry, Double> _function = new Function1<ContinuousValueHistogramEntry, Double>() {
-			public Double apply(final ContinuousValueHistogramEntry it) {
-				return it.getUpperBound();
-			}
-		};
-		return IterableExtensions.<Double>max(XcoreEListExtensions.<ContinuousValueHistogramEntry, Double>map(this.getEntries(), _function));
+		return AmaltheaServices2.getUpperBound_CV(this.getEntries());
 	}
 
 	/**
@@ -135,36 +117,8 @@ public class ContinuousValueHistogramImpl extends AmaltheaExtendedEObjectImpl im
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		double _xblockexpression = (double) 0;
-		{
-			final Function1<ContinuousValueHistogramEntry, Double> _function = new Function1<ContinuousValueHistogramEntry, Double>() {
-				public Double apply(final ContinuousValueHistogramEntry it) {
-					double _average = it.getAverage();
-					long _occurrences = it.getOccurrences();
-					return Double.valueOf((_average * _occurrences));
-				}
-			};
-			final Function2<Double, Double, Double> _function_1 = new Function2<Double, Double, Double>() {
-				public Double apply(final Double p1, final Double p2) {
-					return Double.valueOf(DoubleExtensions.operator_plus(p1, p2));
-				}
-			};
-			final Double sum = IterableExtensions.<Double>reduce(XcoreEListExtensions.<ContinuousValueHistogramEntry, Double>map(this.getEntries(), _function), _function_1);
-			final Function1<ContinuousValueHistogramEntry, Long> _function_2 = new Function1<ContinuousValueHistogramEntry, Long>() {
-				public Long apply(final ContinuousValueHistogramEntry it) {
-					return Long.valueOf(it.getOccurrences());
-				}
-			};
-			final Function2<Long, Long, Long> _function_3 = new Function2<Long, Long, Long>() {
-				public Long apply(final Long p1, final Long p2) {
-					return Long.valueOf(((p1).longValue() + (p2).longValue()));
-				}
-			};
-			final Long count = IterableExtensions.<Long>reduce(XcoreEListExtensions.<ContinuousValueHistogramEntry, Long>map(this.getEntries(), _function_2), _function_3);
-			_xblockexpression = DoubleExtensions.operator_divide(sum, count);
-		}
-		return _xblockexpression;
+	public Double getAverage() {
+		return AmaltheaServices2.getAverage_CV(this.getEntries());
 	}
 
 	/**

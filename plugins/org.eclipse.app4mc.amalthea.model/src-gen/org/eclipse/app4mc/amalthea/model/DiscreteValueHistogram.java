@@ -67,6 +67,6 @@ public interface DiscreteValueHistogram extends IDiscreteValueDeviation {
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 } // DiscreteValueHistogram

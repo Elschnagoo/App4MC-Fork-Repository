@@ -130,7 +130,6 @@ public class TimeIntervalItemProvider
 		return getString("_UI_TimeInterval_type");
 	}
 
-
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
@@ -138,8 +137,8 @@ public class TimeIntervalItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(TimeInterval.class)) {
@@ -148,6 +147,26 @@ public class TimeIntervalItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+	
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
+				.getTimeIntervalItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
+			return;
+		}
+	
 		super.notifyChanged(notification);
 	}
 

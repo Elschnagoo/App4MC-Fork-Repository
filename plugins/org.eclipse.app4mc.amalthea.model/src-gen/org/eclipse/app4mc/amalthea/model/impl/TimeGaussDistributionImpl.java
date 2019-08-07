@@ -17,7 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeGaussDistribution;
 
@@ -182,10 +182,7 @@ public class TimeGaussDistributionImpl extends TruncatedTimeDistributionImpl imp
 	 */
 	@Override
 	public Time getAverage() {
-		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
-			return this.getMean();
-		}
-		return AmaltheaServices.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());
+		return AmaltheaServices2.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());
 	}
 
 	/**

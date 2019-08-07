@@ -512,7 +512,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TimeInterval" abstract="true">
     <eOperations name="getAverage" unique="false" eType="#//Time">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(0.5));"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverage(this.getLowerBound(), this.getUpperBound());"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="validateInvariants" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -554,17 +554,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="TimeHistogram" eSuperTypes="#//ITimeDeviation">
     <eOperations name="getLowerBound" unique="false" eType="#//Time">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>>()&#xA;{&#xA;&#x9;public &lt;%org.eclipse.app4mc.amalthea.model.Time%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%> it)&#xA;&#x9;{&#xA;&#x9;&#x9;return it.getLowerBound();&#xA;&#x9;}&#xA;};&#xA;return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Time%>>min(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>>map(this.getEntries(), _function));"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getLowerBound_Time(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getUpperBound" unique="false" eType="#//Time">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>>()&#xA;{&#xA;&#x9;public &lt;%org.eclipse.app4mc.amalthea.model.Time%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%> it)&#xA;&#x9;{&#xA;&#x9;&#x9;return it.getUpperBound();&#xA;&#x9;}&#xA;};&#xA;return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Time%>>max(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>>map(this.getEntries(), _function));"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getUpperBound_Time(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getAverage" unique="false" eType="#//Time">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.Time%> _xblockexpression = null;&#xA;{&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%org.eclipse.app4mc.amalthea.model.Time%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%> it)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return it.getAverage().multiply(it.getOccurrences());&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.Time%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>> _function_1 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.Time%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%org.eclipse.app4mc.amalthea.model.Time%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.Time%> p1, final &lt;%org.eclipse.app4mc.amalthea.model.Time%> p2)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return p1.add(p2);&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%org.eclipse.app4mc.amalthea.model.Time%> sum = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.Time%>>reduce(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%org.eclipse.app4mc.amalthea.model.Time%>>map(this.getEntries(), _function), _function_1);&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%java.lang.Long%>> _function_2 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%java.lang.Long%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%> it)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Long%>.valueOf(it.getOccurrences());&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Long%>, &lt;%java.lang.Long%>, &lt;%java.lang.Long%>> _function_3 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Long%>, &lt;%java.lang.Long%>, &lt;%java.lang.Long%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%java.lang.Long%> p1, final &lt;%java.lang.Long%> p2)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Long%>.valueOf(((p1).longValue() + (p2).longValue()));&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%java.lang.Long%> count = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Long%>>reduce(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.TimeHistogramEntry%>, &lt;%java.lang.Long%>>map(this.getEntries(), _function_2), _function_3);&#xA;&#x9;_xblockexpression = sum.multiply((1.0 / (count).longValue()));&#xA;}&#xA;return _xblockexpression;"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverage_Time(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" lowerBound="1"
@@ -620,7 +620,7 @@
     </eAnnotations>
     <eOperations name="getAverage" unique="false" eType="#//Time">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="if (((this.getLowerBound() == null) &amp;&amp; (this.getUpperBound() == null)))&#xA;{&#xA;&#x9;return this.getMean();&#xA;}&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mean" lowerBound="1" eType="#//Time"
@@ -643,7 +643,7 @@
     </eAnnotations>
     <eOperations name="getAverage" unique="false" eType="#//Time">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.app4mc.amalthea.model.Time%> _xblockexpression = null;&#xA;{&#xA;&#x9;double _beta = this.getBeta();&#xA;&#x9;double _alpha = this.getAlpha();&#xA;&#x9;double _divide = (_beta / _alpha);&#xA;&#x9;double _plus = (1.0 + _divide);&#xA;&#x9;final double ratio = (1.0 / _plus);&#xA;&#x9;_xblockexpression = this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(ratio));&#xA;}&#xA;return _xblockexpression;"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverageOfBetaDistribution(this.getLowerBound(), this.getUpperBound(), &lt;%java.lang.Double%>.valueOf(this.getAlpha()), &lt;%java.lang.Double%>.valueOf(this.getBeta()));"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alpha" unique="false" lowerBound="1"
@@ -655,12 +655,12 @@
       interface="true">
     <eOperations name="getLowerBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"/>
     <eOperations name="getUpperBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject"/>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiscreteValueInterval" abstract="true">
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%java.lang.Long%> _lowerBound = this.getLowerBound();&#xA;&lt;%java.lang.Long%> _upperBound = this.getUpperBound();&#xA;&lt;%java.lang.Long%> _lowerBound_1 = this.getLowerBound();&#xA;long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());&#xA;double _divide = (_minus / 2.0);&#xA;return ((_lowerBound).longValue() + _divide);"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverage(this.getLowerBound(), this.getUpperBound());"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="validateInvariants" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -693,9 +693,9 @@
         <details key="body" value="return &lt;%java.lang.Long%>.valueOf(this.getValue());"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return &lt;%java.lang.Long%>.valueOf(this.getValue()).doubleValue();"/>
+        <details key="body" value="return &lt;%java.lang.Double%>.valueOf(&lt;%java.lang.Long%>.valueOf(this.getValue()).doubleValue());"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" lowerBound="1"
@@ -704,17 +704,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="DiscreteValueHistogram" eSuperTypes="#//IDiscreteValueDeviation">
     <eOperations name="getLowerBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>>()&#xA;{&#xA;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%> it)&#xA;&#x9;{&#xA;&#x9;&#x9;return it.getLowerBound();&#xA;&#x9;}&#xA;};&#xA;return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Long%>>min(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>>map(this.getEntries(), _function));"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getLowerBound_DV(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getUpperBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELongObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>>()&#xA;{&#xA;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%> it)&#xA;&#x9;{&#xA;&#x9;&#x9;return it.getUpperBound();&#xA;&#x9;}&#xA;};&#xA;return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Long%>>max(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>>map(this.getEntries(), _function));"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getUpperBound_DV(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="double _xblockexpression = (double) 0;&#xA;{&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Double%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Double%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Double%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%> it)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;double _average = it.getAverage();&#xA;&#x9;&#x9;&#x9;long _occurrences = it.getOccurrences();&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Double%>.valueOf((_average * _occurrences));&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Double%>, &lt;%java.lang.Double%>, &lt;%java.lang.Double%>> _function_1 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Double%>, &lt;%java.lang.Double%>, &lt;%java.lang.Double%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Double%> apply(final &lt;%java.lang.Double%> p1, final &lt;%java.lang.Double%> p2)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Double%>.valueOf(&lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%>.operator_plus(p1, p2));&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%java.lang.Double%> sum = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Double%>>reduce(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Double%>>map(this.getEntries(), _function), _function_1);&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>> _function_2 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%> it)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Long%>.valueOf(it.getOccurrences());&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Long%>, &lt;%java.lang.Long%>, &lt;%java.lang.Long%>> _function_3 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Long%>, &lt;%java.lang.Long%>, &lt;%java.lang.Long%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%java.lang.Long%> p1, final &lt;%java.lang.Long%> p2)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Long%>.valueOf(((p1).longValue() + (p2).longValue()));&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%java.lang.Long%> count = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Long%>>reduce(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.DiscreteValueHistogramEntry%>, &lt;%java.lang.Long%>>map(this.getEntries(), _function_2), _function_3);&#xA;&#x9;_xblockexpression = &lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%>.operator_divide(sum, count);&#xA;}&#xA;return _xblockexpression;"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverage_DV(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" lowerBound="1"
@@ -758,7 +758,7 @@
       <details key="documentation" value="Defines the upper bound, lower bound and mean of a value interval without defining the distribution"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="average" unique="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiscreteValueUniformDistribution" eSuperTypes="#//BoundedDiscreteValueDistribution">
@@ -770,9 +770,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Gauss distribution"/>
     </eAnnotations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="if (((this.getLowerBound() == null) &amp;&amp; (this.getUpperBound() == null)))&#xA;{&#xA;&#x9;return this.getMean();&#xA;}&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), &lt;%java.lang.Double%>.valueOf(this.getMean()), &lt;%java.lang.Double%>.valueOf(this.getSd()));"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mean" unique="false" lowerBound="1"
@@ -786,7 +786,7 @@
       <details key="documentation" value="Weibull Distribution&#xA;The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="average" unique="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pRemainPromille" unique="false"
         lowerBound="1" eType="#//PositiveDouble" defaultValueLiteral="1.0"/>
@@ -795,9 +795,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Beta distribution"/>
     </eAnnotations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="double _xblockexpression = (double) 0;&#xA;{&#xA;&#x9;double _beta = this.getBeta();&#xA;&#x9;double _alpha = this.getAlpha();&#xA;&#x9;double _divide = (_beta / _alpha);&#xA;&#x9;double _plus = (1.0 + _divide);&#xA;&#x9;final double ratio = (1.0 / _plus);&#xA;&#x9;&lt;%java.lang.Long%> _lowerBound = this.getLowerBound();&#xA;&#x9;&lt;%java.lang.Long%> _upperBound = this.getUpperBound();&#xA;&#x9;&lt;%java.lang.Long%> _lowerBound_1 = this.getLowerBound();&#xA;&#x9;long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());&#xA;&#x9;double _multiply = (_minus * ratio);&#xA;&#x9;_xblockexpression = ((_lowerBound).longValue() + _multiply);&#xA;}&#xA;return _xblockexpression;"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverageOfBetaDistribution(this.getLowerBound(), this.getUpperBound(), &lt;%java.lang.Double%>.valueOf(this.getAlpha()), &lt;%java.lang.Double%>.valueOf(this.getBeta()));"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alpha" unique="false" lowerBound="1"
@@ -809,12 +809,12 @@
       interface="true">
     <eOperations name="getLowerBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
     <eOperations name="getUpperBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContinuousValueInterval" abstract="true">
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%java.lang.Double%> _lowerBound = this.getLowerBound();&#xA;&lt;%java.lang.Double%> _upperBound = this.getUpperBound();&#xA;&lt;%java.lang.Double%> _lowerBound_1 = this.getLowerBound();&#xA;double _minus = &lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%>.operator_minus(_upperBound, _lowerBound_1);&#xA;double _divide = (_minus / 2.0);&#xA;return ((_lowerBound).doubleValue() + _divide);"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverage(this.getLowerBound(), this.getUpperBound());"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="validateInvariants" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
@@ -847,9 +847,9 @@
         <details key="body" value="return &lt;%java.lang.Double%>.valueOf(this.getValue());"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return this.getValue();"/>
+        <details key="body" value="return &lt;%java.lang.Double%>.valueOf(this.getValue());"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" lowerBound="1"
@@ -858,17 +858,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="ContinuousValueHistogram" eSuperTypes="#//IContinuousValueDeviation">
     <eOperations name="getLowerBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>>()&#xA;{&#xA;&#x9;public &lt;%java.lang.Double%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%> it)&#xA;&#x9;{&#xA;&#x9;&#x9;return it.getLowerBound();&#xA;&#x9;}&#xA;};&#xA;return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Double%>>min(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>>map(this.getEntries(), _function));"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getLowerBound_CV(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getUpperBound" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>>()&#xA;{&#xA;&#x9;public &lt;%java.lang.Double%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%> it)&#xA;&#x9;{&#xA;&#x9;&#x9;return it.getUpperBound();&#xA;&#x9;}&#xA;};&#xA;return &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Double%>>max(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>>map(this.getEntries(), _function));"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getUpperBound_CV(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="double _xblockexpression = (double) 0;&#xA;{&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>> _function = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Double%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%> it)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;double _average = it.getAverage();&#xA;&#x9;&#x9;&#x9;long _occurrences = it.getOccurrences();&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Double%>.valueOf((_average * _occurrences));&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Double%>, &lt;%java.lang.Double%>, &lt;%java.lang.Double%>> _function_1 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Double%>, &lt;%java.lang.Double%>, &lt;%java.lang.Double%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Double%> apply(final &lt;%java.lang.Double%> p1, final &lt;%java.lang.Double%> p2)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Double%>.valueOf(&lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%>.operator_plus(p1, p2));&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%java.lang.Double%> sum = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Double%>>reduce(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Double%>>map(this.getEntries(), _function), _function_1);&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Long%>> _function_2 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function1%>&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Long%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%> it)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Long%>.valueOf(it.getOccurrences());&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Long%>, &lt;%java.lang.Long%>, &lt;%java.lang.Long%>> _function_3 = new &lt;%org.eclipse.xtext.xbase.lib.Functions.Function2%>&lt;&lt;%java.lang.Long%>, &lt;%java.lang.Long%>, &lt;%java.lang.Long%>>()&#xA;&#x9;{&#xA;&#x9;&#x9;public &lt;%java.lang.Long%> apply(final &lt;%java.lang.Long%> p1, final &lt;%java.lang.Long%> p2)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;return &lt;%java.lang.Long%>.valueOf(((p1).longValue() + (p2).longValue()));&#xA;&#x9;&#x9;}&#xA;&#x9;};&#xA;&#x9;final &lt;%java.lang.Long%> count = &lt;%org.eclipse.xtext.xbase.lib.IterableExtensions%>.&lt;&lt;%java.lang.Long%>>reduce(&lt;%org.eclipse.emf.ecore.xcore.lib.XcoreEListExtensions%>.&lt;&lt;%org.eclipse.app4mc.amalthea.model.ContinuousValueHistogramEntry%>, &lt;%java.lang.Long%>>map(this.getEntries(), _function_2), _function_3);&#xA;&#x9;_xblockexpression = &lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%>.operator_divide(sum, count);&#xA;}&#xA;return _xblockexpression;"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverage_CV(this.getEntries());"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entries" lowerBound="1"
@@ -912,7 +912,7 @@
       <details key="documentation" value="Defines the upper bound, lower bound and mean of a value interval without defining the distribution"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="average" unique="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContinuousValueUniformDistribution"
@@ -925,9 +925,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Gauss distribution"/>
     </eAnnotations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="if (((this.getLowerBound() == null) &amp;&amp; (this.getUpperBound() == null)))&#xA;{&#xA;&#x9;return this.getMean();&#xA;}&#xA;return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices%>.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), &lt;%java.lang.Double%>.valueOf(this.getMean()), &lt;%java.lang.Double%>.valueOf(this.getSd()));"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mean" unique="false" lowerBound="1"
@@ -941,7 +941,7 @@
       <details key="documentation" value="Weibull Distribution&#xA;The parameter of a Weibull distribution (kappa, lambda...) are calculated from the estimators minimum, maximum and average."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="average" unique="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject"
         defaultValueLiteral="0.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pRemainPromille" unique="false"
         lowerBound="1" eType="#//PositiveDouble" defaultValueLiteral="1.0"/>
@@ -950,9 +950,9 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Beta distribution"/>
     </eAnnotations>
-    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble">
+    <eOperations name="getAverage" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDoubleObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="double _xblockexpression = (double) 0;&#xA;{&#xA;&#x9;double _beta = this.getBeta();&#xA;&#x9;double _alpha = this.getAlpha();&#xA;&#x9;double _divide = (_beta / _alpha);&#xA;&#x9;double _plus = (1.0 + _divide);&#xA;&#x9;final double ratio = (1.0 / _plus);&#xA;&#x9;&lt;%java.lang.Double%> _lowerBound = this.getLowerBound();&#xA;&#x9;&lt;%java.lang.Double%> _upperBound = this.getUpperBound();&#xA;&#x9;&lt;%java.lang.Double%> _lowerBound_1 = this.getLowerBound();&#xA;&#x9;double _minus = &lt;%org.eclipse.xtext.xbase.lib.DoubleExtensions%>.operator_minus(_upperBound, _lowerBound_1);&#xA;&#x9;double _multiply = (_minus * ratio);&#xA;&#x9;_xblockexpression = ((_lowerBound).doubleValue() + _multiply);&#xA;}&#xA;return _xblockexpression;"/>
+        <details key="body" value="return &lt;%org.eclipse.app4mc.amalthea.model.AmaltheaServices2%>.getAverageOfBetaDistribution(this.getLowerBound(), this.getUpperBound(), &lt;%java.lang.Double%>.valueOf(this.getAlpha()), &lt;%java.lang.Double%>.valueOf(this.getBeta()));"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alpha" unique="false" lowerBound="1"

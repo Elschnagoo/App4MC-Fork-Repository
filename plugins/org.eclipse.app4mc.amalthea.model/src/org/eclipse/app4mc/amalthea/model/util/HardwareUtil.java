@@ -231,12 +231,12 @@ public class HardwareUtil {
 		case BCET:
 			return latency.getLowerBound();
 		case ACET:
-			return (long) latency.getAverage();
+			return (latency.getAverage() != null) ? latency.getAverage().longValue() : null;
 		case WCET:
 			return latency.getUpperBound();
 		}
 		
-		return (long) latency.getAverage();
+		return (latency.getAverage() != null) ? latency.getAverage().longValue() : null;
 	}
 
 	/**

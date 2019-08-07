@@ -148,7 +148,6 @@ public class DiscreteValueIntervalItemProvider
 			getString("_UI_DiscreteValueInterval_type") + " " + label;
 	}
 
-
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
@@ -156,8 +155,7 @@ public class DiscreteValueIntervalItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+	public void notifyChangedGen(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DiscreteValueInterval.class)) {
@@ -166,6 +164,26 @@ public class DiscreteValueIntervalItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
+		super.notifyChanged(notification);
+	}
+
+	/**
+	 * @generated NOT
+	 */
+	@Override
+	public void notifyChanged(final Notification notification) {
+		updateChildren(notification);
+
+		// delegate to custom item provider and execute locally
+		final List<ViewerNotification> notifications = CustomDeviationItemProviderService
+				.getDiscreteValueIntervalItemProviderNotifications(notification);
+		if (!notifications.isEmpty()) {
+			for (final ViewerNotification vn : notifications) {
+				fireNotifyChanged(vn);
+			}
+			return;
+		}
+
 		super.notifyChanged(notification);
 	}
 

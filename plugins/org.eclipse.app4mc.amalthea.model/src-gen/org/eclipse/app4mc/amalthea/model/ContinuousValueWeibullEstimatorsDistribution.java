@@ -44,12 +44,12 @@ public interface ContinuousValueWeibullEstimatorsDistribution extends BoundedCon
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Average</em>' attribute.
-	 * @see #setAverage(double)
+	 * @see #setAverage(Double)
 	 * @see org.eclipse.app4mc.amalthea.model.AmaltheaPackage#getContinuousValueWeibullEstimatorsDistribution_Average()
 	 * @model default="0.0" unique="false" required="true"
 	 * @generated
 	 */
-	double getAverage();
+	Double getAverage();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.app4mc.amalthea.model.ContinuousValueWeibullEstimatorsDistribution#getAverage <em>Average</em>}' attribute.
@@ -59,7 +59,7 @@ public interface ContinuousValueWeibullEstimatorsDistribution extends BoundedCon
 	 * @see #getAverage()
 	 * @generated
 	 */
-	void setAverage(double value);
+	void setAverage(Double value);
 
 	/**
 	 * Returns the value of the '<em><b>PRemain Promille</b></em>' attribute.

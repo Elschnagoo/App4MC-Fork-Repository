@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueInterval;
 
@@ -32,8 +33,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.xtext.xbase.lib.DoubleExtensions;
 
 /**
  * <!-- begin-user-doc -->
@@ -161,13 +160,8 @@ public abstract class ContinuousValueIntervalImpl extends AmaltheaExtendedEObjec
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		Double _lowerBound = this.getLowerBound();
-		Double _upperBound = this.getUpperBound();
-		Double _lowerBound_1 = this.getLowerBound();
-		double _minus = DoubleExtensions.operator_minus(_upperBound, _lowerBound_1);
-		double _divide = (_minus / 2.0);
-		return ((_lowerBound).doubleValue() + _divide);
+	public Double getAverage() {
+		return AmaltheaServices2.getAverage(this.getLowerBound(), this.getUpperBound());
 	}
 
 	/**

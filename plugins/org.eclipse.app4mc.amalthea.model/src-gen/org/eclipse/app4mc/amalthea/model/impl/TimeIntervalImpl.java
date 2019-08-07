@@ -19,6 +19,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.AmaltheaValidations;
 import org.eclipse.app4mc.amalthea.model.Time;
 import org.eclipse.app4mc.amalthea.model.TimeInterval;
@@ -187,7 +188,7 @@ public abstract class TimeIntervalImpl extends AmaltheaExtendedEObjectImpl imple
 	 */
 	@Override
 	public Time getAverage() {
-		return this.getLowerBound().add(this.getUpperBound().subtract(this.getLowerBound()).multiply(0.5));
+		return AmaltheaServices2.getAverage(this.getLowerBound(), this.getUpperBound());
 	}
 
 	/**

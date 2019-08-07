@@ -822,48 +822,6 @@ public class CustomItemProviderService {
   }
   
   /**
-   * BoundariesItemProvider
-   */
-  public static String getBoundariesItemProviderText(final Object object, final String defaultText) {
-    return "Dist: Boundaries";
-  }
-  
-  /**
-   * BetaDistributionItemProvider
-   */
-  public static String getBetaDistributionItemProviderText(final Object object, final String defaultText) {
-    return "Dist: Beta";
-  }
-  
-  /**
-   * GaussDistributionItemProvider
-   */
-  public static String getGaussDistributionItemProviderText(final Object object, final String defaultText) {
-    return "Dist: Gauss";
-  }
-  
-  /**
-   * UniformDistributionItemProvider
-   */
-  public static String getUniformDistributionItemProviderText(final Object object, final String defaultText) {
-    return "Dist: Uniform";
-  }
-  
-  /**
-   * WeibullEstimatorsItemProvider
-   */
-  public static String getWeibullEstimatorsItemProviderText(final Object object, final String defaultText) {
-    return "Dist: Weibull Estimators";
-  }
-  
-  /**
-   * WeibullParametersItemProvider
-   */
-  public static String getWeibullParametersItemProviderText(final Object object, final String defaultText) {
-    return "Dist: Weibull Parameters";
-  }
-  
-  /**
    * FrequencyItemProvider
    */
   public static String getFrequencyItemProviderText(final Object object, final String defaultText) {
@@ -1060,7 +1018,7 @@ public class CustomItemProviderService {
       Object _notifier = notification.getNotifier();
       ViewerNotification _viewerNotification = new ViewerNotification(notification, _notifier, false, true);
       list.add(_viewerNotification);
-      CustomItemProviderService.addParentLabelNotification(list, notification);
+      CustomItemProviderService.addParentLabelNotification(list, notification, 2);
     }
     return list;
   }
@@ -4525,7 +4483,7 @@ public class CustomItemProviderService {
     if ((object instanceof Ticks)) {
       final String feature = CustomItemProviderService.getContainingFeatureName(((EObject)object), "", "");
       String _xifexpression = null;
-      boolean _contains = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("runnableItems", "computationItems")).contains(feature);
+      boolean _contains = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("items", "computationItems")).contains(feature);
       if (_contains) {
         _xifexpression = "";
       } else {
@@ -4569,7 +4527,7 @@ public class CustomItemProviderService {
       if ((deviation == null)) {
         _xifexpression_1 = "<ticks>";
       } else {
-        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteValueDeviationText(deviation);
+        _xifexpression_1 = CustomDeviationItemProviderService.deviationText(deviation);
       }
       final String s2 = _xifexpression_1;
       return ((s1 + " -- ") + s2);
@@ -4626,7 +4584,7 @@ public class CustomItemProviderService {
       if ((dev == null)) {
         _xifexpression_1 = "<usages>";
       } else {
-        _xifexpression_1 = CustomDeviationItemProviderService.getDiscreteValueDeviationText(dev);
+        _xifexpression_1 = CustomDeviationItemProviderService.deviationText(dev);
       }
       final String s2 = _xifexpression_1;
       return ((s1 + " -- ") + s2);

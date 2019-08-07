@@ -107,7 +107,7 @@ public class BasicDistributionTests {
     ContinuousValueStatistics _xblockexpression = null;
     {
       final ContinuousValueStatistics ret = AmaltheaFactory.eINSTANCE.createContinuousValueStatistics();
-      ret.setAverage(avg);
+      ret.setAverage(Double.valueOf(avg));
       ret.setLowerBound(Double.valueOf(lower));
       ret.setUpperBound(Double.valueOf(upper));
       _xblockexpression = ret;
@@ -119,7 +119,7 @@ public class BasicDistributionTests {
     ContinuousValueWeibullEstimatorsDistribution _xblockexpression = null;
     {
       final ContinuousValueWeibullEstimatorsDistribution ret = AmaltheaFactory.eINSTANCE.createContinuousValueWeibullEstimatorsDistribution();
-      ret.setAverage(avg);
+      ret.setAverage(Double.valueOf(avg));
       ret.setPRemainPromille(prp);
       ret.setLowerBound(Double.valueOf(lower));
       ret.setUpperBound(Double.valueOf(upper));
@@ -169,7 +169,7 @@ public class BasicDistributionTests {
     DiscreteValueStatistics _xblockexpression = null;
     {
       final DiscreteValueStatistics ret = AmaltheaFactory.eINSTANCE.createDiscreteValueStatistics();
-      ret.setAverage(avg);
+      ret.setAverage(Double.valueOf(avg));
       ret.setLowerBound(Long.valueOf(lower));
       ret.setUpperBound(Long.valueOf(upper));
       _xblockexpression = ret;
@@ -181,7 +181,7 @@ public class BasicDistributionTests {
     DiscreteValueWeibullEstimatorsDistribution _xblockexpression = null;
     {
       final DiscreteValueWeibullEstimatorsDistribution ret = AmaltheaFactory.eINSTANCE.createDiscreteValueWeibullEstimatorsDistribution();
-      ret.setAverage(avg);
+      ret.setAverage(Double.valueOf(avg));
       ret.setPRemainPromille(prp);
       ret.setLowerBound(Long.valueOf(lower));
       ret.setUpperBound(Long.valueOf(upper));

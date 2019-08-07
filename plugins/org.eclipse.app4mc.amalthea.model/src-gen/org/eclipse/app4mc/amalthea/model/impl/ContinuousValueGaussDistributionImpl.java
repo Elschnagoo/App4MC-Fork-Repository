@@ -17,7 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
-import org.eclipse.app4mc.amalthea.model.AmaltheaServices;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.ContinuousValueGaussDistribution;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -154,11 +154,8 @@ public class ContinuousValueGaussDistributionImpl extends TruncatedContinuousVal
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		if (((this.getLowerBound() == null) && (this.getUpperBound() == null))) {
-			return this.getMean();
-		}
-		return AmaltheaServices.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), this.getMean(), this.getSd());
+	public Double getAverage() {
+		return AmaltheaServices2.getAverageOfTruncatedNormalDistribution(this.getLowerBound(), this.getUpperBound(), Double.valueOf(this.getMean()), Double.valueOf(this.getSd()));
 	}
 
 	/**

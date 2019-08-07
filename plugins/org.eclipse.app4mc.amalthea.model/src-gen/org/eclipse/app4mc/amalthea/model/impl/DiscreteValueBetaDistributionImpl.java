@@ -17,6 +17,7 @@ package org.eclipse.app4mc.amalthea.model.impl;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.app4mc.amalthea.model.AmaltheaPackage;
+import org.eclipse.app4mc.amalthea.model.AmaltheaServices2;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueBetaDistribution;
 import org.eclipse.app4mc.amalthea.model.DiscreteValueInterval;
 import org.eclipse.app4mc.amalthea.model.IDiscreteValueDeviation;
@@ -155,22 +156,8 @@ public class DiscreteValueBetaDistributionImpl extends BoundedDiscreteValueDistr
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		double _xblockexpression = (double) 0;
-		{
-			double _beta = this.getBeta();
-			double _alpha = this.getAlpha();
-			double _divide = (_beta / _alpha);
-			double _plus = (1.0 + _divide);
-			final double ratio = (1.0 / _plus);
-			Long _lowerBound = this.getLowerBound();
-			Long _upperBound = this.getUpperBound();
-			Long _lowerBound_1 = this.getLowerBound();
-			long _minus = ((_upperBound).longValue() - (_lowerBound_1).longValue());
-			double _multiply = (_minus * ratio);
-			_xblockexpression = ((_lowerBound).longValue() + _multiply);
-		}
-		return _xblockexpression;
+	public Double getAverage() {
+		return AmaltheaServices2.getAverageOfBetaDistribution(this.getLowerBound(), this.getUpperBound(), Double.valueOf(this.getAlpha()), Double.valueOf(this.getBeta()));
 	}
 
 	/**

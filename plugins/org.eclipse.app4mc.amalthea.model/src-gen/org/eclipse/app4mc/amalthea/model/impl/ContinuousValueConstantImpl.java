@@ -131,8 +131,8 @@ public class ContinuousValueConstantImpl extends AmaltheaExtendedEObjectImpl imp
 	 * @generated
 	 */
 	@Override
-	public double getAverage() {
-		return this.getValue();
+	public Double getAverage() {
+		return Double.valueOf(this.getValue());
 	}
 
 	/**
