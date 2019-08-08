@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="org.eclipse.app4mc.amalthea.noload.nature.add"
+            name="Add Amalthea &quot;no-load&quot; nature">
+      </command>
+      
+      <command
+            id="org.eclipse.app4mc.amalthea.noload.nature.remove"
+            name="Remove Amalthea &quot;no-load&quot; nature">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.eclipse.app4mc.amalthea.nature.handlers.AddAmlatheaNoLoadNatureHandler"
+            commandId="org.eclipse.app4mc.amalthea.noload.nature.add">
+      </handler>
+      <handler
+            class="org.eclipse.app4mc.amalthea.nature.handlers.RemoveAmlatheaNoLoadNatureHandler"
+            commandId="org.eclipse.app4mc.amalthea.noload.nature.remove">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+         
+               <menuContribution
+         allPopups="false"
+         locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+      <command
+            commandId="org.eclipse.app4mc.amalthea.noload.nature.add"
+            style="push">
+               <visibleWhen>
+                <iterate
+                        operator="or"
+                        ifEmpty="false">
+                    <adapt
+                        type="org.eclipse.core.resources.IProject">
+                        <not>
+                            <test
+                                forcePluginActivation="true"
+                                property="org.eclipse.core.resources.projectNature"
+                                value="amlt.no.load.nature">
+                            </test>
+                        </not>
+                    </adapt>
+                </iterate>
+            </visibleWhen>
+      </command>
+      <command
+            commandId="org.eclipse.app4mc.amalthea.noload.nature.remove"
+            style="push">
+             <visibleWhen>
+                <iterate
+                        operator="or"
+                        ifEmpty="false">
+                    <adapt
+                        type="org.eclipse.core.resources.IProject">
+	                        <test
+	                            forcePluginActivation="true"
+	                            property="org.eclipse.core.resources.projectNature"
+	                            value="amlt.no.load.nature">
+	                        </test>
+                    </adapt>
+                </iterate>
+            </visibleWhen>
+      </command>
+      
+      
+      </menuContribution>
+      
+   </extension>
+   <extension
+         id="amlt.no.load.nature"
+         name="No load Amalthea model"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.eclipse.app4mc.amalthea.nature.AmaltheaNoLoadNature">
+         </run>
+      </runtime>
+   </extension>
+
+</plugin>
