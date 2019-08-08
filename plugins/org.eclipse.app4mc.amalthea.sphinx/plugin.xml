@@ -40,6 +40,9 @@
          point="org.eclipse.sphinx.emf.workspace.editingDomains">
       <mapping
             class="org.eclipse.app4mc.amalthea.sphinx.AmaltheaWorkspaceEditingDomainMapping">
+         <requiredFor
+               metaModelDescriptorIdPattern="org.eclipse.app4mc.amalthea.model">
+         </requiredFor>
       </mapping>
    </extension>
 </plugin>

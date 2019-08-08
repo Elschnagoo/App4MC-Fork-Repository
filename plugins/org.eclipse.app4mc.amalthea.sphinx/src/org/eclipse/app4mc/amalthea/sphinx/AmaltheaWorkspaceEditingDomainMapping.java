@@ -32,7 +32,7 @@ import org.eclipse.sphinx.platform.messages.PlatformMessages;
 
 public class AmaltheaWorkspaceEditingDomainMapping extends AbstractWorkspaceEditingDomainMapping {
 
-	protected Map<IMetaModelDescriptor, HashMap<IContainer, TransactionalEditingDomain>> mappedEditingDomains = Collections
+	public Map<IMetaModelDescriptor, HashMap<IContainer, TransactionalEditingDomain>> mappedEditingDomains = Collections
 			.synchronizedMap(new HashMap<IMetaModelDescriptor, HashMap<IContainer, TransactionalEditingDomain>>());
 
 	@Override

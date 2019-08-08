@@ -28,10 +28,13 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.NotEnabledException;
 import org.eclipse.core.commands.NotHandledException;
 import org.eclipse.core.commands.common.NotDefinedException;
+import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.css.swt.theme.IThemeEngine;
 import org.eclipse.e4.ui.model.application.MApplication;
@@ -40,6 +43,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.util.Util;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sphinx.emf.editors.forms.BasicTransactionalFormEditor;
@@ -54,6 +58,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
@@ -216,7 +221,48 @@ public class ExtendedBasicTransactionalFormEditor extends BasicTransactionalForm
 		// Get the IFile object editorInput
 		IEditorInput editorInput = getEditorInput();
 		IFile iFileObject = EcoreUIUtil.getFileFromEditorInput(editorInput);
+		//verify if amlt.no.load.nature is configured.. if so do not load Amalthea model file
+		try {
+			IProjectNature nature = iFileObject.getProject().getNature("amlt.no.load.nature");
+			
+			if(nature!=null) {
+				//This is the case, Amalthea model should not be loaded
 
+				MessageDialog dialog = new MessageDialog(getSite().getShell(), "AMALTHEA Model Editor", null, "File is not loaded as Amalthea \"no load\" nature is configured", MessageDialog.WARNING, 0, "OK","Remove \"no load\" nature" );
+				int open = dialog.open();
+				if(open == 1) {
+					//This is the case user has requested to remove the "Amalthea no.load nature"
+
+					ICommandService cmdService = getSite().getService(ICommandService.class);
+					Command sampleCommand = cmdService.getCommand("org.eclipse.app4mc.amalthea.noload.nature.remove");
+
+					Map<String, Object> params = new HashMap<>();
+					if(open == 1) 
+						try {
+
+							StructuredSelection selection = new StructuredSelection(iFileObject.getProject());
+							EvaluationContext context =new EvaluationContext(null,  selection);
+							context.addVariable(ISources.ACTIVE_CURRENT_SELECTION_NAME, selection);
+
+							ExecutionEvent event = new ExecutionEvent(sampleCommand, params, null, context);
+							sampleCommand.executeWithChecks(event);
+							return true;
+						}
+					catch (ExecutionException | NotDefinedException | NotEnabledException | NotHandledException e) {
+						e.printStackTrace();
+					}
+				}else if(open == 0) {
+					close(false);
+					return false;
+				}
+
+
+
+			}
+		} catch (CoreException e) {
+			//This is a case where nature might not be associated with IProject (or) nature plugin is missing in the product
+		}
+		
 		// Verify if the Model descriptor can be fetched from the File
 		IModelDescriptor modelDescriptorContent = ModelDescriptorRegistry.INSTANCE.getModel(iFileObject);
 
