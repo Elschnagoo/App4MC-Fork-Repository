@@ -123,29 +123,27 @@ public class SwConverter extends AbstractConverter {
 	private void updateModeSwitchElement(final List<Element> modeSwitchElements) {
 		//Setting xsi:type value of Port
 		for (Element modeSwitchElement : modeSwitchElements) {
-			
-			boolean isLocalModeLabelUsed=false;
-			
-			String modeLabelValue=null;
-			
+
+			boolean isLocalModeLabelUsed = false;
+			String modeLabelValue = null;
+
 			Attribute valueProviderAttribute = modeSwitchElement.getAttribute("valueProvider");
-			
+
 			Element valueProviderChild = modeSwitchElement.getChild("valueProvider");
-			
-			if(valueProviderAttribute !=null) {
-				isLocalModeLabelUsed=true;
-				
-				modeLabelValue=valueProviderAttribute.getValue();
-				
+
+			if (valueProviderAttribute != null) {
+				isLocalModeLabelUsed = true;
+
+				modeLabelValue = valueProviderAttribute.getValue();
+
 				modeSwitchElement.removeAttribute(valueProviderAttribute);
-				
-			}else if(valueProviderChild !=null){
-				
-				modeLabelValue=valueProviderChild.getAttributeValue("href");
-				
+
+			} else if (valueProviderChild != null) {
+
+				modeLabelValue = valueProviderChild.getAttributeValue("href");
+
 				modeSwitchElement.removeContent(valueProviderChild);
-			}
-			
+			}			
 			
 			//fetch  ModeSwitchEntry<GraphEntryBase>[] entries objects and migrate them
 			
@@ -160,9 +158,9 @@ public class SwConverter extends AbstractConverter {
 				
 				List<String> literals=new ArrayList<String>();
 				
-				if(valuesAttribute!=null) {
-					isLocalLiteralsUsed=true;
-					
+				if (valuesAttribute != null) {
+					isLocalLiteralsUsed = true;
+
 					String value = valuesAttribute.getValue();
 
 					String[] split = value.split("\\s+");
@@ -170,22 +168,21 @@ public class SwConverter extends AbstractConverter {
 					for (String string : split) {
 						literals.add(string);
 					}
-					
-					//removing this attribute, as it is not there in 0.8.3
+
+					// removing this attribute, as it is not there in 0.8.3
 					entriesElement.removeAttribute(valuesAttribute);
-					
-				}else if(valuesElements!=null) {
-					 
-					for(Element valueElement:valuesElements) {
+
+				} else if (valuesElements != null) {
+
+					for (Element valueElement : valuesElements) {
 						String attributeValue = valueElement.getAttributeValue("href");
-						if(attributeValue!=null) {
+						if (attributeValue != null) {
 							literals.add(attributeValue);
 						}
 					}
-					//removing this attribute, as it is not there in 0.8.3
+					// removing this attribute, as it is not there in 0.8.3
 					entriesElement.removeChildren("values");
-				}
-				
+				}				
 				
 				// creating Condition element and adding its children
 				
@@ -197,28 +194,27 @@ public class SwConverter extends AbstractConverter {
 					
 					entriesElementInsideConditionElement.setAttribute("type", "am:ModeValue", helper.getGenericNS("xsi"));
 					
-					if(modeLabelValue!=null) {
-						if(isLocalModeLabelUsed) {
+					if (modeLabelValue != null) {
+						if (isLocalModeLabelUsed) {
 							entriesElementInsideConditionElement.setAttribute("valueProvider", modeLabelValue);
-						}else {
-							Element valueProviderElement=new Element("valueProvider");
-							
+						} else {
+							Element valueProviderElement = new Element("valueProvider");
+
 							entriesElementInsideConditionElement.addContent(valueProviderElement);
-						}	
+						}
 					}
-					
-					if(isLocalLiteralsUsed) {
+
+					if (isLocalLiteralsUsed) {
 						entriesElementInsideConditionElement.setAttribute("value", literal);
-						
-					}else {
-						Element valueElement=new Element("value");
-						
-						valueElement.setAttribute("href",literal);
-						
+
+					} else {
+						Element valueElement = new Element("value");
+
+						valueElement.setAttribute("href", literal);
+
 						entriesElementInsideConditionElement.addContent(valueElement);
-						
 					}
-					
+
 					conditionElement.addContent(entriesElementInsideConditionElement);
 				}
 				
