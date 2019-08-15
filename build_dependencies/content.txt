@@ -1,0 +1,6 @@
+
+*** Build dependencies ***
+
+folder:		help_docu
+origin:		https://build.eclipse.org/common/mylyn-wikitext/2.9.0.v20160513-1433/
+date:		2019-08-14
