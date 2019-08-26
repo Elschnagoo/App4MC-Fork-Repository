@@ -90,7 +90,7 @@ public class RuntimeUtil {
 		if (processingUnits.size() == 1) {
 			ProcessingUnit processingUnit = processingUnits.iterator().next(); 
 			for (Runnable runnable : runnables ) {
-				result.add(getExecutionTimeForRunnable(runnable, processingUnit, modes, executionCase));
+				result = result.add(getExecutionTimeForRunnable(runnable, processingUnit, modes, executionCase));
 			}
 		}
 		else {
