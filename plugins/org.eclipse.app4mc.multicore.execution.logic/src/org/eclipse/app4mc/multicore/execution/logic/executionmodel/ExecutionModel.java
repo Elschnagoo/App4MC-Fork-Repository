@@ -1,15 +1,15 @@
 /**
  ********************************************************************************
- * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
- * 
+ * Copyright (c) 2019 Dortmund University of Applied Sciences and Arts and others.
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  ********************************************************************************
  */
 
@@ -43,6 +43,8 @@ public class ExecutionModel{
 	private List<BiConsumer<EMTask, DeadlineEntry>> deadlineListener=new LinkedList<>();
 	
 	private EMTimeType timeScale=EMTimeType.NONE;
+
+	private String path="";
 	
 	public Map<String, EMCore> getCores() {
 		return cores;
@@ -134,4 +136,11 @@ public class ExecutionModel{
 		deadlineListener.forEach(x->x.accept(t, e));
 	}
 
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 }

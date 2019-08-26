@@ -1,21 +1,19 @@
 /**
  ********************************************************************************
- * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
- * 
+ * Copyright (c) 2019 Dortmund University of Applied Sciences and Arts and others.
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  ********************************************************************************
  */
 
 package org.eclipse.app4mc.multicore.execution.ui.widget.emtracewidget;
-
-import java.util.function.BiConsumer;
 
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.ExecutionModel;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.misc.EMTimeType;
@@ -24,19 +22,39 @@ import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTask;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTask.DeadlineEntry;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTaskEvent;
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.types.EMTaskHistState;
+import org.eclipse.app4mc.multicore.execution.model.XUtil;
 import org.eclipse.app4mc.multicore.execution.ui.widget.tracewidget.TraceWidget;
 
+import java.util.function.BiConsumer;
+
 public class EMTraceWidget extends TraceWidget implements IEMTraceWidget{
-	
+	boolean isFin;
+public	EMTraceWidget ()
+	{
+		super();
+		isFin=false;
+	}
 
 	@Override
 	public void addExecutionModel(ExecutionModel em){
+		System.out.println("################################");
+		System.out.println("################################");
+		System.out.println("#########"+" Add Em "+"#########");
+		System.out.println("################################");
+		System.out.println("################################");
+
+
+
 		reset();
-		
+		setExMod(em);
+
 		if(em.getTimeScale()!=EMTimeType.NONE){
 			setAxisLabels(em.getTimeScale().toString().toLowerCase());
 		}
-		
+
+		System.out.println("----"+em.getPath());
+		setxContainer(XUtil.startWithInput(1,em.getPath()));
+
 		//compute already present data in the model
 		for (EMCore c : em.getCores().values()) {
 			addEMCore(c);
@@ -57,8 +75,8 @@ public class EMTraceWidget extends TraceWidget implements IEMTraceWidget{
 		em.addTaskHistEntryAddedListener(new BiConsumer<EMTask, EMTaskHistState>() {
 			@Override
 			public void accept(EMTask t, EMTaskHistState u) {
-				System.out.println("Task: "+t.getName());
-				System.out.println("State:" + u.getState());
+				//System.out.println("Task: "+t.getName());
+				//System.out.println("State:" + u.getState());
 			}
 		});
 		
@@ -73,7 +91,17 @@ public class EMTraceWidget extends TraceWidget implements IEMTraceWidget{
 		em.addTaskHistEntryAddedListener(this::addEMTaskHist);
 		em.addTaskDeadlineListener(this::addDeadlineMissed);
 	}
-	
+
+	@Override
+	public void setFinish() {
+			isFin=true;
+	}
+
+	@Override
+	public boolean getFinish() {
+		return isFin;
+	}
+
 	private void addEMCore(final EMCore c){
 		addCore(c.getName());
 	}

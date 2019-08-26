@@ -1,15 +1,15 @@
 /**
  ********************************************************************************
- * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
- * 
+ * Copyright (c) 2019 Dortmund University of Applied Sciences and Arts and others.
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  ********************************************************************************
  */
 
@@ -28,12 +28,14 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.handlers.HandlerUtil;
+
+import javax.swing.*;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -61,7 +63,6 @@ public class SimMenuHandler extends AbstractHandler {
 		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		final UniversalHandler uh = UniversalHandler.getInstance();
 		final IFile file = uh.getSelectedFile(event);
-		
 		if (!readModels(file)) {
 			MessageDialog.openInformation(window.getShell(), "Task Exec Visualization", "No Mapping- or Constraints-Model available! Select file with Mapping-Model.");
 			return null;
@@ -72,12 +73,17 @@ public class SimMenuHandler extends AbstractHandler {
 			return null;
 		}
 
-		showWizard(window.getShell());
+		showWizard(window.getShell(),file.getLocation().toOSString());
 		return null;
 	}
 
-	private void showWizard(Shell shell) {
-		WizardDialog wizardDialog = new WizardDialog(shell, new TaskVisuWizard(tw,ommodel,cmmodel));
+	private void showWizard(Shell shell,String path) {
+		if(tw.getFinish()){
+			JOptionPane.showMessageDialog(null,"Please close the TraceView Tab before you start a new run","Error",JOptionPane.ERROR_MESSAGE);
+
+			return;
+		}
+		WizardDialog wizardDialog = new WizardDialog(shell, new TaskVisuWizard(tw,ommodel,cmmodel,path));
 		
 		if (wizardDialog.open() == Window.OK) {
 			System.out.println("Ok pressed");
@@ -94,7 +100,7 @@ public class SimMenuHandler extends AbstractHandler {
 		
 		UniversalHandler uh = UniversalHandler.getInstance();
 		URI uri =URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-		
+
 		uh.dropCache();
 		
 		if(uri==null){

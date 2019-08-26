@@ -19,17 +19,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.app4mc.amalthea.model.CallGraph;
-import org.eclipse.app4mc.amalthea.model.CallSequence;
-import org.eclipse.app4mc.amalthea.model.CallSequenceItem;
-import org.eclipse.app4mc.amalthea.model.GraphEntryBase;
+import org.eclipse.app4mc.amalthea.model.Group;//CallSequence;
+import org.eclipse.app4mc.amalthea.model.CallGraphItem;//CallSequenceItem;
+import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.PeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.RelativePeriodicStimulus;
 import org.eclipse.app4mc.amalthea.model.Runnable;
 import org.eclipse.app4mc.amalthea.model.Stimulus;
 import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskRunnableCall;
+import org.eclipse.app4mc.amalthea.model.RunnableCall;//TaskRunnableCall;
 import org.eclipse.app4mc.amalthea.model.Time;
-import org.eclipse.app4mc.amalthea.model.ITimeDeviation;
 import org.eclipse.app4mc.amalthea.model.Value;
 import org.eclipse.emf.ecore.EAttribute;
 
@@ -367,12 +366,12 @@ public class OMTask {
 			throw new MalformedModelException("No callgraph at task " + t.getName());
 		}
 
-		for (GraphEntryBase entry : graph.getGraphEntries()) {
-			if (entry instanceof CallSequence) {
-				CallSequence seq = (CallSequence) entry;
-				for (CallSequenceItem item : seq.getCalls()) {
-					if (item instanceof TaskRunnableCall) {
-						TaskRunnableCall call = (TaskRunnableCall) item;
+		for (CallGraphItem entry : graph.getItems()) {
+			if (entry instanceof Group) {
+				Group seq = (Group) entry;
+				for (CallGraphItem item : seq.getItems()) {
+					if (item instanceof RunnableCall) {
+						RunnableCall call = (RunnableCall) item;
 						Runnable r = call.getRunnable();
 						if (r == null) {
 							throw new MalformedModelException("Empty Runnable call at task " + t.getName());

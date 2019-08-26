@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.app4mc.multicore.sharelibs,
  org.eclipse.app4mc.multicore.execution.logic,
  org.eclipse.app4mc.multicore.execution.ui.widget,
- com.mxgraph
+ com.mxgraph,
+ org.eclipse.app4mc.multicore.execution.model
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Eclipse APP4MC

@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2019 Dortmund University of Applied Sciences and Arts and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,26 +14,13 @@
 
 package org.eclipse.app4mc.multicore.execution.logic.openmapping;
 
+import org.eclipse.app4mc.amalthea.model.Runnable;
+import org.eclipse.app4mc.amalthea.model.*;
+
 import java.math.BigInteger;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.DoubleAdder;
 import java.util.stream.Collectors;
-
-import org.eclipse.app4mc.amalthea.model.ConstraintsModel;
-import org.eclipse.app4mc.amalthea.model.MappingModel;
-import org.eclipse.app4mc.amalthea.model.ProcessingUnit;
-import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableSequencingConstraint;
-import org.eclipse.app4mc.amalthea.model.Scheduler;
-import org.eclipse.app4mc.amalthea.model.SchedulerAllocation;
-import org.eclipse.app4mc.amalthea.model.Task;
-import org.eclipse.app4mc.amalthea.model.TaskAllocation;
 
 public class OMUtil {
 	
@@ -252,7 +239,7 @@ public class OMUtil {
 	 * @throws MalformedModelException 
 	 */
 	public static long getProcessingTime(final OMCore core, final long instuctionCount) throws MalformedModelException{
-		final BigInteger ips = BigInteger.valueOf(core.getInstructionsPerSecond());
+		final BigInteger ips = BigInteger.valueOf(core.getFrequencyHz());
 		// Number of Instructions
 		final BigInteger ins = BigInteger.valueOf(instuctionCount);
 		// Piko-Seconds per Second
@@ -260,8 +247,6 @@ public class OMUtil {
 		final BigInteger computationTime = psps.multiply(ins).divide(ips);
 		return computationTime.longValueExact();
 	}
-	
-	
 
 	/**
 	 * Check if the provided graph is acyclic. Therefore the graph gets topologically sorted. If it can't be

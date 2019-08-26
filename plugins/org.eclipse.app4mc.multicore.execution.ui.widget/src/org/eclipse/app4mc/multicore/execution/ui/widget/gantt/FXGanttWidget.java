@@ -1,25 +1,20 @@
 /**
  ********************************************************************************
- * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
- * 
+ * Copyright (c) 2019 Dortmund University of Applied Sciences and Arts and others.
+ *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
- *    Dortmund University of Applied Sciences and Arts - initial API and implementation
+ *     Dortmund University of Applied Sciences and Arts - initial API and implementation
  ********************************************************************************
  */
 
 package org.eclipse.app4mc.multicore.execution.ui.widget.gantt;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import org.eclipse.app4mc.multicore.execution.ui.widget.gantt.elements.AbstractGanttViewElement;
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -30,12 +25,19 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import org.eclipse.app4mc.multicore.execution.ui.widget.gantt.elements.AbstractGanttViewElement;
+import org.eclipse.app4mc.multicore.execution.ui.widget.gantt.elements.ProgressViewElement;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class FXGanttWidget extends XYChart<Number, String> implements IGantt {
 
 	private double blockPadding = 10;
 
 	private double blockHeight = 15;
-
+	private final boolean deugPrint=true;
 	private NumberAxis xAxi;
 
 	private CategoryAxis catAxi;
@@ -63,6 +65,11 @@ public class FXGanttWidget extends XYChart<Number, String> implements IGantt {
 
 		setupDragging();
 		setupScrolling();
+
+		if (deugPrint)
+			{
+				System.out.println("FXGanttWidget Consturctur Start");
+			}
 	}
 
 	private FXGanttWidget(NumberAxis xAxis, CategoryAxis yAxis) {
@@ -121,7 +128,8 @@ public class FXGanttWidget extends XYChart<Number, String> implements IGantt {
 
 		setOnScroll(new EventHandler<ScrollEvent>() {
 			final static double moveSpeed = 0.1;
-			final static int zoomSpeed = 2;
+
+			final static int zoomSpeed = 75;
 
 			@Override
 			public void handle(ScrollEvent event) {
@@ -234,7 +242,16 @@ public class FXGanttWidget extends XYChart<Number, String> implements IGantt {
 
 	@Override
 	protected void dataItemAdded(Series<Number, String> series, int itemIndex, Data<Number, String> item) {
+
+
+		if (deugPrint && (item.getExtraValue() instanceof ProgressViewElement))
+		{
+
+		//	System.out.println("FXGanttWidget -> dataItemAdded      "+item.getExtraValue() );
+		}
+
 		Node block = createNode(item);
+
 		getPlotChildren().add(block);
 	}
 

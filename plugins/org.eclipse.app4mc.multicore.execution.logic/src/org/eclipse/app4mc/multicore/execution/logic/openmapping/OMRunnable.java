@@ -14,14 +14,13 @@
  ******************************************************************************/
 package org.eclipse.app4mc.multicore.execution.logic.openmapping;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.app4mc.amalthea.model.Runnable;
-import org.eclipse.app4mc.amalthea.model.RunnableItem;
+import org.eclipse.app4mc.amalthea.model.Ticks;
+import org.eclipse.app4mc.amalthea.model.util.SoftwareUtil;
 import org.eclipse.app4mc.multicore.sharelibs.UniversalHandler;
-import org.eclipse.emf.common.util.EList;
 
 public class OMRunnable {
 	private final Runnable runnableRef;
@@ -56,69 +55,11 @@ public class OMRunnable {
 					null);
 			return 0;
 		}
-
-		return (this.instructions = parseRunnableItems(this.runnableRef.getRunnableItems()));
+		
+		List<Ticks> totalTicks = SoftwareUtil.getTicks(getRunnableRef(), null);
+		
+		return (this.instructions = totalTicks.stream().mapToLong(t -> t.getDefault().getUpperBound()).sum());
 	}
-
-	private long parseRunnableItems(final EList<RunnableItem> runnableItemsList) {
-		// Process all RunnableItems and search for instructions
-		final Iterator<RunnableItem> itRunnableItems = runnableItemsList.iterator();
-		while (itRunnableItems.hasNext()) {
-			final RunnableItem runnableItem = itRunnableItems.next();
-
-//			if (runnableItem instanceof ExecutionNeed) {
-//				final ExecutionNeed execNeed = (ExecutionNeed) runnableItem;
-//				final Need abstractNeed = InstructionsUtil.getNeed(execNeed);
-//				if (abstractNeed == null) {
-//					UniversalHandler.getInstance().log(" Unexpected SWModel.\nexecution need is not set!\nSkipping...",
-//							null);
-//					return 0;
-//				} else if (abstractNeed instanceof NeedConstant) {
-//					return processNeedConstant((NeedConstant) abstractNeed);
-//				} else if (abstractNeed instanceof NeedDeviation) {
-//					return processNeedDeviation((NeedDeviation) abstractNeed);
-//				} else {
-//					// Report the others (Debug info), as we do not handle them
-//					UniversalHandler.getInstance().logCon("Debug Info: Skipping " + runnableItem.getClass().toString());
-//				}
-//			}
-		}
-
-		UniversalHandler.getInstance()
-				.log("Invalid Software Model, there has been no execution need specified.", null);
-		return 0;
-	}
-
-//	private long processNeedConstant(final NeedConstant needConstant) {
-//		if (needConstant.getValue() <= 0) {
-//			UniversalHandler.getInstance()
-//					.log("Invalid Software Model, NeedConstant contains an invalid value (<= 0).", null);
-//			return 0;
-//		}
-//
-//		return needConstant.getValue();
-//	}
-//
-//	private long processNeedDeviation(final NeedDeviation needDeviation) {
-//		final Deviation<LongObject> deviation;
-//		if ((deviation = needDeviation.getDeviation()) == null) {
-//			UniversalHandler.getInstance().log(
-//					"Invalid Software Model, NeedDeviation has an invalid or missing containment to its Deviation.",
-//					null);
-//			return 0;
-//		}
-//
-//		final Long lowerBound = deviation.getLowerBound().getValue();
-//		final Long upperBound = deviation.getUpperBound().getValue();
-//
-//		// Check if lower and upper bound are set correct
-//		// Quick solution, might need to be rewritten in the future
-//		if (lowerBound <= 0 || upperBound <= 0) {
-//			UniversalHandler.getInstance().log("Unexpected SWModel.\nDeviation not set properly.\nSkipping...", null);
-//			return 0;
-//		}
-//		return ((lowerBound + upperBound) / 2);
-//	}
 
 //	public List<OMRunnable> getPre() {
 //		return pre;

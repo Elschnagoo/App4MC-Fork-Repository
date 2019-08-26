@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * Copyright (c) 2017 Dortmund University of Applied Sciences and Arts and others.
+ * Copyright (c) 2019 Dortmund University of Applied Sciences and Arts and others.
  * 
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,8 +14,6 @@
 
 package org.eclipse.app4mc.multicore.execution.logic.systemproxy;
 
-import java.util.function.Supplier;
-
 import org.eclipse.app4mc.multicore.execution.logic.executionmodel.ExecutionModel;
 import org.eclipse.app4mc.multicore.execution.logic.openmapping.MalformedModelException;
 import org.eclipse.app4mc.multicore.execution.logic.openmapping.OMAllocation;
@@ -24,6 +22,8 @@ import org.eclipse.app4mc.multicore.execution.logic.systemproxy.multicoresystem.
 import org.eclipse.app4mc.multicore.execution.logic.systemproxy.multicoresystem.MultiCoreSystem;
 import org.eclipse.app4mc.multicore.execution.logic.systemproxy.multicoresystem.SimUtil;
 import org.eclipse.app4mc.multicore.execution.logic.systemproxy.scheduler.ISchedulerAlgorithm;
+
+import java.util.function.Supplier;
 
 public class SystemProxyFactory {
 	
